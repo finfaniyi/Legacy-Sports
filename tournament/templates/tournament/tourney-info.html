@@ -1,0 +1,176 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+
+{% block title %}Tourney Info | Legacy Sports{% endblock %}
+
+{% block content %}
+
+<main class="ti-page">
+
+  <!-- Top header -->
+  <header class="ti-top">
+    <p class="ti-kicker">TOURNAMENT DETAILS</p>
+    <h1 class="ti-title">Tourney Info</h1>
+    <p class="ti-subtitle">
+      Format, rules, schedule, and what to bring — all in one place.
+    </p>
+
+    <div class="ti-badges">
+      <span class="ti-badge"><span>Prize</span> $400, Trophy, Medals, MVP Awards</span>
+      <span class="ti-badge"><span>Teams</span> 6 players per team</span>
+      <span class="ti-badge"><span>Location</span> TBD</span>
+      <span class="ti-badge"><span>Date</span> TBD</span>
+    </div>
+  </header>
+
+  <!-- Split layout -->
+  <section class="ti-layout">
+
+    <!-- Left: sticky quick nav -->
+    <aside class="ti-side">
+      <div class="ti-side-card">
+        <p class="ti-side-title">Quick Nav</p>
+        <a class="ti-link" href="#format">Format</a>
+        <a class="ti-link" href="#schedule">Schedule</a>
+        <a class="ti-link" href="#rules">Rules</a>
+        <a class="ti-link" href="#bring">What to Bring</a>
+        <a class="ti-link" href="#faq">FAQ</a>
+
+        <a class="ti-cta" href="{% url 'registration' %}">Go to Registration</a>
+      </div>
+    </aside>
+
+    <!-- Right: content -->
+    <div class="ti-content">
+
+      <section id="format" class="ti-card">
+        <h2>Format</h2>
+        <div class="ti-grid-2">
+
+          <div class="ti-mini">
+            <h3>Structure</h3>
+            <ul class="ti-list">
+              <li>Single-elimination bracket (8 teams).</li>
+              <li>Pre-exhibition games to warm teams up.</li>
+            </ul>
+          </div>
+
+          <div class="ti-mini">
+            <h3>Team Size</h3>
+            <ul class="ti-list">
+              <li>6 players per team.</li>
+            </ul>
+          </div>
+
+          <div class="ti-mini">
+            <h3>Matches</h3>
+            <ul class="ti-list">
+              <li>Best-of-3 short sets.</li>
+              <li>Sets 1 & 2: First to 15 points, win by 2.</li>
+              <li>Set 3 (if needed): First to 11 points, win by 2.</li>
+            </ul>
+          </div>
+
+          <div class="ti-mini">
+            <h3>Fair Play</h3>
+            <ul class="ti-list">
+              <li>Refs and score tracking to keep matches fair.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="schedule" class="ti-card">
+        <h2>Schedule</h2>
+
+        <div class="ti-timeline">
+
+          <div class="ti-time">
+            <span class="ti-hour">10:30</span>
+            <div>
+              <p class="ti-strong">Check-in + Team Photos</p>
+              <p class="ti-muted">Teams arrive and get ready.</p>
+            </div>
+          </div>
+
+          <div class="ti-time">
+            <span class="ti-hour">11:00</span>
+            <div>
+              <p class="ti-strong">Exhibition Matches</p>
+              <p class="ti-muted">Every team plays at least once.</p>
+            </div>
+          </div>
+
+          <div class="ti-time">
+            <span class="ti-hour">12:00</span>
+            <div>
+              <p class="ti-strong">Elimination Stage</p>
+              <p class="ti-muted">Winning teams advance.</p>
+            </div>
+          </div>
+
+          <div class="ti-time">
+            <span class="ti-hour">3:30</span>
+            <div>
+              <p class="ti-strong">Finals + Awards</p>
+              <p class="ti-muted">Prize, trophy, and medals awarded.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="ti-footnote">*Exact times may shift depending on number of teams.</p>
+      </section>
+
+      <section id="rules" class="ti-card">
+        <h2>Rules</h2>
+        <div class="ti-grid-2">
+          <div class="ti-mini">
+            <h3>Game</h3>
+            <p>Standard volleyball rules, with adjusted scoring.</p>
+          </div>
+          <div class="ti-mini">
+            <h3>Sportsmanship</h3>
+            <p>Respect referees, opponents, and event staff.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="bring" class="ti-card">
+        <h2>What to Bring</h2>
+        <ul class="ti-list">
+          <li>Water bottle</li>
+          <li>Matching shirts (optional)</li>
+        </ul>
+      </section>
+
+      <section id="faq" class="ti-card">
+        <h2>FAQ</h2>
+
+        <div class="ti-faq">
+          <div class="ti-q">
+            <p class="ti-strong">Can I register solo?</p>
+            <p class="ti-muted">Yes — individual free agents can be placed on teams.</p>
+          </div>
+
+          <div class="ti-q">
+            <p class="ti-strong">How many teams?</p>
+            <p class="ti-muted">Our goal is 8 teams.</p>
+          </div>
+
+          <div class="ti-q">
+            <p class="ti-strong">Where do updates go?</p>
+            <p class="ti-muted">Follow our Instagram for updates.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-bottom-space"></div>
+
+    </div>
+  </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends "tournament/base.html" %}
+{% block title %}Team Registration | Legacy Sports{% endblock %}
+
+{% block content %}
+<section class="form-page">
+
+  <div class="form-header">
+    <h1>Team Registration</h1>
+    <p>All teams must register 6 players. Substitutes are optional.</p>
+  </div>
+
+  <div class="form-card">
+    <form method="POST" action="{% url 'registration_team' %}">
+      {% if error %}
+      <div class="error-toast">
+        ⚠️ {{ error }}
+      </div>
+      {% endif %}
+      {% csrf_token %}
+
+      <!-- ================= TEAM INFO ================= -->
+      <h3>Team Information</h3>
+
+      <input name="team_name" placeholder="Team Name" required>
+      <input name="captain_name" placeholder="Captain Full Name" required>
+      <input name="captain_email" type="email" placeholder="Captain Email" required>
+      <input name="captain_phone" placeholder="Captain Phone" required>
+
+      <input name="team_emergency_name" placeholder="Emergency Contact Name" required>
+      <input name="team_emergency_phone" placeholder="Emergency Contact Phone" required>
+
+      <hr>
+
+      <!-- ================= ROSTER SIZE ================= -->
+      <h3>Roster Size *</h3>
+      <select id="rosterSize" name="roster_size" required>
+        <option value="">Select</option>
+        <option value="6">6 players (no substitutes)</option>
+        <option value="7">7 players (1 substitute)</option>
+        <option value="8">8 players (2 substitutes)</option>
+      </select>
+
+      <hr>
+
+      <!-- ================= ACTIVE PLAYERS ================= -->
+      <h3>Active Players (6 required)</h3>
+
+      {% for i in "123456" %}
+      <div class="player-card">
+        <div class="player-title">Player {{ forloop.counter }}</div>
+
+        <input name="player_{{ forloop.counter }}_first" placeholder="First Name" required>
+        <input name="player_{{ forloop.counter }}_last" placeholder="Last Name" required>
+        <input name="player_{{ forloop.counter }}_age" type="number" placeholder="Age" required>
+
+        <select name="player_{{ forloop.counter }}_gender" required>
+          <option value="">Gender</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="O">Other</option>
+          <option value="N">Prefer not to say</option>
+        </select>
+
+        <input name="player_{{ forloop.counter }}_email" type="email" placeholder="Email" required>
+        <input name="player_{{ forloop.counter }}_phone" placeholder="Phone" required>
+
+        <input name="player_{{ forloop.counter }}_emergency_name" placeholder="Emergency Contact Name" required>
+        <input name="player_{{ forloop.counter }}_emergency_phone" placeholder="Emergency Contact Phone" required>
+
+        <input name="player_{{ forloop.counter }}_school" placeholder="School (optional)">
+      </div>
+      {% endfor %}
+
+      <hr>
+
+      <!-- ================= TEAM COLOR ================= -->
+      <h3>Team Color *</h3>
+      <p class="form-hint">Your team must wear this color on game day.</p>
+
+      <div class="color-grid">
+        {% for value, label in team_colors %}
+        {% if value in taken_colors %}
+        <div class="color-swatch disabled {{ value }}">
+          <span>{{ label }}</span>
+        </div>
+        {% else %}
+        <label class="color-swatch {{ value }}">
+          <input type="radio" name="team_color" value="{{ value }}" required>
+          <span>{{ label }}</span>
+        </label>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <hr>
+
+      <!-- ================= SUBSTITUTES ================= -->
+      <h3>Substitutes</h3>
+
+      <div id="sub-1" style="display:none;">
+        <div class="player-card">
+          <div class="player-title">Substitute 1</div>
+
+          <input name="sub_1_first" placeholder="First Name">
+          <input name="sub_1_last" placeholder="Last Name">
+          <input name="sub_1_age" type="number" placeholder="Age">
+
+          <select name="sub_1_gender">
+            <option value="">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+            <option value="N">Prefer not to say</option>
+          </select>
+
+          <input name="sub_1_email" type="email" placeholder="Email">
+          <input name="sub_1_phone" placeholder="Phone">
+          <input name="sub_1_emergency_name" placeholder="Emergency Contact Name">
+          <input name="sub_1_emergency_phone" placeholder="Emergency Contact Phone">
+          <input name="sub_1_school" placeholder="School (optional)">
+        </div>
+      </div>
+
+      <div id="sub-2" style="display:none;">
+        <div class="player-card">
+          <div class="player-title">Substitute 2</div>
+
+          <input name="sub_2_first" placeholder="First Name">
+          <input name="sub_2_last" placeholder="Last Name">
+          <input name="sub_2_age" type="number" placeholder="Age">
+
+          <select name="sub_2_gender">
+            <option value="">Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+            <option value="N">Prefer not to say</option>
+          </select>
+
+          <input name="sub_2_email" type="email" placeholder="Email">
+          <input name="sub_2_phone" placeholder="Phone">
+          <input name="sub_2_emergency_name" placeholder="Emergency Contact Name">
+          <input name="sub_2_emergency_phone" placeholder="Emergency Contact Phone">
+          <input name="sub_2_school" placeholder="School (optional)">
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Submit Registration
+      </button>
+
+    </form>
+  </div>
+</section>
+
+<!-- ================= JS ================= -->
+<script>
+  const rosterSelect = document.getElementById("rosterSize");
+  const sub1 = document.getElementById("sub-1");
+  const sub2 = document.getElementById("sub-2");
+
+  const form = document.querySelector("form");
+  const submitBtn = document.getElementById("submitBtn");
+
+  // Handle roster size → show subs
+  rosterSelect.addEventListener("change", () => {
+    const size = parseInt(rosterSelect.value, 10);
+    sub1.style.display = size >= 7 ? "block" : "none";
+    sub2.style.display = size === 8 ? "block" : "none";
+  });
+
+  // Handle form submit
+  form.addEventListener("submit", (e) => {
+    const firstInvalid = form.querySelector(":invalid");
+
+    if (firstInvalid) {
+      e.preventDefault();
+      firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+      firstInvalid.focus();
+      return;
+    }
+
+    // Only disable button if form is valid
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting…";
+  });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+/* =========================
+   GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F7F5F2;
+  color: #151a1f;
+  min-height: 100vh;
+  font-family: 'Sofia Sans', sans-serif;
+  background-image: url("../images/back1.jpg"); /* 1 or 3 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.page-bottom-space{
+  height: 120px;
+}

@@ -1,0 +1,76 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+{% load dict_extras %}
+
+{% block title %}Registration | Legacy Sports{% endblock %}
+
+{% block content %}
+
+{% if request.GET.paid %}
+  <div class="success-toast">
+    ✅ Payment successful! Your team is officially registered.
+  </div>
+{% endif %}
+
+{% if request.GET.cancelled %}
+  <div class="error-toast">
+    ⚠️ Payment not completed. Your spot is not confirmed.
+  </div>
+{% endif %}
+
+{% if full %}
+  <div class="error-toast">
+    🚫 Registration is full. All team slots are taken.
+  </div>
+{% endif %}
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <h1>Registration</h1>
+  <p class="subtitle">Team captains register their full roster</p>
+
+  <div class="registration-cubes">
+    {% for team_num in "12345678" %}
+    {% if forloop.counter in taken_slots %}
+    <!-- TAKEN SLOT -->
+    <div class="cube cube-taken cube-{{ slot_colors|get_item:forloop.counter }}">
+      <div class="cube-badge">TAKEN</div>
+
+      <span>
+        TEAM {{ forloop.counter }}
+        <em>{{ slot_names|get_item:forloop.counter }}</em>
+      </span>
+
+      <div class="cube-tag">
+        {{ slot_colors|get_item:forloop.counter|upper }}
+      </div>
+    </div>
+
+    {% else %}
+    <!-- AVAILABLE SLOT -->
+    <a href="{% url 'registration_team' %}?slot={{ forloop.counter }}" class="cube cube-available">
+      <span>
+        TEAM {{ forloop.counter }}
+        <em>Click to register</em>
+      </span>
+
+      <div class="cube-tag">
+        AVAILABLE
+      </div>
+    </a>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+</section>
+
+<script>
+  setTimeout(() => {
+    const toast = document.querySelector(".success-toast");
+    if (toast) toast.remove();
+  }, 3500);
+</script>
+
+
+{% endblock %}

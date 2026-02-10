@@ -1,0 +1,119 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}Home | Legacy Sports{% endblock %}
+
+{% block content %}
+<main class="home">
+
+  <!-- HERO -->
+  <section class="home-hero">
+    <div class="home-hero-slides">
+      <div class="home-hero-slide active"
+        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/image 18.png' %});">
+      </div>
+
+      <div class="home-hero-slide"
+        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/image 23.png' %});">
+      </div>
+
+      <div class="home-hero-slide"
+        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/image 5.png' %});">
+      </div>
+    </div>
+
+    <div class="home-hero-content">
+      <h1>LEGACY SPORTS</h1>
+      <p>Community-driven tournaments built to feel real.</p>
+    </div>
+
+    <div class="home-hero-dots">
+      <span class="home-dot active" data-slide="0"></span>
+      <span class="home-dot" data-slide="1"></span>
+      <span class="home-dot" data-slide="2"></span>
+    </div>
+  </section>
+
+  <!-- IMAGE SLICES -->
+  <section class="home-slices-wrap">
+    <div class="home-slices">
+      <div class="slice slice-1"></div>
+      <div class="slice slice-2"></div>
+      <div class="slice slice-3"></div>
+      <div class="slice slice-4"></div>
+    </div>
+  </section>
+
+  <section class="home-social">
+    <div class="home-social-header">
+      <div class="video-center-header">
+        <h2>VIDEO CENTRE</h2>
+      </div>
+
+      <div class="video-main">
+        <iframe width="820" height="515" src="https://www.youtube.com/embed/rpNcygh1DRc?si=aRXayU5xKN3asbhv"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+  </section>
+  </section>
+
+
+  <!-- SOCIAL MEDIA SECTION -->
+  <section class="home-social">
+
+    <div class="home-social-header">
+      <h2>From Instagram</h2>
+      <a href="https://www.instagram.com/mercedesamgf1" target="_blank" class="social-follow-btn">
+        <i class="fab fa-instagram"></i>
+        Follow Legacy Sports
+      </a>
+    </div>
+
+    <div class="home-social-embeds">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUYcE8AiIJ1/?img_index=1"
+        data-instgrm-version="14"></blockquote>
+
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUYJBfZieov/?img_index=1"
+        data-instgrm-version="14"></blockquote>
+
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUYWpABFCMH/?img_index=1"
+        data-instgrm-version="14"></blockquote>
+    </div>
+
+  </section>
+
+
+  <!-- REGISTRATION CTA -->
+  <section class="home-cta">
+    <h2>Want to be part of the next tournament?</h2>
+    <p>Register your team or sign up solo as a free agent.</p>
+
+    <div class="home-cta-actions">
+      <a href="{% url 'registration' %}" class="cta-btn">Go to Registration</a>
+      <a href="{% url 'tourney_info' %}" class="cta-btn ghost">View Tournament Info</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="home-stats">
+    <div class="stat">
+      <strong>12+</strong>
+      <span>Teams</span>
+    </div>
+    <div class="stat">
+      <strong>150+</strong>
+      <span>Players</span>
+    </div>
+    <div class="stat">
+      <strong>3</strong>
+      <span>Events Hosted</span>
+    </div>
+  </section>
+
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'tournament/js/main.js' %}" defer></script>
+{% endblock %}

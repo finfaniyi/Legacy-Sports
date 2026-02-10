@@ -1,0 +1,262 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}About | Legacy Sports{% endblock %}
+
+{% block content %}
+
+<main class="about-page">
+
+  <!-- HERO -->
+  <header class="about-hero">
+    <p class="about-kicker">ABOUT LEGACY SPORTS</p>
+    <h1>Community tournaments.<br />Real competition.<br />Lasting legacy.</h1>
+
+  </header>
+
+  <!-- STORY / CONCEPT -->
+  <section class="about-section">
+    <div class="about-card about-split">
+      <div class="about-split-left">
+        <h2>Who are we</h2>
+        <p>
+          Legacy Sports is a community based sports organization that hosts recreational events and tournaments across
+          Canada.
+          We focus on creating engaging and inclusive experiences that bring people together through sport.
+        </p>
+
+        <div class="about-bullets">
+          <div class="about-pill">Team Registration</div>
+          <div class="about-pill">Free Agent Signup</div>
+          <div class="about-pill">Brackets & Schedules</div>
+          <div class="about-pill">Highlights & Photos</div>
+          <div class="about-pill">Awards & Moments</div>
+        </div>
+      </div>
+
+      <div class="about-split-right">
+        <div class="about-stat">
+          <div class="about-stat-number">50</div>
+          <div class="about-stat-label">Target players for this event</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">$400</div>
+          <div class="about-stat-label">Cash Prizes</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">Trophy, Medals, MVP awards</div>
+          <div class="about-stat-label">Other Prizes</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">1</div>
+          <div class="about-stat-label">Goal: an exciting tournament every year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="about-card about-vision">
+      <h2>Our Vision</h2>
+      <p>
+        Legacy Sports exists to create inclusive, competitive tournaments that
+        bring people together, build real moments, and leave something meaningful
+        behind.
+      </p>
+    </div>
+  </section>
+  <!-- TEAM -->
+  <section class="team-section">
+
+    <div class="about-card">
+      <h2 class="about-section-title">Management Team</h2>
+      <div class="team-grid">
+        <!-- TEAM MEMBER 1 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/team-1.jpg' %}" alt="Team member">
+          </div>
+          <h3 class="team-name">Fin Faniyi</h3>
+          <p class="team-bio"><i>Organizes the tournament and keeps everything running smoothly.</i></p>
+          <div class="team-tags">
+            <span class="tag tag-muted">Organizer</span>
+            <span class="tag tag-muted">Soccer</span>
+            <span class="tag tag-muted">F1</span>
+            <span class="tag tag-muted">Frisbee</span>
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 2 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/team-1.jpg' %}" alt="Team member">
+          </div>
+          <h3 class="team-name">Henson Han</h3>
+          <p class="team-bio"><i>Takes the photos and captures the moments that matter.</i></p>
+          <div class="team-tags">
+            <span class="tag tag-muted">Financer</span>
+            <span class="tag tag-muted">Snowboarding</span>
+            <span class="tag tag-muted">Photographer</span>
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 3 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/team-1.jpg' %}" alt="Team member">
+          </div>
+          <h3 class="team-name">Angelina Comlekcier</h3>
+          <div class="team-tags">
+            <span class="tag tag-muted">Marketing</span>
+          </div>
+        </div>
+
+
+        <!-- TEAM MEMBER 4 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/meet-the-team/Valerie2.JPG' %}" alt="Team member">
+          </div>
+          <h3 class="team-name">Valerie Smolen</h3>
+          <p class="team-bio"><i>TBD.</i></p>
+          <div class="team-tags">
+            <span class="tag tag-muted">TBD</span>
+            <span class="tag tag-muted">Swimming</span>
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 5 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/team-2.jpg' %}" alt="Team member">
+          </div>
+          <h3 class="team-name">Celina Attia</h3>
+          <p class="team-bio"><i>Keeps the camera rolling and captures the best moments.</i></p>
+          <div class="team-tags">
+            <span class="tag tag-muted">TBD</span>
+            <span class="tag tag-muted">Swimming</span>
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 8 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/team-3.jpg' %}" alt="Team member">
+          </div>
+          <h3 class="team-name"> Carson Wright</h3>
+          <p class="team-bio"><i>TBD</i></p>
+          <div class="team-tags">
+            <span class="tag tag-muted">Photographer</span>
+          </div>
+        </div>
+
+        <!-- TEAM MEMBER 9 -->
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="{% static 'tournament/images/meet-the-team/Marcus.JPEG' %}" alt="Team member">
+          </div>
+          <h3 class="team-name">Marcus Cameron</h3>
+          <p class="team-bio"><i>Tracks the stats and keeps games running smoothly.</i></p>
+          <div class="team-tags">
+            <span class="tag tag-muted">Score Analyst</span>
+            <span class="tag tag-muted">Basketball</span>
+          </div>
+        </div>
+
+        <!-- Add more team-card blocks as needed -->
+      </div>
+    </div>
+
+
+    <div class="about-card">
+      <h2 class="about-section-title">Creative Team</h2>
+
+      <div class="creative-list">
+        <!-- CREATIVE MEMBER -->
+        <div class="creative-row">
+          <div class="creative-card">
+            <img src="{% static 'tournament/images/meet-the-team/chris.jpg' %}" alt="Chris Caren">
+          </div>
+
+          <div class="creative-meta">
+            <h2>Chris Caren</h2>
+            <p>Cinematographer capturing motion, emotion, and energy.</p>
+            <div class="creative-tags">
+              <span class="tag tag-muted">Cinematographer</span>
+              <span class="tag tag-muted">Snowboarding</span>
+            </div>
+            <div class="creative-links">
+              <a href="https://instagram.com/username" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com/in/username" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://linkedin.com/in/username" target="_blank" aria-label="LinkedIn">
+                <i class="fas fa-globe"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CREATIVE MEMBER -->
+        <div class="creative-row">
+          <div class="creative-card">
+            <img src="{% static 'tournament/images/meet-the-team/henson.jpg' %}" alt="Henson Han">
+          </div>
+
+          <div class="creative-meta">
+            <h3>Henson Han</h3>
+            <p>Photographer capturing the moments that matter.</p>
+            <div class="creative-tags">
+              <span class="tag tag-muted">Cinematographer</span>
+              <span class="tag tag-muted">Snowboarding</span>
+            </div>
+            <div class="creative-links">
+              <a href="https://instagram.com/username" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com/in/username" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://linkedin.com/in/username" target="_blank" aria-label="LinkedIn">
+                <i class="fas fa-globe"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CREATIVE MEMBER -->
+        <div class="creative-row">
+          <div class="creative-card">
+            <img src="{% static 'tournament/images/meet-the-team/peter.jpg' %}" alt="Peter Pham">
+          </div>
+
+          <div class="creative-meta">
+            <h3>Peter Pham</h3>
+            <p>Marketing lead helping grow event visibility.</p>
+            <div class="creative-tags">
+              <span class="tag tag-muted">Cinematographer</span>
+              <span class="tag tag-muted">Snowboarding</span>
+            </div>
+            <div class="creative-links">
+              <a href="https://instagram.com/username" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com/in/username" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <div class="page-bottom-space"></div>
+</main>
+
+{% endblock %}

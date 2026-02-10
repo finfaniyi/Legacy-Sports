@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Legacy Sports{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'tournament/css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" href="{% static 'tournament/images/ls-favicon-32.png' %}">
+
+  
+</head>
+
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="{% static 'tournament/images/LS Logo/WHITE LS long logo (red Long).PNG' %}" alt="Logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}"
+          class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Home</a></li>
+      <li>
+        <a href="{% url 'registration' %}"
+          class="{% if request.resolver_match.url_name == 'registration' %}active{% endif %}">
+          Registration
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'tourney_info' %}"
+          class="{% if request.resolver_match.url_name == 'tourney_info' %}active{% endif %}">
+          Tourney Info
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'media' %}" class="{% if request.resolver_match.url_name == 'media' %}active{% endif %}">
+          Media
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'history' %}" class="{% if request.resolver_match.url_name == 'history' %}active{% endif %}">
+          History
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+          About
+        </a>
+      </li>
+    </ul>
+    <div class="nav-spacer"></div>
+  </nav>
+
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  });
+</script>
+
+
+ {% block content %}{% endblock %}
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
