@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-2$fyw7cg2wip%8+lmf3d&o@qp(w24$3xnk09b0g7&rh(hjm*d=
 # ✅ TURN THIS ON FOR LOCAL DEVELOPMENT
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca"]
 
 # APPLICATIONS
 INSTALLED_APPS = [
