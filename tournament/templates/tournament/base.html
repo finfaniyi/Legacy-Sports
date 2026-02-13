@@ -1,18 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Legacy Sports{% endblock %}</title>
 
-  <link rel="stylesheet" href="{% static 'tournament/css/styles.css' %}">
+  <!-- GLOBAL CSS -->
+  <link rel="stylesheet" href="{% static 'tournament/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'tournament/css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'tournament/css/responsive.css' %}">
+
+  {% block page_css %}{% endblock %}
+
   <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" href="{% static 'tournament/images/ls-favicon-32.png' %}">
-
-  
 </head>
 
 

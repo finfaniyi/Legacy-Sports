@@ -3,6 +3,10 @@
 
 {% block title %}Home | Legacy Sports{% endblock %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
 <main class="home">
 
@@ -44,73 +48,61 @@
     </div>
   </section>
 
-  <section class="home-social">
-    <div class="home-social-header">
-      <div class="video-center-header">
-        <h2>VIDEO CENTRE</h2>
-      </div>
+  <section class="home-slices-wrap">
+    <section class="home-social">
+        <div class="video-center-header">
+          <h2>VIDEO CENTRE</h2>
+        </div>
 
-      <div class="video-main">
-        <iframe width="820" height="515" src="https://www.youtube.com/embed/rpNcygh1DRc?si=aRXayU5xKN3asbhv"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
+        <div class="video-main">
+          <iframe width="820" height="515" src="https://www.youtube.com/embed/rpNcygh1DRc?si=aRXayU5xKN3asbhv"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
   </section>
-  </section>
-
 
   <!-- SOCIAL MEDIA SECTION -->
-  <section class="home-social">
+  <section class="home-slices-wrap">
+    <section class="home-social">
 
-    <div class="home-social-header">
-      <h2>From Instagram</h2>
-      <a href="https://www.instagram.com/mercedesamgf1" target="_blank" class="social-follow-btn">
-        <i class="fab fa-instagram"></i>
-        Follow Legacy Sports
-      </a>
-    </div>
+      <div class="instagram-heading">
+        <h2>OUR INSTAGRAM PAGE <a href="https://www.instagram.com/mercedesamgf1" target="_blank" class="instagram-icon"
+            aria-label="Follow Legacy Sports on Instagram">
+            <i class="fab fa-instagram"></i>
+          </a></h2>
+      </div>
 
-    <div class="home-social-embeds">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUYcE8AiIJ1/?img_index=1"
-        data-instgrm-version="14"></blockquote>
+      <div class="home-social-embeds">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DUYcE8AiIJ1/?img_index=1" data-instgrm-version="14">
+        </blockquote>
 
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUYJBfZieov/?img_index=1"
-        data-instgrm-version="14"></blockquote>
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DUYJBfZieov/?img_index=1" data-instgrm-version="14">
+        </blockquote>
 
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUYWpABFCMH/?img_index=1"
-        data-instgrm-version="14"></blockquote>
-    </div>
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DUYWpABFCMH/?img_index=1" data-instgrm-version="14">
+        </blockquote>
+      </div>
 
+    </section>
+    <section class="home-cta">
+      <h2>Want to be part of the next tournament?</h2>
+      <p>Register your team or sign up solo as a free agent.</p>
+
+      <div class="home-cta-actions">
+        <a href="{% url 'registration' %}" class="cta-btn">Go to Registration</a>
+        <a href="{% url 'tourney_info' %}" class="cta-btn ghost">View Tournament Info</a>
+      </div>
+    </section>
   </section>
 
 
   <!-- REGISTRATION CTA -->
-  <section class="home-cta">
-    <h2>Want to be part of the next tournament?</h2>
-    <p>Register your team or sign up solo as a free agent.</p>
 
-    <div class="home-cta-actions">
-      <a href="{% url 'registration' %}" class="cta-btn">Go to Registration</a>
-      <a href="{% url 'tourney_info' %}" class="cta-btn ghost">View Tournament Info</a>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="home-stats">
-    <div class="stat">
-      <strong>12+</strong>
-      <span>Teams</span>
-    </div>
-    <div class="stat">
-      <strong>150+</strong>
-      <span>Players</span>
-    </div>
-    <div class="stat">
-      <strong>3</strong>
-      <span>Events Hosted</span>
-    </div>
-  </section>
 
 </main>
 {% endblock %}

@@ -1,0 +1,129 @@
+/* =========================
+   RESPONSIVE BREAKPOINTS
+   Desktop:  >1200px (default)
+   Laptop:   <=1200px
+   Tablet:   <=900px
+   Mobile:   <=600px
+========================= */
+
+/* =========================
+   LAPTOP
+========================= */
+@media (max-width: 1200px) {
+  .nav-links {
+    gap: 60px;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 900px) {
+  body {
+    font-size: 15px;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .page-bottom-space {
+    height: 80px;
+  }
+
+  .nav-links {
+    gap: 36px;
+  }
+
+  .about-hero h1,
+  .media-hero h1,
+  .historyv2-hero h1,
+  .ti-title {
+    font-size: 44px;
+  }
+
+  .ti-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ti-side {
+    position: static;
+  }
+
+  .ti-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-content {
+    left: 30px;
+    bottom: 30px;
+  }
+
+  .home-slices {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .slice {
+    height: 180px;
+    clip-path: none;
+  }
+
+  .event-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .nav-links {
+    gap: 22px;
+  }
+
+  .logo img {
+    height: 48px;
+  }
+
+  .about-hero h1,
+  .media-hero h1,
+  .historyv2-hero h1,
+  .ti-title {
+    font-size: 36px;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .media-thumb {
+    height: 220px;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .hero {
+    padding-top: 70px;
+  }
+
+  .registration-cubes {
+    margin-top: 55px;
+    gap: 55px;
+  }
+}

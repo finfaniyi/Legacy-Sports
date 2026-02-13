@@ -1,0 +1,173 @@
+
+/* =========================
+   REGISTRATION PAGE (DIAMONDS)
+========================= */
+.hero { /* Top section / intro area of the page */
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 90px;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 { /* Main page heading inside the hero */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 54px;
+}
+
+.subtitle { /* Secondary text under the main heading */
+  font-family: 'Sofia Sans', sans-serif;
+  max-width: 720px;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.registration-cubes { /* Container that holds the diamond elements */
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 10vw, 60px);
+  flex-wrap: wrap;  
+  margin-bottom: 50px;
+}
+
+.cube-taken {
+  background: #2a2a2a;
+  border-color: rgba(255,255,255,0.12);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.cube-taken span {
+  transform: rotate(-45deg);
+  color: rgba(255,255,255,0.7);
+}
+
+.cube-tag.taken {
+  background: #111;
+  color: #bbb;
+}
+
+.cube { /* Individual diamond-shaped clickable card */
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: clamp(200px, 22vw, 240px);
+
+  background: #bb080b;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  color: #F7F5F2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  overflow: hidden; /* 🔥 THIS is important */
+}
+
+.cube:hover { /* Hover animation + visual emphasis */
+  background: #bd2e30;
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+}
+
+.cube span { /* Text content inside the cube */
+  transform: rotate(-45deg);
+  text-align: center;
+  
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.15;
+  letter-spacing: 0.7px;
+}
+
+.cube-tag{
+  position: absolute;
+  bottom: 0;   /* attach directly */
+  left: 0;
+  right: 0;    /* cleaner than width:100% */
+
+  padding: 14px 0;
+  text-align: center;
+
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1.4px;
+
+  background: #4f0202;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+
+  border-radius: 0 0 10px 10px;
+}
+
+.cube span em { /* Smaller secondary text inside the cube */
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+/* ===== Cube base refinement ===== */
+.cube {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* Available hover */
+.cube-available:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.45);
+  filter: brightness(1.08);
+}
+
+/* Taken state */
+.cube-taken {
+  background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+  border-color: rgba(255,255,255,0.12);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cube-taken span {
+  opacity: 0.7;
+}
+
+/* Disable hover entirely */
+.cube-taken:hover {
+  transform: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.cube-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  z-index: 3;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+
+  padding: 6px 10px;
+  font-size: 12px;
+  font-family: 'Bebas Neue', sans-serif;
+
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+}

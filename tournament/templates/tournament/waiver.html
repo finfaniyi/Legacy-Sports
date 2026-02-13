@@ -1,0 +1,63 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/signup.css' %}">
+{% endblock %}
+
+{% block title %}Participation Waiver | Legacy Sports{% endblock %}
+
+{% block content %}
+<section class="legal-page">
+  <div class="legal-card">
+
+    <h1>Legacy Sports Participation Waiver</h1>
+    <p class="legal-date">Effective Date: {{ now|date:"F j, Y" }}</p>
+
+    <h3>1. Assumption of Risk</h3>
+    <p>
+      I acknowledge that participation in athletic events organized by Legacy Sports
+      involves inherent risks including, but not limited to, physical injury,
+      permanent disability, or death.
+    </p>
+
+    <h3>2. Release of Liability</h3>
+    <p>
+      I voluntarily release, waive, discharge, and covenant not to sue
+      Legacy Sports, its organizers, volunteers, sponsors, and affiliates
+      from any and all liability arising out of participation in this event.
+    </p>
+
+    <h3>3. Medical Consent</h3>
+    <p>
+      I authorize emergency medical treatment if deemed necessary
+      and accept full financial responsibility for any medical services.
+    </p>
+
+    <h3>4. Code of Conduct</h3>
+    <p>
+      Participants agree to demonstrate sportsmanship and respect.
+      Legacy Sports reserves the right to remove any participant
+      who violates conduct standards.
+    </p>
+
+    <h3>5. Media Release</h3>
+    <p>
+      I grant permission for Legacy Sports to use photographs or videos
+      taken during the event for promotional purposes.
+    </p>
+
+    <h3>6. Minors</h3>
+    <p>
+      If the participant is under 18 years of age, a parent or legal guardian
+      must consent to this waiver.
+    </p>
+
+    <h3>7. Agreement</h3>
+    <p>
+      By completing registration, I acknowledge that I have read,
+      understood, and voluntarily agree to all terms outlined above.
+    </p>
+
+  </div>
+</section>
+{% endblock %}

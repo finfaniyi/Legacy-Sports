@@ -1,0 +1,150 @@
+/* =========================
+   HISTORY
+========================= */
+.historyv2-page{ /* History page container */
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+.historyv2-hero{ /* Hero section for History */
+  text-align: left;
+  padding: 20px 0 16px;
+}
+
+.historyv2-kicker{ /* Small kicker text above main title */
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.historyv2-hero h1{ /* Main History V2 heading */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.historyv2-subtitle{ /* Intro paragraph under the heading */
+  font-family: 'Sofia Sans', sans-serif;
+  max-width: 720px;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.historyv2-yearbar{ /* Year navigation bar */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+
+.year-pill{ /* Clickable year pill */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.7px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #bb080b;
+  color: #F7F5F2;
+  border: 1px solid rgba(255,255,255,0.16);
+  opacity: 0.92;
+  margin-bottom: 20px;
+}
+
+.year-pill:hover{ /* Hover state for year pill */
+  opacity: 1;
+  background: #bd2e30;
+}
+
+.event-block{ /* Wrapper for a single event */
+  margin-bottom: 22px; 
+}
+
+.event-card{ /* Main event card layout */
+  background: #1e2023;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 18px;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 18px;
+  backdrop-filter: blur(8px);
+}
+
+.event-content{ /* Text content section of event card */
+  text-align: left; 
+  padding: 8px 6px; 
+  color: #F7F5F2;
+}
+
+.event-year{ /* Event year label */
+  color: #F7F5F2;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.event-title{ /* Event title */
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.event-desc{ /* Event description */
+  font-family: 'Sofia Sans', sans-serif;
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  max-width: 520px;
+}
+
+.event-stats{ /* Container for event stats */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.stat-pill{ /* Individual stat pill */
+  font-size: 13px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #bb080b;
+  border: 1px solid rgba(255,255,255,0.16);
+  opacity: 0.92;
+}
+
+.stat-pill span{ /* Muted stat label text */
+  opacity: 0.7; 
+  margin-right: 6px; 
+}
+
+.event-visual{ /* Visual/media section of event */
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+
+.visual-hero{ /* Primary event image */
+  height: 340px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0,0,0,0.25);
+}
+

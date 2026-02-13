@@ -1,0 +1,243 @@
+/* =========================
+   TOURNEY INFO (NEW VERSION)
+   Does NOT override navbar/body
+========================= */
+
+.ti-page{ /* Main tourney info page container */
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding-top: 90px;
+}
+ 
+.ti-top{ /* Top intro section */
+  text-align: left; 
+  margin-bottom: 26px;
+}
+
+.ti-kicker{ /* Small kicker text above title */
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.ti-title{ /* Main tourney info title */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.ti-subtitle{ /* Intro description text */
+  font-family: 'Sofia Sans', sans-serif;
+  max-width: 720px;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.ti-badges{ /* Container for info badges */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ti-badge{ /* Individual info badge */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.7px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #bb080b;
+  color: #F7F5F2;
+  border: 1px solid rgba(255,255,255,0.16);
+  opacity: 0.92;
+}
+
+.ti-badge span{ /* Muted badge label text */
+  opacity: 0.7;
+}
+
+.ti-layout{ /* Main two-column layout */
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.ti-side{ /* Sticky sidebar container */
+  position: sticky;
+  top: 90px; 
+}
+
+.ti-side-card{ /* Sidebar card container */
+  background: #151a1f;
+  border: 1px solid #151a1f;
+  border-radius: 18px;
+  padding: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.ti-side-title{ /* Sidebar section title */
+  font-family: 'Bebas Neue', sans-serif;
+  color: #F7F5F2;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.ti-link{ /* Sidebar navigation link */
+  display: block;
+  text-decoration: none;
+  color: #F7F5F2;
+  opacity: 0.85;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 600;
+}
+
+.ti-link:hover{ /* Hover state for sidebar link */
+  opacity: 1;
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.14);
+}
+
+.ti-cta{ /* Primary sidebar call-to-action button */
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #F7F5F2;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.20);
+  background: #bb080b;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 700;
+}
+
+.ti-cta:hover{ /* Hover state for CTA button */
+  background: #bd2e30
+}
+
+.ti-card{ /* Main content card */
+  background: #151a1f;
+  border: 1px solid #151a1f;
+  color: #F7F5F2;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.ti-card h2{ /* Content card heading */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  color: #F7F5F2;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.ti-grid-2{ /* Two-column grid inside card */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ti-mini{ /* Small info box */
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 14px;
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+.ti-mini h3{ /* Mini box heading */
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 17px;
+  letter-spacing: 1.3px;
+  opacity: 0.9;
+}
+
+.ti-mini p{ /* Mini box text */
+  margin: 0;
+  opacity: 0.82;
+  line-height: 1.55;
+}
+
+.ti-timeline{ /* Timeline container */
+  display: grid;
+  gap: 10px;
+}
+
+.ti-time{ /* Single timeline row */
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.ti-hour{ /* Time label */
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.ti-strong{ /* Emphasized text line */
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+}
+
+.ti-muted{ /* Secondary timeline text */
+  margin: 6px 0 0;
+  opacity: 0.78;
+  line-height: 1.5;
+}
+ 
+.ti-footnote{ /* Small footnote text */
+  margin-top: 10px;
+  opacity: 0.65;
+  font-size: 12px;
+}
+
+.ti-list{ /* Styled list container */
+  margin: 0;
+  padding-left: 18px;
+  opacity: 0.85;
+}
+
+.ti-list li{ /* List item */
+  margin: 10px 0;
+}
+
+.ti-faq{ /* FAQ container */
+  display: grid;
+  gap: 12px;
+}
+
+.ti-q{ /* Individual FAQ block */
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 14px;
+}

@@ -1,0 +1,135 @@
+
+/* =========================
+   MEDIA PAGE 
+========================= */
+.media-video-el{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-card.is-hidden {
+  display: none;
+}
+
+.media-page{ /* Controls overall width and top spacing */
+  width:min(1100px,92%);
+  margin:0 auto;
+  padding-top:70px;
+}
+
+.media-hero{ /* Holds title + filter dropdown */
+  text-align:left;
+  padding: 20px 0 26px;
+  margin-bottom: 10px;
+}
+
+.media-kicker{
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.media-hero h1{
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.media-subtitle{
+  font-family: 'Sofia Sans', sans-serif;
+  max-width: 720px;
+  opacity: 0.85;
+  line-height: 1.6;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* filter */
+.media-controls{
+  display:flex;
+  justify-content:flex-start;
+}
+
+.media-select{
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight:700;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.18);
+  background:#bb080b;
+  color:#F7F5F2;
+  outline:none;
+}
+
+.media-select option{ 
+  color:#151a1f; 
+}
+
+/* grid */
+.media-grid{
+  margin-top: 14px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+
+.media-card{ /* cards */
+  display: block;
+  text-decoration: none;
+  color: #bb080b;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  transition: transform .22s ease, background .22s ease, border-color .22s ease;
+}
+
+.media-card:hover{
+  transform:translateY(-6px);
+  background:#e54e51;
+  border-color:rgba(255,255,255,.26);
+}
+ 
+
+.media-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #111;
+}
+
+.media-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-video{
+  background-size:cover;
+  background-position:center;
+}
+
+.play-badge{ /* play badge */
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#1e2023;
+  border:1px solid rgba(255,255,255,.22);
+  font-size:16px;
+}

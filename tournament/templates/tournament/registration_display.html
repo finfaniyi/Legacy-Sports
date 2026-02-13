@@ -4,6 +4,10 @@
 
 {% block title %}Registration | Legacy Sports{% endblock %}
 
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/registration_display.css' %}">
+{% endblock %}
+
 {% block content %}
 
 {% if request.GET.paid %}

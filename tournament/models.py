@@ -24,6 +24,9 @@ class Team(models.Model):
     # ✅ NEW – emergency contact
     emergency_contact_name = models.CharField(max_length=100)
     emergency_contact_phone = models.CharField(max_length=15)
+    waiver_agreed = models.BooleanField(default=False)
+    waiver_timestamp = models.DateTimeField(null=True, blank=True)
+
 
     created_at = models.DateTimeField(auto_now_add=True)
 

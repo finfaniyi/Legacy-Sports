@@ -1,0 +1,270 @@
+/* =========================
+   TEAM REGISTRATION – UPDATED
+========================= */
+
+/* PAGE WRAPPER */
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* HEADER */
+.form-header {
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+.form-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.form-header p {
+  opacity: 0.75;
+  font-size: 18px;
+}
+
+/* FORM CARD */
+.form-card {
+  background: #1e2023;
+  border-radius: 18px;
+  padding: 40px;
+  width: 100%;
+  color: #F7F5F2;
+  max-width: 950px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+  text-align: left;
+}
+
+/* SECTION TITLES */
+.form-card h3 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* INPUTS */
+.form-card input,
+.form-card select {
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  color: #aaa;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  width: 100%;
+  transition: 0.2s ease;
+}
+
+.form-card input::placeholder {
+  color: #aaa;
+}
+
+.form-card input:focus,
+.form-card select:focus {
+  outline: none;
+  border-color: #bb080b;
+  box-shadow: 0 0 0 2px rgba(187, 8, 11, 0.2);
+}
+
+/* PLAYER GRID */
+.player-card {
+  background: #1e2023;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.player-title {
+  grid-column: 1 / -1;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+/* COLOR GRID */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.color-swatch {
+  position: relative;
+  height: 60px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  font-size: 14px;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+}
+
+.color-swatch span {
+  color: white;
+}
+
+.color-swatch input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.color-swatch:hover {
+  transform: translateY(-2px);
+}
+
+.color-swatch input:checked + span {
+  font-weight: 700;
+}
+
+.color-swatch input:checked + span::after {
+  content: "✓";
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 14px;
+}
+
+
+.color-swatch.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ACTUAL COLORS */
+.red { background: #bb080b; }
+.blue { background: #1d4ed8; }
+.green { background: #15803d; }
+.yellow { background: #ca8a04; color: #111; }
+.black { background: #111; }
+.white { background: #e5e5e5; color: #111; }
+.purple { background: #7c3aed; }
+.orange { background: #ea580c; }
+
+/* SUBMIT */
+.submit-btn {
+  margin-top: 40px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  border: none;
+  background: #bb080b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #a40609;
+  transform: translateY(-2px);
+}
+
+.legal-page {
+  min-height: 100vh;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.legal-card {
+  max-width: 800px;
+  background: #1e2023;
+  padding: 40px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #F7F5F2;
+}
+
+.legal-card h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.legal-card h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.legal-date {
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.waiver-box {
+  background: rgba(255,255,255,0.05);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.waiver-link {
+  color: #9f5cff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.waiver-link:hover {
+  opacity: 0.8;
+}
+
+.waiver-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  max-width: 600px;
+}
+
+.waiver-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: #9f5cff; /* brand purple */
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .player-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .color-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .player-card {
+    grid-template-columns: 1fr;
+  }
+
+  .color-grid {
+    grid-template-columns: 1fr;
+  }
+}

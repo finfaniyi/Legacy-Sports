@@ -1,0 +1,286 @@
+/* =========================
+  Home Page
+========================= */
+.home-hero {
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.home {
+    display: block;
+}
+
+/* Slides */
+.home-hero-slides {
+    position: absolute;
+    inset: 0;
+}
+
+.home-hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 25%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    transform: none;
+}
+
+.home-hero-slide.active {
+    opacity: 1;
+}
+
+/* Dark overlay */
+.home-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+/* Text */
+.home-hero-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    padding-left: 6rem;
+    top: 70%;
+    transform: translateY(-50%);
+    max-width: 600px;
+}
+
+.home-hero-content h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+/* Dots */
+.home-hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 2;
+}
+
+.home-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 70%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.home-dot.active {
+    background: #fff;
+}
+
+/* slices */
+.home-slices {
+    display: flex;
+    height: 420px;
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.home-slices-wrap {
+    background: #1e2023;
+    padding: 40px 0;
+}
+
+.slice {
+    flex: 1;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* IMPORTANT: ../images because CSS is in /css folder */
+.slice-1 {
+    background-image: url("../images/dodgeball2.jpg");
+    clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
+}
+
+.slice-2 {
+    background-image: url("../images/dodgeball3.jpg");
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.slice-3 {
+    background-image: url("../images/trophy-lift-overlay.webp");
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.slice-4 {
+    background-image: url("../images/volleyball.jpg");
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 14% 100%);
+}
+
+
+.home-cta {
+    margin-top: 20px;
+    background: #1e2023;
+    color: #F7F5F2;
+    padding: 24px;
+    text-align: left;
+}
+
+.home-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.2px;
+    color: #F7F5F2;
+    font-weight: 700;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.home-cta p {
+    text-align: center;
+    opacity: 0.85;
+    margin-bottom: 16px;
+}
+
+.home-cta-actions {
+    justify-content: center;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.home-cta .cta-btn {
+    /* CTA button */
+    display: inline-block;
+    font-size: 15px;
+    text-decoration: none;
+    color: #F7F5F2;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: #bb080b;
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 700;
+}
+
+.home-cta .cta-btn:hover {
+    /* CTA hover state */
+    background: #bd2e30
+}
+
+.home-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat strong {
+    font-size: 32px;
+    display: block;
+}
+
+.stat span {
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+/* =========================
+   Home – Instagram Feed
+========================= */
+
+.home-video,
+.home-instagram {
+    background: #0f1113;
+    padding: 80px 0;
+}
+
+.home-video-header,
+.home-instagram-header {
+  width: min(1200px, 92%);
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-center-header h2,
+.home-instagram-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 1.3px;
+  color: #F7F5F2;
+  margin-bottom: 20px;
+  text-align: center;   /* 👈 add this */
+  margin-left: auto;    /* 👈 add this */
+  margin-right: auto; 
+}
+
+.instagram-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.instagram-heading h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 1.3px;
+  color: #F7F5F2;
+  margin-bottom: 20px;
+  text-align: center;   /* 👈 add this */
+  margin-left: auto;    /* 👈 add this */
+  margin-right: auto; 
+}
+
+.instagram-icon {
+  font-size: 36px;
+  color: #F7F5F2;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.instagram-icon:hover {
+  color: #E1306C; /* Instagram pink */
+  transform: translateY(-2px);
+}
+
+
+.video-main {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;
+}
+
+.home-social-embeds {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.instagram-media {
+    width: 100% !important;
+    min-width: unset !important;
+}
+
+.home-slices-band {
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* space between slices, video, instagram */
+}
