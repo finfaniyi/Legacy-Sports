@@ -20,10 +20,7 @@ class Team(models.Model):
     captain_name = models.CharField(max_length=100)
     captain_email = models.EmailField(unique=True)
     captain_phone = models.CharField(max_length=15)
-
-    # ✅ NEW – emergency contact
-    emergency_contact_name = models.CharField(max_length=100)
-    emergency_contact_phone = models.CharField(max_length=15)
+    
     waiver_agreed = models.BooleanField(default=False)
     waiver_timestamp = models.DateTimeField(null=True, blank=True)
 
@@ -74,9 +71,6 @@ class Player(models.Model):
 
     contact_email = models.EmailField()
     contact_phone = models.CharField(max_length=15)
-
-    emergency_contact_name = models.CharField(max_length=100)
-    emergency_contact_phone = models.CharField(max_length=15)
 
     school = models.CharField(max_length=100, blank=True)
 
