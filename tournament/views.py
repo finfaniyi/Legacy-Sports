@@ -123,7 +123,7 @@ def registration_team(request):
 
         # Players logic stays exactly as you have it
 
-        STRIPE_PAYMENT_LINK = "https://buy.stripe.com/test_0QwdR9690f8YQwdzi8w00"
+        STRIPE_PAYMENT_LINK = "https://buy.stripe.com/7sYaEX6ejdPjfrL0jb6wE00"
 
         # 🔥 Clear waiver session after successful registration
         request.session.pop("waiver_accepted", None)
