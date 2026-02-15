@@ -12,7 +12,7 @@ body {
   color: #151a1f;
   min-height: 100vh;
   font-family: 'Sofia Sans', sans-serif;
-  background-image: url("../images/white.jpg"); /* 1 or 3 */
+  background-image: url("../images/black_white.jpg"); /* 1 or 3 */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
