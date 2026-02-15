@@ -1,0 +1,99 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}History | Legacy Sports{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="historyv2-page">
+
+  <!-- HERO -->
+  <header class="historyv2-hero">
+    <p class="historyv2-kicker">LEGACY ARCHIVE</p>
+    <h1>History</h1>
+    <p class="historyv2-subtitle">
+      Legacy Sports past events, and winners. Building a tradition - one event at a time.
+    </p>
+  </header>
+
+  <!-- YEAR ROW (optional quick jump) -->
+  <nav class="historyv2-yearbar">
+    <a href="#y2024" class="year-pill">2024</a>
+    <!-- <a href="#y2026" class="year-pill">2026</a> -->
+  </nav>
+
+  <!-- EVENT 2024 -->
+  <section id="y2024" class="event-block">
+    <div class="event-card">
+
+      <!-- left: text + stats -->
+      <div class="event-content">
+        <p class="event-year">2024</p>
+        <h2 class="event-title">3v3 Basketball Tournament</h2>
+        <p class="event-desc">
+          The 2024 3v3 Basketball Tournament marked the beginning of Legacy Sports.
+          What started as a local idea turned into a competitive, high-energy event
+          that brought players, friends, and spectators together for a full day of basketball.
+        </p>
+
+        <div class="event-stats">
+          <div class="stat-pill"><span>Winners:</span> TBD</div>
+        </div>
+      </div>
+
+      <!-- right: visual -->
+      <div class="event-visual">
+        <!-- Big winner photo -->
+        <div class="visual-hero"
+          style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/winners.jpg' %});">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <!-- Not needed right now (After Tourney)
+    <section id="y2026" class="event-block">
+      <div class="event-card coming-soon">
+
+        <div class="event-content">
+          <p class="event-year">2026</p>
+          <h2 class="event-title">Dodgeball Tournament</h2>
+          <p class="event-desc">
+            Coming soon. After the event, we’ll post winners, bracket highlights, and media right here.
+          </p>
+
+          <div class="event-stats">
+            <div class="stat-pill"><span>Prize Pool:</span> TBD</div>
+            <div class="stat-pill"><span>Players:</span> TBD</div>
+            <div class="stat-pill"><span>Venue:</span> TBD</div>
+          </div>
+
+          <div class="event-actions">
+            <a class="event-btn" href="registration.html">Register</a>
+            <a class="event-btn ghost" href="tourney-info.html">View Info</a>
+          </div>
+        </div>
+
+        <div class="event-visual">
+          <div class="soon-panel">
+            <p class="soon-title">Post-event archive</p>
+            <p class="soon-sub">Winners • Bracket • Highlights • Team photos</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    EVENT 2026 (COMING SOON) -->
+
+  <div class="page-bottom-space"></div>
+</main>
+
+{% endblock %}

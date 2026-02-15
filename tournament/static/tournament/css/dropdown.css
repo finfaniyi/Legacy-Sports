@@ -1,0 +1,43 @@
+/* Parent */
+.dropdown {
+  position: relative;
+}
+
+/* Hidden by default */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;              /* anchor to left edge of About */
+  min-width: 220px;
+
+  background: #111;
+  border-radius: 12px;
+  padding: 12px 0;
+
+  display: none;
+
+  z-index: 9999;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #F7F5F2;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+
+/* Show dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

@@ -19,6 +19,11 @@ def team_list(request):
 def home(request):
     return render(request, "tournament/index.html")
 
+def support(request):
+    return render(request, "tournament/support.html")
+
+def join_team(request):
+    return render(request, "tournament/join_team.html")
 
 def about(request):
     return render(request, "tournament/about.html")

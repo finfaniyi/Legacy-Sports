@@ -9,9 +9,9 @@ SECRET_KEY = 'django-insecure-2$fyw7cg2wip%8+lmf3d&o@qp(w24$3xnk09b0g7&rh(hjm*d=
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # ✅ TURN THIS ON FOR LOCAL DEVELOPMENT
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca"]
+ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca", '127.0.0.1']
 
 # APPLICATIONS
 INSTALLED_APPS = [
@@ -57,13 +57,28 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # DATABASE
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
+if os.environ.get("RENDER"):
+    # Production database (still SQLite for you)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    # Local development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # PASSWORD VALIDATION
 AUTH_PASSWORD_VALIDATORS = [
