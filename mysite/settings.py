@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
 SECRET_KEY = 'django-insecure-2$fyw7cg2wip%8+lmf3d&o@qp(w24$3xnk09b0g7&rh(hjm*d='
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # ✅ TURN THIS ON FOR LOCAL DEVELOPMENT
 DEBUG = False
@@ -57,7 +58,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # DATABASE
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 
