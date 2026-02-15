@@ -1,99 +1,87 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}History | Legacy Sports{% endblock %}
+{% block title %}Team Registration | Legacy Sports{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/signup.css' %}">
 {% endblock %}
 
 {% block content %}
-<main class="historyv2-page">
+<section class="form-page">
 
-  <!-- HERO -->
-  <header class="historyv2-hero">
-    <p class="historyv2-kicker">LEGACY ARCHIVE</p>
-    <h1>History</h1>
-    <p class="historyv2-subtitle">
-      Legacy Sports past events, and winners. Building a tradition - one event at a time.
-    </p>
-  </header>
+  <div class="form-header">
+    <h1>Join the Team</h1>
+    <p>All teams must register 6 players. Substitutes are optional.</p>
+  </div>
 
-  <!-- YEAR ROW (optional quick jump) -->
-  <nav class="historyv2-yearbar">
-    <a href="#y2024" class="year-pill">2024</a>
-    <!-- <a href="#y2026" class="year-pill">2026</a> -->
-  </nav>
+  <div class="form-card">
+    <form method="POST" action="{% url 'registration_team' %}">
+      {% csrf_token %}
 
-  <!-- EVENT 2024 -->
-  <section id="y2024" class="event-block">
-    <div class="event-card">
+      {% if error %}
+      <div class="error-toast">
+        ⚠️ {{ error }}
+      </div>
+      {% endif %}
 
-      <!-- left: text + stats -->
-      <div class="event-content">
-        <p class="event-year">2024</p>
-        <h2 class="event-title">3v3 Basketball Tournament</h2>
-        <p class="event-desc">
-          The 2024 3v3 Basketball Tournament marked the beginning of Legacy Sports.
-          What started as a local idea turned into a competitive, high-energy event
-          that brought players, friends, and spectators together for a full day of basketball.
+      <!-- TEAM INFO -->
+      <h3>Your Information</h3>
+
+      <div class="team-grid">
+        <input name="First Name" placeholder="Team Name" required>
+        <input name="Last Name" placeholder="Captain Full Name" required>
+        <input name="Email" type="email" placeholder="Captain Email" required>
+        <input name="Phone" placeholder="Captain Phone" pattern="[0-9+\-\s()]{7,15}"
+          title="Enter a valid phone number" required>
+        <input name="The role you are interested in?" type="email" placeholder="Captain Email" required>
+        <input name="What are your experiences" type="email" placeholder="Captain Email" required>
+      </div>
+
+      <!-- WAIVER -->
+      <h3>Participation Waiver</h3>
+
+      <div class="waiver-box">
+        <p>
+          By registering, you agree to the
+          <a href="{% url 'waiver' %}" target="_blank" class="waiver-link">
+            Legacy Sports Participation Waiver
+          </a>.
         </p>
-
-        <div class="event-stats">
-          <div class="stat-pill"><span>Winners:</span> TBD</div>
-        </div>
       </div>
 
-      <!-- right: visual -->
-      <div class="event-visual">
-        <!-- Big winner photo -->
-        <div class="visual-hero"
-          style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/winners.jpg' %});">
-        </div>
-      </div>
-
-    </div>
-  </section>
+      <label class="waiver-checkbox">
+        <input type="checkbox" name="agree_waiver" required>
+        <span>I confirm that I have read and agree to the waiver.</span>
+      </label>
 
 
+      <button type="submit" id="submitBtn" class="submit-btn">
+        Submit Registration
+      </button>
 
+    </form>
+  </div>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const rosterSelect = document.getElementById("rosterSize");
+    const sub1 = document.getElementById("sub-1");
+    const sub2 = document.getElementById("sub-2");
 
-  <!-- Not needed right now (After Tourney)
-    <section id="y2026" class="event-block">
-      <div class="event-card coming-soon">
-
-        <div class="event-content">
-          <p class="event-year">2026</p>
-          <h2 class="event-title">Dodgeball Tournament</h2>
-          <p class="event-desc">
-            Coming soon. After the event, we’ll post winners, bracket highlights, and media right here.
-          </p>
-
-          <div class="event-stats">
-            <div class="stat-pill"><span>Prize Pool:</span> TBD</div>
-            <div class="stat-pill"><span>Players:</span> TBD</div>
-            <div class="stat-pill"><span>Venue:</span> TBD</div>
-          </div>
-
-          <div class="event-actions">
-            <a class="event-btn" href="registration.html">Register</a>
-            <a class="event-btn ghost" href="tourney-info.html">View Info</a>
-          </div>
-        </div>
-
-        <div class="event-visual">
-          <div class="soon-panel">
-            <p class="soon-title">Post-event archive</p>
-            <p class="soon-sub">Winners • Bracket • Highlights • Team photos</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    EVENT 2026 (COMING SOON) -->
-
-  <div class="page-bottom-space"></div>
-</main>
+    rosterSelect.addEventListener("change", function () {
+      if (this.value === "6") {
+        sub1.style.display = "none";
+        sub2.style.display = "none";
+      } else if (this.value === "7") {
+        sub1.style.display = "block";
+        sub2.style.display = "none";
+      } else if (this.value === "8") {
+        sub1.style.display = "block";
+        sub2.style.display = "block";
+      }
+    });
+  });
+</script>
 
 {% endblock %}
