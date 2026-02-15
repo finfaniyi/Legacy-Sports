@@ -115,8 +115,6 @@ def registration_team(request):
             captain_name=request.POST["captain_name"],
             captain_email=request.POST["captain_email"],
             captain_phone=request.POST["captain_phone"],
-            emergency_contact_name=request.POST["team_emergency_name"],
-            emergency_contact_phone=request.POST["team_emergency_phone"],
             team_color=team_color,
             payment_status="pending",
             waiver_agreed=True,
