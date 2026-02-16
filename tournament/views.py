@@ -172,6 +172,9 @@ def registration(request):
 def registration_success(request):
     return render(request, "tournament/registration_success.html")
 
+def team_brackets(request):
+    return render(request, "tournament/team_brackets.html")
+
 def tourney_info(request):
     return render(request, "tournament/tourney-info.html")
 
