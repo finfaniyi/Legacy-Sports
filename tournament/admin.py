@@ -60,8 +60,6 @@ class TeamAdmin(admin.ModelAdmin):
     actions = [release_slot]
 
 
-
-
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
     list_display = (
