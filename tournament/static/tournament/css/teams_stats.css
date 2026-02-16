@@ -1,114 +1,25 @@
 /* =========================
-   TEAMS PAGE
+   TEAMS – COMING SOON
 ========================= */
 
-.teams-page {
-  width: min(1200px, 92%);
-  margin: 80px auto;
-}
-
-.teams-header {
-  margin-bottom: 50px;
-}
-
-.teams-header h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px;
-  letter-spacing: 1.5px;
-}
-
-.teams-header p {
-  opacity: 0.7;
-}
-
-/* TEAM BLOCK */
-.team-block {
-  margin-bottom: 60px;
-}
-
-.team-header {
-  margin-bottom: 14px;
-}
-
-.team-name {
+.coming-soon-page {
+  min-height: 70vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  font-size: 26px;
-  color: #f7f5f2;
-  border-bottom: 2px solid rgba(255,255,255,0.15);
-  padding-bottom: 8px;
-}
-
-/* TEAM COLOR BADGE */
-.team-color-badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-}
-
-/* Color mapping */
-.team-color-badge.red { background: #c1121f; }
-.team-color-badge.blue { background: #1d4ed8; }
-.team-color-badge.green { background: #15803d; }
-.team-color-badge.yellow { background: #ca8a04; }
-.team-color-badge.black { background: #111; }
-.team-color-badge.white { background: #aaa; color: #111; }
-.team-color-badge.orange { background: #ea580c; }
-.team-color-badge.purple { background: #7c3aed; }
-
-/* TABLE */
-.team-table-wrapper {
-  overflow-x: auto;
-}
-
-.team-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #1e2023;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.team-table thead {
-  background: rgba(255,255,255,0.05);
-}
-
-.team-table th,
-.team-table td {
-  padding: 14px 16px;
-  text-align: left;
-}
-
-.team-table th {
-  font-size: 14px;
-  opacity: 0.85;
-}
-
-.team-table td {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  font-size: 15px;
-}
-
-.team-table tbody tr:hover {
-  background: rgba(255,255,255,0.04);
-}
-
-/* SORTABLE HEADERS */
-th.sortable {
-  cursor: pointer;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
-
-th.sortable:hover {
-  opacity: 1;
-}
-
-/* EMPTY STATE */
-.empty-row {
+  justify-content: center;
   text-align: center;
+}
+
+.coming-soon-page h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.coming-soon-page h2 {
+  font-size: 24px;
   opacity: 0.6;
+  letter-spacing: 2px;
 }

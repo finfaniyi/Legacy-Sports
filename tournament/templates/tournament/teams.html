@@ -7,88 +7,9 @@
 <link rel="stylesheet" href="{% static 'tournament/css/teams_stats.css' %}">
 {% endblock %}
 
-
 {% block content %}
-<main class="team-stats">
-
-  <header class="team-stats-header">
+<section class="coming-soon-page">
     <h1>REGISTERED TEAMS</h1>
-    <p>Live team rosters and volleyball stats</p>
-  </header>
-
-  {% for team in teams|dictsort:"slot_number" %}
-  <section class="team-block">
-
-    <!-- TEAM HEADER -->
-    <div class="team-header">
-      <h2 class="team-name">
-        {{ team.team_name }}
-        <span class="team-color-badge {{ team.team_color }}">
-          {{ team.get_team_color_display }}
-        </span>
-      </h2>
-    </div>
-
-    <!-- TEAM TABLE -->
-    <div class="team-table-wrapper">
-      <table class="team-table">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th class="sortable" data-index="1">Games ⬍</th>
-            <th class="sortable" data-index="2">Points ⬍</th>
-            <th class="sortable" data-index="3">Aces ⬍</th>
-            <th class="sortable" data-index="4">Blocks ⬍</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {% for player in team.players.all %}
-          <tr>
-            <td>{{ player.first_name }} {{ player.last_name }}</td>
-            <td>{{ player.games_played|default:"0" }}</td>
-            <td>{{ player.points|default:"0" }}</td>
-            <td>{{ player.aces|default:"0" }}</td>
-            <td>{{ player.blocks|default:"0" }}</td>
-          </tr>
-          {% empty %}
-          <tr>
-            <td colspan="5" class="empty-row">
-              No players registered yet
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-  </section>
-  {% endfor %}
-
-</main>
-
-<!-- ================= SORTING SCRIPT ================= -->
-<script>
-  document.querySelectorAll(".sortable").forEach(header => {
-    let asc = true;
-
-    header.addEventListener("click", () => {
-      const table = header.closest("table");
-      const tbody = table.querySelector("tbody");
-      const index = header.dataset.index;
-
-      const rows = Array.from(tbody.querySelectorAll("tr"));
-
-      rows.sort((a, b) => {
-        const A = parseInt(a.children[index]?.innerText) || 0;
-        const B = parseInt(b.children[index]?.innerText) || 0;
-        return asc ? A - B : B - A;
-      });
-
-      asc = !asc;
-      rows.forEach(row => tbody.appendChild(row));
-    });
-  });
-</script>
-
+    <h2>Coming Soon</h2>
+</section>
 {% endblock %}
