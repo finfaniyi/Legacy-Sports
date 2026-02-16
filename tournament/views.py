@@ -1,12 +1,22 @@
 from django.db import IntegrityError
 from django.shortcuts import render,redirect
 from django.utils import timezone
-from .models import Team,Player
-from .models import TEAM_COLORS
-from .models import Volunteerapplication
+from .models import Team,Player,Volunteerapplication,TEAM_COLORS
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.conf import settings
 
 
 # Create your views here.
+def test_email(request):
+    send_mail(
+        subject="Legacy Sports Test Email",
+        message="This is a test email from your Django setup.",
+        from_email=None,
+        recipient_list=["yourpersonalemail@gmail.com"],
+        fail_silently=False,
+    )
+    return HttpResponse("Email Sent!")
 
 def team_list(request):
     teams = Team.objects.filter(
@@ -54,7 +64,7 @@ def join_team(request):
 
 
         # Save to database
-        VolunteerApplication.objects.create(
+        Volunteerapplication.objects.create(
             volunteer_firstname=first_name,
             volunteer_lastname=last_name,
             volunteer_email=email,
@@ -63,6 +73,46 @@ def join_team(request):
             volunteer_role=role,
             why_interested=experience
         )
+        
+        # Confirmation to volunteer
+        
+        send_mail(
+            subject="Legacy Sports Volunteer Application Received 🤝",
+            message=f"""
+        Hi {first_name},
+
+        Thank you for applying to join the Legacy Sports team.
+
+        We’ve received your application and will reach out soon if there's a good fit.
+
+        We appreciate you wanting to build something bigger than yourself.
+
+        — Legacy Sports
+        info@legacysportscanada.ca
+        """,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[email],
+            fail_silently=False,
+        )
+
+        # Notify admin
+        send_mail(
+            subject="🚨 New Volunteer Application",
+            message=f"""
+        New volunteer application received:
+
+        Name: {first_name} {last_name}
+        Email: {email}
+        Phone: {phone}
+        Age: {age}
+
+        Check admin panel for full details.
+        """,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=["legacysportscanada@gmail.com"],
+            fail_silently=False,
+        )
+
 
         # Redirect after successful submission
         return redirect("home")
@@ -75,12 +125,8 @@ def home(request):
 def support(request):
     return render(request, "tournament/support.html")
 
-def join_team(request):
-    return render(request, "tournament/join_team.html")
-
 def about(request):
     return render(request, "tournament/about.html")
-
 
 def history(request):
     return render(request, "tournament/history.html")
@@ -129,6 +175,9 @@ def registration_success(request):
 def tourney_info(request):
     return render(request, "tournament/tourney-info.html")
 
+def contact_us(request):
+    return render(request, "tournament/contact_us.html")
+
 def registration_team(request):
     slot = request.GET.get("slot")
 
@@ -173,6 +222,53 @@ def registration_team(request):
             waiver_agreed=True,
             waiver_timestamp=timezone.now(),
         )
+        
+        captain_name = request.POST["captain_name"]
+        captain_email = request.POST["captain_email"]
+        team_name = request.POST["team_name"]
+        captain_phone = request.POST["captain_phone"]
+
+        # Send confirmation to captain
+        send_mail(
+            subject="Legacy Sports Team Registration Received 🏆",
+            message=f"""
+        Hi {captain_name},
+
+        Your team "{team_name}" has been successfully registered.
+
+        Next step:
+        Please complete payment using the Stripe link you are being redirected to.
+
+        We’ll confirm your spot once payment is processed.
+
+        — Legacy Sports
+        info@legacysportscanada.ca
+        """,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[captain_email],
+            fail_silently=False,
+        )
+
+        # Notify admin (you)
+        send_mail(
+            subject="🚨 New Team Registration",
+            message=f"""
+        New team registered:
+
+        Team Name: {team_name}
+        Captain: {captain_name}
+        Email: {captain_email}
+        Phone: {captain_phone}
+        Color: {team_color}
+        Slot: {slot}
+
+        Check admin panel for full details.
+        """,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.DEFAULT_FROM_EMAIL],
+            fail_silently=False,
+        )
+
 
         # Players logic stays exactly as you have it
 

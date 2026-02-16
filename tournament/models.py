@@ -27,6 +27,7 @@ class Volunteerapplication(models.Model):
 
     def __str__(self):
         return f"{self.volunteer_firstname} {self.volunteer_lastname}"
+    
 
 class Team(models.Model):
     team_name = models.CharField(max_length=100, unique=True)

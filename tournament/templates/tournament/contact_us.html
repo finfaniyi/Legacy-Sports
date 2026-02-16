@@ -1,0 +1,43 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us | Legacy Sports{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/contact_us.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-page">
+
+  <div class="contact-header">
+    <h1>Contact Us</h1>
+    <p>Have questions about the tournament? We're here to help.</p>
+  </div>
+
+  <div class="contact-card">
+
+    <div class="contact-section">
+      <h2>Email</h2>
+      <p>Reach out to us directly for tournament inquiries.</p>
+      <a href="mailto:info@legacysportscanada.ca" class="contact-link">
+        info@legacysportscanada.ca
+      </a>
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <div class="contact-section">
+      <h2>Instagram</h2>
+      <p>Stay updated and message us on Instagram.</p>
+      <a href="https://instagram.com/legacysports.ca" target="_blank" class="contact-link">
+        @legacysports.ca
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

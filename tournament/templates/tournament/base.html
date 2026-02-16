@@ -62,13 +62,14 @@
 
       <li class="dropdown">
         <a href="{% url 'about' %}"
-          class="{% if request.resolver_match.url_name == 'about' or request.resolver_match.url_name == 'support' or request.resolver_match.url_name == 'join_team' %}active{% endif %}">
+          class="{% if request.resolver_match.url_name == 'about' or request.resolver_match.url_name == 'contact_us' or request.resolver_match.url_name == 'support' or request.resolver_match.url_name == 'join_team' %}active{% endif %}">
           About
         </a>
         <ul class="dropdown-menu">
           <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'support' %}">Support Us</a></li>
           <li><a href="{% url 'join_team' %}">Join Legacy Sports</a></li>
+          <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
         </ul>
       </li>
     </ul>
