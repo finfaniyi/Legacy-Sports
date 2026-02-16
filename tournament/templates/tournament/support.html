@@ -1,6 +1,11 @@
 {% extends "tournament/base.html" %}
+{% load static %}
 
 {% block title %}Support | Legacy Sports{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/support.css' %}">
+{% endblock %}
 
 {% block content %}
 <section class="support-page">
