@@ -13,6 +13,21 @@ TEAM_COLORS = [
     ("orange", "Orange"),
 ]
 
+class Volunteerapplication(models.Model):
+    volunteer_firstname = models.CharField(max_length=25)
+    volunteer_lastname = models.CharField(max_length=25)
+    volunteer_email = models.EmailField(unique=True)
+    volunteer_phone = models.CharField(max_length=15)
+    volunteer_age = models.PositiveIntegerField(null=True, blank=True)
+
+    volunteer_role = models.CharField(max_length=50)
+    why_interested = models.TextField()
+
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.volunteer_firstname} {self.volunteer_lastname}"
+
 class Team(models.Model):
     team_name = models.CharField(max_length=100, unique=True)
     # ✅ NEW: slot locking (1–8)
@@ -101,6 +116,7 @@ class Registration(models.Model):
 
     def __str__(self):
         return f"{self.team.team_name} Registration"
+    
 
 class Bracket(models.Model):
     name = models.CharField(max_length=50)

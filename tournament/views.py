@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.utils import timezone
 from .models import Team,Player
 from .models import TEAM_COLORS
+from .models import Volunteerapplication
 
 
 # Create your views here.
@@ -15,6 +16,58 @@ def team_list(request):
     return render(request, "tournament/teams.html", {
         "teams": teams
     })
+    
+def join_team(request):
+
+    if request.method == "POST":
+
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        age = request.POST.get("age")
+        role = request.POST.get("role_interest")
+        experience = request.POST.get("experience")
+
+        # Basic validation
+        missing_fields = []
+
+        if not first_name:
+            missing_fields.append("First Name")
+
+        if not last_name:
+            missing_fields.append("Last Name")
+
+        if not email:
+            missing_fields.append("Email")
+
+        if not phone:
+            missing_fields.append("Phone Number")
+
+        if not role:
+            missing_fields.append("Role")
+
+        if missing_fields:
+            return render(request, "tournament/join_team.html", {
+                "error": "Please fill out: " + ", ".join(missing_fields)
+            })
+
+
+        # Save to database
+        VolunteerApplication.objects.create(
+            volunteer_firstname=first_name,
+            volunteer_lastname=last_name,
+            volunteer_email=email,
+            volunteer_phone=phone,
+            volunteer_age=age if age else None,
+            volunteer_role=role,
+            why_interested=experience
+        )
+
+        # Redirect after successful submission
+        return redirect("home")
+
+    return render(request, "tournament/join_team.html")
 
 def home(request):
     return render(request, "tournament/index.html")

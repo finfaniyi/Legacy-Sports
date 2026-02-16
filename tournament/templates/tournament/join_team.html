@@ -1,88 +1,61 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Team Registration | Legacy Sports{% endblock %}
+{% block title %}Join the Team | Legacy Sports{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/signup.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/join_team.css' %}">
 {% endblock %}
 
 {% block content %}
 <section class="form-page">
 
   <div class="form-header">
-    <h1>Join the Team</h1>
-    <p>Please fill out your Information</p>
+    <h1>Join Legacy Sports</h1>
+    <p>Volunteer. Create. Lead. Be part of something bigger.</p>
   </div>
 
   <div class="form-card">
-    <form method="POST" action="{% url 'registration_team' %}">
+    <form method="POST" action="{% url 'join_team' %}">
       {% csrf_token %}
 
       {% if error %}
-      <div class="error-toast">
-        ⚠️ {{ error }}
-      </div>
+        <div class="error-toast">
+          ⚠️ {{ error }}
+        </div>
       {% endif %}
 
-      <!-- TEAM INFO -->
-      <h3>Your Information</h3>
+      <div class="form-grid">
+        <input name="first_name" placeholder="First Name" required>
+        <input name="last_name" placeholder="Last Name" required>
 
-      <div class="team-grid">
-        <input name="First Name" placeholder="First Name" required>
-        <input name="Last Name" placeholder="Last Name" required>
-        <input name="Email" type="email" placeholder="Email" required>
-        <input name="Age" type="number" placeholder="Age" min="16">
-        <input name="Phone" placeholder="Phone Number Phone" pattern="[0-9+\-\s()]{7,15}"
-          title="Enter a valid phone number" required>
-        <input name="The role you are interested in?" type="email" placeholder="Captain Email" required>
-        <input name="What are your experiences" type="email" placeholder="Captain Email" required>
+        <input name="email" type="email" placeholder="Email Address" required>
+        <input name="phone" placeholder="Phone Number"
+               pattern="[0-9+\-\s()]{7,15}"
+               title="Enter a valid phone number" required>
+
+        <input name="age" type="number" placeholder="Age" min="16">
+
+        <select name="role_interest" required>
+          <option value="">Select Role</option>
+          <option value="photographer">Photographer</option>
+          <option value="videographer">Videographer</option>
+          <option value="creative_design">Creative Design</option>
+          <option value="event_staff">Event Staff</option>
+          <option value="other">Other</option>
+        </select>
       </div>
 
-      <!-- WAIVER -->
-      <h3>Participation Waiver</h3>
+      <textarea name="experience"
+                rows="4"
+                placeholder="Tell us about your experience or why you want to join..."
+                required></textarea>
 
-      <div class="waiver-box">
-        <p>
-          By registering, you agree to the
-          <a href="{% url 'waiver' %}" target="_blank" class="waiver-link">
-            Legacy Sports Participation Waiver
-          </a>.
-        </p>
-      </div>
-
-      <label class="waiver-checkbox">
-        <input type="checkbox" name="agree_waiver" required>
-        <span>I confirm that I have read and agree to the waiver.</span>
-      </label>
-
-
-      <button type="submit" id="submitBtn" class="submit-btn">
-        Submit Registration
+      <button type="submit" class="submit-btn">
+        Submit Application
       </button>
 
     </form>
   </div>
 </section>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const rosterSelect = document.getElementById("rosterSize");
-    const sub1 = document.getElementById("sub-1");
-    const sub2 = document.getElementById("sub-2");
-
-    rosterSelect.addEventListener("change", function () {
-      if (this.value === "6") {
-        sub1.style.display = "none";
-        sub2.style.display = "none";
-      } else if (this.value === "7") {
-        sub1.style.display = "block";
-        sub2.style.display = "none";
-      } else if (this.value === "8") {
-        sub1.style.display = "block";
-        sub2.style.display = "block";
-      }
-    });
-  });
-</script>
-
 {% endblock %}
