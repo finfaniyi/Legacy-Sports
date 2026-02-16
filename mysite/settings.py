@@ -13,6 +13,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca", '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://legacysportscanada.ca",
+    "https://www.legacysportscanada.ca",
+]
+
+
 # APPLICATIONS
 INSTALLED_APPS = [
     'django.contrib.admin',
