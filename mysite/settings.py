@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-2$fyw7cg2wip%8+lmf3d&o@qp(w24$3xnk09b0g7&rh(hjm*d=
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # ✅ TURN THIS ON FOR LOCAL DEVELOPMENT
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca", '127.0.0.1']
 
