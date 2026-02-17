@@ -374,3 +374,19 @@
   color: #bb080b;
   transform: translateY(-2px);
 }
+
+.creative-tags {
+  display: flex;
+  flex-wrap: wrap;   /* allows wrapping to next line */
+  gap: 10px;         /* spacing between pills */
+  margin-top: 10px;
+}
+
+.creative-tags .tag {
+  font-size: 14px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #bb080b;
+  border: 1px solid rgba(255,255,255,0.16);
+  opacity: 0.9;
+}
