@@ -19,20 +19,28 @@
     <form method="POST" action="{% url 'join_team' %}">
       {% csrf_token %}
 
-      {% if error %}
-        <div class="error-toast">
-          ⚠️ {{ error }}
-        </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="success-toast">
+        ✅ {{ message }}
+      </div>
+      {% endfor %}
       {% endif %}
+
+      {% if error %}
+      <div class="error-toast">
+        ⚠️ {{ error }}
+      </div>
+      {% endif %}
+
 
       <div class="form-grid">
         <input name="first_name" placeholder="First Name" required>
         <input name="last_name" placeholder="Last Name" required>
 
         <input name="email" type="email" placeholder="Email Address" required>
-        <input name="phone" placeholder="Phone Number"
-               pattern="[0-9+\-\s()]{7,15}"
-               title="Enter a valid phone number" required>
+        <input name="phone" placeholder="Phone Number" pattern="[0-9+\-\s()]{7,15}" title="Enter a valid phone number"
+          required>
 
         <input name="age" type="number" placeholder="Age" min="16">
 
@@ -46,10 +54,8 @@
         </select>
       </div>
 
-      <textarea name="experience"
-                rows="4"
-                placeholder="Tell us about your experience or why you want to join..."
-                required></textarea>
+      <textarea name="experience" rows="4" placeholder="Tell us about your experience or why you want to join..."
+        required></textarea>
 
       <button type="submit" class="submit-btn">
         Submit Application

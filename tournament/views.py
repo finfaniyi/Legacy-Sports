@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.utils import timezone
 from .models import Team,Player,Volunteerapplication,TEAM_COLORS
 from django.core.mail import send_mail
+from django.contrib import messages
 from django.http import HttpResponse
 from django.conf import settings
 
@@ -64,7 +65,7 @@ def join_team(request):
 
 
         # Save to database
-        Volunteerapplication.objects.create(
+        volunteer = Volunteerapplication.objects.create(
             volunteer_firstname=first_name,
             volunteer_lastname=last_name,
             volunteer_email=email,
@@ -73,15 +74,16 @@ def join_team(request):
             volunteer_role=role,
             why_interested=experience
         )
-        
-        # Confirmation to volunteer
-        
+
+        # ✅ Confirmation to volunteer
         send_mail(
             subject="Legacy Sports Volunteer Application Received 🤝",
             message=f"""
         Hi {first_name},
 
-        Thank you for applying to join the Legacy Sports team.
+        Thank you for applying to join Legacy Sports.
+
+        Role Applied For: {role}
 
         We’ve received your application and will reach out soon if there's a good fit.
 
@@ -95,9 +97,9 @@ def join_team(request):
             fail_silently=False,
         )
 
-        # Notify admin
+        # ✅ Notify YOU (admin)
         send_mail(
-            subject="🚨 New Volunteer Application",
+            subject="🚨 New Volunteer Application - Legacy Sports",
             message=f"""
         New volunteer application received:
 
@@ -105,6 +107,10 @@ def join_team(request):
         Email: {email}
         Phone: {phone}
         Age: {age}
+        Role: {role}
+
+        Experience:
+        {experience}
 
         Check admin panel for full details.
         """,
@@ -114,8 +120,9 @@ def join_team(request):
         )
 
 
-        # Redirect after successful submission
-        return redirect("home")
+        messages.success(request, "Your application has been submitted successfully! We’ll be in touch soon.")
+        return redirect("join_team")
+
 
     return render(request, "tournament/join_team.html")
 
@@ -168,7 +175,6 @@ def registration(request):
         "slot_names": slot_names,
     })
 
-
 def registration_success(request):
     return render(request, "tournament/registration_success.html")
 
@@ -189,55 +195,55 @@ def registration_team(request):
     )
 
     if request.method == "POST":
-        
-        if not request.POST.get("agree_waiver"):
-            return render(request, "tournament/registration-form.html", {
-            "error": "You must agree to the waiver before proceeding.",
-            "taken_colors": taken_colors,
-            "team_colors": TEAM_COLORS,
-        })
 
+            if not request.POST.get("agree_waiver"):
+                return render(request, "tournament/registration-form.html", {
+                    "error": "You must agree to the waiver before proceeding.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
 
-        # ❌ Removed duplicate waiver check here
+            # HARD SLOT LOCK
+            if Team.objects.filter(slot_number=slot).exists():
+                return redirect("/registration/?error=slot_taken")
 
-        # HARD SLOT LOCK
-        if Team.objects.filter(slot_number=slot).exists():
-            return redirect("/registration/?error=slot_taken")
+            team_color = request.POST.get("team_color")
 
-        team_color = request.POST.get("team_color")
+            # HARD COLOR LOCK
+            if Team.objects.filter(team_color=team_color).exists():
+                return render(request, "tournament/registration-form.html", {
+                    "error": "This color has already been taken.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
 
-        # HARD COLOR LOCK
-        if Team.objects.filter(team_color=team_color).exists():
-            return render(request, "tournament/registration-form.html", {
-                "error": "This color has already been taken.",
-                "taken_colors": taken_colors,
-                "team_colors": TEAM_COLORS,
-            })
+            team = Team.objects.create(
+                slot_number=slot,
+                team_name=request.POST["team_name"],
+                captain_name=request.POST["captain_name"],
+                captain_email=request.POST["captain_email"],
+                captain_phone=request.POST["captain_phone"],
+                team_color=team_color,
+                payment_status="pending",
+                waiver_agreed=True,
+                waiver_timestamp=timezone.now(),
+            )
 
-        team = Team.objects.create(
-            slot_number=slot,
-            team_name=request.POST["team_name"],
-            captain_name=request.POST["captain_name"],
-            captain_email=request.POST["captain_email"],
-            captain_phone=request.POST["captain_phone"],
-            team_color=team_color,
-            payment_status="pending",
-            waiver_agreed=True,
-            waiver_timestamp=timezone.now(),
-        )
-        
-        captain_name = request.POST["captain_name"]
-        captain_email = request.POST["captain_email"]
-        team_name = request.POST["team_name"]
-        captain_phone = request.POST["captain_phone"]
+            captain_name = team.captain_name
+            captain_email = team.captain_email
+            team_name = team.team_name
+            captain_phone = team.captain_phone
 
-        # Send confirmation to captain
-        send_mail(
-            subject="Legacy Sports Team Registration Received 🏆",
-            message=f"""
+            # ✅ Send confirmation to captain
+            send_mail(
+                subject="Legacy Sports Team Registration Received 🏆",
+                message=f"""
         Hi {captain_name},
 
         Your team "{team_name}" has been successfully registered.
+
+        Slot: {slot}
+        Team Color: {team_color}
 
         Next step:
         Please complete payment using the Stripe link you are being redirected to.
@@ -247,15 +253,15 @@ def registration_team(request):
         — Legacy Sports
         info@legacysportscanada.ca
         """,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[captain_email],
-            fail_silently=False,
-        )
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[captain_email],
+                fail_silently=False,
+            )
 
-        # Notify admin (you)
-        send_mail(
-            subject="🚨 New Team Registration",
-            message=f"""
+            # ✅ Notify YOU (admin)
+            send_mail(
+                subject="🚨 New Team Registration - Legacy Sports",
+                message=f"""
         New team registered:
 
         Team Name: {team_name}
@@ -264,23 +270,19 @@ def registration_team(request):
         Phone: {captain_phone}
         Color: {team_color}
         Slot: {slot}
+        Payment Status: Pending
 
-        Check admin panel for full details.
+        Login to admin panel to manage.
         """,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.DEFAULT_FROM_EMAIL],
-            fail_silently=False,
-        )
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=["legacysportscanada@gmail.com"],
+                fail_silently=False,
+            )
 
+            STRIPE_PAYMENT_LINK = "https://buy.stripe.com/7sYaEX6ejdPjfrL0jb6wE00"
+            request.session.pop("waiver_accepted", None)
 
-        # Players logic stays exactly as you have it
-
-        STRIPE_PAYMENT_LINK = "https://buy.stripe.com/7sYaEX6ejdPjfrL0jb6wE00"
-
-        # 🔥 Clear waiver session after successful registration
-        request.session.pop("waiver_accepted", None)
-
-        return redirect(STRIPE_PAYMENT_LINK)
+            return redirect(STRIPE_PAYMENT_LINK)
 
     # GET → show form
     return render(request, "tournament/registration-form.html", {
