@@ -286,15 +286,16 @@
 }
 
 .team-tags {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
- 
 }
 
 /* TAGS */
 .tag {
-  font-size: 14px;
-  padding: 7px 10px;
+  font-size: 13px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: #a3bb08;
   border: 1px solid rgba(255,255,255,0.16);
