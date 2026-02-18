@@ -151,15 +151,15 @@
 
 .ti-grid-2{ /* Two-column grid inside card */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .ti-mini{ /* Small info box */
   background: rgba(0,0,0,0.18);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 16px;
-  padding: 4px;
+  padding: 14px;
   font-family: 'Sofia Sans', sans-serif;
 }
 
