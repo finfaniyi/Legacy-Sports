@@ -285,52 +285,33 @@
   gap: 80px; /* space between slices, video, instagram */
 }
 
-/* Scroll Indicator */
-.home-scroll {
+/* Hero Arrows */
+.hero-arrow {
   position: absolute;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.scroll-mouse {
-  width: 26px;
-  height: 40px;
-  border: 2px solid rgba(255,255,255,0.7);
-  border-radius: 20px;
-  position: relative;
+.hero-prev {
+  left: 30px;
 }
 
-.scroll-mouse::after {
-  content: "";
-  width: 4px;
-  height: 8px;
-  background: #fff;
-  border-radius: 2px;
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: scroll-wheel 1.8s infinite;
+.hero-next {
+  right: 30px;
 }
 
-@keyframes scroll-wheel {
-  0% {
-    opacity: 1;
-    top: 8px;
-  }
-  100% {
-    opacity: 0;
-    top: 20px;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
+.hero-arrow:hover {
+  background: rgba(0,0,0,0.7);
+  transform: translateY(-50%) scale(1.05);
 }
 

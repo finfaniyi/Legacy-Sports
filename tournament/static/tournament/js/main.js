@@ -105,3 +105,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, 5000); // 5s interval
 });
+
+const slides = document.querySelectorAll(".home-hero-slide");
+const dots = document.querySelectorAll(".home-dot");
+const prevBtn = document.querySelector(".hero-prev");
+const nextBtn = document.querySelector(".hero-next");
+
+let currentSlide = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    dots[i].classList.remove("active");
+  });
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+  currentSlide = index;
+}
+
+nextBtn.addEventListener("click", () => {
+  let next = (currentSlide + 1) % slides.length;
+  showSlide(next);
+});
+
+prevBtn.addEventListener("click", () => {
+  let prev = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(prev);
+});
+
