@@ -107,3 +107,12 @@ class VolunteerApplicationAdmin(admin.ModelAdmin):
     )
 
     list_filter = ("volunteer_role",)
+
+@admin.action(description="Delete selected volunteer applications")
+def delete_selected_applications(modeladmin, request, queryset):
+    count = queryset.count()
+    queryset.delete()
+    modeladmin.message_user(
+        request,
+        f"{count} volunteer application(s) were successfully deleted."
+    )
