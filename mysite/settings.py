@@ -122,3 +122,14 @@ SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 DEFAULT_FROM_EMAIL = "Legacy Sports <noreply@legacysportscanada.ca>"
 
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
+#SuperUser
+if os.environ.get("CREATE_SUPERUSER") == "True":
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser(
+            username="FiyinJR",
+            email="finfaniyi@gmail.com",
+            password="Fiyinfoluwa"
+        )
