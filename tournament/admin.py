@@ -5,6 +5,41 @@ from django.http import HttpResponse
 from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication
 
 # =========================
+# VOLUNTEER DELETE ACTION
+# =========================
+
+@admin.action(description="Delete selected volunteer applications")
+def delete_selected_applications(modeladmin, request, queryset):
+    count = queryset.count()
+    queryset.delete()
+    modeladmin.message_user(
+        request,
+        f"{count} volunteer application(s) were successfully deleted."
+    )
+
+
+@admin.register(Volunteerapplication)
+class VolunteerApplicationAdmin(admin.ModelAdmin):
+    list_display = (
+        "volunteer_firstname",
+        "volunteer_lastname",
+        "volunteer_email",
+        "volunteer_role",
+        "submitted_at",
+    )
+
+    search_fields = (
+        "volunteer_firstname",
+        "volunteer_lastname",
+        "volunteer_email",
+    )
+
+    list_filter = ("volunteer_role",)
+
+    # 🔥 ADD THIS LINE
+    actions = [delete_selected_applications]
+
+# =========================
 # ADMIN ACTIONS
 # =========================
 
@@ -90,29 +125,3 @@ admin.site.register(Match)
 admin.site.register(Bracket)
 admin.site.register(Registration)
 
-@admin.register(Volunteerapplication)
-class VolunteerApplicationAdmin(admin.ModelAdmin):
-    list_display = (
-        "volunteer_firstname",
-        "volunteer_lastname",
-        "volunteer_email",
-        "volunteer_role",
-        "submitted_at",
-    )
-
-    search_fields = (
-        "volunteer_firstname",
-        "volunteer_lastname",
-        "volunteer_email",
-    )
-
-    list_filter = ("volunteer_role",)
-
-@admin.action(description="Delete selected volunteer applications")
-def delete_selected_applications(modeladmin, request, queryset):
-    count = queryset.count()
-    queryset.delete()
-    modeladmin.message_user(
-        request,
-        f"{count} volunteer application(s) were successfully deleted."
-    )
