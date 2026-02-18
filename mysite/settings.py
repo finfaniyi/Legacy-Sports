@@ -124,12 +124,18 @@ DEFAULT_FROM_EMAIL = "Legacy Sports <noreply@legacysportscanada.ca>"
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
 #SuperUser
+# SuperUser
 if os.environ.get("CREATE_SUPERUSER") == "True":
     from django.contrib.auth import get_user_model
+
     User = get_user_model()
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser(
+
+    if not User.objects.filter(username="FiyinJR").exists():
+        user = User.objects.create(
             username="FiyinJR",
             email="finfaniyi@gmail.com",
-            password="Fiyinfoluwa"
+            is_staff=True,
+            is_superuser=True,
         )
+        user.set_password("fiyinfoluwa")  # 🔥 THIS is the important part
+        user.save()
