@@ -16,10 +16,9 @@ TEAM_COLORS = [
 class Volunteerapplication(models.Model):
     volunteer_firstname = models.CharField(max_length=25)
     volunteer_lastname = models.CharField(max_length=25)
-    volunteer_email = models.EmailField(unique=True)
+    volunteer_email = models.EmailField(unique=False)
     volunteer_phone = models.CharField(max_length=15)
     volunteer_age = models.PositiveIntegerField(null=True, blank=True)
-
     volunteer_role = models.CharField(max_length=50)
     why_interested = models.TextField()
 

@@ -77,22 +77,22 @@ def join_team(request):
 
         # ✅ Confirmation to volunteer
         send_mail(
-            subject="Legacy Sports Volunteer Application Received 🤝",
+            subject="Legacy Sports Volunteer Application Received ⚡",
             message=f"""
-        Hi {first_name},
+                Hi {first_name},
 
-        Thank you for applying to join Legacy Sports.
+                Thank you for applying to join Legacy Sports Team.
 
-        Role Applied For: {role}
+                Role Applied For: {role}
 
-        We’ve received your application and will reach out soon if there's a good fit.
+                We have received your application and will reach out soon if there's a good fit.
 
-        We appreciate you wanting to build something bigger than yourself.
+                Thank you and have a good day.
 
-        — Legacy Sports
-        info@legacysportscanada.ca
-        """,
-            from_email=settings.DEFAULT_FROM_EMAIL,
+                — Legacy Sports
+                info@legacysportscanada.ca
+                """,
+            from_email=None,  # important
             recipient_list=[email],
             fail_silently=False,
         )
@@ -101,19 +101,19 @@ def join_team(request):
         send_mail(
             subject="🚨 New Volunteer Application - Legacy Sports",
             message=f"""
-        New volunteer application received:
+            New volunteer application received:
 
-        Name: {first_name} {last_name}
-        Email: {email}
-        Phone: {phone}
-        Age: {age}
-        Role: {role}
+            Name: {first_name} {last_name}
+            Email: {email}
+            Phone: {phone}
+            Age: {age}
+            Role: {role}
 
-        Experience:
-        {experience}
+            Experience:
+            {experience}
 
-        Check admin panel for full details.
-        """,
+            Check admin panel for full details.
+            """,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=["legacysportscanada@gmail.com"],
             fail_silently=False,
