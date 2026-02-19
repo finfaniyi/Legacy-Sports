@@ -85,7 +85,7 @@ def join_team(request):
 
                 Role Applied For: {role}
 
-                We have received your application and will reach out soon if there's a good fit.
+                We have received your application and will reach out soon.
 
                 Thank you and have a good day.
 
@@ -137,7 +137,6 @@ def about(request):
 
 def history(request):
     return render(request, "tournament/history.html")
-
 
 def media(request):
     return render(request, "tournament/media.html")
@@ -236,23 +235,23 @@ def registration_team(request):
 
             # ✅ Send confirmation to captain
             send_mail(
-                subject="Legacy Sports Team Registration Received 🏆",
+                subject="Legacy Sports Team Registration Received ⚡",
                 message=f"""
-        Hi {captain_name},
+                Hi {captain_name},
 
-        Your team "{team_name}" has been successfully registered.
+                Your team "{team_name}" has been successfully registered.
 
-        Slot: {slot}
-        Team Color: {team_color}
+                Slot: {slot}
+                Team Color: {team_color}
 
-        Next step:
-        Please complete payment using the Stripe link you are being redirected to.
+                Next step:
+                Please complete payment using the Stripe link you are being redirected to.
 
-        We’ll confirm your spot once payment is processed.
+                We’ll confirm your spot once payment is processed.
 
-        — Legacy Sports
-        info@legacysportscanada.ca
-        """,
+                — Legacy Sports
+                info@legacysportscanada.ca
+                """,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[captain_email],
                 fail_silently=False,
@@ -262,24 +261,24 @@ def registration_team(request):
             send_mail(
                 subject="🚨 New Team Registration - Legacy Sports",
                 message=f"""
-        New team registered:
+                New team registered:
 
-        Team Name: {team_name}
-        Captain: {captain_name}
-        Email: {captain_email}
-        Phone: {captain_phone}
-        Color: {team_color}
-        Slot: {slot}
-        Payment Status: Pending
+                Team Name: {team_name}
+                Captain: {captain_name}
+                Email: {captain_email}
+                Phone: {captain_phone}
+                Color: {team_color}
+                Slot: {slot}
+                Payment Status: Pending
 
-        Login to admin panel to manage.
-        """,
+                Login to admin panel to manage.
+                """,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=["legacysportscanada@gmail.com"],
                 fail_silently=False,
             )
 
-            STRIPE_PAYMENT_LINK = "https://buy.stripe.com/7sYaEX6ejdPjfrL0jb6wE00"
+            STRIPE_PAYMENT_LINK = "https://buy.stripe.com/4gMdR98mreTna7r9TL6wE02" #test link
             request.session.pop("waiver_accepted", None)
 
             return redirect(STRIPE_PAYMENT_LINK)
