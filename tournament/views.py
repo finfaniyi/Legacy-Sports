@@ -232,7 +232,7 @@ def registration_team(request):
                     "product_data": {
                         "name": "Legacy Sports Team Entry",
                     },
-                    "unit_amount": 1500,
+                    "unit_amount": 100,
                 },
                 "quantity": 1,
             }],
