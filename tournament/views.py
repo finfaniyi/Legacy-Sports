@@ -232,6 +232,14 @@ def registration_team(request):
         player_count = int(request.POST.get("roster_size", 6))
         player_count = max(6, min(8, player_count))
 
+        if Team.objects.filter(captain_email=request.POST.get("captain_email")).exists():
+            return render(request, "tournament/registration-form.html", {
+                "error": "This email has already registered a team.",
+                "taken_colors": taken_colors,
+                "team_colors": TEAM_COLORS,
+                "slot": slot,
+        })
+
         # CREATE TEAM (PENDING)
         team = Team.objects.create(
             slot_number=slot,
