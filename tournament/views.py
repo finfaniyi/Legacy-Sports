@@ -223,16 +223,28 @@ def registration_team(request):
             "team_color": team_color,
         }
 
-        # Create Stripe Checkout session
+        player_count = int(request.POST.get("player_count", 6))
+
+        # Enforce limits safely
+        if player_count < 6:
+            player_count = 6
+
+        if player_count > 8:
+            player_count = 8
+
+        # TESTING PRICE (50 cents per player)
+        price_per_player = 50
+        total_amount = player_count * price_per_player
+
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=["card"],
             line_items=[{
                 "price_data": {
                     "currency": "cad",
                     "product_data": {
-                        "name": "Legacy Sports Team Entry",
+                        "name": f"Legacy Sports Team Entry ({player_count} players)",
                     },
-                    "unit_amount": 100,
+                    "unit_amount": total_amount,
                 },
                 "quantity": 1,
             }],
@@ -246,8 +258,10 @@ def registration_team(request):
                 "captain_email": request.POST["captain_email"],
                 "captain_phone": request.POST["captain_phone"],
                 "team_color": team_color,
+                "player_count": player_count,
             }
         )
+
 
         request.session.pop("waiver_accepted", None)
 
