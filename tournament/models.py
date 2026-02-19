@@ -33,7 +33,7 @@ class Team(models.Model):
     # ✅ NEW: slot locking (1–8)
     slot_number = models.IntegerField(null=True, blank=True)
     captain_name = models.CharField(max_length=100)
-    captain_email = models.EmailField()
+    captain_email = models.EmailField(unique=True)
     captain_phone = models.CharField(max_length=15)
     
     waiver_agreed = models.BooleanField(default=False)
