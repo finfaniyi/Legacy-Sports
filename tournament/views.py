@@ -172,6 +172,19 @@ def registration(request):
 def registration_success(request):
     return redirect("/registration/?paid=true")
 
+def waiver(request):
+    next_url = request.GET.get("next", "/")
+
+    if request.method == "POST":
+        request.session["waiver_accepted"] = True
+        request.session["waiver_timestamp"] = str(timezone.now())
+        return redirect(next_url)
+
+    return render(request, "tournament/waiver.html", {
+        "next": next_url
+    })
+
+
 
 # =========================
 # TEAM REGISTRATION + STRIPE
