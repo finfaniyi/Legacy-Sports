@@ -30,11 +30,28 @@
       <h3>Team Information</h3>
 
       <div class="team-grid">
-        <input name="team_name" placeholder="Team Name" required>
-        <input name="captain_name" placeholder="Captain Full Name" required>
-        <input name="captain_email" type="email" placeholder="Captain Email" required>
-        <input name="captain_phone" placeholder="Captain Phone" pattern="[0-9+\-\s()]{7,15}"
-          title="Enter a valid phone number" required>
+
+        <input type="text" name="team_name" placeholder="Team Name" value="{{ form_data.team_name|default:'' }}">
+
+        <input type="text" name="captain_name" placeholder="Captain Full Name"
+          value="{{ form_data.captain_name|default:'' }}">
+
+        <!-- Captain Email Wrapper -->
+        <div class="field-group">
+          <input type="email" name="captain_email" placeholder="Captain Email"
+            value="{{ form_data.captain_email|default:'' }}"
+            class="{% if error_field == 'captain_email' %}input-error{% endif %}">
+
+          {% if error_field == "captain_email" %}
+          <p class="field-error">
+            ⚠ {{ error_message }}
+          </p>
+          {% endif %}
+        </div>
+
+        <input type="text" name="captain_phone" placeholder="Captain Phone"
+          value="{{ form_data.captain_phone|default:'' }}">
+
       </div>
 
       <hr>
@@ -129,9 +146,9 @@
         </div>
       </div>
 
-      
+
       <hr>
-      
+
       <!-- TEAM COLOR -->
       <h3>Team Color</h3>
       <div class="color-grid">
