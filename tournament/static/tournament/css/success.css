@@ -1,0 +1,83 @@
+.success-hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #bb080b, #151a1f);
+  text-align: center;
+}
+
+.success-card {
+  background: #ffffff;
+  padding: 60px 40px;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeInUp 0.8s ease;
+}
+
+.success-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.success-card h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #151a1f;
+  letter-spacing: 2px;
+}
+
+.success-sub {
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.success-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.success-pill {
+  background: #f4f4f4;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.success-btn {
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 50px;
+  background: #bb080b;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.success-btn:hover {
+  background: #151a1f;
+  transform: translateY(-3px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

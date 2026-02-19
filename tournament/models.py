@@ -66,7 +66,7 @@ class Team(models.Model):
     
 class Player(models.Model):
     team = models.ForeignKey(
-        Team,
+        "Team",
         on_delete=models.CASCADE,
         related_name="players"
     )
@@ -75,36 +75,37 @@ class Player(models.Model):
     last_name = models.CharField(max_length=50)
 
     age = models.PositiveIntegerField()
+
+    GENDER_CHOICES = [
+        ("M", "Male"),
+        ("F", "Female"),
+        ("O", "Other"),
+        ("N", "Prefer not to say"),
+    ]
+
     gender = models.CharField(
         max_length=1,
-        choices=[
-            ("M", "Male"),
-            ("F", "Female"),
-            ("O", "Other"),
-            ("N", "Prefer not to say"),
-        ]
+        choices=GENDER_CHOICES
     )
 
     contact_email = models.EmailField()
-    contact_phone = models.CharField(max_length=15)
+    contact_phone = models.CharField(max_length=20)
 
     school = models.CharField(max_length=100, blank=True)
 
-    # ✅ NEW
     is_substitute = models.BooleanField(default=False)
 
-    # VOLLEYBALL STATS
+    # Optional future stats (safe to keep)
     games = models.IntegerField(default=0)
     points = models.IntegerField(default=0)
     aces = models.IntegerField(default=0)
     blocks = models.IntegerField(default=0)
     fouls = models.IntegerField(default=0)
 
-
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
-    
+        return f"{self.first_name} {self.last_name} ({self.team.team_name})"
 
 class Registration(models.Model):
     team = models.OneToOneField(

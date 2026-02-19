@@ -151,7 +151,7 @@ def join_team(request):
 # =========================
 
 def registration(request):
-    teams = Team.objects.all()
+    teams = Team.objects.filter(payment_status="paid")
 
     taken_slots = set()
     slot_colors = {}
@@ -168,9 +168,12 @@ def registration(request):
         "slot_names": slot_names,
     })
 
-
 def registration_success(request):
-    return redirect("/registration/?paid=true")
+    session_id = request.GET.get("session_id")
+    if not session_id:
+        return redirect("registration")
+    return render(request, "tournament/registration_success.html")
+
 
 def waiver(request):
     next_url = request.GET.get("next", "/")
@@ -185,13 +188,12 @@ def waiver(request):
     })
 
 
-
 # =========================
 # TEAM REGISTRATION + STRIPE
 # =========================
 
 def registration_team(request):
-    slot = request.GET.get("slot")
+    slot = int(request.GET.get("slot"))
 
     taken_colors = set(
         Team.objects.values_list("team_color", flat=True)
@@ -218,15 +220,66 @@ def registration_team(request):
                 "team_colors": TEAM_COLORS,
             })
 
-        # Player count logic
         player_count = int(request.POST.get("roster_size", 6))
+        player_count = max(6, min(8, player_count))
 
-        if player_count < 6:
-            player_count = 6
-        if player_count > 8:
-            player_count = 8
+        # 🔥 CREATE TEAM FIRST (PENDING)
+        team = Team.objects.create(
+            slot_number=slot,
+            team_name=request.POST["team_name"],
+            captain_name=request.POST["captain_name"],
+            captain_email=request.POST["captain_email"],
+            captain_phone=request.POST["captain_phone"],
+            team_color=team_color,
+            player_count=player_count,
+            payment_status="pending",
+            waiver_agreed=True,
+            waiver_timestamp=timezone.now(),
+        )
 
-        # TEST PRICE (50 cents per player)
+        # 🔥 CREATE ACTIVE PLAYERS (1–6)
+        for i in range(1, 7):
+            Player.objects.create(
+                team=team,
+                first_name=request.POST.get(f"player_{i}_first"),
+                last_name=request.POST.get(f"player_{i}_last"),
+                age=int(request.POST.get(f"player_{i}_age")),
+                gender=request.POST.get(f"player_{i}_gender"),
+                contact_email=request.POST.get(f"player_{i}_email"),
+                contact_phone=request.POST.get(f"player_{i}_phone"),
+                school=request.POST.get(f"player_{i}_school") or "",
+                is_substitute=False
+            )
+
+        # 🔥 SUBSTITUTE 1
+        if player_count >= 7:
+            Player.objects.create(
+                team=team,
+                first_name=request.POST.get("sub_1_first"),
+                last_name=request.POST.get("sub_1_last"),
+                age=int(request.POST.get("sub_1_age")),
+                gender=request.POST.get("sub_1_gender"),
+                contact_email=request.POST.get("sub_1_email"),
+                contact_phone=request.POST.get("sub_1_phone"),
+                school=request.POST.get("sub_1_school") or "",
+                is_substitute=True
+            )
+
+        # 🔥 SUBSTITUTE 2
+        if player_count == 8:
+            Player.objects.create(
+                team=team,
+                first_name=request.POST.get("sub_2_first"),
+                last_name=request.POST.get("sub_2_last"),
+                age=int(request.POST.get("sub_2_age")),
+                gender=request.POST.get("sub_2_gender"),
+                contact_email=request.POST.get("sub_2_email"),
+                contact_phone=request.POST.get("sub_2_phone"),
+                school=request.POST.get("sub_2_school") or "",
+                is_substitute=True
+            )
+
+        # 💰 Stripe
         price_per_player = 50
         total_amount = player_count * price_per_player
 
@@ -243,16 +296,10 @@ def registration_team(request):
                 "quantity": 1,
             }],
             mode="payment",
-            success_url=request.build_absolute_uri("/registration-success/"),
+            success_url=request.build_absolute_uri("/registration-success/?session_id={CHECKOUT_SESSION_ID}"),
             cancel_url=request.build_absolute_uri("/registration/?cancelled=true"),
             metadata={
-                "slot": slot,
-                "team_name": request.POST["team_name"],
-                "captain_name": request.POST["captain_name"],
-                "captain_email": request.POST["captain_email"],
-                "captain_phone": request.POST["captain_phone"],
-                "team_color": team_color,
-                "player_count": player_count,
+                "team_id": team.id
             }
         )
 
@@ -262,6 +309,7 @@ def registration_team(request):
         "taken_colors": taken_colors,
         "team_colors": TEAM_COLORS,
     })
+
 
 
 # =========================
@@ -285,60 +333,46 @@ def stripe_webhook(request):
         session = event["data"]["object"]
         metadata = session.get("metadata", {})
 
-        slot = metadata.get("slot")
-        team_name = metadata.get("team_name")
-        captain_name = metadata.get("captain_name")
-        captain_email = metadata.get("captain_email")
-        captain_phone = metadata.get("captain_phone")
-        team_color = metadata.get("team_color")
-        player_count = int(metadata.get("player_count", 6))
+        team_id = metadata.get("team_id")
 
-        if not Team.objects.filter(slot_number=slot).exists():
+        try:
+            team = Team.objects.get(id=team_id)
+            team.payment_status = "paid"
+            team.save()
+        except Team.DoesNotExist:
+            return JsonResponse({"error": "Team not found"}, status=400)
 
-            Team.objects.create(
-                slot_number=slot,
-                team_name=team_name,
-                captain_name=captain_name,
-                captain_email=captain_email,
-                captain_phone=captain_phone,
-                team_color=team_color,
-                player_count=player_count,
-                payment_status="paid",
-                waiver_agreed=True,
-                waiver_timestamp=timezone.now(),
-            )
+        # Captain confirmation
+        send_mail(
+            subject="Legacy Sports Team Registration Confirmed ⚡",
+            message=f"""
+            Hi {team.captain_name},
 
-            # Captain confirmation
-            send_mail(
-                subject="Legacy Sports Team Registration Confirmed ⚡",
-                message=f"""
-                Hi {captain_name},
+            Your team "{team.team_name}" is officially registered.
 
-                Your team "{team_name}" is officially registered.
+            Slot: {team.slot_number}
+            Team Color: {team.team_color}
+            Players: {team.player_count}
 
-                Slot: {slot}
-                Team Color: {team_color}
-                Players: {player_count}
+            — Legacy Sports
+            """,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[team.captain_email],
+            fail_silently=False,
+         )
 
-                — Legacy Sports
-                """,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[captain_email],
-                fail_silently=False,
-            )
-
-            # Admin notification
-            send_mail(
-                subject="🚨 New Paid Team Registration",
-                message=f"""
-                Team: {team_name}
-                Captain: {captain_name}
-                Slot: {slot}
-                Players: {player_count}
-                """,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=["legacysportscanada@gmail.com"],
-                fail_silently=False,
-            )
+        # Admin notification
+        send_mail(
+            subject="🚨 New Paid Team Registration",
+            message=f"""
+            Team: {team.team_name}
+            Captain: {team.captain_name}
+            Slot: {team.slot_number}
+            Players: {team.player_count}
+            """,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=["legacysportscanada@gmail.com"],
+            fail_silently=False,
+        )
 
     return JsonResponse({"status": "success"})

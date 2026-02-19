@@ -1,10 +1,33 @@
 {% extends "tournament/base.html" %}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/success.css' %}">
+{% endblock %}
 
 {% block content %}
-<section class="form-page">
-  <div class="form-card">
-    <h2>Team Registered 🎉</h2>
-    <p>We’ve received your team. See you on game day.</p>
+<section class="success-hero">
+
+  <div class="success-card">
+    <div class="success-icon">🏆</div>
+
+    <h1>You're Officially In!</h1>
+
+    <p class="success-sub">
+      Your team registration has been confirmed.
+      Payment received. Slot locked. Let’s go.
+    </p>
+
+    <div class="success-details">
+      <div class="success-pill">✔ Payment Confirmed</div>
+      <div class="success-pill">✔ Slot Secured</div>
+      <div class="success-pill">✔ Team Registered</div>
+    </div>
+
+    <a href="{% url 'registration' %}" class="success-btn">
+      View Registered Teams
+    </a>
   </div>
+
 </section>
 {% endblock %}
