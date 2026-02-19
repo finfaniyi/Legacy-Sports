@@ -86,10 +86,10 @@
         {% with key="player_"|add:forloop.counter|stringformat:"s"|add:"_gender" %}
         <select name="player_{{ forloop.counter }}_gender">
           <option value="">Gender</option>
-          <option value="M" {% if form_data|get_item:key=="M" %}selected{% endif %}>Male</option>
-          <option value="F" {% if form_data|get_item:key=="F" %}selected{% endif %}>Female</option>
-          <option value="O" {% if form_data|get_item:key=="O" %}selected{% endif %}>Other</option>
-          <option value="N" {% if form_data|get_item:key=="N" %}selected{% endif %}>Prefer not to say</option>
+          <option value="M" {% if form_data|get_item:key == "M" %}selected{% endif %}>Male</option>
+          <option value="F" {% if form_data|get_item:key == "F" %}selected{% endif %}>Female</option>
+          <option value="O" {% if form_data|get_item:key == "O" %}selected{% endif %}>Other</option>
+          <option value="N" {% if form_data|get_item:key == "N" %}selected{% endif %}>Prefer not to say</option>
         </select>
         {% endwith %}
 
@@ -125,10 +125,10 @@
 
           <select name="sub_1_gender">
             <option value="">Gender</option>
-            <option value="M" {% if form_data.sub_1_gender=="M" %}selected{% endif %}>Male</option>
-            <option value="F" {% if form_data.sub_1_gender=="F" %}selected{% endif %}>Female</option>
-            <option value="O" {% if form_data.sub_1_gender=="O" %}selected{% endif %}>Other</option>
-            <option value="N" {% if form_data.sub_1_gender=="N" %}selected{% endif %}>Prefer not to say</option>
+            <option value="M" {% if form_data.sub_1_gender == "M" %}selected{% endif %}>Male</option>
+            <option value="F" {% if form_data.sub_1_gender == "F" %}selected{% endif %}>Female</option>
+            <option value="O" {% if form_data.sub_1_gender == "O" %}selected{% endif %}>Other</option>
+            <option value="N" {% if form_data.sub_1_gender == "N" %}selected{% endif %}>Prefer not to say</option>
           </select>
 
           <input name="sub_1_email" type="email" placeholder="Email" value="{{ form_data.sub_1_email|default:'' }}">
@@ -147,10 +147,10 @@
 
           <select name="sub_2_gender">
             <option value="">Gender</option>
-            <option value="M" {% if form_data.sub_2_gender=="M" %}selected{% endif %}>Male</option>
-            <option value="F" {% if form_data.sub_2_gender=="F" %}selected{% endif %}>Female</option>
-            <option value="O" {% if form_data.sub_2_gender=="O" %}selected{% endif %}>Other</option>
-            <option value="N" {% if form_data.sub_2_gender=="N" %}selected{% endif %}>Prefer not to say</option>
+            <option value="M" {% if form_data.sub_2_gender == "M" %}selected{% endif %}>Male</option>
+            <option value="F" {% if form_data.sub_2_gender == "F" %}selected{% endif %}>Female</option>
+            <option value="O" {% if form_data.sub_2_gender == "O" %}selected{% endif %}>Other</option>
+            <option value="N" {% if form_data.sub_2_gender == "N" %}selected{% endif %}>Prefer not to say</option>
           </select>
 
           <input name="sub_2_email" type="email" placeholder="Email" value="{{ form_data.sub_2_email|default:'' }}">
