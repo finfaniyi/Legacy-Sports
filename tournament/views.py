@@ -193,7 +193,16 @@ def waiver(request):
 # =========================
 
 def registration_team(request):
-    slot = int(request.GET.get("slot"))
+
+    slot_value = request.GET.get("slot")
+
+    if not slot_value:
+        return redirect("/registration/")
+
+    try:
+        slot = int(slot_value)
+    except ValueError:
+        return redirect("/registration/")
 
     taken_colors = set(
         Team.objects.values_list("team_color", flat=True)
@@ -223,7 +232,7 @@ def registration_team(request):
         player_count = int(request.POST.get("roster_size", 6))
         player_count = max(6, min(8, player_count))
 
-        # 🔥 CREATE TEAM FIRST (PENDING)
+        # CREATE TEAM (PENDING)
         team = Team.objects.create(
             slot_number=slot,
             team_name=request.POST["team_name"],
@@ -237,14 +246,32 @@ def registration_team(request):
             waiver_timestamp=timezone.now(),
         )
 
-        # 🔥 CREATE ACTIVE PLAYERS (1–6)
-        age_value = request.POST.get(f"player_{i}_age")
+        # ACTIVE PLAYERS (1–6)
         for i in range(1, 7):
+
+            age_value = request.POST.get(f"player_{i}_age")
+
+            if not age_value:
+                return render(request, "tournament/registration-form.html", {
+                    "error": f"Player {i} age is required.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
+
+            try:
+                age_value = int(age_value)
+            except ValueError:
+                return render(request, "tournament/registration-form.html", {
+                    "error": f"Player {i} age must be a number.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
+
             Player.objects.create(
                 team=team,
                 first_name=request.POST.get(f"player_{i}_first"),
                 last_name=request.POST.get(f"player_{i}_last"),
-                age=int(age_value) if age_value else 16,
+                age=age_value,
                 gender=request.POST.get(f"player_{i}_gender"),
                 contact_email=request.POST.get(f"player_{i}_email"),
                 contact_phone=request.POST.get(f"player_{i}_phone"),
@@ -252,14 +279,32 @@ def registration_team(request):
                 is_substitute=False
             )
 
-        sub1_age = request.POST.get("sub_1_age")
-        # 🔥 SUBSTITUTE 1
+        # SUBSTITUTE 1
         if player_count >= 7:
+
+            sub1_age = request.POST.get("sub_1_age")
+
+            if not sub1_age:
+                return render(request, "tournament/registration-form.html", {
+                    "error": "Substitute 1 age is required.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
+
+            try:
+                sub1_age = int(sub1_age)
+            except ValueError:
+                return render(request, "tournament/registration-form.html", {
+                    "error": "Substitute 1 age must be a number.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
+
             Player.objects.create(
                 team=team,
                 first_name=request.POST.get("sub_1_first"),
                 last_name=request.POST.get("sub_1_last"),
-                age=int(sub1_age) if sub1_age else 16,
+                age=sub1_age,
                 gender=request.POST.get("sub_1_gender"),
                 contact_email=request.POST.get("sub_1_email"),
                 contact_phone=request.POST.get("sub_1_phone"),
@@ -267,14 +312,32 @@ def registration_team(request):
                 is_substitute=True
             )
 
-        sub2_age = request.POST.get("sub_2_age")
-        # 🔥 SUBSTITUTE 2
+        # SUBSTITUTE 2
         if player_count == 8:
+
+            sub2_age = request.POST.get("sub_2_age")
+
+            if not sub2_age:
+                return render(request, "tournament/registration-form.html", {
+                    "error": "Substitute 2 age is required.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
+
+            try:
+                sub2_age = int(sub2_age)
+            except ValueError:
+                return render(request, "tournament/registration-form.html", {
+                    "error": "Substitute 2 age must be a number.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                })
+
             Player.objects.create(
                 team=team,
                 first_name=request.POST.get("sub_2_first"),
                 last_name=request.POST.get("sub_2_last"),
-                age=int(sub2_age) if sub2_age else 16,
+                age=sub2_age,
                 gender=request.POST.get("sub_2_gender"),
                 contact_email=request.POST.get("sub_2_email"),
                 contact_phone=request.POST.get("sub_2_phone"),
