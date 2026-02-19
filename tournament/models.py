@@ -38,6 +38,7 @@ class Team(models.Model):
     
     waiver_agreed = models.BooleanField(default=False)
     waiver_timestamp = models.DateTimeField(null=True, blank=True)
+    player_count = models.IntegerField(default=6)
 
 
     created_at = models.DateTimeField(auto_now_add=True)
