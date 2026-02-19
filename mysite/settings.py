@@ -107,9 +107,6 @@ STATIC_URL = '/static/'
 # Where collectstatic will gather files (for production)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# This ensures Django finds your app static folder
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
