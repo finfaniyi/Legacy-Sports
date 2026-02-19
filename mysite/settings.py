@@ -2,6 +2,7 @@ import dj_database_url
 import os
 from pathlib import Path
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
@@ -123,3 +124,5 @@ DEFAULT_FROM_EMAIL = "Legacy Sports <noreply@legacysportscanada.ca>"
 
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
+#Stripe
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")

@@ -16,7 +16,8 @@ urlpatterns = [
     path("contact/", views.contact_us, name="contact_us"),
     path("registration/", views.registration, name="registration"),
     path("registration/team/", views.registration_team, name="registration_team"),
-    path("registration/success/", views.registration_success, name="registration_success"),
+    path("stripe/webhook/", views.stripe_webhook, name="stripe_webhook"),
+    path("registration-success/", views.registration_success, name="registration_success"),
     path("team-brackets/", views.team_brackets, name="team_brackets"),
     path("tourney-info/", views.tourney_info, name="tourney_info"),
 ]

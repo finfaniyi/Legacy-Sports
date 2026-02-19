@@ -10,18 +10,6 @@
 
 {% block content %}
 
-{% if request.GET.paid %}
-  <div class="success-toast">
-    ✅ Payment successful! Your team is officially registered.
-  </div>
-{% endif %}
-
-{% if request.GET.cancelled %}
-  <div class="error-toast">
-    ⚠️ Payment not completed. Your spot is not confirmed.
-  </div>
-{% endif %}
-
 {% if full %}
   <div class="error-toast">
     🚫 Registration is full. All team slots are taken.

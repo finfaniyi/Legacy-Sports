@@ -6,18 +6,15 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse
 from django.conf import settings
+import stripe
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 
 # Create your views here.
-def test_email(request):
-    send_mail(
-        subject="Legacy Sports Test Email",
-        message="This is a test email from your Django setup.",
-        from_email=None,
-        recipient_list=["yourpersonalemail@gmail.com"],
-        fail_silently=False,
-    )
-    return HttpResponse("Email Sent!")
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
 
 def team_list(request):
     teams = Team.objects.filter(
@@ -175,7 +172,7 @@ def registration(request):
     })
 
 def registration_success(request):
-    return render(request, "tournament/registration_success.html")
+    return redirect("/registration/?paid=true")
 
 def team_brackets(request):
     return render(request, "tournament/team_brackets.html")
@@ -195,81 +192,151 @@ def registration_team(request):
 
     if request.method == "POST":
 
-            if not request.POST.get("agree_waiver"):
-                return render(request, "tournament/registration-form.html", {
-                    "error": "You must agree to the waiver before proceeding.",
-                    "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
-                })
+        if not request.POST.get("agree_waiver"):
+            return render(request, "tournament/registration-form.html", {
+                "error": "You must agree to the waiver before proceeding.",
+                "taken_colors": taken_colors,
+                "team_colors": TEAM_COLORS,
+            })
 
-            # HARD SLOT LOCK
-            if Team.objects.filter(slot_number=slot).exists():
-                return redirect("/registration/?error=slot_taken")
+        team_color = request.POST.get("team_color")
 
-            team_color = request.POST.get("team_color")
+        # HARD SLOT LOCK
+        if Team.objects.filter(slot_number=slot).exists():
+            return redirect("/registration/?error=slot_taken")
 
-            # HARD COLOR LOCK
-            if Team.objects.filter(team_color=team_color).exists():
-                return render(request, "tournament/registration-form.html", {
-                    "error": "This color has already been taken.",
-                    "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
-                })
+        # HARD COLOR LOCK
+        if Team.objects.filter(team_color=team_color).exists():
+            return render(request, "tournament/registration-form.html", {
+                "error": "This color has already been taken.",
+                "taken_colors": taken_colors,
+                "team_colors": TEAM_COLORS,
+            })
+
+        # Save form data temporarily (ONLY AFTER validation)
+        request.session["pending_team"] = {
+            "slot": slot,
+            "team_name": request.POST["team_name"],
+            "captain_name": request.POST["captain_name"],
+            "captain_email": request.POST["captain_email"],
+            "captain_phone": request.POST["captain_phone"],
+            "team_color": team_color,
+        }
+
+        # Create Stripe Checkout session
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            line_items=[{
+                "price_data": {
+                    "currency": "cad",
+                    "product_data": {
+                        "name": "Legacy Sports Team Entry",
+                    },
+                    "unit_amount": 1500,
+                },
+                "quantity": 1,
+            }],
+            mode="payment",
+            success_url=request.build_absolute_uri("/registration-success/"),
+            cancel_url=request.build_absolute_uri("/registration/?cancelled=true"),
+            metadata={
+                "slot": slot,
+                "team_name": request.POST["team_name"],
+                "captain_name": request.POST["captain_name"],
+                "captain_email": request.POST["captain_email"],
+                "captain_phone": request.POST["captain_phone"],
+                "team_color": team_color,
+            }
+        )
+
+        request.session.pop("waiver_accepted", None)
+
+        return redirect(checkout_session.url)
+
+    return render(request, "tournament/registration-form.html", {
+        "taken_colors": taken_colors,
+        "team_colors": TEAM_COLORS,
+    })
+    
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get("HTTP_STRIPE_SIGNATURE")
+    endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except stripe.error.SignatureVerificationError:
+        return JsonResponse({"error": "Invalid signature"}, status=400)
+    except Exception:
+        return JsonResponse({"error": "Invalid payload"}, status=400)
+
+    # ✅ Payment completed
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
+
+        metadata = session.get("metadata", {})
+
+        slot = metadata.get("slot")
+        team_name = metadata.get("team_name")
+        captain_name = metadata.get("captain_name")
+        captain_email = metadata.get("captain_email")
+        captain_phone = metadata.get("captain_phone")
+        team_color = metadata.get("team_color")
+
+        # Final slot protection
+        if not Team.objects.filter(slot_number=slot).exists():
 
             team = Team.objects.create(
                 slot_number=slot,
-                team_name=request.POST["team_name"],
-                captain_name=request.POST["captain_name"],
-                captain_email=request.POST["captain_email"],
-                captain_phone=request.POST["captain_phone"],
+                team_name=team_name,
+                captain_name=captain_name,
+                captain_email=captain_email,
+                captain_phone=captain_phone,
                 team_color=team_color,
-                payment_status="pending",
+                payment_status="paid",
                 waiver_agreed=True,
                 waiver_timestamp=timezone.now(),
             )
 
-            captain_name = team.captain_name
-            captain_email = team.captain_email
-            team_name = team.team_name
-            captain_phone = team.captain_phone
-
-            # ✅ Send confirmation to captain
+            # ✅ Confirmation Email (SEND HERE, NOT BEFORE)
             send_mail(
-                subject="Legacy Sports Team Registration Received ⚡",
+                subject="Legacy Sports Team Registration Confirmed ⚡",
                 message=f"""
                 Hi {captain_name},
 
-                Your team "{team_name}" has been successfully registered.
+                Your team "{team_name}" is officially registered.
 
                 Slot: {slot}
                 Team Color: {team_color}
 
-                Next step:
-                Please complete payment using the Stripe link you are being redirected to.
-
-                We’ll confirm your spot once payment is processed.
+                We can’t wait to see you at the tournament!
 
                 — Legacy Sports
-                info@legacysportscanada.ca
+                
+                For any questions, Email - legacysportscanada@gmail.com
                 """,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[captain_email],
                 fail_silently=False,
             )
-
-            # ✅ Notify YOU (admin)
+            
+            # ✅ Notify Admin (YOU)
             send_mail(
-                subject="🚨 New Team Registration - Legacy Sports",
+                subject="🚨 New Paid Team Registration - Legacy Sports",
                 message=f"""
-                New team registered:
+                A new team has successfully paid and registered.
 
                 Team Name: {team_name}
                 Captain: {captain_name}
                 Email: {captain_email}
                 Phone: {captain_phone}
-                Color: {team_color}
                 Slot: {slot}
-                Payment Status: Pending
+                Color: {team_color}
+
+                Payment confirmed via Stripe.
 
                 Login to admin panel to manage.
                 """,
@@ -278,13 +345,4 @@ def registration_team(request):
                 fail_silently=False,
             )
 
-            STRIPE_PAYMENT_LINK = "https://buy.stripe.com/4gMdR98mreTna7r9TL6wE02" #test link
-            request.session.pop("waiver_accepted", None)
-
-            return redirect(STRIPE_PAYMENT_LINK)
-
-    # GET → show form
-    return render(request, "tournament/registration-form.html", {
-        "taken_colors": taken_colors,
-        "team_colors": TEAM_COLORS,
-    })
+    return JsonResponse({"status": "success"})
