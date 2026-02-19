@@ -238,12 +238,13 @@ def registration_team(request):
         )
 
         # 🔥 CREATE ACTIVE PLAYERS (1–6)
+        age_value = request.POST.get(f"player_{i}_age")
         for i in range(1, 7):
             Player.objects.create(
                 team=team,
                 first_name=request.POST.get(f"player_{i}_first"),
                 last_name=request.POST.get(f"player_{i}_last"),
-                age=int(request.POST.get(f"player_{i}_age")),
+                age=int(age_value) if age_value else 16,
                 gender=request.POST.get(f"player_{i}_gender"),
                 contact_email=request.POST.get(f"player_{i}_email"),
                 contact_phone=request.POST.get(f"player_{i}_phone"),
@@ -251,13 +252,14 @@ def registration_team(request):
                 is_substitute=False
             )
 
+        sub1_age = request.POST.get("sub_1_age")
         # 🔥 SUBSTITUTE 1
         if player_count >= 7:
             Player.objects.create(
                 team=team,
                 first_name=request.POST.get("sub_1_first"),
                 last_name=request.POST.get("sub_1_last"),
-                age=int(request.POST.get("sub_1_age")),
+                age=int(sub1_age) if sub1_age else 16,
                 gender=request.POST.get("sub_1_gender"),
                 contact_email=request.POST.get("sub_1_email"),
                 contact_phone=request.POST.get("sub_1_phone"),
@@ -265,13 +267,14 @@ def registration_team(request):
                 is_substitute=True
             )
 
+        sub2_age = request.POST.get("sub_2_age")
         # 🔥 SUBSTITUTE 2
         if player_count == 8:
             Player.objects.create(
                 team=team,
                 first_name=request.POST.get("sub_2_first"),
                 last_name=request.POST.get("sub_2_last"),
-                age=int(request.POST.get("sub_2_age")),
+                age=int(sub2_age) if sub2_age else 16,
                 gender=request.POST.get("sub_2_gender"),
                 contact_email=request.POST.get("sub_2_email"),
                 contact_phone=request.POST.get("sub_2_phone"),
