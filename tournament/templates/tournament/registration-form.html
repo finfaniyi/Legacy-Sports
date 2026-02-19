@@ -184,3 +184,30 @@
     </form>
   </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const rosterSelect = document.getElementById("rosterSize");
+    const sub1 = document.getElementById("sub-1");
+    const sub2 = document.getElementById("sub-2");
+
+    function updateSubs(value) {
+        if (value === "6") {
+            sub1.style.display = "none";
+            sub2.style.display = "none";
+        } else if (value === "7") {
+            sub1.style.display = "block";
+            sub2.style.display = "none";
+        } else if (value === "8") {
+            sub1.style.display = "block";
+            sub2.style.display = "block";
+        }
+    }
+
+    updateSubs(rosterSelect.value);
+
+    rosterSelect.addEventListener("change", function () {
+        updateSubs(this.value);
+    });
+});
+</script>
+{% endblock %}
