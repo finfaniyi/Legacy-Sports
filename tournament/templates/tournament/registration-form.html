@@ -81,25 +81,6 @@
 
       <hr>
 
-      <!-- TEAM COLOR -->
-      <h3>Team Color</h3>
-      <div class="color-grid">
-        {% for value, label in team_colors %}
-        {% if value in taken_colors %}
-        <div class="color-swatch disabled {{ value }}">
-          <span>{{ label }}</span>
-        </div>
-        {% else %}
-        <label class="color-swatch {{ value }}">
-          <input type="radio" name="team_color" value="{{ value }}" required>
-          <span>{{ label }}</span>
-        </label>
-        {% endif %}
-        {% endfor %}
-      </div>
-
-      <hr>
-
       <!-- SUBSTITUTES -->
       <h3>Substitutes</h3>
 
@@ -145,6 +126,26 @@
           <input name="sub_2_phone" placeholder="Phone" pattern="[0-9+\-\s()]{7,15}">
           <input name="sub_2_school" placeholder="School (optional)">
         </div>
+      </div>
+
+      
+      <hr>
+      
+      <!-- TEAM COLOR -->
+      <h3>Team Color</h3>
+      <div class="color-grid">
+        {% for value, label in team_colors %}
+        {% if value in taken_colors %}
+        <div class="color-swatch disabled {{ value }}">
+          <span>{{ label }}</span>
+        </div>
+        {% else %}
+        <label class="color-swatch {{ value }}">
+          <input type="radio" name="team_color" value="{{ value }}" required>
+          <span>{{ label }}</span>
+        </label>
+        {% endif %}
+        {% endfor %}
       </div>
 
       <hr>
