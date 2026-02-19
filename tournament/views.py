@@ -219,7 +219,7 @@ def registration_team(request):
             })
 
         # Player count logic
-        player_count = int(request.POST.get("player_count", 6))
+        player_count = int(request.POST.get("roster_size", 6))
 
         if player_count < 6:
             player_count = 6
