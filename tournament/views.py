@@ -374,6 +374,7 @@ def registration_team(request):
     return render(request, "tournament/registration-form.html", {
         "taken_colors": taken_colors,
         "team_colors": TEAM_COLORS,
+        "slot": slot,
     })
 
 

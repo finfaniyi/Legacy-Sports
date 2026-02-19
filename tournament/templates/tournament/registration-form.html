@@ -16,7 +16,8 @@
   </div>
 
   <div class="form-card">
-    <form method="POST" action="{% url 'registration_team' %}">
+    <form method="POST" action="{% url 'registration_team' %}?slot={{ slot }}">
+
       {% csrf_token %}
 
       {% if error %}
