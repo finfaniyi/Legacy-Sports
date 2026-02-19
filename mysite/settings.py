@@ -12,7 +12,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # ✅ TURN THIS ON FOR LOCAL DEVELOPMENT
 DEBUG = True
 
-ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca", '127.0.0.1']
+ALLOWED_HOSTS = ["legacysportscanada.ca", "www.legacysportscanada.ca", '127.0.0.1',"legacy-sports.onrender.com",]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://legacysportscanada.ca",
