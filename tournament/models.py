@@ -29,7 +29,7 @@ class Volunteerapplication(models.Model):
     
 
 class Team(models.Model):
-    team_name = models.CharField(max_length=100, unique=True)
+    team_name = models.CharField(max_length=100)
     # ✅ NEW: slot locking (1–8)
     slot_number = models.IntegerField(null=True, blank=True)
     captain_name = models.CharField(max_length=100)
