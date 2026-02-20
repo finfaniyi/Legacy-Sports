@@ -34,15 +34,24 @@
       </a>
     </div>
 
+    <!-- HAMBURGER BUTTON -->
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <ul class="nav-links">
       <li><a href="{% url 'home' %}"
           class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Home</a></li>
+
       <li>
         <a href="{% url 'registration' %}"
           class="{% if request.resolver_match.url_name == 'registration' %}active{% endif %}">
           Registration
         </a>
       </li>
+
       <li class="dropdown">
         <a href="{% url 'tourney_info' %}"
           class="{% if request.resolver_match.url_name == 'tourney_info' or request.resolver_match.url_name == 'teams' or request.resolver_match.url_name == 'team_brackets' %}active{% endif %}">
@@ -80,6 +89,7 @@
         </ul>
       </li>
     </ul>
+
     <div class="nav-spacer"></div>
   </nav>
 
@@ -89,6 +99,15 @@
       if (window.instgrm) {
         window.instgrm.Embeds.process();
       }
+    });
+  </script>
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active");
     });
   </script>
 

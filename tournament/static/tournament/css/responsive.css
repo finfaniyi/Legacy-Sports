@@ -1,106 +1,68 @@
 /* =========================
-   RESPONSIVE BREAKPOINTS
-   Desktop:  >1200px (default)
-   Laptop:   <=1200px
-   Tablet:   <=900px
-   Mobile:   <=600px
+   GLOBAL SAFETY
 ========================= */
 
-/* =========================
-   LAPTOP
-========================= */
-@media (max-width: 1200px) {
-  .nav-links {
-    gap: 60px;
-  }
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* =========================
-   TABLET
+   MOBILE (<=600px)
 ========================= */
-@media (max-width: 900px) {
-  body {
-    font-size: 15px;
-  }
 
-  .logo img {
-    height: 60px;
-  }
-
-  .page-bottom-space {
-    height: 80px;
-  }
-
-  .nav-links {
-    gap: 36px;
-  }
-
-  .about-hero h1,
-  .media-hero h1,
-  .historyv2-hero h1,
-  .ti-title {
-    font-size: 44px;
-  }
-
-  .ti-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .ti-side {
-    position: static;
-  }
-
-  .ti-grid-2 {
-    grid-template-columns: 1fr;
-  }
-
-  .media-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-content {
-    left: 30px;
-    bottom: 30px;
-  }
-
-  .home-slices {
-    height: auto;
-    flex-direction: column;
-  }
-
-  .slice {
-    height: 180px;
-    clip-path: none;
-  }
-
-  .event-card {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================
-   MOBILE
-========================= */
 @media (max-width: 600px) {
+
   body {
     font-size: 14px;
   }
 
-  .nav-links {
-    gap: 22px;
+  /* Reduce section spacing */
+  section {
+    padding: 60px 20px;
+  }
+
+  /* Navbar adjustments */
+  .navbar {
+    grid-template-columns: auto auto;
+    padding: 0 16px;
+    height: 55px;
   }
 
   .logo img {
-    height: 48px;
+    height: 35px;
   }
 
-  .about-hero h1,
-  .media-hero h1,
-  .historyv2-hero h1,
-  .ti-title {
-    font-size: 36px;
+  .nav-links {
+    display: none;
   }
 
+  /* Heading sizes */
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+
+  /* Grid stacking */
+  .grid,
+  .section,
+  .form-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flex-row {
+    flex-direction: column;
+  }
+
+  /* Existing mobile tweaks you already had */
   .media-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -126,32 +88,40 @@
     margin-top: 55px;
     gap: 55px;
   }
+
+  /* Show hamburger */
+.hamburger {
+  display: flex;
 }
 
-/* =========================
-   MOBILE FOUNDATION
-========================= */
-
-@media (max-width: 768px) {
-
-  /* Reduce large section spacing */
-  section {
-    padding: 60px 20px !important;
-  }
-
-  /* Prevent layout overflow */
-  body {
-    overflow-x: hidden;
-  }
-
-  /* Make headings readable on mobile */
-  h1 { font-size: 32px; }
-  h2 { font-size: 24px; }
-  h3 { font-size: 20px; }
-
+/* Hide links initially */
+.nav-links {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background-color: #1e2023;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 25px 0;
+  display: none;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* Show when active */
+.nav-links.active {
+  display: flex;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
 }
