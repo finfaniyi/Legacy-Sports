@@ -127,3 +127,31 @@
     gap: 55px;
   }
 }
+
+/* =========================
+   MOBILE FOUNDATION
+========================= */
+
+@media (max-width: 768px) {
+
+  /* Reduce large section spacing */
+  section {
+    padding: 60px 20px !important;
+  }
+
+  /* Prevent layout overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Make headings readable on mobile */
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
