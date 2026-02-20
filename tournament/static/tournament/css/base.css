@@ -22,3 +22,8 @@ body {
 .page-bottom-space{
   height: 120px;
 }
+
+.logo a {
+  text-decoration: none;
+  display: inline-block;
+}

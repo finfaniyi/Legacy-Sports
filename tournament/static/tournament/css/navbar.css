@@ -2,7 +2,7 @@
 /* =========================
    NAVIGATION BAR
 ========================= */
-.navbar { /* Controls the navbar container (layout, height, background, positioning context) */
+.navbar {
   background-color: #1e2023;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -10,8 +10,12 @@
   height: 60px;
   padding: 0 32px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  position: relative;
+
+  position: sticky;
+  top: 0;
   z-index: 1000;
+
+  backdrop-filter: blur(6px);
 }
 
 .logo {

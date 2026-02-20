@@ -29,7 +29,9 @@
 <body>
   <nav class="navbar">
     <div class="logo">
-      <img src="{% static 'tournament/images/LS Logo/WHITE LS long logo (red Long).PNG' %}" alt="Logo">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'tournament/images/LS Logo/WHITE LS long logo (red Long).PNG' %}" alt="Legacy Sports Logo">
+      </a>
     </div>
 
     <ul class="nav-links">
@@ -46,11 +48,11 @@
           class="{% if request.resolver_match.url_name == 'tourney_info' or request.resolver_match.url_name == 'teams' or request.resolver_match.url_name == 'team_brackets' %}active{% endif %}">
           Tourney-Info
         </a>
-          <ul class="dropdown-menu">
-            <li><a href="{% url 'tourney_info' %}">Tourney Info</a></li>
-            <li><a href="{% url 'teams' %}">Teams</a></li>
-            <li><a href="{% url 'team_brackets' %}">Team Brackets</a></li>
-          </ul>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'tourney_info' %}">Tourney Info</a></li>
+          <li><a href="{% url 'teams' %}">Teams</a></li>
+          <li><a href="{% url 'team_brackets' %}">Team Brackets</a></li>
+        </ul>
       </li>
 
       <li>
