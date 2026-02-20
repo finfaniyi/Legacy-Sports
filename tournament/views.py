@@ -106,17 +106,30 @@ def join_team(request):
 
         # Confirmation to volunteer
         send_mail(
-            subject="Legacy Sports Volunteer Application Received ⚡",
+            subject="📩 Legacy Sports Volunteer Application Received ⚡",
             message=f"""
+            
             Hi {first_name},
 
             Thank you for applying to join Legacy Sports Team.
+            We’re excited that you’re interested in being part of what we’re building.
+            
+            You applied for: {role}
 
-            Role Applied For: {role}
+            Our team will be reviewing submissions over the next few days, and we will reach out with next steps shortly.
 
-            We have received your application and will reach out soon.
+            What Happens Next:
+            • Applicants may be contacted for a brief conversation.
+            • Selected volunteers will receive onboarding details and event information.
+            • Briefing sessions will be scheduled prior to the tournament.
 
-            — Legacy Sports
+            We truly appreciate your interest in helping us build something meaningful in the community.
+
+            If you have any questions, feel free to reach out at: 
+            
+            legacysportscanada@gmail.com
+        
+            — Legacy Sports Canada
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[email],
@@ -427,13 +440,29 @@ def stripe_webhook(request):
             message=f"""
             Hi {team.captain_name},
 
-            Your team "{team.team_name}" is officially registered.
+            Your team "{team.team_name}" is officially registered for the Tournament🎉.
 
-            Slot: {team.slot_number}
-            Team Color: {team.team_color}
-            Players: {team.player_count}
+            Team Summary:
+            • Team name: {team.team_name}
+            • Slot: {team.slot_number}
+            • Team Color: {team.team_color}
+            • Total players in your team: {team.player_count}
+            
+            Event Details:
+            Date: TBD
+            Location: TBD
+            Check-in: 10:30 AM
+            Games Begin: 11:00 AM
 
-            — Legacy Sports
+            Next Steps:
+            • Make sure you and your teammate read the rules before game day.
+            • https://legacysportscanada.ca/tourney-info/  - Rules
+            
+            
+            If you have any questions, contact us at:
+            legacysportscanada@gmail.com 
+
+            — Legacy Sports Canada
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[team.captain_email],
