@@ -10,6 +10,7 @@ import stripe
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import feedparser
+import re
 
 
 # Stripe
@@ -40,9 +41,11 @@ def home(request):
     for entry in feed.entries[:6]:
         # Extract image safely
         image_url = None
-        if "media_content" in entry:
-            image_url = entry.media_content[0]["url"]
-
+        if "summary" in entry:
+            match = re.search(r'<img.*?src="(.*?)"', entry.summary)
+            if match:
+                image_url = match.group(1)  
+                
         instagram_posts.append({
             "image": image_url,
             "link": entry.link
