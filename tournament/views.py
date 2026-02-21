@@ -8,6 +8,7 @@ from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 import stripe
 from django.views.decorators.csrf import csrf_exempt
+import requests
 
 
 # Stripe
@@ -29,7 +30,26 @@ def team_list(request):
 
 
 def home(request):
-    return render(request, "tournament/index.html")
+    feed_url = "https://rss.app/feeds/eU7lNyFNqsLEeDg7.xml"
+
+    feed = feedparser.parse(feed_url)
+
+    instagram_posts = []
+
+    for entry in feed.entries[:6]:
+        # Extract image safely
+        image_url = None
+        if "media_content" in entry:
+            image_url = entry.media_content[0]["url"]
+
+        instagram_posts.append({
+            "image": image_url,
+            "link": entry.link
+        })
+
+    return render(request, "tournament/index.html", {
+        "instagram_posts": instagram_posts
+    })
 
 
 def support(request):
