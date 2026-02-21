@@ -33,21 +33,15 @@ def team_list(request):
 
 def home(request):
     feed_url = "https://rss.app/feeds/eU7lNyFNqsLEeDg7.xml"
-
     feed = feedparser.parse(feed_url)
 
     instagram_posts = []
 
     for entry in feed.entries[:6]:
-        # Extract image safely
-        image_url = None
-        if "summary" in entry:
-            match = re.search(r'<img.*?src="(.*?)"', entry.summary)
-            if match:
-                image_url = match.group(1)  
-                
+        print(entry)  # This will log full structure in Render logs
+
         instagram_posts.append({
-            "image": image_url,
+            "image": None,
             "link": entry.link
         })
 
