@@ -315,3 +315,95 @@
   transform: translateY(-50%) scale(1.05);
 }
 
+/* ======================================
+   HOME – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  /* ===== HERO ===== */
+
+  .home-hero {
+    height: 65vh;
+  }
+
+  .home-hero-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    top: 55%;
+    max-width: 100%;
+  }
+
+  .home-hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  /* Smaller arrows */
+  .hero-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  .hero-prev {
+    left: 10px;
+  }
+
+  .hero-next {
+    right: 10px;
+  }
+
+  /* ===== SLICES ===== */
+
+  .home-slices {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .slice {
+    height: 220px;
+    clip-path: none;   /* remove angled shapes on mobile */
+  }
+
+  /* ===== STATS ===== */
+
+  .home-stats {
+    flex-direction: column;
+    gap: 24px;
+    margin: 40px 0;
+  }
+
+  .stat strong {
+    font-size: 26px;
+  }
+
+  /* ===== VIDEO + INSTAGRAM ===== */
+
+  .home-video,
+  .home-instagram {
+    padding: 50px 0;
+  }
+
+  .video-center-header h2,
+  .home-instagram-header h2,
+  .instagram-heading h2 {
+    font-size: 28px;
+  }
+
+  .home-social-embeds {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* CTA buttons full width */
+  .home-cta-actions {
+    flex-direction: column;
+  }
+
+  .home-cta .cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+

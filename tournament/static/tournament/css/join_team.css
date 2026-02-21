@@ -111,3 +111,39 @@
   color: #00c853;
   font-weight: 500;
 }
+
+/* ======================================
+   JOIN / VOLUNTEER – MOBILE POLISH
+====================================== */
+
+@media (max-width: 900px) {
+
+  .form-page {
+    justify-content: flex-start;   /* stop vertical centering on phone */
+    padding: 60px 16px;
+  }
+
+  .form-header h1 {
+    font-size: 34px;
+  }
+
+  .form-header p {
+    font-size: 16px;
+  }
+
+  .form-card {
+    padding: 24px 18px;
+    border-radius: 14px;
+  }
+
+  .form-card input,
+  .form-card select,
+  .form-card textarea {
+    font-size: 16px;   /* prevents iOS zoom on input */
+  }
+
+  .submit-btn {
+    padding: 14px;
+  }
+
+}

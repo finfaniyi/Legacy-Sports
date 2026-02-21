@@ -61,3 +61,42 @@
   background: rgba(255,255,255,0.1);
   margin: 40px 0;
 }
+
+/* ======================================
+   CONTACT PAGE – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .contact-page {
+    padding: 60px 16px;
+  }
+
+  .contact-header h1 {
+    font-size: 36px;
+  }
+
+  .contact-header p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .contact-card {
+    padding: 28px 20px;
+    border-radius: 14px;
+  }
+
+  .contact-section h2 {
+    font-size: 22px;
+  }
+
+  .contact-link {
+    font-size: 16px;
+    word-break: break-word; /* prevents email overflow */
+  }
+
+  .contact-divider {
+    margin: 30px 0;
+  }
+
+}

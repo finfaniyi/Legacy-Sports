@@ -81,3 +81,46 @@
     transform: translateY(0);
   }
 }
+
+/* ======================================
+   SUCCESS PAGE – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .success-hero {
+    align-items: flex-start;     /* stop hard vertical centering */
+    padding: 60px 16px;
+    min-height: auto;
+  }
+
+  .success-card {
+    padding: 32px 22px;
+    border-radius: 16px;
+  }
+
+  .success-icon {
+    font-size: 44px;
+    margin-bottom: 16px;
+  }
+
+  .success-card h1 {
+    font-size: 32px;
+  }
+
+  .success-sub {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .success-pill {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  .success-btn {
+    width: 100%;
+    padding: 14px;
+  }
+
+}

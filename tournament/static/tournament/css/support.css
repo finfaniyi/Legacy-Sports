@@ -13,3 +13,21 @@
   letter-spacing: 3px;
 }
 
+/* ======================================
+   SUPPORT PAGE – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .support-page {
+    align-items: flex-start;   /* stop hard vertical centering */
+    padding: 60px 16px;
+    min-height: auto;
+  }
+
+  .support-page h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+}

@@ -41,3 +41,29 @@
   .dropdown:hover .dropdown-menu {
     display: block;
   }
+
+  /* =========================
+   MOBILE DROPDOWN FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  .dropdown-menu {
+    position: static;      /* no absolute positioning */
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    display: none;
+    width: 100%;
+  }
+
+  .dropdown-menu a {
+    padding: 10px 0;
+  }
+
+  /* Show when parent has active class */
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+}

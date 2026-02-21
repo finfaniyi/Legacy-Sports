@@ -241,3 +241,65 @@
   border-radius: 16px;
   padding: 14px;
 }
+
+/* ======================================
+   TOURNEY INFO – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .ti-page {
+    width: 92%;
+    padding-top: 50px;
+  }
+
+  .ti-title {
+    font-size: 36px;
+  }
+
+  .ti-subtitle {
+    font-size: 15px;
+  }
+
+  /* Collapse main layout */
+  .ti-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Disable sticky sidebar on mobile */
+  .ti-side {
+    position: static;
+  }
+
+  /* Make sidebar card full width */
+  .ti-side-card {
+    width: 100%;
+  }
+
+  /* Stack internal grids */
+  .ti-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Timeline stack */
+  .ti-time {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .ti-hour {
+    font-size: 16px;
+  }
+
+  /* Slightly smaller badges */
+  .ti-badge {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .ti-card h2 {
+    font-size: 20px;
+  }
+
+}

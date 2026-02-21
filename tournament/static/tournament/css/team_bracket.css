@@ -12,3 +12,22 @@
   font-size: 64px;
   letter-spacing: 3px;
 }
+
+/* ======================================
+   BRACKET PAGE – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .bracket-page {
+    align-items: flex-start;   /* stop forced vertical center */
+    padding: 60px 16px;
+    min-height: auto;
+  }
+
+  .bracket-page h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+}

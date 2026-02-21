@@ -133,3 +133,46 @@
   border:1px solid rgba(255,255,255,.22);
   font-size:16px;
 }
+
+/* ======================================
+   MEDIA PAGE – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .media-page {
+    width: 92%;
+    padding-top: 40px;
+  }
+
+  .media-hero h1 {
+    font-size: 36px;
+  }
+
+  .media-subtitle {
+    font-size: 15px;
+  }
+
+  /* STACK GRID TO 1 COLUMN */
+  .media-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* Make filter full width */
+  .media-controls {
+    width: 100%;
+  }
+
+  .media-select {
+    width: 100%;
+  }
+
+  /* Slightly smaller play badge */
+  .play-badge {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+}

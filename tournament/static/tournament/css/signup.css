@@ -291,3 +291,57 @@
   margin-top: 6px;
 }
 
+/* ======================================
+   TEAM REGISTRATION – MOBILE POLISH
+====================================== */
+
+@media (max-width: 900px) {
+
+  /* Stop vertical centering on phone */
+  .form-page {
+    justify-content: flex-start;
+    padding: 60px 16px;
+  }
+
+  .form-header h1 {
+    font-size: 34px;
+  }
+
+  .form-header p {
+    font-size: 16px;
+  }
+
+  .form-card {
+    padding: 24px 18px;
+    border-radius: 14px;
+  }
+
+  /* Stack 2-column team grid */
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Prevent iOS input zoom */
+  .form-card input,
+  .form-card select {
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+  }
+
+  /* Legal page adjustments */
+  .legal-page {
+    padding: 60px 16px;
+  }
+
+  .legal-card {
+    padding: 24px 18px;
+  }
+
+  .legal-card h1 {
+    font-size: 30px;
+  }
+
+}

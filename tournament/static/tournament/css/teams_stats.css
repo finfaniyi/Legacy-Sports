@@ -137,3 +137,59 @@ th.sortable:hover {
 }
 */
 
+/* ======================================
+   TEAMS – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  /* ===== COMING SOON ===== */
+
+  .coming-soon-page {
+    justify-content: flex-start;
+    padding: 60px 16px;
+    min-height: auto;
+  }
+
+  .coming-soon-page h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .coming-soon-page h2 {
+    font-size: 18px;
+  }
+
+  /* ===== TEAMS PAGE ===== */
+
+  .teams-page {
+    width: 92%;
+    margin: 60px auto;
+  }
+
+  .teams-header h1 {
+    font-size: 32px;
+  }
+
+  .teams-header p {
+    font-size: 15px;
+  }
+
+  .team-name {
+    flex-wrap: wrap;
+    font-size: 20px;
+  }
+
+  .team-color-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  /* Table adjustments */
+  .team-table th,
+  .team-table td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+}

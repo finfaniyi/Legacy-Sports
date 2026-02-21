@@ -103,19 +103,31 @@
     });
   </script>
   <script>
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.querySelector(".nav-links");
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      hamburger.classList.toggle("active");
+    // Hamburger toggle
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.dropdown > a').forEach(link => {
+      link.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('active');
+        }
+      });
     });
   </script>
+</body>
 
 
-  {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-  {% block scripts %}{% endblock %}
+{% block scripts %}{% endblock %}
 </body>
 
 </html>

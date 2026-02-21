@@ -11,26 +11,19 @@ img {
   height: auto;
 }
 
+/* Keep this ONLY if you still had overflow issues */
 body {
   overflow-x: hidden;
 }
 
+
 /* =========================
-   MOBILE (<=600px)
+   MOBILE NAVBAR (<=768px)
 ========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
-  body {
-    font-size: 14px;
-  }
-
-  /* Reduce section spacing */
-  section {
-    padding: 60px 20px;
-  }
-
-  /* Navbar adjustments */
+  /* Navbar structure */
   .navbar {
     grid-template-columns: auto auto;
     padding: 0 16px;
@@ -41,87 +34,41 @@ body {
     height: 35px;
   }
 
+  /* Hide nav links by default */
   .nav-links {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background-color: #1e2023;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 0;
     display: none;
   }
 
-  /* Heading sizes */
-  h1 { font-size: 32px; }
-  h2 { font-size: 24px; }
-  h3 { font-size: 20px; }
-
-  /* Grid stacking */
-  .grid,
-  .section,
-  .form-grid,
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .flex-row {
-    flex-direction: column;
-  }
-
-  /* Existing mobile tweaks you already had */
-  .media-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .media-thumb {
-    height: 220px;
-  }
-
-  .form-card {
-    padding: 20px;
-  }
-
-  .submit-btn {
-    width: 100%;
-  }
-
-  .hero {
-    padding-top: 70px;
-  }
-
-  .registration-cubes {
-    margin-top: 55px;
-    gap: 55px;
+  /* Show when toggled */
+  .nav-links.active {
+    display: flex;
   }
 
   /* Show hamburger */
-.hamburger {
-  display: flex;
-}
+  .hamburger {
+    display: flex;
+  }
 
-/* Hide links initially */
-.nav-links {
-  position: absolute;
-  top: 55px;
-  left: 0;
-  width: 100%;
-  background-color: #1e2023;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-  padding: 25px 0;
-  display: none;
-}
+  /* Hamburger animation */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
 
-/* Show when active */
-.nav-links.active {
-  display: flex;
-}
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
 
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
 
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
 }
