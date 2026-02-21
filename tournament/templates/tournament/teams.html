@@ -9,12 +9,9 @@
 
 {% block content %}
 <section class="coming-soon-page">
-    <h1>Coming Soon</h1>
+  <h1>Coming Soon</h1>
 </section>
-<!--  
-
-
-{% block content %}
+{% comment %}
 <main class="team-stats">
 
   <header class="team-stats-header">
@@ -24,8 +21,8 @@
 
   {% for team in teams|dictsort:"slot_number" %}
   <section class="team-block">
- 
-    
+
+
     <div class="team-header">
       <h2 class="team-name">
         {{ team.team_name }}
@@ -35,7 +32,7 @@
       </h2>
     </div>
 
-     TEAM TABLE 
+    TEAM TABLE
     <div class="team-table-wrapper">
       <table class="team-table">
         <thead>
@@ -73,7 +70,7 @@
 
 </main>
 
- ================= SORTING SCRIPT ================= 
+================= SORTING SCRIPT =================
 <script>
   document.querySelectorAll(".sortable").forEach(header => {
     let asc = true;
@@ -96,9 +93,6 @@
     });
   });
 </script>
-
-
-{% endblock %}
--->
+{% endcomment %}
 
 {% endblock %}
