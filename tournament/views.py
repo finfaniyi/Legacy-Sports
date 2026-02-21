@@ -38,10 +38,14 @@ def home(request):
     instagram_posts = []
 
     for entry in feed.entries[:6]:
-        print(entry)  # This will log full structure in Render logs
+        image_url = None
+
+        # 🔥 Use media_content directly
+        if "media_content" in entry:
+            image_url = entry.media_content[0]["url"]
 
         instagram_posts.append({
-            "image": None,
+            "image": image_url,
             "link": entry.link
         })
 
