@@ -390,3 +390,73 @@
   border: 1px solid rgba(255,255,255,0.16);
   opacity: 0.9;
 }
+
+/* ======================================
+   ABOUT PAGE – MOBILE
+====================================== */
+
+@media (max-width: 900px) {
+
+  .about-page {
+    width: 92%;
+    padding-top: 30px;
+  }
+
+  .about-hero h1 {
+    font-size: 36px;
+  }
+
+  .about-subtitle {
+    font-size: 15px;
+  }
+
+  /* SPLIT SECTIONS STACK */
+  .about-split {
+    grid-template-columns: 1fr;
+  }
+
+  .about-split h2,
+  .about-vision h2 {
+    font-size: 26px;
+  }
+
+  /* PROFILE CARD STACK */
+  .profile-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile-photo {
+    height: 260px;
+  }
+
+  .profile-name {
+    font-size: 22px;
+  }
+
+  /* TEAM GRID STACK */
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .team-photo {
+    height: 240px;
+  }
+
+  /* CREATIVE SECTION STACK */
+  .creative-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .creative-card {
+    width: 100%;
+    height: 240px;
+  }
+
+  .creative-links {
+    justify-content: flex-start;
+  }
+
+}
