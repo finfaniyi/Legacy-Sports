@@ -9,6 +9,7 @@ from django.conf import settings
 import stripe
 from django.views.decorators.csrf import csrf_exempt
 import requests
+import feedparser
 
 
 # Stripe
