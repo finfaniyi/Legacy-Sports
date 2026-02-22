@@ -49,7 +49,7 @@ def home(request):
 
     instagram_posts = []
 
-    for entry in feed.entries[:6]:
+    for entry in feed.entries[:3]:
         image_url = None
 
         # 🔥 Use media_content directly
@@ -58,7 +58,8 @@ def home(request):
 
         instagram_posts.append({
             "image": image_url,
-            "link": entry.link
+            "link": entry.link,
+            "caption": entry.title
         })
 
     return render(request, "tournament/index.html", {

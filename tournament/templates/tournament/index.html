@@ -100,11 +100,17 @@
       <div class="home-social-embeds">
         {% for post in instagram_posts %}
         <a href="{{ post.link }}" target="_blank" class="media-card">
+
           <div class="media-thumb">
             {% if post.image %}
             <img src="{% url 'instagram_image' %}?url={{ post.image|urlencode }}" />
             {% endif %}
           </div>
+
+          <p class="instagram-caption">
+            {{ post.caption|truncatechars:80 }}
+          </p>
+
         </a>
         {% endfor %}
       </div>
