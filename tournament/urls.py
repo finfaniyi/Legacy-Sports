@@ -12,6 +12,7 @@ urlpatterns = [
     path("teams/", views.team_list, name="teams"),
     path("support/", views.support, name="support"),
     path("join_team/", views.join_team, name="join_team"),
+    path("instagram-image/", views.instagram_image_proxy, name="instagram_image"),
     path("contact/", views.contact_us, name="contact_us"),
     path("registration/", views.registration, name="registration"),
     path("registration/team/", views.registration_team, name="registration_team"),

@@ -102,7 +102,7 @@
         <a href="{{ post.link }}" target="_blank" class="media-card">
           <div class="media-thumb">
             {% if post.image %}
-            <img src="{{ post.image }}" alt="Instagram Post">
+            <img src="{% url 'instagram_image' %}?url={{ post.image|urlencode }}" />
             {% endif %}
           </div>
         </a>

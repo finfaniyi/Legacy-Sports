@@ -30,6 +30,18 @@ def team_list(request):
         "teams": teams
     })
 
+def instagram_image_proxy(request):
+    image_url = request.GET.get("url")
+
+    if not image_url:
+        return HttpResponse(status=400)
+
+    response = requests.get(image_url)
+
+    return HttpResponse(
+        response.content,
+        content_type=response.headers['Content-Type']
+    )
 
 def home(request):
     feed_url = "https://rss.app/feeds/eU7lNyFNqsLEeDg7.xml"
