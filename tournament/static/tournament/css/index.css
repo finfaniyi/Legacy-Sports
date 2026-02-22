@@ -129,7 +129,6 @@
 
 
 .home-cta {
-    margin-top: 20px;
     background: #1e2023;
     color: #F7F5F2;
     padding: 24px;
@@ -242,7 +241,6 @@
   font-size: 38px;
   letter-spacing: 1.3px;
   color: #F7F5F2;
-  margin-bottom: 20px;
   text-align: center;   /* 👈 add this */
   margin-left: auto;    /* 👈 add this */
   margin-right: auto; 
@@ -320,7 +318,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .media-card {
