@@ -224,7 +224,8 @@
   font-size: 38px;
   letter-spacing: 1.3px;
   color: #F7F5F2;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   text-align: center;   /* 👈 add this */
   margin-left: auto;    /* 👈 add this */
   margin-right: auto; 
