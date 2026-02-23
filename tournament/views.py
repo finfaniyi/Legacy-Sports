@@ -215,15 +215,15 @@ def registration(request):
 
     # 🔥 REGISTRATION WINDOW CONTROL
     toronto = ZoneInfo("America/Toronto")
-    now = timezone.now()
+    now = timezone.now().astimezone(toronto)
 
-    registration_open = datetime(
-        2026, 2, 23, 7, 55, 0,
+    registration_open = datetime( #Year, Month, Day, Time, Minutes, Seconds
+        2026, 4, 1, 00, 00, 0,
         tzinfo=toronto
     )
 
     registration_close = datetime(
-        2026, 2, 23, 7, 58, 0,
+        2026, 5, 21, 00, 00, 0,
         tzinfo=toronto
     )
 
