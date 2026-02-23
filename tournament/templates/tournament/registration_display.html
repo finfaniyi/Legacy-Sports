@@ -10,58 +10,131 @@
 
 {% block content %}
 
+{% if now < registration_open %}
+
+<!-- 🔒 BEFORE OPEN -->
+<section class="hero">
+  <h1>Registration</h1>
+  <p class="subtitle">Registration opens soon</p>
+
+  <div class="registration-countdown">
+    <h2>Registration Opens In</h2>
+    <div id="countdown"
+         data-date="{{ registration_open|date:'c' }}">
+    </div>
+  </div>
+</section>
+
+
+{% elif now >= registration_open and now < registration_close %}
+
+<!-- 🔓 REGISTRATION LIVE -->
+
 {% if full %}
   <div class="error-toast">
     🚫 Registration is full. All team slots are taken.
   </div>
 {% endif %}
 
-
-<!-- HERO SECTION -->
 <section class="hero">
   <h1>Registration</h1>
   <p class="subtitle">Team captains register their full roster</p>
 
-  <div class="registration-cubes">
-    {% for team_num in "12345678" %}
-    {% if forloop.counter in taken_slots %}
-    <!-- TAKEN SLOT -->
-    <div class="cube cube-taken cube-{{ slot_colors|get_item:forloop.counter }}">
-      <div class="cube-badge">TAKEN</div>
-
-      <span>
-        TEAM {{ forloop.counter }}
-        <em>{{ slot_names|get_item:forloop.counter }}</em>
-      </span>
-
-      <div class="cube-tag">
-        {{ slot_colors|get_item:forloop.counter|upper }}
-      </div>
+  <div class="registration-countdown live">
+    <h2>Registration Closes In</h2>
+    <div id="countdown"
+         data-date="{{ registration_close|date:'c' }}">
     </div>
-
-    {% else %}
-    <!-- AVAILABLE SLOT -->
-    <a href="{% url 'registration_team' %}?slot={{ forloop.counter }}" class="cube cube-available">
-      <span>
-        TEAM {{ forloop.counter }}
-        <em>Click to register</em>
-      </span>
-
-      <div class="cube-tag">
-        AVAILABLE
-      </div>
-    </a>
-    {% endif %}
-    {% endfor %}
   </div>
 
+  <div class="registration-cubes">
+    {% for team_num in "12345678" %}
+      {% if forloop.counter in taken_slots %}
+
+      <!-- TAKEN SLOT -->
+      <div class="cube cube-taken cube-{{ slot_colors|get_item:forloop.counter }}">
+        <div class="cube-badge">TAKEN</div>
+
+        <span>
+          TEAM {{ forloop.counter }}
+          <em>{{ slot_names|get_item:forloop.counter }}</em>
+        </span>
+
+        <div class="cube-tag">
+          {{ slot_colors|get_item:forloop.counter|upper }}
+        </div>
+      </div>
+
+      {% else %}
+
+      <!-- AVAILABLE SLOT -->
+      <a href="{% url 'registration_team' %}?slot={{ forloop.counter }}"
+         class="cube cube-available">
+        <span>
+          TEAM {{ forloop.counter }}
+          <em>Click to register</em>
+        </span>
+
+        <div class="cube-tag">
+          AVAILABLE
+        </div>
+      </a>
+
+      {% endif %}
+    {% endfor %}
+  </div>
 </section>
+
+
+{% else %}
+
+<!-- ❌ AFTER CLOSE -->
+<section class="hero">
+  <h1>Registration Closed</h1>
+  <p class="subtitle">
+    Thank you for your interest. Stay tuned for the next event.
+  </p>
+</section>
+
+{% endif %}
 
 <script>
   setTimeout(() => {
     const toast = document.querySelector(".success-toast");
     if (toast) toast.remove();
   }, 3500);
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const countdown = document.getElementById("countdown");
+  if (!countdown) return;
+
+  const targetDate = new Date(countdown.dataset.date).getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      location.reload(); // reload page when timer hits zero
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    countdown.innerHTML = `
+      <div class="timer-box">${days}d</div>
+      <div class="timer-box">${hours}h</div>
+      <div class="timer-box">${minutes}m</div>
+      <div class="timer-box">${seconds}s</div>
+    `;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+});
 </script>
 
 

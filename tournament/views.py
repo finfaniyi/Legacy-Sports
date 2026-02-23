@@ -1,4 +1,5 @@
 from django.db import IntegrityError
+from datetime import datetime, timedelta
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Team, Player, Volunteerapplication, TEAM_COLORS
@@ -11,6 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 import feedparser
 import re
+
 
 
 # Stripe
@@ -210,10 +212,22 @@ def registration(request):
         slot_colors[team.slot_number] = team.team_color
         slot_names[team.slot_number] = team.team_name
 
+    # 🔥 REGISTRATION WINDOW CONTROL
+    now = timezone.now()
+
+    registration_open = timezone.now() + timedelta(minutes=3)
+    registration_close = timezone.now() + timedelta(minutes=5)
+
+    full = len(taken_slots) >= 8
+
     return render(request, "tournament/registration_display.html", {
         "taken_slots": taken_slots,
         "slot_colors": slot_colors,
         "slot_names": slot_names,
+        "now": now,
+        "registration_open": registration_open,
+        "registration_close": registration_close,
+        "full": full,
     })
 
 def registration_success(request):
