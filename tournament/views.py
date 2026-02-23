@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Team, Player, Volunteerapplication, TEAM_COLORS
@@ -215,12 +215,13 @@ def registration(request):
     # 🔥 REGISTRATION WINDOW CONTROL
     now = timezone.now()
 
-    if "test_open" not in request.session:
-        request.session["test_open"] = timezone.now() + timedelta(minutes=1)
-        request.session["test_close"] = timezone.now() + timedelta(minutes=3)
+    registration_open = timezone.make_aware(
+        datetime(2026, 2, 23, 8, 40, 0)
+    )
 
-    registration_open = request.session["test_open"]
-    registration_close = request.session["test_close"]
+    registration_close = timezone.make_aware(
+        datetime(2026, 2, 23, 8, 45, 0)
+    )
 
     full = len(taken_slots) >= 8
 
