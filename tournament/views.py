@@ -12,6 +12,7 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 import feedparser
 import re
+from zoneinfo import ZoneInfo
 
 
 
@@ -213,14 +214,17 @@ def registration(request):
         slot_names[team.slot_number] = team.team_name
 
     # 🔥 REGISTRATION WINDOW CONTROL
+    toronto = ZoneInfo("America/Toronto")
     now = timezone.now()
 
-    registration_open = timezone.make_aware(
-        datetime(2026, 2, 23, 7, 55, 0)
+    registration_open = datetime(
+        2026, 2, 23, 7, 55, 0,
+        tzinfo=toronto
     )
 
-    registration_close = timezone.make_aware(
-        datetime(2026, 2, 23, 7, 58, 0)
+    registration_close = datetime(
+        2026, 2, 23, 7, 58, 0,
+        tzinfo=toronto
     )
 
     full = len(taken_slots) >= 8
