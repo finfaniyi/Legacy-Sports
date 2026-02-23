@@ -216,11 +216,11 @@ def registration(request):
     now = timezone.now()
 
     registration_open = timezone.make_aware(
-        datetime(2026, 2, 23, 8, 40, 0)
+        datetime(2026, 2, 23, 7, 55, 0)
     )
 
     registration_close = timezone.make_aware(
-        datetime(2026, 2, 23, 8, 45, 0)
+        datetime(2026, 2, 23, 7, 58, 0)
     )
 
     full = len(taken_slots) >= 8
