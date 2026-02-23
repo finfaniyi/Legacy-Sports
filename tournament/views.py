@@ -215,8 +215,12 @@ def registration(request):
     # 🔥 REGISTRATION WINDOW CONTROL
     now = timezone.now()
 
-    registration_open = timezone.now() + timedelta(minutes=3)
-    registration_close = timezone.now() + timedelta(minutes=5)
+    if "test_open" not in request.session:
+        request.session["test_open"] = timezone.now() + timedelta(minutes=1)
+        request.session["test_close"] = timezone.now() + timedelta(minutes=3)
+
+    registration_open = request.session["test_open"]
+    registration_close = request.session["test_close"]
 
     full = len(taken_slots) >= 8
 
