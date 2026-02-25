@@ -123,9 +123,16 @@
 @media (max-width: 768px) {
   /* Adjust logo size and alignment */
   
-  .logo img {
-    max-width: 120px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+  .logo {
+  display: flex;
+  align-items: center;
+  margin-left: -10px;
+  margin-top: -8px;
+  }
+
+.logo img {
+  height: 70px;
+  width: auto;
   }
 
   /* Adjust hamburger position */
@@ -133,5 +140,10 @@
     display: flex;
     justify-content: flex-end;  /* Align hamburger to the right */
     margin-left: auto;  /* Push it to the right */
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    padding: 0;
+    border: none;
   }
 }
