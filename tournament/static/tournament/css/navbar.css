@@ -123,5 +123,10 @@
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
+    margin-right: 20px;
+  }
+
+  .logo img {
+    height: 85px; /* Adjust this value as needed for a larger logo on mobile */
   }
 }
