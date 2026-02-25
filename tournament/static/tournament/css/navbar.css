@@ -123,11 +123,14 @@
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
-    align-content: right;
+    align-items: center;
+    justify-content: flex-end;  /* Move the hamburger to the right */
+    z-index: 1100;  /* Ensure the hamburger is above other elements */
   }
 
-  .logo{
-    height: 200px;
-    width: 50px;
+  .logo {
+    height: 90px;  /* Adjust logo size */
+    width: auto;
+    margin-left: 10px;  /* Add a margin to the left */
   }
 }
