@@ -131,24 +131,15 @@
 }
 
 .logo img {
-  height: 110px;
+  height: 190px;
   width: auto;
 }
 
   /* Adjust hamburger position */
-  .hamburger {
-    display: flex;
+  .hamburger { 
+    display: flex; 
     justify-content: flex-end;  /* Align hamburger to the right */
     margin-left: auto;  /* Push it to the right */
-    width: 26px;
-    flex-direction: column;
-    width: 26px;
-    height: 20px;
-    background: none;
-    border:none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1100;
   }
 
   
