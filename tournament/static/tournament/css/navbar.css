@@ -128,12 +128,12 @@
     display: flex;
     position: absolute;
     right: 20px; /* Adjust the right value for positioning */
-    top: 18px; /* Adjust the top value to align with logo */
+    top: 20px; /* Adjust the top value to align with logo */
   }
 
   /* Logo */
   .logo {
-    height: 60px; /* Adjust this to a slightly smaller size */
+    height: 80px; /* Adjust the height to make the logo larger */
     width: auto;
     margin-left: 0;
     margin-top: 0;
