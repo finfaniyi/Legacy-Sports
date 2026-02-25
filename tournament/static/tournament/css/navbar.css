@@ -120,8 +120,22 @@
   border-radius: 3px;
   transition: all 0.3s ease;
 }
+
+
 @media (max-width: 768px) {
+  /* Hamburger */
   .hamburger {
     display: flex;
+    position: absolute;
+    right: 20px; /* Adjust the right value for positioning */
+    top: 18px; /* Adjust the top value to align with logo */
+  }
+
+  /* Logo */
+  .logo {
+    height: 60px; /* Adjust this to a slightly smaller size */
+    width: auto;
+    margin-left: 0;
+    margin-top: 0;
   }
 }
