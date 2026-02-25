@@ -121,12 +121,23 @@
   transition: all 0.3s ease;
 }
 @media (max-width: 768px) {
-  .hamburger {
+  /* Adjust logo size and alignment */
+  .logo {
     display: flex;
-    margin-right: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: auto; /* Align logo to the left */
   }
 
   .logo img {
-    height: 85px; /* Adjust this value as needed for a larger logo on mobile */
+    max-width: 120px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Adjust hamburger position */
+  .hamburger {
+    display: flex;
+    justify-content: flex-end;  /* Align hamburger to the right */
+    margin-left: auto;  /* Push it to the right */
   }
 }
