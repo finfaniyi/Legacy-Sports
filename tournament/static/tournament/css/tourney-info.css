@@ -1,232 +1,148 @@
-/* =========================
-TOURNEY INFO PAGE
-========================= */
-
-.ti-page{
-width:min(1200px,92%);
-margin:0 auto;
+.tourney-container{
+max-width:1100px;
+margin:auto;
 padding-top:90px;
-}
-
-/* HEADER */
-
-.ti-top{
-margin-bottom:30px;
-}
-
-.ti-kicker{
 font-family:'Sofia Sans',sans-serif;
-font-weight:700;
-letter-spacing:2px;
-opacity:.7;
-margin-bottom:10px;
 }
 
-.ti-title{
+
+/* HERO */
+
+.tourney-hero{
+text-align:center;
+margin-bottom:50px;
+}
+
+.tourney-hero h1{
 font-family:'Bebas Neue',sans-serif;
-font-size:54px;
+font-size:64px;
 letter-spacing:2px;
-margin-bottom:10px;
 }
 
-.ti-subtitle{
-font-family:'Sofia Sans',sans-serif;
-max-width:700px;
-line-height:1.6;
-opacity:.85;
-margin-bottom:15px;
+.tourney-hero p{
+opacity:0.8;
+margin-top:10px;
 }
 
-/* BADGES */
 
-.ti-badges{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
+/* INFO STRIP */
 
-.ti-badge{
-font-family:'Bebas Neue',sans-serif;
-letter-spacing:1.5px;
-padding:8px 12px;
-border-radius:999px;
-background:#bb080b;
-color:#F7F5F2;
-display:flex;
-gap:6px;
-font-size:15px;
-}
-
-.ti-badge span{
-opacity:.7;
-}
-
-/* LAYOUT */
-
-.ti-layout{
+.tourney-info-strip{
 display:grid;
-grid-template-columns:260px 1fr;
-gap:28px;
-align-items:start;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:60px;
 }
 
-/* SIDEBAR */
-
-.ti-side{
-position:sticky;
-top:90px;
-}
-
-.ti-side-card{
+.info-box{
 background:#151a1f;
-border-radius:18px;
-padding:16px;
+padding:20px;
+border-radius:12px;
+text-align:center;
 }
 
-.ti-side-title{
+.info-box h3{
 font-family:'Bebas Neue',sans-serif;
-letter-spacing:2px;
-margin-bottom:10px;
+letter-spacing:1px;
+margin-bottom:5px;
 }
 
-.ti-link{
-display:block;
-padding:10px;
-border-radius:10px;
-text-decoration:none;
-color:#F7F5F2;
-opacity:.85;
-font-family:'Sofia Sans',sans-serif;
-font-weight:600;
+.info-box p{
+opacity:0.9;
 }
 
-.ti-link:hover{
-background:rgba(255,255,255,.1);
-opacity:1;
+
+/* SECTION */
+
+.tourney-section{
+margin-bottom:60px;
 }
 
-/* CONTENT CARDS */
-
-.ti-card{
-background:#151a1f;
-border-radius:18px;
-padding:18px;
-margin-bottom:14px;
-color:#F7F5F2;
-}
-
-.ti-card h2{
+.tourney-section h2{
 font-family:'Bebas Neue',sans-serif;
-letter-spacing:2px;
-font-size:22px;
-margin-bottom:12px;
+font-size:32px;
+margin-bottom:20px;
 }
 
-/* GRID */
 
-.ti-grid-2{
+/* FORMAT */
+
+.format-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:20px;
+gap:25px;
 }
 
-.ti-mini{
-background:rgba(0,0,0,.18);
-border-radius:16px;
-padding:14px;
-font-family:'Sofia Sans',sans-serif;
+.format-grid div{
+background:#151a1f;
+padding:20px;
+border-radius:12px;
 }
 
-.ti-mini h3{
-font-family:'Bebas Neue',sans-serif;
-margin-bottom:6px;
-letter-spacing:1px;
-}
 
-/* LIST */
+/* SCHEDULE */
 
-.ti-list{
-padding-left:18px;
-}
-
-.ti-list li{
-margin:8px 0;
-}
-
-/* TIMELINE */
-
-.ti-timeline{
+.schedule{
 display:grid;
-gap:10px;
-}
-
-.ti-time{
-display:grid;
-grid-template-columns:70px 1fr;
 gap:12px;
-padding:12px;
-border-radius:16px;
-background:rgba(0,0,0,.18);
 }
 
-.ti-hour{
+.schedule-row{
+display:flex;
+gap:20px;
+align-items:center;
+background:#151a1f;
+padding:16px;
+border-radius:12px;
+}
+
+.schedule-row span{
 font-family:'Bebas Neue',sans-serif;
+width:80px;
 }
 
-.ti-strong{
-font-family:'Bebas Neue',sans-serif;
-letter-spacing:1px;
-margin:0;
+
+/* RULES */
+
+.rules-list{
+padding-left:20px;
+line-height:1.6;
 }
 
-.ti-muted{
-opacity:.8;
-margin-top:4px;
-}
 
 /* FAQ */
 
-.ti-faq{
+.faq-grid{
 display:grid;
-gap:12px;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
 }
 
-.ti-q{
-background:rgba(0,0,0,.18);
-padding:14px;
-border-radius:16px;
+.faq-grid div{
+background:#151a1f;
+padding:18px;
+border-radius:12px;
 }
 
-/* FOOTNOTE */
-
-.ti-footnote{
-opacity:.6;
-font-size:12px;
-margin-top:10px;
-}
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-.ti-layout{
+.tourney-info-strip{
+grid-template-columns:1fr 1fr;
+}
+
+.format-grid{
 grid-template-columns:1fr;
 }
 
-.ti-side{
-position:static;
-}
-
-.ti-grid-2{
+.faq-grid{
 grid-template-columns:1fr;
 }
 
-.ti-time{
-grid-template-columns:1fr;
-}
-
-.ti-title{
-font-size:38px;
+.tourney-hero h1{
+font-size:42px;
 }
 
 }

@@ -7,10 +7,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Legacy Sports{% endblock %}</title>
 
+  <!-- SEO -->
+  <meta name="description"
+    content="Legacy Sports Canada builds inclusive sports communities through recreational and competitive events that help people stay active, form meaningful social connections, and support mental well-being.">
+
+  <meta name="author" content="Legacy Sports Canada">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:title" content="Legacy Sports Canada">
+  <meta property="og:description"
+    content="Inclusive community sports events that bring people together through activity, connection, and fun.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://legacysportscanada.ca">
+  <meta property="og:image"
+    content="https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png">
+  <meta property="og:site_name" content="Legacy Sports Canada">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legacy Sports Canada">
+  <meta name="twitter:description"
+    content="Building inclusive sports communities through recreational and competitive events.">
+  <meta name="twitter:image"
+    content="https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png">
+
+  <!-- Organization Schema (helps Google understand your brand) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Legacy Sports Canada",
+    "areaServed":
+    "@type": "Country",
+    "name": "Canada",
+    "url": "https://legacysportscanada.ca",
+    "logo": "https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png",
+    "sameAs": [
+      "https://www.instagram.com/legacy_sports_canada/",
+      "https://www.youtube.com/@LegacySportsCanada"
+    ],
+    "description": "Legacy Sports Canada builds inclusive sports communities through recreational and competitive events that promote activity, connection, and mental well-being."
+  }
+  </script>
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- GLOBAL CSS -->
   <link rel="stylesheet" href="{% static 'tournament/css/base.css' %}">
@@ -20,8 +65,10 @@
 
   {% block page_css %}{% endblock %}
 
-  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'tournament/images/ls-favicon-32.png' %}">
   <link rel="shortcut icon" href="{% static 'tournament/images/ls-favicon-32.png' %}">
 </head>
@@ -122,12 +169,11 @@
       });
     });
   </script>
-</body>
 
 
-{% block content %}{% endblock %}
+  {% block content %}{% endblock %}
 
-{% block scripts %}{% endblock %}
+  {% block scripts %}{% endblock %}
 </body>
 
 </html>
