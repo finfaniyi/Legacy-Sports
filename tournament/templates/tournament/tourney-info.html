@@ -1,7 +1,6 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-
 {% block title %}Tournament Info | Legacy Sports{% endblock %}
 
 {% block page_css %}
@@ -10,79 +9,128 @@
 
 {% block content %}
 
-<main class="tourney-page">
+<main class="ti-page">
 
-<!-- HERO -->
-<section class="tourney-hero">
+<!-- ======================
+   HERO / PAGE HEADER
+====================== -->
 
-    <h1>Volleyball Tournament</h1>
+<header class="ti-top">
 
-    <p class="hero-sub">
-        Everything you need to know before game day.
-    </p>
+<p class="ti-kicker">LEGACY SPORTS VOLLEYBALL</p>
 
-    <div class="hero-info">
-        <div>
-            <span>Prize Pool</span>
-            <p>$400 + Trophy + Medals</p>
-        </div>
+<h1 class="ti-title">Tournament Information</h1>
 
-        <div>
-            <span>Teams</span>
-            <p>6–8 Players</p>
-        </div>
+<p class="ti-subtitle">
+Everything teams need to know before game day — format, schedule and rules.
+</p>
 
-        <div>
-            <span>Location</span>
-            <p>TBD</p>
-        </div>
+<div class="ti-badges">
 
-        <div>
-            <span>Date</span>
-            <p>TBD</p>
-        </div>
-    </div>
+<span class="ti-badge">
+<span>Prize</span> $400 • Trophy • Medals
+</span>
 
-</section>
+<span class="ti-badge">
+<span>Team Size</span> 6–8 Players
+</span>
+
+<span class="ti-badge">
+<span>Location</span> TBD
+</span>
+
+<span class="ti-badge">
+<span>Date</span> TBD
+</span>
+
+</div>
+
+</header>
+
+<!-- ======================
+   MAIN LAYOUT
+====================== -->
+
+<section class="ti-layout">
+
+<!-- SIDEBAR -->
+
+<aside class="ti-side">
+
+<div class="ti-side-card">
+
+<p class="ti-side-title">Quick Navigation</p>
+
+<a class="ti-link" href="#format">Tournament Format</a>
+<a class="ti-link" href="#schedule">Event Schedule</a>
+<a class="ti-link" href="#rules">Rules</a>
+<a class="ti-link" href="#faq">FAQ</a>
+
+</div>
+
+</aside>
+
+<!-- CONTENT -->
+
+<div class="ti-content">
 
 <!-- FORMAT -->
-<section class="tourney-section">
+
+<section id="format" class="ti-card">
 
 <h2>Tournament Format</h2>
 
-<div class="section-grid">
+<div class="ti-grid-2">
 
-<div class="info-box">
-<h3>Seeding Matches</h3>
-<p>
-All teams will play exhibition games first.
-These games determine tournament seeding.
-</p>
+<div class="ti-mini">
+
+<h3>Tournament Structure</h3>
+
+<ul class="ti-list">
+<li>All teams will first play exhibition matches to determine tournament seeding.</li>
+<li>Team rankings are based on performance during exhibition games.</li>
+<li>Teams will be seeded from 1–8 and placed into the bracket.</li>
+<li>After seeding, the tournament continues in a single-elimination format.</li>
+</ul>
+
 </div>
 
-<div class="info-box">
-<h3>Bracket</h3>
-<p>
-Teams will be seeded 1–8 and placed into
-a single-elimination bracket.
-</p>
+<div class="ti-mini">
+
+<h3>Team Requirements</h3>
+
+<ul class="ti-list">
+<li>Each team must have between 6 and 8 players.</li>
+<li>Teams may include up to 2 substitute players.</li>
+<li>This is a co-ed tournament.</li>
+<li>Each team must have at least <b>2 female players</b>.</li>
+<li>Teams not meeting requirements may forfeit their spot.</li>
+</ul>
+
 </div>
 
-<div class="info-box">
+<div class="ti-mini">
+
 <h3>Match Format</h3>
-<p>
-Best of 3 sets  
-Sets 1 & 2: First to 15 (win by 2)  
-Set 3: First to 11 (win by 2)
-</p>
+
+<ul class="ti-list">
+<li>Matches are played best-of-3 sets.</li>
+<li>Set 1 & 2: First to 15 points (win by 2).</li>
+<li>Set 3: First to 11 points (win by 2).</li>
+</ul>
+
 </div>
 
-<div class="info-box">
-<h3>Team Rules</h3>
-<p>
-6–8 players per team.  
-Minimum 2 female players required.
-</p>
+<div class="ti-mini">
+
+<h3>Fair Play</h3>
+
+<ul class="ti-list">
+<li>Each match will have a referee.</li>
+<li>A scorekeeper will track all points.</li>
+<li>Sportsmanship is expected from all teams.</li>
+</ul>
+
 </div>
 
 </div>
@@ -90,68 +138,128 @@ Minimum 2 female players required.
 </section>
 
 <!-- SCHEDULE -->
-<section class="tourney-section">
+
+<section id="schedule" class="ti-card">
 
 <h2>Event Schedule</h2>
 
-<div class="schedule">
+<div class="ti-timeline">
 
-<div class="schedule-item">
-<h4>Check-In</h4>
-<p>Team check-in and warm-up.</p>
+<div class="ti-time">
+
+<span class="ti-hour">TBD</span>
+
+<div>
+<p class="ti-strong">Check-In & Team Photos</p>
+<p class="ti-muted">Teams arrive, check in and warm up.</p>
 </div>
 
-<div class="schedule-item">
-<h4>Exhibition Games</h4>
-<p>Seeding matches begin.</p>
 </div>
 
-<div class="schedule-item">
-<h4>Playoffs</h4>
-<p>Single elimination bracket.</p>
+<div class="ti-time">
+
+<span class="ti-hour">TBD</span>
+
+<div>
+<p class="ti-strong">Exhibition Matches</p>
+<p class="ti-muted">Teams compete for tournament seeding.</p>
 </div>
 
-<div class="schedule-item">
-<h4>Finals</h4>
-<p>Championship match + awards.</p>
 </div>
+
+<div class="ti-time">
+
+<span class="ti-hour">TBD</span>
+
+<div>
+<p class="ti-strong">Elimination Bracket</p>
+<p class="ti-muted">Single elimination tournament begins.</p>
+</div>
+
+</div>
+
+<div class="ti-time">
+
+<span class="ti-hour">TBD</span>
+
+<div>
+<p class="ti-strong">Final Match & Awards</p>
+<p class="ti-muted">Championship game followed by trophy and medal ceremony.</p>
+</div>
+
+</div>
+
+</div>
+
+<p class="ti-footnote">
+*Times may shift depending on match duration.
+</p>
+
+</section>
+
+<!-- RULES -->
+
+<section id="rules" class="ti-card">
+
+<h2>Rules</h2>
+
+<div class="ti-mini">
+
+<h3>Gameplay</h3>
+
+<p class="ti-muted">
+Matches follow standard recreational volleyball rules unless stated otherwise by referees.
+</p>
 
 </div>
 
 </section>
 
 <!-- FAQ -->
-<section class="tourney-section">
+
+<section id="faq" class="ti-card">
 
 <h2>FAQ</h2>
 
-<div class="faq">
+<div class="ti-faq">
 
-<div>
-<h4>Can I register solo?</h4>
-<p>No. Teams must register together.</p>
+<div class="ti-q">
+
+<p class="ti-strong">Can I register solo?</p>
+
+<p class="ti-muted">
+No. Teams must register together with a full roster.
+</p>
+
 </div>
 
-<div>
-<h4>How many teams?</h4>
-<p>We aim for 8 teams.</p>
+<div class="ti-q">
+
+<p class="ti-strong">How many teams will participate?</p>
+
+<p class="ti-muted">
+The goal is to host 8 teams.
+</p>
+
 </div>
 
-<div>
-<h4>Where will updates be posted?</h4>
-<p>Follow us on Instagram for updates.</p>
+<div class="ti-q">
+
+<p class="ti-strong">Where can I find updates?</p>
+
+<p class="ti-muted">
+Follow <b>@legacy_sports_canada</b> on Instagram for announcements.
+</p>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- CTA -->
-<section class="register-section">
+<div class="page-bottom-space"></div>
 
-<a href="{% url 'registration' %}" class="register-btn">
-Register Your Team
-</a>
+</div>
 
 </section>
 

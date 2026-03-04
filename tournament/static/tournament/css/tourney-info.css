@@ -1,138 +1,232 @@
-.tourney-page{
-max-width:1100px;
-margin:auto;
+/* =========================
+TOURNEY INFO PAGE
+========================= */
+
+.ti-page{
+width:min(1200px,92%);
+margin:0 auto;
 padding-top:90px;
-font-family:'Sofia Sans',sans-serif;
 }
 
-/* HERO */
+/* HEADER */
 
-.tourney-hero{
-text-align:center;
-margin-bottom:60px;
-}
-
-.tourney-hero h1{
-font-family:'Bebas Neue',sans-serif;
-font-size:60px;
-letter-spacing:2px;
-}
-
-.hero-sub{
-opacity:0.8;
+.ti-top{
 margin-bottom:30px;
 }
 
-.hero-info{
+.ti-kicker{
+font-family:'Sofia Sans',sans-serif;
+font-weight:700;
+letter-spacing:2px;
+opacity:.7;
+margin-bottom:10px;
+}
+
+.ti-title{
+font-family:'Bebas Neue',sans-serif;
+font-size:54px;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+.ti-subtitle{
+font-family:'Sofia Sans',sans-serif;
+max-width:700px;
+line-height:1.6;
+opacity:.85;
+margin-bottom:15px;
+}
+
+/* BADGES */
+
+.ti-badges{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.ti-badge{
+font-family:'Bebas Neue',sans-serif;
+letter-spacing:1.5px;
+padding:8px 12px;
+border-radius:999px;
+background:#bb080b;
+color:#F7F5F2;
+display:flex;
+gap:6px;
+font-size:15px;
+}
+
+.ti-badge span{
+opacity:.7;
+}
+
+/* LAYOUT */
+
+.ti-layout{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+grid-template-columns:260px 1fr;
+gap:28px;
+align-items:start;
 }
 
-.hero-info div{
+/* SIDEBAR */
+
+.ti-side{
+position:sticky;
+top:90px;
+}
+
+.ti-side-card{
 background:#151a1f;
-padding:20px;
-border-radius:14px;
+border-radius:18px;
+padding:16px;
 }
 
-.hero-info span{
-font-size:12px;
-opacity:0.6;
-}
-
-.hero-info p{
+.ti-side-title{
 font-family:'Bebas Neue',sans-serif;
-font-size:20px;
-margin-top:5px;
+letter-spacing:2px;
+margin-bottom:10px;
 }
 
-/* SECTIONS */
-
-.tourney-section{
-margin-bottom:60px;
+.ti-link{
+display:block;
+padding:10px;
+border-radius:10px;
+text-decoration:none;
+color:#F7F5F2;
+opacity:.85;
+font-family:'Sofia Sans',sans-serif;
+font-weight:600;
 }
 
-.tourney-section h2{
+.ti-link:hover{
+background:rgba(255,255,255,.1);
+opacity:1;
+}
+
+/* CONTENT CARDS */
+
+.ti-card{
+background:#151a1f;
+border-radius:18px;
+padding:18px;
+margin-bottom:14px;
+color:#F7F5F2;
+}
+
+.ti-card h2{
 font-family:'Bebas Neue',sans-serif;
-font-size:32px;
-margin-bottom:25px;
+letter-spacing:2px;
+font-size:22px;
+margin-bottom:12px;
 }
 
 /* GRID */
 
-.section-grid{
+.ti-grid-2{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:20px;
 }
 
-.info-box{
-background:#151a1f;
-padding:20px;
-border-radius:14px;
+.ti-mini{
+background:rgba(0,0,0,.18);
+border-radius:16px;
+padding:14px;
+font-family:'Sofia Sans',sans-serif;
 }
 
-.info-box h3{
+.ti-mini h3{
 font-family:'Bebas Neue',sans-serif;
-margin-bottom:10px;
+margin-bottom:6px;
+letter-spacing:1px;
 }
 
-/* SCHEDULE */
+/* LIST */
 
-.schedule{
+.ti-list{
+padding-left:18px;
+}
+
+.ti-list li{
+margin:8px 0;
+}
+
+/* TIMELINE */
+
+.ti-timeline{
 display:grid;
-gap:15px;
+gap:10px;
 }
 
-.schedule-item{
-background:#151a1f;
-padding:18px;
-border-radius:14px;
+.ti-time{
+display:grid;
+grid-template-columns:70px 1fr;
+gap:12px;
+padding:12px;
+border-radius:16px;
+background:rgba(0,0,0,.18);
+}
+
+.ti-hour{
+font-family:'Bebas Neue',sans-serif;
+}
+
+.ti-strong{
+font-family:'Bebas Neue',sans-serif;
+letter-spacing:1px;
+margin:0;
+}
+
+.ti-muted{
+opacity:.8;
+margin-top:4px;
 }
 
 /* FAQ */
 
-.faq{
+.ti-faq{
 display:grid;
-gap:15px;
+gap:12px;
 }
 
-.faq div{
-background:#151a1f;
-padding:18px;
-border-radius:14px;
+.ti-q{
+background:rgba(0,0,0,.18);
+padding:14px;
+border-radius:16px;
 }
 
-/* REGISTER */
+/* FOOTNOTE */
 
-.register-section{
-text-align:center;
-margin-top:50px;
-}
-
-.register-btn{
-background:#bb080b;
-padding:15px 35px;
-border-radius:12px;
-text-decoration:none;
-color:white;
-font-weight:700;
+.ti-footnote{
+opacity:.6;
+font-size:12px;
+margin-top:10px;
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-.hero-info{
-grid-template-columns:1fr 1fr;
-}
-
-.section-grid{
+.ti-layout{
 grid-template-columns:1fr;
 }
 
-.tourney-hero h1{
-font-size:40px;
+.ti-side{
+position:static;
+}
+
+.ti-grid-2{
+grid-template-columns:1fr;
+}
+
+.ti-time{
+grid-template-columns:1fr;
+}
+
+.ti-title{
+font-size:38px;
 }
 
 }

@@ -2,10 +2,10 @@ from django.urls import path
 from .views import team_list
 from . import views
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import PageSitemap  # This is the correct import
+from .sitemaps import StaticViewSitemap  # This is the correct import
 
 sitemaps = {
-    'pages': PageSitemap,  # This should match the class in sitemaps.py
+    'static': StaticViewSitemap,
 }
 urlpatterns = [
     path("", views.home, name="home"),
