@@ -1,8 +1,12 @@
 from django.urls import path
 from .views import team_list
 from . import views
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import PageSitemap  # This is the correct import
 
-
+sitemaps = {
+    'pages': PageSitemap,  # This should match the class in sitemaps.py
+}
 urlpatterns = [
     path("", views.home, name="home"),
     path("about/", views.about, name="about"),
@@ -20,4 +24,6 @@ urlpatterns = [
     path("registration-success/", views.registration_success, name="registration_success"),
     path("team-brackets/", views.team_brackets, name="team_brackets"),
     path("tourney-info/", views.tourney_info, name="tourney_info"),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('page/<slug>/', views.page_detail, name='page_detail'),
 ]

@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 import stripe
+from .models import Page
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import feedparser
@@ -23,6 +24,10 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # =========================
 # PUBLIC PAGES
 # =========================
+
+def page_detail(request, slug):
+    page = Page.objects.get(slug=slug)  # Or use get_object_or_404
+    return render(request, 'page_detail.html', {'page': page})
 
 def team_list(request):
     teams = Team.objects.filter(
