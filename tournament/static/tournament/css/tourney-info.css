@@ -3,6 +3,7 @@ max-width:1100px;
 margin:auto;
 padding-top:90px;
 font-family:'Sofia Sans',sans-serif;
+color:#F7F5F2;
 }
 
 
@@ -22,9 +23,7 @@ letter-spacing:2px;
 .tourney-hero p{
 opacity:0.8;
 margin-top:10px;
-color: #F7F5F2;
 }
-
 
 /* INFO STRIP */
 
@@ -49,7 +48,7 @@ margin-bottom:5px;
 }
 
 .info-box p{
-opacity:0.9;
+opacity:0.85;
 }
 
 
