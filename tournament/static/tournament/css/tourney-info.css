@@ -45,7 +45,7 @@ margin-bottom:60px;
 
 .info-box{
 background:#bb080b;
-padding:20px;
+padding: 8px 14px;
 text-align:center;
 font-family: 'Bebas Neue', sans-serif;
 font-weight:700;
@@ -65,8 +65,6 @@ color:#F7F5F2;
 .info-box p{
 opacity:0.85;
 color:#F7F5F2;
-line-height: 1.6;
-margin-top: 10px;
 font-family:'Sofia Sans', sans-serif;
 }
 
