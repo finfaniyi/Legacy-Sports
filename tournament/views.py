@@ -162,7 +162,7 @@ def join_team(request):
             Our team will be reviewing submissions over the next few days, and we will reach out with next steps shortly.
 
             What Happens Next:
-            • Applicants may be contacted for a brief conversation.
+            • Applicants will be contacted for a brief conversation.
             • Selected volunteers will receive onboarding details and event information.
             • Briefing sessions will be scheduled prior to the tournament.
 
