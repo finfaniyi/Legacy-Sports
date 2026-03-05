@@ -15,16 +15,23 @@ margin-bottom:50px;
 }
 
 .tourney-hero h1{
-font-family:'Bebas Neue',sans-serif;
-font-size:64px;
-letter-spacing:2px;
+font-family: 'Bebas Neue', sans-serif;
+letter-spacing: 2px;
+font-weight: 700;
+font-size: 54px;
+line-height: 1.05;
+margin-bottom: 10px;
 color:#151a1f;
 }
 
 .tourney-hero p{
-opacity:0.8;
 margin-top:10px;
 color:#151a1f;
+font-family: 'Sofia Sans', sans-serif;
+max-width: 720px;
+opacity: 0.85;
+line-height: 1.6;
+font-size: 16px;
 }
 
 /* INFO STRIP */
@@ -39,20 +46,28 @@ margin-bottom:60px;
 .info-box{
 background:#bb080b;
 padding:20px;
-border-radius:18px;
 text-align:center;
+font-family: 'Bebas Neue', sans-serif;
+font-weight:700;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.18);
+color:#F7F5F2;
+outline:none;
 }
 
 .info-box h3{
 font-family:'Bebas Neue',sans-serif;
 letter-spacing:1px;
 margin-bottom:5px;
-color:#151a1f;
+color:#F7F5F2;
 }
 
 .info-box p{
 opacity:0.85;
-color:#151a1f;
+color:#F7F5F2;
+line-height: 1.6;
+margin-top: 10px;
+font-family:'Sofia Sans', sans-serif;
 }
 
 
@@ -64,9 +79,12 @@ margin-bottom:60px;
 
 .tourney-section h2{
 font-family:'Bebas Neue',sans-serif;
-font-size:32px;
-margin-bottom:20px;
 color:#151a1f;
+letter-spacing: 0.3px;
+max-width: 780px;
+line-height: 1.6;
+margin-bottom: 4px;
+font-size: 30px;
 }
 
 
