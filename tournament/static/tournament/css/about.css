@@ -86,7 +86,9 @@
 }
 
 .about-split h3{ /* Subheading inside split layout */
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 20px;
+  margin-top: 15px;
   font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 1.4px;
   font-weight: 700;
@@ -136,7 +138,7 @@
 }
 
 .about-pill{ /* Individual bullet pill */
-  font-size: 14px;
+  font-size: 16px;
   padding: 9px 12px;
   border-radius: 999px;
   background: #bb080b;
@@ -145,10 +147,11 @@
 }
 
 .about-stat{ /* Statistic card */
-  margin-bottom: 12px;
   background: #bb080b;
   border: 1px solid rgba(255,255,255,0.14);
-  margin-bottom: 10px;
+  border-radius: 16px;
+  padding: 8px 14px;
+  margin-bottom: 15px;
 }
 
 .about-stat-number{ /* Statistic number text */
@@ -158,13 +161,9 @@
 }
 
 .about-stat-label{ /* Statistic label */
-  display: inline-block;
-  padding: 10px 18px;    /* shrink pill height */
-  font-size: 14px;       /* slightly smaller text */
-  border-radius: 999px;  /* keeps pill shape */
-  color: #F7F5F2;
-  width: fit-content;    /* prevents full width stretching */
-  max-width: 100%;
+  opacity: 0.8;
+  font-size: 13px;
+  margin-top: 2px;
 }
 
 .profile-card{ /* Featured profile layout */
