@@ -85,7 +85,7 @@
   font-weight: 700;
 }
 
-.about-split h3{ /* Subheading inside split layout */
+.about-card h3 {
   font-size: 22px;
   margin-bottom: 20px;
   margin-top: 15px;
@@ -138,10 +138,11 @@
 }
 
 .about-pill{ /* Individual bullet pill */
-  font-size: 16px;
+  font-size: 17px;
   padding: 9px 12px;
   border-radius: 999px;
   background: #bb080b;
+  color: #F7F5F2;
   border: 1px solid rgba(255,255,255,0.16);
   opacity: 0.9;
 }
