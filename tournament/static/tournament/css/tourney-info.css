@@ -60,6 +60,15 @@ margin-bottom:5px;
 color:#F7F5F2;
 }
 
+.info-box a {
+  color: white;
+  text-decoration: none;
+}
+
+.info-box a:hover {
+  color: #ddd;
+}
+
 .info-box p{
 opacity:0.85;
 color:#F7F5F2;
