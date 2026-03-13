@@ -92,10 +92,7 @@ line-height: 1.6;
 margin-bottom: 4px;
 font-size: 30px;
 }
-
-
 /* FORMAT */
-
 .format-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);

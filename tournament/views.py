@@ -223,7 +223,7 @@ def registration(request):
     now = timezone.now().astimezone(toronto)
 
     registration_open = datetime( #Year, Month, Day, Time, Minutes, Seconds
-        2026, 4, 1, 00, 00, 0,
+        2026, 3, 12, 00, 00, 0,
         tzinfo=toronto
     )
 
