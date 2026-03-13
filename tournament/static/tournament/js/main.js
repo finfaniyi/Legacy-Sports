@@ -59,20 +59,20 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const sliceConfigs = {
     ".slice-1": [
-      "/static/tournament/images/dodgeball.jpg",
+      "/static/tournament/images/home_page/fin_soccer.jpg",
       "/static/tournament/images/dodgeball2.jpg",
       "/static/tournament/images/dodgeball3.jpg",
     ],
     ".slice-2": [
-      "/static/tournament/images/back1.jpg",
+      "/static/tournament/images/celina_volleyball.jpg",
       "/static/tournament/images/back2.jpg",
     ],
     ".slice-3": [
-      "/static/tournament/images/trophy-lift-overlay.webp",
+      "/static/tournament/images/val_soccer.jpg",
       "/static/tournament/images/rules.jpg",
     ],
     ".slice-4": [
-      "/static/tournament/images/volleyball.jpg",
+      "/static/tournament/images/ball_grip.jpg",
       "/static/tournament/images/back3.jpg",
     ],
   };
