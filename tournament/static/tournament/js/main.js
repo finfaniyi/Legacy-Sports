@@ -67,11 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "/static/tournament/images/home_page/dive.jpg",
     ],
     ".slice-3": [//Valerie
-      "/static/tournament/images/pointing_soccer.jpg",
+      "/static/tournament/images/home_page/pointing_soccer.jpg",
       "/static/tournament/images/home_page/val_soccer.jpg",
     ],
     ".slice-4": [ //josh
-      "/static/tournament/images/home_page/ball grip.jpg",
+      "/static/tournament/images/home_page/ball_grip.jpg",
       "/static/tournament/images/home_page/spin.jpg",
     ],
   };
