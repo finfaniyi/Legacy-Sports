@@ -108,7 +108,7 @@
 
 /* IMPORTANT: ../images because CSS is in /css folder */
 .slice-1 {
-    background-image: url("../images/home_page/fin_soccer.jpg");
+    background-image: url("../images/home_page/fin_pointing.jpg");
     clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
 }
 
@@ -118,7 +118,7 @@
 }
 
 .slice-3 {
-    background-image: url("../images/home_page/val_soccer.jpg");
+    background-image: url("../images/home_page/pointing_soccer.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
 

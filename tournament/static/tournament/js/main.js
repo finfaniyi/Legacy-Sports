@@ -58,21 +58,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const sliceConfigs = {
-    ".slice-1": [
-      "/static/tournament/images/home_page/fin_soccer.jpg",
-      "/static/tournament/images/dodgeball2.jpg",
+    ".slice-1": [//Fin
+      "/static/tournament/images/home_page/fin_pointing.jpg",
+      "/static/tournament/images/home_page/sitting.jpg",
     ],
-    ".slice-2": [
-      "/static/tournament/images/celina_volleyball.jpg",
-      "/static/tournament/images/back2.jpg",
+    ".slice-2": [ //Celina
+      "/static/tournament/images/home_page/celina_volleyball.jpg",
+      "/static/tournament/images/home_page/dive.jpg",
     ],
-    ".slice-3": [
-      "/static/tournament/images/val_soccer.jpg",
-      "/static/tournament/images/rules.jpg",
+    ".slice-3": [//Valerie
+      "/static/tournament/images/pointing_soccer.jpg",
+      "/static/tournament/images/home_page/val_soccer.jpg",
     ],
-    ".slice-4": [
-      "/static/tournament/images/ball_grip.jpg",
-      "/static/tournament/images/back3.jpg",
+    ".slice-4": [ //josh
+      "/static/tournament/images/home_page/ball grip.jpg",
+      "/static/tournament/images/home_page/spin.jpg",
     ],
   };
 
