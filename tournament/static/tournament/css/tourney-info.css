@@ -36,21 +36,18 @@ font-size: 17px;
 
 .tourney-info-strip{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+grid-template-columns:repeat(5,1fr);
+gap:16px;
 margin-bottom:60px;
 }
 
 .info-box{
 background:#bb080b;
-padding: 7px 12px;
-text-align:center;
-font-family: 'Bebas Neue', sans-serif;
-font-weight:700;
-border-radius:10px;
-border:1px solid rgba(255,255,255,.18);
-color:#F7F5F2;
-outline:none;
+padding:10px 14px;
+min-height:70px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 .info-box h3{
@@ -61,6 +58,8 @@ color:#F7F5F2;
 }
 
 .info-box a {
+  display:inline-block;
+  line-height:1.35;
   color: white;
   text-decoration: none;
 }
@@ -70,10 +69,19 @@ color:#F7F5F2;
 }
 
 .info-box p{
-opacity:0.85;
-color:#F7F5F2;
-font-family:'Sofia Sans', sans-serif;
-font-size: 17px;
+font-size:18px;
+line-height:1.4;
+}
+
+.match-format{
+margin-top:10px;
+padding-left:20px;
+}
+
+.match-format li{
+margin-bottom:6px;
+font-size:18px;
+line-height:1.5;
 }
 
 
@@ -105,7 +113,15 @@ padding:20px;
 border-radius:12px;
 }
 
+.format-grid h3{
+font-size:22px;
+margin-bottom:6px;
+}
 
+.format-grid p{
+font-size:18px;
+line-height:1.5;
+}
 /* SCHEDULE */
 
 .schedule{
