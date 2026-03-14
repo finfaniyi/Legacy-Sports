@@ -31,7 +31,7 @@
 
     <div class="home-hero-content">
       <h1>LEGACY SPORTS</h1>
-      <p>Community-driven tournaments built to feel real.</p>
+      <p>Bringing communities together through sport.</p>
     </div>
 
     <div class="home-hero-dots">
@@ -94,28 +94,38 @@
     <section class="home-social">
 
       <div class="instagram-heading">
-        <h2>OUR INSTAGRAM PAGE <a href="https://www.instagram.com/mercedesamgf1" target="_blank" class="instagram-icon"
+        <h2>OUR INSTAGRAM PAGE <a href="https://instagram.com/legacysports.ca" target="_blank" class="instagram-icon"
             aria-label="Follow Legacy Sports on Instagram">
             <i class="fab fa-instagram"></i>
           </a></h2>
       </div>
 
-      <div class="home-social-embeds">
-        {% for post in instagram_posts %}
-        <a href="{{ post.link }}" target="_blank" class="media-card">
+      <div class="instagram-grid">
 
-          <div class="media-thumb">
-            {% if post.image %}
-            <img src="{% url 'instagram_image' %}?url={{ post.image|urlencode }}" />
-            {% endif %}
-          </div>
-
-          <p class="instagram-caption">
-            {{ post.caption|truncatechars:80 }}
-          </p>
-
+        <a href="https://www.instagram.com/p/POST1/" target="_blank">
+          <img src="{% static 'images/insta1.jpg' %}" alt="Legacy Sports">
         </a>
-        {% endfor %}
+
+        <a href="https://www.instagram.com/p/POST2/" target="_blank">
+          <img src="{% static 'images/insta2.jpg' %}" alt="Legacy Sports">
+        </a>
+
+        <a href="https://www.instagram.com/p/POST3/" target="_blank">
+          <img src="{% static 'images/insta3.jpg' %}" alt="Legacy Sports">
+        </a>
+
+        <a href="https://www.instagram.com/p/POST4/" target="_blank">
+          <img src="{% static 'images/insta4.jpg' %}" alt="Legacy Sports">
+        </a>
+
+        <a href="https://www.instagram.com/p/POST5/" target="_blank">
+          <img src="{% static 'images/insta5.jpg' %}" alt="Legacy Sports">
+        </a>
+
+        <a href="https://www.instagram.com/p/POST6/" target="_blank">
+          <img src="{% static 'images/insta6.jpg' %}" alt="Legacy Sports">
+        </a>
+
       </div>
 
     </section>
