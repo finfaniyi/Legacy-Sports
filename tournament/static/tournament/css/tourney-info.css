@@ -37,24 +37,37 @@ font-size: 17px;
 .tourney-info-strip{
 display:grid;
 grid-template-columns:repeat(5,1fr);
-gap:16px;
-margin-bottom:60px;
+gap:22px;
+margin-bottom:70px;
 }
 
 .info-box{
 background:#bb080b;
-padding:10px 14px;
-min-height:70px;
+padding:18px 22px;
+text-align:center;
+font-family:'Bebas Neue',sans-serif;
+font-weight:700;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.18);
+color:#F7F5F2;
 display:flex;
 flex-direction:column;
 justify-content:center;
+align-items:center;
+min-height:95px;
+transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.info-box:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
 .info-box h3{
 font-family:'Bebas Neue',sans-serif;
 letter-spacing:1px;
-margin-bottom:5px;
-color:#F7F5F2;
+margin-bottom:6px;
+font-size:20px;
 }
 
 .info-box a {
@@ -69,6 +82,8 @@ color:#F7F5F2;
 }
 
 .info-box p{
+opacity:0.9;
+font-family:'Sofia Sans',sans-serif;
 font-size:18px;
 line-height:1.4;
 }
