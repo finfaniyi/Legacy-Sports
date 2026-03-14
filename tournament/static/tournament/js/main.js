@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ".slice-1": [
       "/static/tournament/images/home_page/fin_soccer.jpg",
       "/static/tournament/images/dodgeball2.jpg",
-      "/static/tournament/images/dodgeball3.jpg",
     ],
     ".slice-2": [
       "/static/tournament/images/celina_volleyball.jpg",
