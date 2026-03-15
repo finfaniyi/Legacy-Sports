@@ -118,24 +118,28 @@ hr {
     clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
     background-size: 105%;
     background-position: center 30%;
+    flex: 1.15;
 }
 
 .slice-2 {
     background-image: url("../images/home_page/celina_volleyball.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     background-position: center 30%;
+    flex: 1;
 }
 
 .slice-3 {
     background-image: url("../images/home_page/pointing_soccer.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     background-position: center 30%;
+    flex: 1;
 }
 
 .slice-4 {
     background-image: url("../images/home_page/ball_grip.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     background-position: center 40%;
+    flex: 1;
 }
 
 .home-cta {
