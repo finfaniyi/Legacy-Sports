@@ -86,7 +86,7 @@
 /* slices */
 .home-slices {
     display: flex;
-    height: 620px;   /* increase this */
+    height: 550px;   /* increase this */
     width: min(1600px, 90%);
     margin: 0 auto;
     overflow: hidden;
