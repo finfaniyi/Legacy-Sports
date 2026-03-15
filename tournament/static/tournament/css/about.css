@@ -39,9 +39,9 @@
   font-size: 16px;
 }
 
-.about-section{ /* Generic about section wrapper */
-  margin-top: 0.5px;
- }
+.about-section{
+  margin: 32px 0;
+}
 
 .about-section-title{ /* Section heading */
   font-family: 'Bebas Neue', sans-serif;

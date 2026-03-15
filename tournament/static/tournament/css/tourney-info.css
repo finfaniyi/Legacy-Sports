@@ -159,7 +159,11 @@ transition:transform .2s ease, box-shadow .2s ease;
 
 .schedule-row span{
 font-family:'Bebas Neue',sans-serif;
-width:80px;
+width:110px;
+color:#bb080b;
+font-weight:700;
+border-right:1px solid rgba(255,255,255,0.15);
+padding-right:16px;
 }
 
 
@@ -206,6 +210,20 @@ margin-bottom:6px;
 font-size:20px;
 margin-bottom:6px;
 }
+
+.faq-grid a{
+color:#F7F5F2;
+background:#bb080b;
+padding:4px 8px;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
+}
+
+.faq-grid a:hover{
+color:#bb080b;
+}
+
 .format-grid div:hover,
 .schedule-row:hover,
 .faq-grid div:hover{
