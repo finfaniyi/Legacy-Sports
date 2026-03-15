@@ -47,7 +47,7 @@
     z-index: 2;
     color: #fff;
     padding-left: 6rem;
-    top: 50%;
+    top: 70%;
     transform: translateY(-50%);
     max-width: 600px;
 }
@@ -103,7 +103,7 @@
     flex: 1;
     position: relative;
     background-size: auto 60%;
-    background-position: center bottom;
+    background-position: center 80%;
     background-repeat: no-repeat;
     transition: opacity 0.8s ease-in-out;
 }
