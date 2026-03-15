@@ -96,7 +96,7 @@
 
 .home-slices-wrap {
     background: #1e2023;
-    padding: 0 0 40px 0;
+    padding-bottom: 20px;
 }
 
 .slice {
@@ -223,7 +223,8 @@ hr {
 .home-video-header,
 .home-instagram-header {
   width: min(1200px, 92%);
-  margin: 0 auto 40px;
+  margin-bottom: 20px;
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
