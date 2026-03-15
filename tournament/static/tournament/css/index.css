@@ -96,7 +96,7 @@
 
 .home-slices-wrap {
     background: #1e2023;
-    padding: 15px 0 40px 0;
+    padding: 0 0 40px 0;
 }
 
 .slice {
@@ -226,6 +226,7 @@ hr {
   font-size: 38px;
   letter-spacing: 1.3px;
   color: #F7F5F2;
+  margin: 0;
   margin-top: 0px;
   margin-bottom: 10px;
   text-align: center;   /* 👈 add this */
@@ -311,8 +312,7 @@ transform:scale(1.05);
 
 .home-slices-band {
   display: flex;
-  flex-direction: column;
-  gap: 80px; /* space between slices, video, instagram */
+  flex-direction: column; /* space between slices, video, instagram */
 }
 
 /* Hero Arrows */
