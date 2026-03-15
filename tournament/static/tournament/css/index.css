@@ -138,7 +138,7 @@ hr {
 .slice-4 {
     background-image: url("../images/home_page/ball_grip.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-    background-position: center 40%;
+    background-position: center 30%;
     flex: 1;
 }
 
