@@ -90,7 +90,7 @@
     width: min(1700px, 96%);
     margin: 0 auto;
     overflow: hidden;
-    gap: 18px;
+    gap: 12px;
     border-radius: 18px;
 }
 
