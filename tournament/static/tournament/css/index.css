@@ -6,6 +6,7 @@
     height: 70vh;
     overflow: hidden;
     background: #000;
+    margin-bottom: 40px;
 }
 
 .home {
@@ -142,7 +143,6 @@
     font-weight: 700;
     font-size: 32px;
     margin-bottom: 8px;
-    margin-top: 4px;
 }
 
 .home-cta p {
