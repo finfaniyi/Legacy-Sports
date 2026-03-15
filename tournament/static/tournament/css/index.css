@@ -103,8 +103,9 @@
     flex: 1;
     position: relative;
     background-size: contain;
-    background-position: center bottom;
+    background-position: center top;
     background-repeat: no-repeat;
+    transition: opacity 0.8s ease-in-out;
 }
 
 /* IMPORTANT: ../images because CSS is in /css folder */
