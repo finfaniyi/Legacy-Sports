@@ -86,10 +86,11 @@
 /* slices */
 .home-slices {
     display: flex;
-    height: 500px;
-    width: min(1200px, 92%);
+    height: 540px;
+    width: min(1400px, 92%);
     margin: 0 auto;
     overflow: hidden;
+    gap: 18px;
     border-radius: 18px;
 }
 
