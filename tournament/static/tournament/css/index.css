@@ -3,7 +3,7 @@
 ========================= */
 .home-hero {
     position: relative;
-    min-height: 55vh;
+    height: 70vh;
     overflow: hidden;
     background: #000;
 }
@@ -47,7 +47,7 @@
     z-index: 2;
     color: #fff;
     padding-left: 6rem;
-    top: 70%;
+    top: 50%;
     transform: translateY(-50%);
     max-width: 600px;
 }
