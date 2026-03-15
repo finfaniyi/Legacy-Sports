@@ -102,7 +102,7 @@
 .slice {
     flex: 1;
     position: relative;
-    background-size: auto 88%;
+    background-size: auto 60%;
     background-position: center bottom;
     background-repeat: no-repeat;
     transition: opacity 0.8s ease-in-out;
