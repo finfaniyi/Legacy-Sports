@@ -3,7 +3,7 @@
 ========================= */
 .home-hero {
     position: relative;
-    height: 70vh;
+    min-height: 55vh;
     overflow: hidden;
     background: #000;
 }
