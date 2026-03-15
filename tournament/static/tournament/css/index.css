@@ -86,47 +86,40 @@
 /* slices */
 .home-slices {
     display: flex;
-    height: 620px;   /* increase this */
+    height: 620px;
     width: min(1400px, 94%);
     margin: 0 auto;
     overflow: hidden;
     gap: 18px;
-    border-radius: 18px;
-}
-
-.home-slices-wrap {
-    background: #1e2023;
-    padding: 40px 0;
 }
 
 .slice {
     flex: 1;
     position: relative;
-    background-size: auto 95%;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    transition: opacity 0.8s ease-in-out;
+    overflow: hidden;
 }
 
-/* IMPORTANT: ../images because CSS is in /css folder */
-.slice-1 {
-    background-image: url("../images/home_page/fin_pointing.jpg");
-    clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
+.slice img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* prevents cutting */
+    object-position: center bottom;
 }
 
-.slice-2 {
-    background-image: url("../images/home_page/celina_volleyball.jpg");
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+.slice:nth-child(1) {
+    clip-path: polygon(0 0, 97% 0, 92% 100%, 0 100%);
 }
 
-.slice-3 {
-    background-image: url("../images/home_page/pointing_soccer.jpg");
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+.slice:nth-child(2) {
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
 }
 
-.slice-4 {
-    background-image: url("../images/home_page/ball_grip.jpg");
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+.slice:nth-child(3) {
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+}
+
+.slice:nth-child(4) {
+    clip-path: polygon(5% 0, 100% 0, 100% 100%, 3% 100%);
 }
 
 .home-cta {
