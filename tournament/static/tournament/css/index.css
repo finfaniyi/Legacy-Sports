@@ -87,7 +87,7 @@
 .home-slices {
     display: flex;
     height: 540px;
-    width: min(1400px, 92%);
+    width: min(1400px, 94%);
     margin: 0 auto;
     overflow: hidden;
     gap: 18px;
@@ -103,7 +103,7 @@
     flex: 1;
     position: relative;
     background-size: contain;
-    background-position: center top;
+    background-position: center bottom;
     background-repeat: no-repeat;
     transition: opacity 0.8s ease-in-out;
 }
