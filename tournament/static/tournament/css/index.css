@@ -229,14 +229,25 @@ hr {
   align-items: center;
 }
 
-.video-center-header h2,
+.video-center-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 1.3px;
+  color: #F7F5F2;
+  margin: 0;
+  margin-top: 15px;
+  text-align: center;   /* 👈 add this */
+  margin-left: auto;    /* 👈 add this */
+  margin-right: auto; 
+}
+
 .home-instagram-header h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 38px;
   letter-spacing: 1.3px;
   color: #F7F5F2;
   margin: 0;
-  margin-top: 0px;
+  margin-top: 15px;
   margin-bottom: 10px;
   text-align: center;   /* 👈 add this */
   margin-left: auto;    /* 👈 add this */
