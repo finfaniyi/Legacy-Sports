@@ -101,8 +101,9 @@
 .slice {
     flex: 1;
     position: relative;
-    background-size: cover;
+    background-size: 95%;
     background-position: center;
+    background-repeat: no-repeat;
     transition: opacity 0.8s ease-in-out;
 }
 
@@ -124,7 +125,7 @@
 
 .slice-4 {
     background-image: url("../images/home_page/ball_grip.jpg");
-    clip-path: polygon(10% 0, 100% 0, 100% 100%, 14% 100%);
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
 
 .home-cta {
