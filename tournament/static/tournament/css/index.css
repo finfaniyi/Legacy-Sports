@@ -102,7 +102,7 @@
 .slice {
     flex: 1;
     position: relative;
-    background-size: 80%;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     transition: opacity 0.8s ease-in-out;
@@ -116,21 +116,25 @@ hr {
 .slice-1 {
     background-image: url("../images/home_page/fin_pointing.jpg");
     clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
+    background-position: center 20%;
 }
 
 .slice-2 {
     background-image: url("../images/home_page/celina_volleyball.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    background-position: center 30%;
 }
 
 .slice-3 {
     background-image: url("../images/home_page/pointing_soccer.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    background-position: center 30%;
 }
 
 .slice-4 {
     background-image: url("../images/home_page/ball_grip.jpg");
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    background-position: center 40%;
 }
 
 .home-cta {
