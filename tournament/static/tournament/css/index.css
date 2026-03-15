@@ -96,7 +96,7 @@
 
 .home-slices-wrap {
     background: #1e2023;
-    padding: 40px 0;
+    padding: 15px 0 40px 0;
 }
 
 .slice {
@@ -227,6 +227,7 @@
   text-align: center;   /* 👈 add this */
   margin-left: auto;    /* 👈 add this */
   margin-right: auto; 
+  
 }
 
 .instagram-heading {
