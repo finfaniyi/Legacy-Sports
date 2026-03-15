@@ -61,18 +61,22 @@ document.addEventListener("DOMContentLoaded", () => {
     ".slice-1": [//Fin
       "/static/tournament/images/home_page/fin_pointing.jpg",
       "/static/tournament/images/home_page/sitting.jpg",
+      "/static/tournament/images/home_page/fin_val.jpg",
     ],
     ".slice-2": [ //Celina
       "/static/tournament/images/home_page/celina_volleyball.jpg",
       "/static/tournament/images/home_page/dive.jpg",
+      "/static/tournament/images/home_page/celina_pointing.jpg",
     ],
     ".slice-3": [//Valerie
       "/static/tournament/images/home_page/pointing_soccer.jpg",
       "/static/tournament/images/home_page/val_soccer.jpg",
+      "/static/tournament/images/home_page/val_pose.jpg",
     ],
     ".slice-4": [ //josh
       "/static/tournament/images/home_page/ball_grip.jpg",
       "/static/tournament/images/home_page/spin.jpg",
+      "/static/tournament/images/home_page/josh_crush.jpg",
     ],
   };
 
