@@ -139,8 +139,9 @@
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1.5px;
     font-weight: 700;
-    font-size: 42px;
+    font-size: 32px;
     margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .home-cta p {
