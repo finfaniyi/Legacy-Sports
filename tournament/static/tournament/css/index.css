@@ -87,7 +87,7 @@
 .home-slices {
     display: flex;
     height: 580px;   /* increase this */
-    width: min(1600px, 94%);
+    width: min(1600px, 90%);
     margin: 0 auto;
     overflow: hidden;
     gap: 7px;
