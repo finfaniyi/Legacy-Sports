@@ -185,15 +185,6 @@
   border: 1px solid rgba(255,255,255,0.16);
   background: rgba(0,0,0,0.20);
   height: 320px;
-  position: relative;
-}
-
-.profile-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(187,8,11,0.15), transparent 70%);
-  pointer-events: none;
 }
 
 .profile-photo img{ /* Profile image styling */
