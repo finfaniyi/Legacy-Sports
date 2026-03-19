@@ -185,6 +185,15 @@
   border: 1px solid rgba(255,255,255,0.16);
   background: rgba(0,0,0,0.20);
   height: 320px;
+  position: relative;
+}
+
+.profile-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(187,8,11,0.15), transparent 70%);
+  pointer-events: none;
 }
 
 .profile-photo img{ /* Profile image styling */
@@ -210,9 +219,30 @@
   font-weight: 700;
 }
 
-.profile-bio{ /* Profile description */
-  opacity: 0.85; 
-  line-height: 1.6; 
+.profile-bio {
+  opacity: 0.9;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-bio p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 15px;
+}
+
+.highlight-line {
+  font-size: 18px;
+  font-weight: 700;
+  color: #bb080b;
+  margin-top: 8px;
+}
+
+.profile-bio strong {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .profile-tags{ /* Profile tag container */
