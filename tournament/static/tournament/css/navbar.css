@@ -34,13 +34,9 @@
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 90px;
+  gap: clamp(20px, 5vw, 60px);
   margin: 0 auto;
   padding: 0;
-}
-
-.nav-spacer {
-  width: 175px; /* MUST roughly match logo width */
 }
 
 .nav-links a { /* Styles individual navigation links (font, size, spacing, color) */
@@ -126,9 +122,7 @@
   /* Hamburger */
   .hamburger {
     display: flex;
-    position: absolute;
-    right: 20px; /* Adjust the right value for positioning */
-    top: 20px; /* Adjust the top value to align with logo */
+    margin-left: auto;
   }
 
   /* Logo */
@@ -138,4 +132,35 @@
     margin-left: 0;
     margin-top: 0;
   }
+}
+
+/* =========================
+   HAMBURGER ANIMATION
+========================= */
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* =========================
+   DROPDOWN (MOBILE)
+========================= */
+
+.dropdown ul {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.dropdown.active ul {
+  display: flex;
 }
