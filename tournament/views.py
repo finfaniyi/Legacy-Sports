@@ -271,6 +271,7 @@ def waiver(request):
 def registration_team(request):
 
     slot_value = request.GET.get("slot")
+    spectator_range = request.POST.get("spectator_range")
 
     if not slot_value:
         return redirect("/registration/")
@@ -331,6 +332,7 @@ def registration_team(request):
             player_count=player_count,
             payment_status="pending",
             waiver_agreed=True,
+            spectator_range=spectator_range,
             waiver_timestamp=timezone.now(),
         )
 

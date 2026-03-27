@@ -68,6 +68,8 @@ class Team(models.Model):
         choices=PAYMENT_STATUS,
         default="pending"
     )
+    
+    spectator_range = models.CharField(max_length=10, blank=True)
 
     def __str__(self):
         return self.team_name
