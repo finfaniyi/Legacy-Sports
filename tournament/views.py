@@ -499,40 +499,98 @@ def stripe_webhook(request):
         except Team.DoesNotExist:
             return JsonResponse({"error": "Team not found"}, status=400)
 
-        # Captain confirmation
-        send_mail(
-            subject="Legacy Sports Team Registration Confirmed ⚡",
-            message=f"""
-            Hi {team.captain_name},
+        # Player confirmation
+        for player in team.players.all():
+            if player.email:  # make sure email exists
+                send_mail(
+                    subject="Legacy Sports Volleyball Tournament Confirmation 🏐⚡",
+                    message=f"""
+                        Hello,
 
-            Your team "{team.team_name}" is officially registered for the Tournament🎉.
+                        You’ve been registered for the Legacy Sports volleyball tournament!
 
-            Team Summary:
-            • Team name: {team.team_name}
-            • Slot: {team.slot_number}
-            • Team Color: {team.team_color}
-            • Total players in your team: {team.player_count}
-            
-            Event Details:
-            Date: TBD
-            Location: TBD
-            Check-in: 10:30 AM
-            Games Begin: 11:00 AM
+                        Please complete your waiver form:
+                        https://legacysportscanada.ca/waiver
+                        """,
+                    html_message=f"""
+                    <p>Hello,</p>
 
-            Next Steps:
-            • Make sure you and your teammate read the rules before game day.
-            • https://legacysportscanada.ca/tourney-info/  - Rules
-            
-            
-            If you have any questions, contact us at:
-            legacysportscanada@gmail.com 
+                    <p>
+                    Your team "<strong>{team.team_name}</strong>" is officially registered for the Legacy Sports volleyball tournament!
+                    </p>
 
-            — Legacy Sports Canada
-            """,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[team.captain_email],
-            fail_silently=False,
-         )
+                    <p>
+                    We are excited to have you join us for a fun day of volleyball, teamwork, and meeting new people.
+                    </p>
+
+                    <p>
+                    Before you arrive, please complete the 
+                    <a href="https://legacysportscanada.ca/waiver" target="_blank">
+                    waiver form
+                    </a> 
+                    to help speed up the check-in process. All participants should be ready to show proof of waiver completion, valid ID, and their ticket or registration confirmation at check-in.
+                    </p>
+
+                    <p><strong>Team details:</strong></p>
+                    <p>
+                    • Team name: {team.team_name}<br>
+                    • Team Color: {team.team_color}<br>
+                    • Total players in your team: {team.player_count}
+                    </p>
+
+                    <p><strong>Location:</strong><br>
+                    ACE Active Zone, Unit 5, 7093 Torbram Rd, Mississauga, ON
+                    </p>
+
+                    <p><strong>Arrival:</strong><br>
+                    The tournament begins at 10:30 AM, but we strongly recommend arriving at least 15 minutes early for registration and check-in.
+                    </p>
+
+                    <p>
+                    Please make sure your full team is checked in before your first game starts. Late arrivals may impact the tournament schedule for everyone.
+                    </p>
+
+                    <p>
+                    No entry will be permitted after the tournament start time, so please plan accordingly and allow extra time for traffic, parking, and check-in.
+                    </p>
+
+                    <p><strong>Parking:</strong><br>
+                    There is plenty of free on-site parking available for guests and families.
+                    </p>
+
+                    <p><strong>Bleacher seating:</strong><br>
+                    Comfortable bleacher seating will be available for supporters to watch the games.
+                    </p>
+
+                    <p><strong>Age Requirement:</strong><br>
+                    This event is for ages 16 - 25.
+                    </p>
+
+                    <strong>What to Bring:</strong>
+                    <br>
+                    <ul>
+                        <li>Valid ID</li>
+                        <li>Ticket or registration confirmation</li>
+                        <li>Signed waiver</li>
+                        <li>Water bottle</li>
+                        <li>Athletic clothing in your team’s colour</li>
+                        <li>Indoor running shoes</li>
+                        <li>Any snacks you may want throughout the day</li>
+                    </ul>
+                    <p>
+                    Got last-minute questions? Email us at legacysportscanada@gmail.com.
+                    </p>
+
+                    <p>
+                    See you soon!<br><br>
+                    Legacy Sports
+                    </p>
+                    """,
+                    
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[player.email],
+                    fail_silently=False,
+                )
 
         # Admin notification
         send_mail(
