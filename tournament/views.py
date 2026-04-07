@@ -287,13 +287,6 @@ def registration_team(request):
 
     if request.method == "POST":
 
-        if not request.POST.get("agree_waiver"):
-            return render(request, "tournament/registration-form.html", {
-                "error": "You must agree to the waiver.",
-                "taken_colors": taken_colors,
-                "team_colors": TEAM_COLORS,
-            })
-
         team_color = request.POST.get("team_color")
 
         if Team.objects.filter(slot_number=slot).exists():
