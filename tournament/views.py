@@ -525,6 +525,11 @@ def stripe_webhook(request):
                         https://legacysportscanada.ca/waiver
                         """,
                     html_message=f"""
+                    <p style="text-align:center; margin-bottom:20px;">
+                        <img src="https://i.imgur.com/eiG0G9I.png"
+                            alt="Legacy Sports Logo"
+                            style="width:140px; height:auto;">
+                    </p>
                     <p>Hello,</p>
 
                     <p>
@@ -544,7 +549,6 @@ def stripe_webhook(request):
                     </p>
 
                     <p><strong>Team details:</strong></p>
-                    <p>
                     • Team name: {team.team_name}<br>
                     • Team Color: {team.team_color}<br>
                     • Total players in your team: {team.player_count}
@@ -595,7 +599,7 @@ def stripe_webhook(request):
 
                     <p>
                     See you soon!<br><br>
-                    Legacy Sports
+                    - Legacy Sports
                     </p>
                     """,
                     
