@@ -468,6 +468,7 @@ def registration_team(request):
 
 @csrf_exempt
 def stripe_webhook(request):
+    print("WEBHOOK HIT")
     payload = request.body
     sig_header = request.META.get("HTTP_STRIPE_SIGNATURE")
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
@@ -484,6 +485,20 @@ def stripe_webhook(request):
         metadata = session.get("metadata", {})
 
         team_id = metadata.get("team_id")
+
+        if not team_id:
+            print("❌ No team_id in metadata")
+            return JsonResponse({"error": "Missing team_id"}, status=400)
+
+        try:
+            team = Team.objects.get(id=team_id)
+        except Team.DoesNotExist:
+            print(f"❌ Team not found: {team_id}")
+            return JsonResponse({"error": "Team not found"}, status=400)
+
+        # ✅ Only runs if valid
+        team.payment_status = "paid"
+        team.save()
 
         try:
             team = Team.objects.get(id=team_id)
