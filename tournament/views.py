@@ -223,7 +223,7 @@ def registration(request):
     now = timezone.now().astimezone(toronto)
 
     registration_open = datetime( #Year, Month, Day, Time, Minutes, Seconds
-        2026, 4, 1, 00, 00, 0,
+        2026, 5, 1, 00, 00, 0,
         tzinfo=toronto
     )
 
@@ -429,7 +429,7 @@ def registration_team(request):
             )
 
         # 💰 Stripe
-        price_per_player = 150
+        price_per_player = 1500
         total_amount = player_count * price_per_player
 
         checkout_session = stripe.checkout.Session.create(
