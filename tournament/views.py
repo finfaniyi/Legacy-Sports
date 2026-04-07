@@ -528,7 +528,8 @@ def stripe_webhook(request):
                     <p style="text-align:center; margin-bottom:20px;">
                         <img src="https://i.imgur.com/eiG0G9I.png"
                             alt="Legacy Sports Logo"
-                            style="width:140px; height:auto;">
+                            width="220"
+                            style="width:250px; max-width:100%; height:auto; display:block; margin:auto;">
                     </p>
                     <p>Hello,</p>
 
