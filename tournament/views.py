@@ -207,7 +207,7 @@ def join_team(request):
 # =========================
 
 def registration(request):
-    teams = Team.objects.filter(payment_status="paid")
+    teams = Team.objects.all()
 
     taken_slots = set()
     slot_colors = {}
@@ -494,7 +494,7 @@ def stripe_webhook(request):
 
         # Player confirmation
         for player in team.players.all():
-            if player.email:  # make sure email exists
+            if player.contact_email:  # make sure email exists
                 send_mail(
                     subject="Legacy Sports Volleyball Tournament Confirmation 🏐⚡",
                     message=f"""
@@ -581,7 +581,7 @@ def stripe_webhook(request):
                     """,
                     
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[player.email],
+                    recipient_list=[player.contact_email],
                     fail_silently=False,
                 )
 
