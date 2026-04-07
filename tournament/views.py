@@ -436,7 +436,7 @@ def registration_team(request):
             )
 
         # 💰 Stripe
-        price_per_player = 1500
+        price_per_player = 150
         total_amount = player_count * price_per_player
 
         checkout_session = stripe.checkout.Session.create(
