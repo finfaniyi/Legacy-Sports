@@ -484,7 +484,7 @@ def stripe_webhook(request):
         session = event["data"]["object"]
         metadata = session.metadata or {}
 
-        team_id = metadata.get("team_id")
+        team_id = metadata["team_id"] if "team_id" in metadata else None
         
         if not team_id:
             print("❌ Missing team_id in metadata:", metadata)
