@@ -543,7 +543,7 @@ def stripe_webhook(request):
 
                     <p>
                     Before you arrive, please complete the 
-                    <a href="https://legacysportscanada.ca/waiver" target="_blank">
+                    <a href="https://waiver.smartwaiver.com/w/qigvhu5mhwgf5q9khffpb3/web/" target="_blank">
                     waiver form
                     </a> 
                     to help speed up the check-in process. All participants should be ready to show proof of waiver completion, valid ID, and their ticket or registration confirmation at check-in.
