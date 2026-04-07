@@ -482,9 +482,13 @@ def stripe_webhook(request):
 
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
-        metadata = session.get("metadata", {})
+        metadata = session.metadata or {}
 
         team_id = metadata.get("team_id")
+        
+        if not team_id:
+            print("❌ Missing team_id in metadata:", metadata)
+            return JsonResponse({"error": "Missing team_id"}, status=400)
 
         if not team_id:
             print("❌ No team_id in metadata")
