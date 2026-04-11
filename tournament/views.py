@@ -150,35 +150,56 @@ def join_team(request):
         # Confirmation to volunteer
         send_mail(
             subject="📩 Legacy Sports Volunteer Application Received ⚡",
-            message=f"""
-            
-            Hi {first_name},
+            message="Plain text fallback",
+            html_message=f"""
+            <p style="text-align:center; margin-bottom:20px;">
+                <img src="https://i.imgur.com/eiG0G9I.png"
+                    alt="Legacy Sports Logo"
+                    width="220"
+                    style="width:220px; max-width:100%; height:auto; display:block; margin:auto;">
+            </p>
 
-            Thank you for applying to join Legacy Sports Team.
-            We’re excited that you’re interested in being part of what we’re building.
-            
-            You applied for: {role}
+            <p>Hi {first_name},</p>
 
-            Our team will be reviewing submissions over the next few days, and we will reach out with next steps shortly.
+            <p>
+            Thank you for applying to join the <strong>Legacy Sports team</strong>!
+            </p>
 
-            What Happens Next:
-            • Applicants will be contacted for a brief conversation.
-            • Selected volunteers will receive onboarding details and event information.
-            • Briefing sessions will be scheduled prior to the tournament.
+            <p>
+            You applied for: <strong>{role}</strong>
+            </p>
 
-            We truly appreciate your interest in helping us build something meaningful in the community.
+            <p>
+            Our team will be reviewing applications over the next few days, and selected applicants will be contacted shortly.
+            </p>
 
-            If you have any questions, feel free to reach out at: 
-            
+            <p><strong>Next Steps:</strong></p>
+
+            <ul>
+                <li>Applicants will be contacted for a brief interview</li>
+                <li>Selected volunteers will receive more information about their role, tournament details, and any meetings that will take place before the event</li>
+            </ul>
+
+            <p>
+            We truly appreciate your interest in helping us build something meaningful in the community :)
+            </p>
+
+            <p>
+            If you have any questions, please feel free to reach out to us at:<br>
+            <a href="mailto:legacysportscanada@gmail.com">
             legacysportscanada@gmail.com
-        
-            — Legacy Sports Canada
+            </a>
+            </p>
+
+            <p>
+            <strong>- Legacy Sports</strong>
+            </p>
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[email],
             fail_silently=False,
         )
-
+        
         # Notify admin
         send_mail(
             subject="🚨 New Volunteer Application - Legacy Sports",
