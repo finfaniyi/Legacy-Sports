@@ -179,6 +179,12 @@
   padding: 22px;
 }
 
+.highlight-line {
+  font-weight: 700;
+  font-size: 20px;
+  color: #bb080b;
+}
+
 .profile-photo {
   border-radius: 16px;
   overflow: hidden;
