@@ -234,7 +234,10 @@ def join_team(request):
 # =========================
 
 def registration(request):
-    teams = Team.objects.all()
+    Team.objects.filter(
+        payment_status="pending"
+    ).delete()
+    teams = Team.objects.filter(payment_status="paid")
 
     taken_slots = set()
     slot_colors = {}
