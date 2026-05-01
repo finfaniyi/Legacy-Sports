@@ -531,8 +531,7 @@ def stripe_webhook(request):
             team.save()
         except Team.DoesNotExist:
             return JsonResponse({"error": "Team not found"}, status=400)
-
-        # Player confirmation
+# Player confirmation
         for player in team.players.all():
             if player.contact_email:  # make sure email exists
                 send_mail(
