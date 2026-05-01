@@ -179,42 +179,46 @@
   </div>
 </section>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector("form");
 
     if (form) {
 
-        // SAVE
-        ["input", "change"].forEach(eventType => {
-            form.addEventListener(eventType, () => {
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-                localStorage.setItem("registrationData", JSON.stringify(data));
-            });
+      // SAVE
+      ["input", "change"].forEach(eventType => {
+        form.addEventListener(eventType, () => {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          localStorage.setItem("registrationData", JSON.stringify(data));
         });
+      });
 
-        // RESTORE
-        const saved = localStorage.getItem("registrationData");
+      // RESTORE
+      const saved = localStorage.getItem("registrationData");
 
-        if (saved) {
-            const data = JSON.parse(saved);
+      if (saved) {
+        const data = JSON.parse(saved);
 
-            Object.keys(data).forEach(key => {
-                const field = document.querySelector(`[name="${key}"]`);
-                if (!field) return;
+        Object.keys(data).forEach(key => {
+          const fields = document.querySelectorAll(`[name="${key}"]`);
 
-                if (field.type === "radio" || field.type === "checkbox") {
-                    const option = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
-                    if (option) option.checked = true;
-                } else {
-                    field.value = data[key];
-                }
-            });
-        }
+          fields.forEach(field => {
+
+            if (field.type === "radio" || field.type === "checkbox") {
+              if (field.value === data[key]) {
+                field.checked = true;
+              }
+            } else {
+              field.value = data[key];
+            }
+
+          });
+        });
+      }
     }
 
-});
+  });
 </script>
 
 {% endblock %}
