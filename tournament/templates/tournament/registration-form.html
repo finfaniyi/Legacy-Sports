@@ -183,23 +183,24 @@
   const slot = params.get("slot") || "default";
 
   const storageKey = `registrationData_slot_${slot}`;
+
   document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector("form");
 
     if (form) {
 
-      // SAVE
+      // ✅ SAVE
       ["input", "change"].forEach(eventType => {
         form.addEventListener(eventType, () => {
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
-          localStorage.getItem("registrationData")
+          localStorage.setItem(storageKey, JSON.stringify(data));
         });
       });
 
-      // RESTORE
-      const saved = localStorage.getItem("registrationData");
+      // ✅ RESTORE
+      const saved = localStorage.getItem(storageKey);
 
       if (saved) {
         const data = JSON.parse(saved);
@@ -208,7 +209,6 @@
           const fields = document.querySelectorAll(`[name="${key}"]`);
 
           fields.forEach(field => {
-
             if (field.type === "radio" || field.type === "checkbox") {
               if (field.value === data[key]) {
                 field.checked = true;
@@ -216,7 +216,6 @@
             } else {
               field.value = data[key];
             }
-
           });
         });
       }
