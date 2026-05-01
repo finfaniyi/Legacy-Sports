@@ -309,7 +309,8 @@ def registration_team(request):
         return redirect("/registration/")
 
     taken_colors = set(
-        Team.objects.values_list("team_color", flat=True)
+        Team.objects.filter(payment_status="paid")
+        .values_list("team_color", flat=True)
     )
 
     if request.method == "POST":
