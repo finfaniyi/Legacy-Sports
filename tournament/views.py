@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Team, Player, Volunteerapplication, TEAM_COLORS
@@ -24,6 +24,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # =========================
 # PUBLIC PAGES
 # =========================
+
 
 def page_detail(request, slug):
     page = Page.objects.get(slug=slug)  # Or use get_object_or_404
@@ -312,6 +313,12 @@ def registration_team(request):
     )
 
     if request.method == "POST":
+        
+        # ✅ CLEAN OLD PENDING TEAMS HERE
+        Team.objects.filter(
+            payment_status="pending",
+            waiver_timestamp__lt=timezone.now() - timedelta(minutes=10)
+        ).delete()
 
         team_color = request.POST.get("team_color")
 
@@ -319,8 +326,10 @@ def registration_team(request):
 
         if existing_team:
             if existing_team.payment_status == "pending":
-                # ⏳ If older than 10 minutes → delete it
-                if timezone.now() - existing_team.waiver_timestamp > timezone.timedelta(minutes=10):
+                if (
+                    existing_team.captain_email == request.POST.get("captain_email")
+                    or timezone.now() - existing_team.waiver_timestamp > timezone.timedelta(minutes=10)
+                ):
                     existing_team.delete()
                 else:
                     return redirect("/registration/?error=slot_taken")
@@ -343,9 +352,16 @@ def registration_team(request):
 
         if existing_team:
             if existing_team.payment_status == "pending":
+                # 🔥 allow retry by deleting old pending team
                 existing_team.delete()
             else:
-                return render(...)
+                return render(request, "tournament/registration-form.html", {
+                    "error": "This email has already registered a team.",
+                    "taken_colors": taken_colors,
+                    "team_colors": TEAM_COLORS,
+                    "slot": slot,
+                    "form_data": request.POST,
+                })
 
         # CREATE TEAM (PENDING)
         team = Team.objects.create(
