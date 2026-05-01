@@ -495,9 +495,10 @@ def registration_team(request):
             }],
             mode="payment",
             success_url=request.build_absolute_uri("/registration-success/?session_id={CHECKOUT_SESSION_ID}"),
-            cancel_url=request.build_absolute_uri("/registration/"),
+            cancel_url=request.build_absolute_uri(f"/registration/team/?slot={slot}"),
             metadata={
-                "team_id": team.id
+                "team_id": team.id,
+                "slot": slot
             }
         )
 
