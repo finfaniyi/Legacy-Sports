@@ -315,8 +315,17 @@ def registration_team(request):
 
         team_color = request.POST.get("team_color")
 
-        if Team.objects.filter(slot_number=slot).exists():
-            return redirect("/registration/?error=slot_taken")
+        existing_team = Team.objects.filter(slot_number=slot).first()
+
+        if existing_team:
+            if existing_team.payment_status == "pending":
+                # ⏳ If older than 10 minutes → delete it
+                if timezone.now() - existing_team.waiver_timestamp > timezone.timedelta(minutes=10):
+                    existing_team.delete()
+                else:
+                    return redirect("/registration/?error=slot_taken")
+            else:
+                return redirect("/registration/?error=slot_taken")
 
         if Team.objects.filter(team_color=team_color).exists():
             return render(request, "tournament/registration-form.html", {
@@ -330,15 +339,13 @@ def registration_team(request):
 
         captain_email = request.POST.get("captain_email")
 
-        if Team.objects.filter(captain_email=captain_email).exists():
-            return render(request, "tournament/registration-form.html", {
-                "error_field": "captain_email",
-                "error_message": "This email has already registered a team.",
-                "taken_colors": taken_colors,
-                "team_colors": TEAM_COLORS,
-                "slot": slot,
-                "form_data": request.POST,
-            })
+        existing_team = Team.objects.filter(captain_email=captain_email).first()
+
+        if existing_team:
+            if existing_team.payment_status == "pending":
+                existing_team.delete()
+            else:
+                return render(...)
 
         # CREATE TEAM (PENDING)
         team = Team.objects.create(
@@ -472,7 +479,7 @@ def registration_team(request):
             }],
             mode="payment",
             success_url=request.build_absolute_uri("/registration-success/?session_id={CHECKOUT_SESSION_ID}"),
-            cancel_url=request.build_absolute_uri("/registration/?cancelled=true"),
+            cancel_url=request.build_absolute_uri("/registration/"),
             metadata={
                 "team_id": team.id
             }
@@ -530,12 +537,6 @@ def stripe_webhook(request):
         team.payment_status = "paid"
         team.save()
 
-        try:
-            team = Team.objects.get(id=team_id)
-            team.payment_status = "paid"
-            team.save()
-        except Team.DoesNotExist:
-            return JsonResponse({"error": "Team not found"}, status=400)
 # Player confirmation
         for player in team.players.all():
             if player.contact_email:  # make sure email exists
