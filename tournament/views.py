@@ -162,38 +162,43 @@ def join_team(request):
             <p>Hi {first_name},</p>
 
             <p>
-            Thank you for applying to join the <strong>Legacy Sports team</strong>!
+            Thank you for applying to join the Legacy Sports team - we’re excited to learn more about you</strong>!
             </p>
 
             <p>
             You applied for: <strong>{role}</strong>
             </p>
-
+            
             <p>
-            Our team will be reviewing applications over the next few days, and selected applicants will be contacted shortly.
+            As part of our selection process, all applicants are invited to complete a mandatory brief interview. You can schedule your interview using the booking link below:
+            https://calendar.app.google/Q389hRux7ZpYAhUy9 
             </p>
 
-            <p><strong>Next Steps:</strong></p>
+            <p>
+            Please select a time that works best for you. If none of the available times fit your schedule, feel free to reach out to us at legacysportscanada@gmail.com, and we’ll be happy to coordinate an alternative.
+            </p>
 
+            <p><strong>Important Dates:</strong></p>
             <ul>
-                <li>Applicants will be contacted for a brief interview</li>
-                <li>Selected volunteers will receive more information about their role, tournament details, and any meetings that will take place before the event</li>
+                <li>Application deadline: Monday, May 11th</li>
+                <li>Final day for interviews: Friday, May 15th</li>
+                <li>Decisions will be shared by Monday, May 18th</li>
             </ul>
 
             <p>
-            We truly appreciate your interest in helping us build something meaningful in the community :)
+            Successful applicants will then be invited to a short welcome call, where we’ll introduce the team and share next steps. A follow-up meeting will be scheduled to go over specific roles, responsibilities, and tournament details.
             </p>
-
+            
             <p>
-            If you have any questions, please feel free to reach out to us at:<br>
-            <a href="mailto:legacysportscanada@gmail.com">
-            legacysportscanada@gmail.com
-            </a>
+            We truly appreciate your interest in being part of Legacy Sports and helping us build something meaningful in the community.
             </p>
-
+            
+            <p>If you have any questions, don’t hesitate to reach out!</p>
+            
             <p>
-            <strong>- Legacy Sports</strong>
+            <strong>Best,</strong>
             </p>
+            <p>Legacy Sports Team</p>
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[email],
