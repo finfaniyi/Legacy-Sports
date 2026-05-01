@@ -179,49 +179,78 @@
   </div>
 </section>
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const slot = params.get("slot") || "default";
-
-  const storageKey = `registrationData_slot_${slot}`;
-
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector("form");
 
-    if (form) {
+    // ✅ GET SLOT (for per-slot storage)
+    const params = new URLSearchParams(window.location.search);
+    const slot = params.get("slot") || "default";
+    const storageKey = `registrationData_slot_${slot}`;
 
-      // ✅ SAVE
-      ["input", "change"].forEach(eventType => {
-        form.addEventListener(eventType, () => {
-          const formData = new FormData(form);
-          const data = Object.fromEntries(formData.entries());
-          localStorage.setItem(storageKey, JSON.stringify(data));
-        });
-      });
+    // ✅ SUBSTITUTE ELEMENTS
+    const rosterSelect = document.getElementById("rosterSize");
+    const sub1 = document.getElementById("sub-1");
+    const sub2 = document.getElementById("sub-2");
 
-      // ✅ RESTORE
-      const saved = localStorage.getItem(storageKey);
+    function updateSubs() {
+        const size = parseInt(rosterSelect.value);
 
-      if (saved) {
-        const data = JSON.parse(saved);
+        if (size >= 7) {
+            sub1.style.display = "block";
+        } else {
+            sub1.style.display = "none";
+        }
 
-        Object.keys(data).forEach(key => {
-          const fields = document.querySelectorAll(`[name="${key}"]`);
-
-          fields.forEach(field => {
-            if (field.type === "radio" || field.type === "checkbox") {
-              if (field.value === data[key]) {
-                field.checked = true;
-              }
-            } else {
-              field.value = data[key];
-            }
-          });
-        });
-      }
+        if (size === 8) {
+            sub2.style.display = "block";
+        } else {
+            sub2.style.display = "none";
+        }
     }
 
-  });
+    if (form) {
+
+        // ✅ SAVE FORM DATA
+        ["input", "change"].forEach(eventType => {
+            form.addEventListener(eventType, () => {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                localStorage.setItem(storageKey, JSON.stringify(data));
+            });
+        });
+
+        // ✅ RESTORE FORM DATA
+        const saved = localStorage.getItem(storageKey);
+
+        if (saved) {
+            const data = JSON.parse(saved);
+
+            Object.keys(data).forEach(key => {
+                const fields = document.querySelectorAll(`[name="${key}"]`);
+
+                fields.forEach(field => {
+                    if (field.type === "radio" || field.type === "checkbox") {
+                        if (field.value === data[key]) {
+                            field.checked = true;
+                        }
+                    } else {
+                        field.value = data[key];
+                    }
+                });
+            });
+        }
+
+        // ✅ SUBSTITUTES (LIVE CHANGE)
+        if (rosterSelect) {
+            rosterSelect.addEventListener("change", updateSubs);
+        }
+
+        // ✅ RUN AFTER RESTORE (VERY IMPORTANT)
+        updateSubs();
+    }
+
+});
 </script>
 
 {% endblock %}
