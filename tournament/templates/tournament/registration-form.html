@@ -179,40 +179,42 @@
   </div>
 </section>
 <script>
-  const form = document.querySelector("form");
+document.addEventListener("DOMContentLoaded", () => {
 
-  // ✅ SAVE DATA
-  if (form) {
-    ["input", "change"].forEach(eventType => {
-      form.addEventListener(eventType, () => {
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        localStorage.setItem("registrationData", JSON.stringify(data));
-      });
-    });
-  }
+    const form = document.querySelector("form");
 
-  // ✅ RESTORE DATA
-  window.addEventListener("load", () => {
-    const saved = localStorage.getItem("registrationData");
+    if (form) {
 
-    if (saved && form) {
-      const data = JSON.parse(saved);
+        // SAVE
+        ["input", "change"].forEach(eventType => {
+            form.addEventListener(eventType, () => {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                localStorage.setItem("registrationData", JSON.stringify(data));
+            });
+        });
 
-      Object.keys(data).forEach(key => {
-        const field = document.querySelector(`[name="${key}"]`);
-        if (!field) return;
+        // RESTORE
+        const saved = localStorage.getItem("registrationData");
 
-        // 🔥 handle different input types properly
-        if (field.type === "radio" || field.type === "checkbox") {
-          const option = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
-          if (option) option.checked = true;
-        } else {
-          field.value = data[key];
+        if (saved) {
+            const data = JSON.parse(saved);
+
+            Object.keys(data).forEach(key => {
+                const field = document.querySelector(`[name="${key}"]`);
+                if (!field) return;
+
+                if (field.type === "radio" || field.type === "checkbox") {
+                    const option = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
+                    if (option) option.checked = true;
+                } else {
+                    field.value = data[key];
+                }
+            });
         }
-      });
     }
-  });
+
+});
 </script>
 
 {% endblock %}
