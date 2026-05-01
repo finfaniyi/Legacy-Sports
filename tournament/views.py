@@ -249,7 +249,7 @@ def registration(request):
     )
 
     registration_close = datetime(
-        2026, 5, 21, 00, 00, 0,
+        2026, 5, 25, 00, 00, 0,
         tzinfo=toronto
     )
 
