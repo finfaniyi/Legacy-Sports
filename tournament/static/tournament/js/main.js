@@ -137,3 +137,28 @@ prevBtn.addEventListener("click", () => {
   showSlide(prev);
 });
 
+// Save on input change
+const form = document.querySelector("form");
+
+if (form) {
+    form.addEventListener("input", () => {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        localStorage.setItem("registrationData", JSON.stringify(data));
+    });
+}
+
+window.addEventListener("load", () => {
+    const saved = localStorage.getItem("registrationData");
+
+    if (saved) {
+        const data = JSON.parse(saved);
+
+        Object.keys(data).forEach(key => {
+            const field = document.querySelector(`[name="${key}"]`);
+            if (field) {
+                field.value = data[key];
+            }
+        });
+    }
+});
