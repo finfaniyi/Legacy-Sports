@@ -179,6 +179,10 @@
   </div>
 </section>
 <script>
+  const params = new URLSearchParams(window.location.search);
+  const slot = params.get("slot") || "default";
+
+  const storageKey = `registrationData_slot_${slot}`;
   document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector("form");
@@ -190,7 +194,7 @@
         form.addEventListener(eventType, () => {
           const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
-          localStorage.setItem("registrationData", JSON.stringify(data));
+          localStorage.getItem("registrationData")
         });
       });
 
