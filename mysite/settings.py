@@ -114,7 +114,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Emails
 import os
-EMAIL_BACKEND = "sendgrid_backend.mail.EmailBackend"
+EMAIL_BACKEND = "sendgrid_backend.EmailBackend"
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 
