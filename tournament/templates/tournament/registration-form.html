@@ -179,23 +179,39 @@
   </div>
 </section>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const rosterSelect = document.getElementById("rosterSize");
-    const sub1 = document.getElementById("sub-1");
-    const sub2 = document.getElementById("sub-2");
+  const form = document.querySelector("form");
 
-    rosterSelect.addEventListener("change", function () {
-      if (this.value === "6") {
-        sub1.style.display = "none";
-        sub2.style.display = "none";
-      } else if (this.value === "7") {
-        sub1.style.display = "block";
-        sub2.style.display = "none";
-      } else if (this.value === "8") {
-        sub1.style.display = "block";
-        sub2.style.display = "block";
-      }
+  // ✅ SAVE DATA
+  if (form) {
+    ["input", "change"].forEach(eventType => {
+      form.addEventListener(eventType, () => {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        localStorage.setItem("registrationData", JSON.stringify(data));
+      });
     });
+  }
+
+  // ✅ RESTORE DATA
+  window.addEventListener("load", () => {
+    const saved = localStorage.getItem("registrationData");
+
+    if (saved && form) {
+      const data = JSON.parse(saved);
+
+      Object.keys(data).forEach(key => {
+        const field = document.querySelector(`[name="${key}"]`);
+        if (!field) return;
+
+        // 🔥 handle different input types properly
+        if (field.type === "radio" || field.type === "checkbox") {
+          const option = document.querySelector(`[name="${key}"][value="${data[key]}"]`);
+          if (option) option.checked = true;
+        } else {
+          field.value = data[key];
+        }
+      });
+    }
   });
 </script>
 
