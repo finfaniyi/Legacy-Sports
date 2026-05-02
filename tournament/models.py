@@ -25,7 +25,7 @@ class Volunteerapplication(models.Model):
     volunteer_firstname = models.CharField(max_length=25)
     volunteer_lastname = models.CharField(max_length=25)
     volunteer_email = models.EmailField(unique=False)
-    volunteer_phone = models.CharField(max_length=15)
+    volunteer_phone = models.CharField(max_length=25)
     volunteer_age = models.PositiveIntegerField(null=True, blank=True)
     volunteer_role = models.CharField(max_length=50)
     why_interested = models.TextField()
@@ -42,7 +42,7 @@ class Team(models.Model):
     slot_number = models.IntegerField(null=True, blank=True)
     captain_name = models.CharField(max_length=100)
     captain_email = models.EmailField(unique=True)
-    captain_phone = models.CharField(max_length=15)
+    captain_phone = models.CharField(max_length=25)
     
     waiver_agreed = models.BooleanField(default=False)
     waiver_timestamp = models.DateTimeField(null=True, blank=True)
