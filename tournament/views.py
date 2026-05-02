@@ -658,16 +658,31 @@ def stripe_webhook(request):
 
         # Admin notification
         send_mail(
-            subject="🚨 New Paid Team Registration",
-            message=f"""
-            Team: {team.team_name}
-            Captain: {team.captain_name}
-            Slot: {team.slot_number}
-            Players: {team.player_count}
-            """,
+            subject=f"🏐 {team.team_name} • Slot {team.slot_number}",
+            message="New team registered.",
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=["legacysportscanada@gmail.com"],
             fail_silently=False,
+
+            html_message=f"""
+            <div style="font-family: Arial, sans-serif; background:#f6f7fb; padding:20px;">
+                <div style="max-width:480px; margin:auto; background:white; border-radius:10px; padding:20px;">
+                    
+                    <h2 style="margin:0 0 10px 0;">🏐 New Team</h2>
+                    
+                    <p><strong>{team.team_name}</strong></p>
+                    <p>Slot: {team.slot_number} • Color: {team.team_color}</p>
+                    <p>Players: {team.player_count} • {team.payment_status.upper()}</p>
+                    
+                    <p style="margin-top:10px;">
+                        {team.captain_name}<br>
+                        {team.captain_email}<br>
+                        {team.captain_phone}
+                    </p>
+
+                </div>
+            </div>
+            """
         )
 
     return JsonResponse({"status": "success"})
