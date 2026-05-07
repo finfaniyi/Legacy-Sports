@@ -1,28 +1,39 @@
 .pool-page {
   padding: 60px 8%;
+}
+
+/* 🔥 MAIN CONTAINER (fixes white-on-white issue) */
+.pool-container {
+  background: rgba(10, 10, 10, 0.92);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 1100px;
+  margin: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   color: white;
 }
 
 /* HEADER */
+.pool-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .pool-header h1 {
-  font-size: 60px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  font-size: 48px;
 }
 
 .pool-header p {
-  color: #bbb;
-  font-size: 18px;
+  color: #aaa;
 }
 
 /* SECTIONS */
 .pool-section {
-  margin-top: 60px;
-  text-align: left;
+  margin-top: 50px;
 }
 
 .pool-section h2 {
-  font-size: 28px;
+  font-size: 24px;
   margin-bottom: 20px;
   border-left: 4px solid #d60000;
   padding-left: 10px;
@@ -32,43 +43,33 @@
 .pool-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  gap: 20px;
 }
 
 /* CARD */
 .pool-card {
-  background: linear-gradient(145deg, #111, #1a1a1a);
-  border-radius: 12px;
+  background: #111;
   padding: 20px;
+  border-radius: 10px;
   border: 1px solid #222;
-  transition: all 0.25s ease;
-  position: relative;
-  overflow: hidden;
+  transition: 0.2s;
 }
 
 .pool-card:hover {
-  transform: translateY(-6px) scale(1.01);
+  transform: translateY(-5px);
   border-color: #d60000;
-  box-shadow: 0 10px 30px rgba(214, 0, 0, 0.2);
 }
 
-/* NAME */
-.pool-card h3 {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-/* DETAILS */
+/* TEXT */
 .pool-card p {
   color: #bbb;
   font-size: 14px;
-  margin: 4px 0;
 }
 
-/* STATUS TAG */
+/* STATUS */
 .status {
-  display: inline-block;
   margin-top: 10px;
+  display: inline-block;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
@@ -76,21 +77,21 @@
 }
 
 .status.available {
-  background: rgba(0, 200, 0, 0.2);
+  background: rgba(0,255,0,0.2);
   color: #00ff88;
 }
 
 .status.in_progress {
-  background: rgba(255, 165, 0, 0.2);
+  background: rgba(255,165,0,0.2);
   color: orange;
 }
 
 .status.filled {
-  background: rgba(255, 0, 0, 0.2);
+  background: rgba(255,0,0,0.2);
   color: red;
 }
 
 /* EMPTY TEXT */
-.pool-section p {
+.empty {
   color: #777;
 }

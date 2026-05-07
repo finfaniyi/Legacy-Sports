@@ -1,58 +1,69 @@
-.free-agent-actions {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+.form-page {
+  padding: 60px 8%;
 }
 
-.fa-btn {
-  background: #d60000;
+/* 🔥 CONTAINER FIX */
+.form-container {
+  background: rgba(10,10,10,0.92);
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.2s ease;
 }
 
-.fa-btn:hover {
-  background: #a80000;
-  transform: translateY(-2px);
-}
-
-.fa-btn.secondary {
-  background: #111;
-  border: 1px solid #d60000;
-}
-
-.fa-btn.secondary:hover {
-  background: #d60000;
-}
-
-.signup-hero {
+/* HEADER */
+.form-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-.signup-hero h1 {
-  font-size: 50px;
+.form-header h1 {
+  font-size: 42px;
 }
 
-.signup-hero p {
+.form-header p {
   color: #aaa;
 }
 
-.fa-btn {
-  background: linear-gradient(135deg, #d60000, #ff1a1a);
-  color: white;
-  padding: 14px 22px;
-  border-radius: 10px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+/* FORM */
+.form-card {
+  margin-top: 20px;
 }
 
-.fa-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(214, 0, 0, 0.4);
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 6px;
+}
+
+textarea {
+  margin-top: 15px;
+}
+
+/* BUTTON */
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  background: #d60000;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #a80000;
 }

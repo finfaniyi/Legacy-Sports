@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}Find Teammates{% endblock %}
+
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'tournament/css/free_agent_pool.css' %}">
 {% endblock %}
@@ -9,50 +10,51 @@
 {% block content %}
 
 <section class="pool-page">
+  <div class="pool-container">
 
-  <div class="pool-header">
-    <h1>Find Teammates</h1>
-    <p>Join the community. Build your squad. Get in the game.</p>
-  </div>
-
-  <div class="pool-section">
-    <h2>Solo Players</h2>
-
-    <div class="pool-grid">
-      {% for player in solos %}
-      <div class="pool-card">
-        <h3>{{ player.name }}</h3>
-        <p>{{ player.skill_level }}</p>
-        <p>@{{ player.instagram }}</p>
-        <span class="status {{ player.status }}">
-          {{ player.status }}
-        </span>
-      </div>
-      {% empty %}
-      <p>No solo players yet.</p>
-      {% endfor %}
+    <div class="pool-header">
+      <h1>Find Teammates</h1>
+      <p>Join the community. Build your squad. Get in the game.</p>
     </div>
-  </div>
 
-  <div class="pool-section">
-    <h2>Groups Looking for Players</h2>
+    <div class="pool-section">
+      <h2>Solo Players</h2>
 
-    <div class="pool-grid">
-      {% for group in groups %}
-      <div class="pool-card">
-        <h3>{{ group.name }}</h3>
-        <p>{{ group.note }}</p>
-        <p>@{{ group.instagram }}</p>
-        <span class="status {{ group.status }}">
-          {{ group.status }}
-        </span>
+      <div class="pool-grid">
+        {% for player in solos %}
+        <div class="pool-card">
+          <h3>{{ player.name }}</h3>
+          <p>@{{ player.instagram }}</p>
+          <span class="status {{ player.status }}">
+            {{ player.status }}
+          </span>
+        </div>
+        {% empty %}
+        <p class="empty">No solo players yet.</p>
+        {% endfor %}
       </div>
-      {% empty %}
-      <p>No groups yet.</p>
-      {% endfor %}
     </div>
-  </div>
 
+    <div class="pool-section">
+      <h2>Groups Looking for Players</h2>
+
+      <div class="pool-grid">
+        {% for group in groups %}
+        <div class="pool-card">
+          <h3>{{ group.name }}</h3>
+          <p>{{ group.note }}</p>
+          <p>@{{ group.instagram }}</p>
+          <span class="status {{ group.status }}">
+            {{ group.status }}
+          </span>
+        </div>
+        {% empty %}
+        <p class="empty">No groups yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
 </section>
 
 {% endblock %}
