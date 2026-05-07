@@ -217,6 +217,8 @@ def join_team(request):
             Phone: {phone}
             Age: {age}
             Role: {role}
+            Experience / Why they joined:
+            {experience}
             """,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=["legacysportscanada@gmail.com"],
