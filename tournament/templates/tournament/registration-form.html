@@ -14,6 +14,17 @@
     <h1>Team Registration</h1>
     <p>All teams must register at least 6 players. Substitutes are optional.</p>
   </div>
+  <div style="margin-top: 20px; text-align: center;">
+
+    <a href="{% url 'free_agent_signup' %}" class="submit-btn" style="margin-right:10px;">
+      No team? Join as a Free Agent
+    </a>
+
+    <a href="{% url 'free_agent_pool' %}" class="submit-btn">
+      Find Teammates
+    </a>
+
+  </div>
 
   <div class="form-card">
     <form method="POST" action="{% url 'registration_team' %}?slot={{ slot }}">
@@ -179,7 +190,7 @@
   </div>
 </section>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector("form");
 
@@ -194,63 +205,63 @@ document.addEventListener("DOMContentLoaded", () => {
     const sub2 = document.getElementById("sub-2");
 
     function updateSubs() {
-        const size = parseInt(rosterSelect.value);
+      const size = parseInt(rosterSelect.value);
 
-        if (size >= 7) {
-            sub1.style.display = "block";
-        } else {
-            sub1.style.display = "none";
-        }
+      if (size >= 7) {
+        sub1.style.display = "block";
+      } else {
+        sub1.style.display = "none";
+      }
 
-        if (size === 8) {
-            sub2.style.display = "block";
-        } else {
-            sub2.style.display = "none";
-        }
+      if (size === 8) {
+        sub2.style.display = "block";
+      } else {
+        sub2.style.display = "none";
+      }
     }
 
     if (form) {
 
-        // ✅ SAVE FORM DATA
-        ["input", "change"].forEach(eventType => {
-            form.addEventListener(eventType, () => {
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData.entries());
-                localStorage.setItem(storageKey, JSON.stringify(data));
-            });
+      // ✅ SAVE FORM DATA
+      ["input", "change"].forEach(eventType => {
+        form.addEventListener(eventType, () => {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          localStorage.setItem(storageKey, JSON.stringify(data));
         });
+      });
 
-        // ✅ RESTORE FORM DATA
-        const saved = localStorage.getItem(storageKey);
+      // ✅ RESTORE FORM DATA
+      const saved = localStorage.getItem(storageKey);
 
-        if (saved) {
-            const data = JSON.parse(saved);
+      if (saved) {
+        const data = JSON.parse(saved);
 
-            Object.keys(data).forEach(key => {
-                const fields = document.querySelectorAll(`[name="${key}"]`);
+        Object.keys(data).forEach(key => {
+          const fields = document.querySelectorAll(`[name="${key}"]`);
 
-                fields.forEach(field => {
-                    if (field.type === "radio" || field.type === "checkbox") {
-                        if (field.value === data[key]) {
-                            field.checked = true;
-                        }
-                    } else {
-                        field.value = data[key];
-                    }
-                });
-            });
-        }
+          fields.forEach(field => {
+            if (field.type === "radio" || field.type === "checkbox") {
+              if (field.value === data[key]) {
+                field.checked = true;
+              }
+            } else {
+              field.value = data[key];
+            }
+          });
+        });
+      }
 
-        // ✅ SUBSTITUTES (LIVE CHANGE)
-        if (rosterSelect) {
-            rosterSelect.addEventListener("change", updateSubs);
-        }
+      // ✅ SUBSTITUTES (LIVE CHANGE)
+      if (rosterSelect) {
+        rosterSelect.addEventListener("change", updateSubs);
+      }
 
-        // ✅ RUN AFTER RESTORE (VERY IMPORTANT)
-        updateSubs();
+      // ✅ RUN AFTER RESTORE (VERY IMPORTANT)
+      updateSubs();
     }
 
-});
+  });
 </script>
 
 {% endblock %}

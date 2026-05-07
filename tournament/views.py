@@ -1,8 +1,8 @@
 from django.db import IntegrityError
 from datetime import datetime, timedelta
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Team, Player, Volunteerapplication, TEAM_COLORS
+from .models import Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
@@ -688,3 +688,49 @@ def stripe_webhook(request):
         )
 
     return JsonResponse({"status": "success"})
+
+def free_agent_signup(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        gender = request.POST.get("gender")
+        player_type = request.POST.get("type")
+        ig = request.POST.get("instagram")
+        note = request.POST.get("note")
+
+        agent = FreeAgent.objects.create(
+            name=name,
+            gender=gender,
+            player_type=player_type,
+            instagram=ig,
+            note=note,
+        )
+
+        return render(request, "tournament/free_agent_success.html", {
+            "edit_link": f"/edit-free-agent/{agent.edit_token}/"
+        })
+
+    return render(request, "tournament/free_agent_signup.html")
+
+def free_agent_pool(request):
+    agents = FreeAgent.objects.all().order_by("-created_at")
+
+    solos = agents.filter(player_type="solo")
+    groups = agents.filter(player_type="group")
+
+    return render(request, "tournament/free_agent_pool.html", {
+        "solos": solos,
+        "groups": groups,
+    })
+    
+def edit_free_agent(request, token):
+    agent = get_object_or_404(FreeAgent, edit_token=token)
+
+    if request.method == "POST":
+        agent.status = request.POST.get("status")
+        agent.note = request.POST.get("note")
+        agent.save()
+        return redirect("free_agent_pool")
+
+    return render(request, "tournament/edit_free_agent.html", {
+        "agent": agent
+    })

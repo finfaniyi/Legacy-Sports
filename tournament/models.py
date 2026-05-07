@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 
@@ -166,3 +167,30 @@ class Match(models.Model):
 
     def __str__(self):
         return f"{self.team_1} vs {self.team_2} ({self.bracket.name})"
+
+class FreeAgent(models.Model):
+    STATUS_CHOICES = [
+        ("available", "Available"),
+        ("in_progress", "In Progress"),
+        ("filled", "Filled"),
+    ]
+
+    TYPE_CHOICES = [
+        ("solo", "Solo Player"),
+        ("group", "Group Looking"),
+    ]
+
+    name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=10)
+    player_type = models.CharField(max_length=20, choices=TYPE_CHOICES)
+
+    instagram = models.CharField(max_length=50)
+    note = models.TextField(blank=True)
+
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="available")
+    edit_token = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
