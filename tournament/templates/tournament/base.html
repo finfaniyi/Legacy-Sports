@@ -96,9 +96,7 @@
           class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Home</a></li>
 
       <li class="dropdown">
-        <a href="{% url 'registration' %}" class="{% if request.resolver_match.url_name == 'registration' 
-      or request.resolver_match.url_name == 'free_agent_signup' 
-      or request.resolver_match.url_name == 'free_agent_pool' %}active{% endif %}">
+        <a href="{% url 'registration' %}" class="{% if request.resolver_match.url_name == 'registration' or request.resolver_match.url_name == 'free_agent_signup' or request.resolver_match.url_name == 'free_agent_pool' %}active{% endif %}">
           Registration
         </a>
 
