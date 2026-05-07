@@ -705,9 +705,7 @@ def free_agent_signup(request):
             note=note,
         )
 
-        return render(request, "tournament/free_agent_success.html", {
-            "edit_link": f"/edit-free-agent/{agent.edit_token}/"
-        })
+        return redirect("free_agent_pool")
 
     return render(request, "tournament/free_agent_signup.html")
 
