@@ -95,11 +95,18 @@
       <li><a href="{% url 'home' %}"
           class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Home</a></li>
 
-      <li>
-        <a href="{% url 'registration' %}"
-          class="{% if request.resolver_match.url_name == 'registration' %}active{% endif %}">
+      <li class="dropdown">
+        <a href="{% url 'registration' %}" class="{% if request.resolver_match.url_name == 'registration' 
+      or request.resolver_match.url_name == 'free_agent_signup' 
+      or request.resolver_match.url_name == 'free_agent_pool' %}active{% endif %}">
           Registration
         </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'registration' %}">Team Registration</a></li>
+          <li><a href="{% url 'free_agent_signup' %}">Free Agent Sign Up</a></li>
+          <li><a href="{% url 'free_agent_pool' %}">Find Teammates</a></li>
+        </ul>
       </li>
 
       <li class="dropdown">
@@ -127,7 +134,8 @@
       </li>
 
       <li>
-        <a href="{% url 'join_team' %}" class="{% if request.resolver_match.url_name == 'join_team' %}active{% endif %}">
+        <a href="{% url 'join_team' %}"
+          class="{% if request.resolver_match.url_name == 'join_team' %}active{% endif %}">
           Get Involved
         </a>
       </li>
