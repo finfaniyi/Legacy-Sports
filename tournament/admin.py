@@ -2,7 +2,7 @@ import csv
 from django.contrib import admin, messages
 from django.http import HttpResponse
 
-from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication
+from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication, FreeAgent
 
 # =========================
 # VOLUNTEER DELETE ACTION
@@ -125,3 +125,25 @@ admin.site.register(Match)
 admin.site.register(Bracket)
 admin.site.register(Registration)
 
+# =========================
+# FREE AGENTS ADMIN
+# =========================
+
+@admin.register(FreeAgent)
+class FreeAgentAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "player_type",
+        "gender",
+        "status",
+        "instagram",
+        "created_at",
+    )
+
+    list_filter = ("player_type", "status", "gender")
+
+    search_fields = ("name", "instagram", "note")
+
+    readonly_fields = ("edit_token", "created_at")
+
+    ordering = ("-created_at",)
