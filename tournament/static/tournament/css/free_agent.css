@@ -67,3 +67,29 @@ textarea {
 .submit-btn:hover {
   background: #a80000;
 }
+
+/* labels */
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+/* readonly */
+.readonly-field input {
+  background: #222;
+  color: #888;
+  cursor: not-allowed;
+}
+
+#editLink {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 6px;
+}

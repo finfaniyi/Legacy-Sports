@@ -95,3 +95,10 @@
 .empty {
   color: #777;
 }
+
+.pool-hint {
+  margin-top: 10px;
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+}

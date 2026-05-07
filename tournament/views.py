@@ -693,6 +693,7 @@ def free_agent_signup(request):
     if request.method == "POST":
         name = request.POST.get("name")
         gender = request.POST.get("gender")
+        skill = request.POST.get("skill")
         player_type = request.POST.get("type")
         ig = request.POST.get("instagram")
         note = request.POST.get("note")
@@ -700,12 +701,15 @@ def free_agent_signup(request):
         agent = FreeAgent.objects.create(
             name=name,
             gender=gender,
+            skill_level=skill,
             player_type=player_type,
             instagram=ig,
             note=note,
         )
 
-        return redirect("free_agent_pool")
+        return render(request, "tournament/free_agent_success.html", {
+            "edit_link": f"/edit-free-agent/{agent.edit_token}/"
+        })
 
     return render(request, "tournament/free_agent_signup.html")
 
@@ -720,6 +724,7 @@ def free_agent_pool(request):
         "groups": groups,
     })
     
+    
 def edit_free_agent(request, token):
     agent = get_object_or_404(FreeAgent, edit_token=token)
 
@@ -732,3 +737,5 @@ def edit_free_agent(request, token):
     return render(request, "tournament/edit_free_agent.html", {
         "agent": agent
     })
+    
+    

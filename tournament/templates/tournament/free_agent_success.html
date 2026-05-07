@@ -1,0 +1,52 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}You're In{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/free_agent.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="form-page">
+  <div class="form-container">
+
+    <div class="form-header">
+      <h1>You’re in 🔥</h1>
+      <p>You’ve been added to the player pool.</p>
+    </div>
+
+    <div class="form-card">
+
+      <p style="margin-bottom:15px;">
+        Save this link to update your status later:
+      </p>
+
+      <input id="editLink" value="{{ edit_link }}" readonly>
+
+      <button class="submit-btn" type="button" onclick="copyLink()">
+        Copy Link
+      </button>
+
+      <a href="{% url 'free_agent_pool' %}" class="submit-btn" style="margin-top:10px; display:block; text-align:center;">
+        Go to Player Pool
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+function copyLink() {
+  const input = document.getElementById("editLink");
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value);
+
+  alert("Link copied!");
+}
+</script>
+
+{% endblock %}

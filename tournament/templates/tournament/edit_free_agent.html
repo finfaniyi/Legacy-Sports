@@ -1,0 +1,58 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}Update Your Status{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/free_agent.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="form-page">
+  <div class="form-container">
+
+    <div class="form-header">
+      <h1>Update Your Status</h1>
+      <p>Keep your availability up to date so teams can find you.</p>
+    </div>
+
+    <div class="form-card">
+      <form method="POST">
+        {% csrf_token %}
+
+        <!-- NAME (read only for context) -->
+        <div class="readonly-field">
+          <label>Name</label>
+          <input type="text" value="{{ agent.name }}" readonly>
+        </div>
+
+        <!-- STATUS -->
+        <label>Status</label>
+        <select name="status" required>
+          <option value="available" {% if agent.status == "available" %}selected{% endif %}>
+            Available
+          </option>
+          <option value="in_progress" {% if agent.status == "in_progress" %}selected{% endif %}>
+            In Progress
+          </option>
+          <option value="filled" {% if agent.status == "filled" %}selected{% endif %}>
+            Filled (I found a team)
+          </option>
+        </select>
+
+        <!-- NOTE -->
+        <label>Update Note</label>
+        <textarea name="note" rows="4">{{ agent.note }}</textarea>
+
+        <button type="submit" class="submit-btn">
+          Update Status
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
