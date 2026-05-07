@@ -14,6 +14,7 @@ import requests
 import feedparser
 import re
 from zoneinfo import ZoneInfo
+from django.urls import reverse
 
 
 
@@ -720,8 +721,10 @@ def free_agent_signup(request):
                 note=f"{note} | Needs {needed_players} {needed_gender}",
             )
 
+        edit_url = reverse("edit_free_agent", args=[agent.edit_token])
+
         return render(request, "tournament/free_agent_success.html", {
-            "edit_link": f"/edit-free-agent/{agent.edit_token}/"
+            "edit_link": edit_url
         })
 
     return render(request, "tournament/free_agent_signup.html")
