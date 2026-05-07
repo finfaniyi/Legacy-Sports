@@ -724,7 +724,7 @@ def free_agent_signup(request):
         edit_url = reverse("edit_free_agent", args=[agent.edit_token])
 
         return render(request, "tournament/free_agent_success.html", {
-            "edit_link": edit_url
+            "edit_link": request.build_absolute_uri(edit_url)
         })
 
     return render(request, "tournament/free_agent_signup.html")
