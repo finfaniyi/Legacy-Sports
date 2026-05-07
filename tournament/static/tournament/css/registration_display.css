@@ -172,6 +172,47 @@
   margin-top: 20px;
 }
 
+.registration-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.reg-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+/* MAIN CTA */
+.reg-btn.primary {
+  background: #bb080b;
+  color: white;
+}
+
+.reg-btn.primary:hover {
+  background: #e54e51;
+  transform: translateY(-2px);
+}
+
+/* SECONDARY */
+.reg-btn.secondary {
+  border: 1px solid #bb080b;
+  color: #bb080b;
+  background: transparent;
+}
+
+.reg-btn.secondary:hover {
+  background: #bb080b;
+  color: white;
+  transform: translateY(-2px);
+}
+
 .cube-badge {
   position: absolute;
   top: 14px;
