@@ -1,44 +1,96 @@
 .pool-page {
-  padding: 40px;
-  text-align: center;
+  padding: 60px 8%;
+  color: white;
 }
 
+/* HEADER */
+.pool-header h1 {
+  font-size: 60px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.pool-header p {
+  color: #bbb;
+  font-size: 18px;
+}
+
+/* SECTIONS */
 .pool-section {
-  margin-top: 40px;
+  margin-top: 60px;
+  text-align: left;
 }
 
+.pool-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  border-left: 4px solid #d60000;
+  padding-left: 10px;
+}
+
+/* GRID */
 .pool-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
+/* CARD */
 .pool-card {
-  background: #111;
-  color: white;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  border-radius: 12px;
   padding: 20px;
-  border-radius: 10px;
-  text-align: left;
   border: 1px solid #222;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+.pool-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #d60000;
+  box-shadow: 0 10px 30px rgba(214, 0, 0, 0.2);
+}
+
+/* NAME */
+.pool-card h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+/* DETAILS */
+.pool-card p {
+  color: #bbb;
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+/* STATUS TAG */
 .status {
   display: inline-block;
   margin-top: 10px;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 20px;
   font-size: 12px;
+  font-weight: 600;
 }
 
 .status.available {
-  background: green;
+  background: rgba(0, 200, 0, 0.2);
+  color: #00ff88;
 }
 
 .status.in_progress {
-  background: orange;
+  background: rgba(255, 165, 0, 0.2);
+  color: orange;
 }
 
 .status.filled {
-  background: red;
+  background: rgba(255, 0, 0, 0.2);
+  color: red;
+}
+
+/* EMPTY TEXT */
+.pool-section p {
+  color: #777;
 }

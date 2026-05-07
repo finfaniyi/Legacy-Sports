@@ -29,3 +29,30 @@
 .fa-btn.secondary:hover {
   background: #d60000;
 }
+
+.signup-hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-hero h1 {
+  font-size: 50px;
+}
+
+.signup-hero p {
+  color: #aaa;
+}
+
+.fa-btn {
+  background: linear-gradient(135deg, #d60000, #ff1a1a);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.fa-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(214, 0, 0, 0.4);
+}
