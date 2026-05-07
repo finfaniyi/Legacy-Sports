@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 import uuid
 
 # Create your models here.
@@ -192,5 +193,5 @@ class FreeAgent(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.name
+    def is_new(self):
+        return (timezone.now() - self.created_at).days < 1

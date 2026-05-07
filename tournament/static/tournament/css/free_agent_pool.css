@@ -2,7 +2,6 @@
   padding: 60px 8%;
 }
 
-/* 🔥 MAIN CONTAINER (fixes white-on-white issue) */
 .pool-container {
   background: rgba(10, 10, 10, 0.92);
   padding: 40px;
@@ -27,6 +26,24 @@
   color: #aaa;
 }
 
+.pool-stats {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.pool-stats strong {
+  color: white;
+}
+
+.pool-hint {
+  margin-top: 10px;
+  color: #777;
+  font-size: 13px;
+}
+
 /* SECTIONS */
 .pool-section {
   margin-top: 50px;
@@ -46,52 +63,7 @@
   gap: 20px;
 }
 
-
-
-/* TEXT */
-.pool-card p {
-  color: #bbb;
-  font-size: 14px;
-}
-
-/* STATUS */
-.status {
-  margin-top: 10px;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.status.available {
-  background: rgba(0,255,0,0.2);
-  color: #00ff88;
-}
-
-.status.in_progress {
-  background: rgba(255,165,0,0.2);
-  color: orange;
-}
-
-.status.filled {
-  background: rgba(255,0,0,0.2);
-  color: red;
-}
-
-/* EMPTY TEXT */
-.empty {
-  color: #777;
-}
-
-.pool-hint {
-  margin-top: 10px;
-  color: #888;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* CARD STRUCTURE */
+/* CARD */
 .pool-card {
   background: linear-gradient(145deg, #0c0c0c, #1a1a1a);
   padding: 20px;
@@ -99,53 +71,57 @@
   border: 1px solid #222;
   transition: all 0.25s ease;
   position: relative;
-  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.5s ease forwards;
 }
 
-/* 🔥 HOVER GLOW */
 .pool-card:hover {
   transform: translateY(-6px) scale(1.02);
   border-color: #d60000;
   box-shadow: 0 15px 40px rgba(214, 0, 0, 0.25);
 }
 
-/* TOP ROW */
+/* ANIMATION */
+.pool-card:nth-child(1) { animation-delay: 0.1s; }
+.pool-card:nth-child(2) { animation-delay: 0.2s; }
+.pool-card:nth-child(3) { animation-delay: 0.3s; }
+.pool-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TOP */
 .card-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-/* NAME */
-.pool-card h3 {
-  font-size: 18px;
-}
-
-/* GENDER TAG */
-.gender {
-  font-size: 12px;
+.gender, .group-tag {
+  font-size: 11px;
   padding: 4px 8px;
   background: #222;
   border-radius: 6px;
-  color: #aaa;
+  color: #bbb;
 }
 
-/* SKILL */
+/* TEXT */
 .skill {
   color: #aaa;
   font-size: 13px;
   margin-top: 5px;
 }
 
-/* NOTE */
 .note {
   margin-top: 10px;
   font-size: 13px;
   color: #bbb;
-  line-height: 1.4;
 }
 
-/* IG */
 .ig {
   margin-top: 8px;
   font-size: 13px;
@@ -154,15 +130,13 @@
 
 /* STATUS */
 .status {
-  margin-top: 12px;
+  margin-top: 10px;
   display: inline-block;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: 600;
 }
 
-/* COLORS */
 .status.available {
   background: rgba(0,255,0,0.15);
   color: #00ff88;
@@ -178,34 +152,35 @@
   color: red;
 }
 
-/* ENTRY ANIMATION */
-.pool-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.5s ease forwards;
-}
-
-/* stagger effect */
-.pool-card:nth-child(1) { animation-delay: 0.1s; }
-.pool-card:nth-child(2) { animation-delay: 0.2s; }
-.pool-card:nth-child(3) { animation-delay: 0.3s; }
-.pool-card:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* BUTTON */
 .dm-btn {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 12px;
-  color: #d60000;
+  display: block;
+  margin-top: 12px;
+  padding: 10px;
+  text-align: center;
+  background: #d60000;
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
   text-decoration: none;
 }
 
 .dm-btn:hover {
-  text-decoration: underline;
+  background: #a80000;
+}
+
+/* NEW BADGE */
+.new-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #d60000;
+  font-size: 10px;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* EMPTY */
+.empty {
+  color: #777;
 }

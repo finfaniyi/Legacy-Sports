@@ -12,20 +12,32 @@
 <section class="pool-page">
   <div class="pool-container">
 
+    <!-- HEADER -->
     <div class="pool-header">
       <h1>Find Teammates</h1>
       <p>Join the community. Build your squad. Get in the game.</p>
+
+      <div class="pool-stats">
+        <span><strong>{{ solos|length }}</strong> players available</span>
+        <span><strong>{{ groups|length }}</strong> teams looking</span>
+      </div>
+
       <p class="pool-hint">
         Found a team? Use your personal link to update your status.
       </p>
     </div>
 
+    <!-- SOLO PLAYERS -->
     <div class="pool-section">
       <h2>Solo Players</h2>
 
       <div class="pool-grid">
         {% for player in solos %}
         <div class="pool-card">
+
+          {% if player.is_new %}
+            <span class="new-badge">NEW</span>
+          {% endif %}
 
           <div class="card-top">
             <h3>{{ player.name }}</h3>
@@ -35,7 +47,7 @@
           <p class="skill">{{ player.skill_level }}</p>
 
           {% if player.note %}
-          <p class="note">{{ player.note }}</p>
+            <p class="note">{{ player.note }}</p>
           {% endif %}
 
           <p class="ig">@{{ player.instagram }}</p>
@@ -44,8 +56,9 @@
             {{ player.status }}
           </span>
 
-          <!-- 🔥 ADD IT HERE -->
-          <a href="https://instagram.com/{{ player.instagram|cut:'@' }}" target="_blank" class="dm-btn">
+          <a href="https://instagram.com/{{ player.instagram|cut:'@' }}"
+             target="_blank"
+             class="dm-btn">
             Message
           </a>
 
@@ -56,18 +69,39 @@
       </div>
     </div>
 
+    <!-- GROUPS -->
     <div class="pool-section">
       <h2>Groups Looking for Players</h2>
 
       <div class="pool-grid">
         {% for group in groups %}
         <div class="pool-card">
-          <h3>{{ group.name }}</h3>
-          <p>{{ group.note }}</p>
-          <p>@{{ group.instagram }}</p>
+
+          {% if group.is_new %}
+            <span class="new-badge">NEW</span>
+          {% endif %}
+
+          <div class="card-top">
+            <h3>{{ group.name }}</h3>
+            <span class="group-tag">Group</span>
+          </div>
+
+          {% if group.note %}
+            <p class="note">{{ group.note }}</p>
+          {% endif %}
+
+          <p class="ig">@{{ group.instagram }}</p>
+
           <span class="status {{ group.status }}">
             {{ group.status }}
           </span>
+
+          <a href="https://instagram.com/{{ group.instagram|cut:'@' }}"
+             target="_blank"
+             class="dm-btn">
+            Message
+          </a>
+
         </div>
         {% empty %}
         <p class="empty">No groups yet.</p>
@@ -77,5 +111,12 @@
 
   </div>
 </section>
+
+<!-- OPTIONAL AUTO REFRESH -->
+<script>
+  setInterval(() => {
+    location.reload();
+  }, 30000);
+</script>
 
 {% endblock %}
