@@ -60,6 +60,8 @@
 .media-select{
   font-family: 'Bebas Neue', sans-serif;
   font-weight:700;
+  max-width: 220px;  /* 🔥 THIS FIXES THE HUGE WIDTH */
+  width: 100%;
   padding:10px 12px;
   border-radius:12px;
   border:1px solid rgba(255,255,255,.18);

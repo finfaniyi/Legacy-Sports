@@ -184,3 +184,51 @@
 .empty {
   color: #777;
 }
+
+.pool-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pool-controls select {
+  padding: 8px;
+  background: #111;
+  color: white;
+  border: 1px solid #333;
+}
+
+/* CONTROLS (match media style) */
+.pool-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* SELECT (copied + improved from media) */
+.pool-select {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: #bb080b;
+  color: #F7F5F2;
+  outline: none;
+  cursor: pointer;
+  min-width: 140px;
+  text-align: center;
+}
+
+/* prevent giant dropdown issue */
+.pool-select option {
+  color: #151a1f;
+  font-family: sans-serif;
+}
+
+/* HOVER */
+.pool-select:hover {
+  background: #e54e51;
+}

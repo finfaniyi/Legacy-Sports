@@ -93,3 +93,27 @@ label {
   color: white;
   border-radius: 6px;
 }
+
+.form-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  border: none;
+  background: #222;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: #d60000;
+}
+
+.hidden {
+  display: none;
+}

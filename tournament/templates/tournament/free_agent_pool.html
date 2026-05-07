@@ -27,16 +27,36 @@
       </p>
     </div>
 
+    <!-- FILTER + SORT -->
+    <div class="pool-controls">
+
+      <select id="filterSelect" class="pool-select">
+        <option value="all">ALL</option>
+        <option value="available">AVAILABLE</option>
+        <option value="male">MALE</option>
+        <option value="female">FEMALE</option>
+      </select>
+
+      <select id="sortSelect" class="pool-select">
+        <option value="newest">NEWEST</option>
+        <option value="oldest">OLDEST</option>
+      </select>
+
+    </div>
+
     <!-- SOLO PLAYERS -->
     <div class="pool-section">
       <h2>Solo Players</h2>
 
       <div class="pool-grid">
         {% for player in solos %}
-        <div class="pool-card">
+        <div class="pool-card"
+             data-gender="{{ player.gender|lower }}"
+             data-status="{{ player.status }}"
+             data-created="{{ player.created_at|date:'U' }}">
 
           {% if player.is_new %}
-            <span class="new-badge">NEW</span>
+          <span class="new-badge">NEW</span>
           {% endif %}
 
           <div class="card-top">
@@ -47,7 +67,7 @@
           <p class="skill">{{ player.skill_level }}</p>
 
           {% if player.note %}
-            <p class="note">{{ player.note }}</p>
+          <p class="note">{{ player.note }}</p>
           {% endif %}
 
           <p class="ig">@{{ player.instagram }}</p>
@@ -75,10 +95,13 @@
 
       <div class="pool-grid">
         {% for group in groups %}
-        <div class="pool-card">
+        <div class="pool-card"
+             data-gender="group"
+             data-status="{{ group.status }}"
+             data-created="{{ group.created_at|date:'U' }}">
 
           {% if group.is_new %}
-            <span class="new-badge">NEW</span>
+          <span class="new-badge">NEW</span>
           {% endif %}
 
           <div class="card-top">
@@ -87,7 +110,7 @@
           </div>
 
           {% if group.note %}
-            <p class="note">{{ group.note }}</p>
+          <p class="note">{{ group.note }}</p>
           {% endif %}
 
           <p class="ig">@{{ group.instagram }}</p>
@@ -112,11 +135,48 @@
   </div>
 </section>
 
-<!-- OPTIONAL AUTO REFRESH -->
+<!-- SCRIPT -->
 <script>
-  setInterval(() => {
-    location.reload();
-  }, 30000);
+const filterSelect = document.getElementById("filterSelect");
+const sortSelect = document.getElementById("sortSelect");
+
+function updateDisplay() {
+  const filter = filterSelect.value;
+  const sort = sortSelect.value;
+
+  let allCards = document.querySelectorAll(".pool-card");
+
+  // FILTER
+  allCards.forEach(card => {
+    const gender = card.dataset.gender;
+    const status = card.dataset.status;
+
+    let show = true;
+
+    if (filter === "male" && gender !== "male") show = false;
+    if (filter === "female" && gender !== "female") show = false;
+    if (filter === "available" && status !== "available") show = false;
+
+    card.style.display = show ? "block" : "none";
+  });
+
+  // SORT (per grid)
+  document.querySelectorAll(".pool-grid").forEach(grid => {
+    let cards = Array.from(grid.querySelectorAll(".pool-card"));
+
+    cards.sort((a, b) => {
+      const aTime = parseInt(a.dataset.created);
+      const bTime = parseInt(b.dataset.created);
+      return sort === "newest" ? bTime - aTime : aTime - bTime;
+    });
+
+    cards.forEach(card => grid.appendChild(card));
+  });
+}
+
+// LISTENERS
+filterSelect.addEventListener("change", updateDisplay);
+sortSelect.addEventListener("change", updateDisplay);
 </script>
 
 {% endblock %}

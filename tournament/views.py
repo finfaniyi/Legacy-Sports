@@ -691,21 +691,34 @@ def stripe_webhook(request):
 
 def free_agent_signup(request):
     if request.method == "POST":
+        form_type = request.POST.get("form_type")
+
         name = request.POST.get("name")
-        gender = request.POST.get("gender")
-        skill = request.POST.get("skill")
-        player_type = request.POST.get("type")
         ig = request.POST.get("instagram")
         note = request.POST.get("note")
 
-        agent = FreeAgent.objects.create(
-            name=name,
-            gender=gender,
-            skill_level=skill,
-            player_type=player_type,
-            instagram=ig,
-            note=note,
-        )
+        if form_type == "solo":
+            gender = request.POST.get("gender")
+
+            agent = FreeAgent.objects.create(
+                name=name,
+                gender=gender,
+                player_type="solo",
+                instagram=ig,
+                note=note,
+            )
+
+        else:
+            needed_players = request.POST.get("needed_players")
+            needed_gender = request.POST.get("needed_gender")
+
+            agent = FreeAgent.objects.create(
+                name=name,
+                gender="group",
+                player_type="group",
+                instagram=ig,
+                note=f"{note} | Needs {needed_players} {needed_gender}",
+            )
 
         return render(request, "tournament/free_agent_success.html", {
             "edit_link": f"/edit-free-agent/{agent.edit_token}/"

@@ -1,7 +1,7 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Free Agent Signup{% endblock %}
+{% block title %}Join Pool{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'tournament/css/free_agent.css' %}">
@@ -12,14 +12,23 @@
 <section class="form-page">
   <div class="form-container">
 
+    <!-- HEADER -->
     <div class="form-header">
-      <h1>Join as a Free Agent</h1>
-      <p>Don’t have a team? We’ll connect you.</p>
+      <h1>Join the Player Pool</h1>
+      <p>Join solo or bring a group — we’ll connect you.</p>
     </div>
 
-    <div class="form-card">
+    <!-- TOGGLE -->
+    <div class="form-toggle">
+      <button class="toggle-btn active" onclick="switchForm('solo', this)">Free Agent</button>
+      <button class="toggle-btn" onclick="switchForm('group', this)">Group</button>
+    </div>
+
+    <!-- SOLO FORM -->
+    <div id="solo-form" class="form-card">
       <form method="POST">
         {% csrf_token %}
+        <input type="hidden" name="form_type" value="solo">
 
         <div class="form-grid">
           <input name="name" placeholder="Your Name" required>
@@ -29,27 +38,66 @@
             <option>Male</option>
             <option>Female</option>
           </select>
-
-          <select name="type" required>
-            <option value="">Status</option>
-            <option value="solo">Solo Player</option>
-            <option value="group">Group Looking</option>
-          </select>
         </div>
 
         <input name="instagram" placeholder="@instagram" required>
 
         <textarea name="note" rows="4"
-          placeholder="Optional (e.g. need 2 players, position, etc.)"></textarea>
+          placeholder="Optional (position, experience, etc.)"></textarea>
 
         <button type="submit" class="submit-btn">
-          Join Pool
+          Join as Free Agent
         </button>
+      </form>
+    </div>
 
+    <!-- GROUP FORM -->
+    <div id="group-form" class="form-card hidden">
+      <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="group">
+
+        <input name="name" placeholder="Team Name" required>
+
+        <div class="form-grid">
+          <div>
+            <label>Players Needed</label>
+            <input name="needed_players" placeholder="e.g. 2 players" required>
+          </div>
+
+          <div>
+            <label>Preferred Gender</label>
+            <select name="needed_gender" required>
+              <option value="">Select</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Any</option>
+            </select>
+          </div>
+        </div>
+
+        <input name="instagram" placeholder="@instagram" required>
+
+        <textarea name="note" rows="4"
+          placeholder="Describe your team or what you're looking for"></textarea>
+
+        <button type="submit" class="submit-btn">
+          Register Group
+        </button>
       </form>
     </div>
 
   </div>
 </section>
+
+<script>
+function switchForm(type, el) {
+  document.getElementById("solo-form").classList.toggle("hidden", type !== "solo");
+  document.getElementById("group-form").classList.toggle("hidden", type !== "group");
+
+  document.querySelectorAll(".toggle-btn").forEach(btn => btn.classList.remove("active"));
+  el.classList.add("active");
+}
+</script>
 
 {% endblock %}
