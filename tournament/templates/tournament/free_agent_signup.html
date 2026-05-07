@@ -1,14 +1,52 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Team Bracket | Legacy Sports Canada{% endblock %}
-
-{% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/team_bracket.css' %}">
-{% endblock %}
+{% block title %}Free Agent Signup{% endblock %}
 
 {% block content %}
-<section class="bracket-page">
-    <h1>Coming Soon</h1>
+<section class="form-page">
+
+  <div class="form-header">
+    <h1>Join as a Free Agent</h1>
+    <p>No team? We’ll help you find one.</p>
+  </div>
+
+  <div class="form-card">
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="form-grid">
+        <input name="name" placeholder="Your Name" required>
+
+        <select name="gender" required>
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+
+        <select name="skill" required>
+          <option value="">Skill Level</option>
+          <option>Casual</option>
+          <option>Intermediate</option>
+        </select>
+
+        <select name="type" required>
+          <option value="">Status</option>
+          <option value="solo">Solo Player</option>
+          <option value="group">Group Looking</option>
+        </select>
+      </div>
+
+      <input name="instagram" placeholder="@instagram" required>
+
+      <textarea name="note" rows="4"
+        placeholder="Optional (e.g. need 2 players, position, etc.)"></textarea>
+
+      <button type="submit" class="submit-btn">
+        Join Pool
+      </button>
+
+    </form>
+  </div>
 </section>
 {% endblock %}

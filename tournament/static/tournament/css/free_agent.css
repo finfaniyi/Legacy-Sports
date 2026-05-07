@@ -1,0 +1,31 @@
+.free-agent-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.fa-btn {
+  background: #d60000;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.fa-btn:hover {
+  background: #a80000;
+  transform: translateY(-2px);
+}
+
+.fa-btn.secondary {
+  background: #111;
+  border: 1px solid #d60000;
+}
+
+.fa-btn.secondary:hover {
+  background: #d60000;
+}

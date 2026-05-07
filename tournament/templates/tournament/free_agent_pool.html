@@ -1,14 +1,53 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Team Bracket | Legacy Sports Canada{% endblock %}
-
-{% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/team_bracket.css' %}">
-{% endblock %}
+{% block title %}Find Teammates{% endblock %}
 
 {% block content %}
-<section class="bracket-page">
-    <h1>Coming Soon</h1>
+
+<section class="pool-page">
+
+  <h1>Find Teammates</h1>
+  <p>Connect with players and build your team.</p>
+
+  <div class="pool-section">
+    <h2>Solo Players</h2>
+
+    <div class="pool-grid">
+      {% for player in solos %}
+        <div class="pool-card">
+          <h3>{{ player.name }}</h3>
+          <p>{{ player.skill_level }}</p>
+          <p>@{{ player.instagram }}</p>
+          <span class="status {{ player.status }}">
+            {{ player.status }}
+          </span>
+        </div>
+      {% empty %}
+        <p>No solo players yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="pool-section">
+    <h2>Groups Looking for Players</h2>
+
+    <div class="pool-grid">
+      {% for group in groups %}
+        <div class="pool-card">
+          <h3>{{ group.name }}</h3>
+          <p>{{ group.note }}</p>
+          <p>@{{ group.instagram }}</p>
+          <span class="status {{ group.status }}">
+            {{ group.status }}
+          </span>
+        </div>
+      {% empty %}
+        <p>No groups yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+
 </section>
+
 {% endblock %}
