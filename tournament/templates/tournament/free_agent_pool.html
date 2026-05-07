@@ -26,11 +26,29 @@
       <div class="pool-grid">
         {% for player in solos %}
         <div class="pool-card">
-          <h3>{{ player.name }}</h3>
-          <p>@{{ player.instagram }}</p>
+
+          <div class="card-top">
+            <h3>{{ player.name }}</h3>
+            <span class="gender">{{ player.gender }}</span>
+          </div>
+
+          <p class="skill">{{ player.skill_level }}</p>
+
+          {% if player.note %}
+          <p class="note">{{ player.note }}</p>
+          {% endif %}
+
+          <p class="ig">@{{ player.instagram }}</p>
+
           <span class="status {{ player.status }}">
             {{ player.status }}
           </span>
+
+          <!-- 🔥 ADD IT HERE -->
+          <a href="https://instagram.com/{{ player.instagram|cut:'@' }}" target="_blank" class="dm-btn">
+            Message
+          </a>
+
         </div>
         {% empty %}
         <p class="empty">No solo players yet.</p>
