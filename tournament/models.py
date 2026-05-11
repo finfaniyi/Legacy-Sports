@@ -202,6 +202,9 @@ class Creator(models.Model):
     instagram = models.CharField(max_length=100, blank=True)
     bio = models.TextField(blank=True)
     profile_image = models.ImageField(upload_to='creators/')
+    
+    def __str__(self):
+        return self.name
 
 
 class MediaItem(models.Model):
