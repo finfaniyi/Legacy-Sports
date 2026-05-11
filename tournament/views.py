@@ -2,13 +2,14 @@ from django.db import IntegrityError
 from datetime import datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent
+from .models import Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent, Creator, MediaItem
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 import stripe
 from .models import Page
+from .models import MediaItem
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import feedparser
@@ -90,7 +91,17 @@ def history(request):
 
 
 def media(request):
-    return render(request, "tournament/media.html")
+
+    media_items = MediaItem.objects.select_related(
+        "creator"
+    ).order_by("-uploaded_at")
+
+    creators = Creator.objects.all()
+
+    return render(request, "tournament/media.html", {
+        "media_items": media_items,
+        "creators": creators,
+    })
 
 
 def tourney_info(request):

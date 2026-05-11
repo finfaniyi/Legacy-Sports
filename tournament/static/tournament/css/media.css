@@ -70,6 +70,63 @@
   outline:none;
 }
 
+.media-thumb {
+    position: relative;
+    overflow: hidden;
+}
+
+.media-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+.media-card:hover img {
+    transform: scale(1.05);
+}
+
+.media-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.15)
+    );
+
+    display: flex;
+    align-items: flex-end;
+
+    opacity: 0;
+
+    transition: 0.3s ease;
+
+    padding: 1rem;
+}
+
+.media-card:hover .media-overlay {
+    opacity: 1;
+}
+
+.media-overlay-content {
+    color: white;
+}
+
+.media-credit {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.media-role {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
 .media-select option{ 
   color:#151a1f; 
 }

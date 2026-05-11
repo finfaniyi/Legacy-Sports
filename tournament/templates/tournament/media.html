@@ -36,259 +36,53 @@
   <!-- GRID -->
   <section class="media-grid">
 
-    <!-- 2026 
-      <a class="media-card" href="javascript:void(0)" data-year="2026">
-        <div class="media-thumb" style="background-image:url({% static 'tournament/images/placeholder.jpg' %});"></div>
-      </a>
+    {% for item in media_items %}
 
-      <a class="media-card" href="javascript:void(0)" data-year="2026">
-        <div class="media-thumb media-video" style="background-image:url({% static 'tournament/images/placeholder.jpg' %});">
-          <span class="play-badge">▶</span>
+    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}">
+
+      <div class="media-thumb {% if item.media_type == 'video' %}media-video{% endif %}">
+
+        {% if item.thumbnail %}
+        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
+
+        {% else %}
+        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
+        {% endif %}
+
+        {% if item.media_type == "video" %}
+        <span class="play-badge">▶</span>
+        {% endif %}
+
+        <!-- OVERLAY -->
+        <div class="media-overlay">
+
+          <div class="media-overlay-content">
+
+            <p class="media-credit">
+
+              {% if item.media_type == "video" %}
+              🎥
+              {% else %}
+              📸
+              {% endif %}
+
+              {{ item.creator.name }}
+
+            </p>
+
+            <p class="media-role">
+              {{ item.creator.role }}
+            </p>
+
+          </div>
+
         </div>
-      </a>
-
-      <a class="media-card" href="javascript:void(0)" data-year="2026">
-        <div class="media-thumb" style="background-image:url({% static 'tournament/images/placeholder.jpg' %});"></div>
-      </a>
-
-      -->
-
-    <!-- 2026 -->
-    <a class="media-card" href="{% static 'tournament/images/Volleyball_26/LS_Introduction.mp4' %}" target="_blank"
-      data-year="2026">
-
-      <div class="media-thumb media-video">
-
-        <img src="{% static 'tournament/images/LS Logo/Remake.png' %}" alt="Legacy Sports Volleyball 2026"
-          loading="lazy">
-
-        <span class="play-badge">▶</span>
 
       </div>
+
     </a>
 
-    <!-- 2024 -->
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/winners.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_2.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_3.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card"
-      href="{% static 'tournament/images/Legacy_Sports_Basketball_2024/2024 Basketball Tournament.mp4' %}"
-      target="_blank" data-year="2024">
-      <div class="media-thumb media-video"
-        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/thumbnail.jpg' %});">
-        <span class="play-badge">▶</span>
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_4.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_5.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_6.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_7.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_8.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_9.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_11.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_12.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_13.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_14.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_15.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_16.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_17.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_18.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_19.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_20.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_21.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_22.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_23.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_24.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_25.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_26.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_27.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_28.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_29.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_31.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-    <a class="media-card" href="javascript:void(0)" data-year="2024">
-      <div class="media-thumb">
-        <img src="{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_32.jpg' %}"
-          alt="Legacy Sports Basketball 2024" loading="lazy">
-      </div>
-    </a>
-
-
+    {% endfor %}
 
   </section>
 

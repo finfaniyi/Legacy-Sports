@@ -195,3 +195,45 @@ class FreeAgent(models.Model):
 
     def is_new(self):
         return (timezone.now() - self.created_at).days < 1
+    
+class Creator(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    instagram = models.CharField(max_length=100, blank=True)
+    bio = models.TextField(blank=True)
+    profile_image = models.ImageField(upload_to='creators/')
+
+
+class MediaItem(models.Model):
+
+    CATEGORY_CHOICES = [
+        ('2024', '2024 Basketball'),
+        ('2026', '2026 Volleyball'),
+        ('bts', 'Behind The Scenes'),
+        ('creative', 'Creative Showcase'),
+    ]
+
+    MEDIA_TYPE = [
+        ('image', 'Image'),
+        ('video', 'Video'),
+    ]
+
+    creator = models.ForeignKey(Creator, on_delete=models.CASCADE)
+
+    title = models.CharField(max_length=200, blank=True)
+
+    media_file = models.FileField(upload_to='media_gallery/')
+
+    thumbnail = models.ImageField(
+        upload_to='media_thumbnails/',
+        blank=True,
+        null=True
+    )
+
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+
+    media_type = models.CharField(max_length=10, choices=MEDIA_TYPE)
+
+    featured = models.BooleanField(default=False)
+
+    uploaded_at = models.DateTimeField(auto_now_add=True)

@@ -2,7 +2,7 @@ import csv
 from django.contrib import admin, messages
 from django.http import HttpResponse
 
-from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication, FreeAgent
+from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication, FreeAgent, Creator, MediaItem
 
 # =========================
 # VOLUNTEER DELETE ACTION
@@ -147,3 +147,31 @@ class FreeAgentAdmin(admin.ModelAdmin):
     readonly_fields = ("edit_token", "created_at")
 
     ordering = ("-created_at",)
+    
+@admin.register(Creator)
+class CreatorAdmin(admin.ModelAdmin):
+    list_display = ("name", "role", "instagram")
+    search_fields = ("name", "role")
+
+
+@admin.register(MediaItem)
+class MediaItemAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "creator",
+        "category",
+        "media_type",
+        "featured",
+        "uploaded_at",
+    )
+
+    list_filter = (
+        "category",
+        "media_type",
+        "featured",
+    )
+
+    search_fields = (
+        "title",
+        "creator__name",
+    )
