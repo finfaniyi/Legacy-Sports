@@ -42,11 +42,19 @@
 
       <div class="media-thumb {% if item.media_type == 'video' %}media-video{% endif %}">
 
-        {% if item.thumbnail %}
+        {% if item.media_type == "video" %}
+
+        <img src="https://res.cloudinary.com/doourrbua/video/upload/so_1/{{ item.title }}.jpg" alt="{{ item.title }}"
+          loading="lazy">
+
+        {% elif item.thumbnail %}
+
         <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
 
         {% else %}
+
         <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
+
         {% endif %}
 
         {% if item.media_type == "video" %}
