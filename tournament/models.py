@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import uuid
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -201,7 +202,7 @@ class Creator(models.Model):
     role = models.CharField(max_length=100)
     instagram = models.CharField(max_length=100, blank=True)
     bio = models.TextField(blank=True)
-    profile_image = models.ImageField(upload_to='creators/')
+    profile_image = CloudinaryField('image')
     
     def __str__(self):
         return self.name
@@ -225,10 +226,12 @@ class MediaItem(models.Model):
 
     title = models.CharField(max_length=200, blank=True)
 
-    media_file = models.FileField(upload_to='media_gallery/')
+    media_file = CloudinaryField(
+        resource_type='auto'
+    )
 
-    thumbnail = models.ImageField(
-        upload_to='media_thumbnails/',
+    thumbnail = CloudinaryField(
+        'image',
         blank=True,
         null=True
     )
