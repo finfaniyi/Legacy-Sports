@@ -8,12 +8,11 @@ from tournament.models import Creator, MediaItem
 
 
 CATEGORY_MAP = {
-    "2026_LS_Volleyball": "2026 Volleyball",
-    "2026_LS_BTS": "Behind The Scenes",
-    "2026_LS_Creatives": "Creative Showcase",
-    "2024_LS_Basketball": "2024 Basketball",
+    "2024_LS_Basketball": "2024",
+    "2026_LS_Volleyball": "2026",
+    "2026_LS_BTS": "bts",
+    "2026_LS_Creatives": "creative",
 }
-
 
 class Command(BaseCommand):
 
