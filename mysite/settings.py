@@ -67,21 +67,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # DATABASE
-if os.environ.get("DATABASE_URL"):
-    DATABASES = {
-        'default': dj_database_url.config(
-            conn_max_age=600,
-            ssl_require=True
-        )
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
+DATABASES = {
+    'default': dj_database_url.parse(
+        "postgresql://legacy_sports_database_user:K8rGAgvLCfsYZD92gSjivuUrHTJsqv0p@dpg-d68kviusb7us73cde5p0-a.oregon-postgres.render.com/legacy_sports_database"
+    )
+}
 
 # PASSWORD VALIDATION
 AUTH_PASSWORD_VALIDATORS = [

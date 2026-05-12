@@ -1,8 +1,18 @@
 import os
 
+import cloudinary.uploader
+
 from django.core.management.base import BaseCommand
 
 from tournament.models import Creator, MediaItem
+
+
+CATEGORY_MAP = {
+    "2026_LS_Volleyball": "2026 Volleyball",
+    "2026_LS_BTS": "Behind The Scenes",
+    "2026_LS_Creatives": "Creative Showcase",
+    "2024_LS_Basketball": "2024 Basketball",
+}
 
 
 class Command(BaseCommand):
@@ -13,71 +23,86 @@ class Command(BaseCommand):
 
         BASE_DIR = "media_uploads"
 
-        for creator_folder in os.listdir(BASE_DIR):
+        for category_folder in os.listdir(BASE_DIR):
 
-            folder_path = os.path.join(
+            category_path = os.path.join(
                 BASE_DIR,
-                creator_folder
+                category_folder
             )
 
-            if not os.path.isdir(folder_path):
+            if not os.path.isdir(category_path):
                 continue
 
-            creator_name = creator_folder.replace("_", " ")
+            category = CATEGORY_MAP.get(
+                category_folder,
+                "Creative Showcase"
+            )
 
-            creator = Creator.objects.filter(
-                name__iexact=creator_name
-            ).first()
+            for creator_folder in os.listdir(category_path):
 
-            if not creator:
-                self.stdout.write(
-                    self.style.WARNING(
-                        f"Creator not found: {creator_name}"
-                    )
-                )
-                continue
-
-            for filename in os.listdir(folder_path):
-
-                file_path = os.path.join(
-                    folder_path,
-                    filename
+                creator_path = os.path.join(
+                    category_path,
+                    creator_folder
                 )
 
-                if not os.path.isfile(file_path):
+                if not os.path.isdir(creator_path):
                     continue
 
-                lower = filename.lower()
+                creator_name = creator_folder.replace("_", " ")
 
-                media_type = "image"
+                creator = Creator.objects.filter(
+                    name__iexact=creator_name
+                ).first()
 
-                if lower.endswith((
-                    ".mp4",
-                    ".mov",
-                    ".avi",
-                    ".webm"
-                )):
-                    media_type = "video"
+                if not creator:
 
-                title = os.path.splitext(filename)[0]
+                    self.stdout.write(
+                        self.style.WARNING(
+                            f"Creator not found: {creator_name}"
+                        )
+                    )
 
-                with open(file_path, "rb") as f:
+                    continue
 
-                    media_item = MediaItem(
+                for filename in os.listdir(creator_path):
+
+                    file_path = os.path.join(
+                        creator_path,
+                        filename
+                    )
+
+                    if not os.path.isfile(file_path):
+                        continue
+
+                    lower = filename.lower()
+
+                    media_type = "image"
+
+                    if lower.endswith((
+                        ".mp4",
+                        ".mov",
+                        ".avi",
+                        ".webm"
+                    )):
+                        media_type = "video"
+
+                    title = os.path.splitext(filename)[0]
+
+                    upload_result = cloudinary.uploader.upload(
+                        file_path,
+                        resource_type="auto"
+                    )
+
+                    MediaItem.objects.create(
                         creator=creator,
                         title=title,
-                        category="creative",
+                        category=category,
                         media_type=media_type,
+                        media_file=upload_result["secure_url"]
                     )
 
-                    media_item.media_file.save(
-                        filename,
-                        f,
-                        save=True
+                    self.stdout.write(
+                        self.style.SUCCESS(
+                            f"Uploaded: {filename}"
+                        )
                     )
-
-                self.stdout.write(
-                    self.style.SUCCESS(
-                        f"Uploaded: {filename}"
-                    )
-                )
