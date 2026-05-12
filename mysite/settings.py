@@ -133,11 +133,21 @@ STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-#CLOUDINARY
+# CLOUDINARY
+
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get("doourrbua"),
-    'API_KEY': os.environ.get("325843382561642"),
-    'API_SECRET': os.environ.get("uuEhrY2JILK31lM5QagYgcaoouA"),
+    'CLOUD_NAME': 'doourrbua',
+    'API_KEY': '325843382561642',
+    'API_SECRET': 'uuEhrY2JILK31lM5QagYgcaoouA',
 }
+
+import cloudinary
+
+cloudinary.config(
+    cloud_name="doourrbua",
+    api_key="325843382561642",
+    api_secret="uuEhrY2JILK31lM5QagYgcaoouA",
+    secure=True
+)
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
