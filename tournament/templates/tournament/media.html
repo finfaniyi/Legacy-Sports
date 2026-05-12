@@ -56,41 +56,24 @@
 
     {% for item in media_items %}
 
-    <a
-      class="media-card"
-      href="{{ item.media_file.url }}"
-      target="_blank"
-      data-year="{{ item.category }}"
-    >
+    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}">
 
       <div class="media-thumb {% if item.media_type == 'video' %}media-video{% endif %}">
 
         <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
-        <img
-          src="{{ item.media_file.url|cut:'/upload/'|add:'/upload/so_1/'|cut:'.mp4'|cut:'.mov'|cut:'.webm' }}.jpg"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.media_file.url }}.jpg" alt="{{ item.title }}" loading="lazy">
 
         <!-- CUSTOM THUMB -->
         {% elif item.thumbnail %}
 
-        <img
-          src="{{ item.thumbnail.url }}"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
 
         <!-- NORMAL IMAGE -->
         {% else %}
 
-        <img
-          src="{{ item.media_file.url }}"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
 
         {% endif %}
 
