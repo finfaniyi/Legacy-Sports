@@ -69,7 +69,7 @@
         {% if item.media_type == "video" %}
 
         <img
-          src="{{ item.media_file.url|cut:'.mp4'|cut:'.mov'|cut:'.webm' }}.jpg"
+          src="{{ item.media_file.url|cut:'/upload/'|add:'/upload/so_1/'|cut:'.mp4'|cut:'.mov'|cut:'.webm' }}.jpg"
           alt="{{ item.title }}"
           loading="lazy"
         >
