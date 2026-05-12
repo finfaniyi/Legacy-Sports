@@ -9,27 +9,45 @@
 
 {% block content %}
 
-
 <main class="media-page">
 
-  <!-- HERO (matches History/About vibe) -->
+  <!-- HERO -->
   <header class="media-hero">
     <p class="media-kicker">LEGACY MEDIA</p>
+
     <h1>Media</h1>
+
     <p class="media-subtitle">
       Photos and highlights from Legacy Sports events.
     </p>
 
     <div class="media-controls">
+
       <select id="mediaFilter" class="media-select">
+
         <option value="all">All</option>
-        <!-- GRID <option value="2026">2026 Dodgeball</option> -->
-        <option value="2024">2024 LS Basketball</option>
-        <option value="2026">2026 LS Volleyball</option>
-        <option value="bts">2026 LS BTS</option>
-        <option value="creative">LS Creative Showcase</option>
+
+        <!-- GRID -->
+        <!-- <option value="2027">2027 Dodgeball</option> -->
+
+        <option value="2024">
+          2024 LS Basketball
+        </option>
+
+        <option value="2026">
+          2026 LS Volleyball
+        </option>
+
+        <option value="bts">
+          2026 LS BTS
+        </option>
+
+        <option value="creative">
+          LS Creative Showcase
+        </option>
 
       </select>
+
     </div>
   </header>
 
@@ -38,27 +56,49 @@
 
     {% for item in media_items %}
 
-    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}">
+    <a
+      class="media-card"
+      href="{{ item.media_file.url }}"
+      target="_blank"
+      data-year="{{ item.category }}"
+    >
 
       <div class="media-thumb {% if item.media_type == 'video' %}media-video{% endif %}">
 
+        <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
-        <img src="https://res.cloudinary.com/doourrbua/video/upload/so_1/{{ item.title }}.jpg" alt="{{ item.title }}"
-          loading="lazy">
+        <img
+          src="{{ item.media_file.url|cut:'.mp4'|cut:'.mov'|cut:'.webm' }}.jpg"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
 
+        <!-- CUSTOM THUMB -->
         {% elif item.thumbnail %}
 
-        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
+        <img
+          src="{{ item.thumbnail.url }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
 
+        <!-- NORMAL IMAGE -->
         {% else %}
 
-        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
+        <img
+          src="{{ item.media_file.url }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
 
         {% endif %}
 
+        <!-- PLAY BADGE -->
         {% if item.media_type == "video" %}
+
         <span class="play-badge">▶</span>
+
         {% endif %}
 
         <!-- OVERLAY -->
@@ -95,21 +135,34 @@
   </section>
 
   <div class="page-bottom-space"></div>
+
 </main>
 
 <script>
+
   const filter = document.getElementById("mediaFilter");
+
   const cards = document.querySelectorAll(".media-card");
 
   filter.addEventListener("change", () => {
-    const v = filter.value;
+
+    const value = filter.value;
 
     cards.forEach(card => {
-      const match = v === "all" || card.dataset.year === v;
-      card.classList.toggle("is-hidden", !match);
-    });
-  });
-</script>
 
+      const match =
+        value === "all" ||
+        card.dataset.year === value;
+
+      card.classList.toggle(
+        "is-hidden",
+        !match
+      );
+
+    });
+
+  });
+
+</script>
 
 {% endblock %}
