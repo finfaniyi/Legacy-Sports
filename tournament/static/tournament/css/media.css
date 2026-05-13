@@ -15,11 +15,11 @@
 
 .media-instagram {
     display: inline-block;
-    margin-top: 0.4rem;
+    margin-top: 0.35rem;
     color: white;
+    text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
-    text-decoration: none;
     transition: opacity 0.2s ease;
 }
 
