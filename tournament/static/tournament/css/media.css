@@ -13,6 +13,20 @@
   display: none;
 }
 
+.media-instagram {
+    display: inline-block;
+    margin-top: 0.4rem;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.media-instagram:hover {
+    opacity: 0.7;
+}
+
 .media-page{ /* Controls overall width and top spacing */
   width:min(1100px,92%);
   margin:0 auto;
