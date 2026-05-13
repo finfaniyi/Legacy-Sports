@@ -105,6 +105,18 @@
               {{ item.creator.role }}
             </p>
 
+            {% if item.creator.instagram %}
+
+            <p class="media-ig">
+
+              <a href="{{ item.creator.instagram }}" target="_blank">
+                Instagram
+              </a>
+
+            </p>
+
+            {% endif %}
+
           </div>
 
         </div>
