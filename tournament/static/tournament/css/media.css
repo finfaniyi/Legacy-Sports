@@ -13,7 +13,11 @@
   display: none;
 }
 
-
+.media-credit-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
 
 .media-page{ /* Controls overall width and top spacing */
   width:min(1100px,92%);
