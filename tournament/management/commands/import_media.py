@@ -91,6 +91,22 @@ class Command(BaseCommand):
                         file_path,
                         resource_type="auto"
                     )
+                    
+                    existing = MediaItem.objects.filter(
+                        title=title,
+                        creator=creator,
+                        category=category
+                    ).exists()
+
+                    if existing:
+
+                        self.stdout.write(
+                            self.style.WARNING(
+                                f"Skipped duplicate: {filename}"
+                            )
+                        )
+
+                        continue
 
                     MediaItem.objects.create(
                         creator=creator,
