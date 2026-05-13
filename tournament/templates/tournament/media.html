@@ -87,42 +87,27 @@
         <!-- OVERLAY -->
         <div class="media-overlay">
 
-  <div class="media-overlay-content">
+          <div class="media-overlay-content">
 
-    <p class="media-credit">
+            <p class="media-credit">
 
-      {% if item.media_type == "video" %}
-      🎥
-      {% else %}
-      📸
-      {% endif %}
+              {% if item.media_type == "video" %}
+              🎥
+              {% else %}
+              📸
+              {% endif %}
 
-      {{ item.creator.name }}
+              {{ item.creator.name }}
 
-    </p>
+            </p>
 
-    <p class="media-role">
-      {{ item.creator.role }}
-    </p>
+            <p class="media-role">
+              {{ item.creator.role }}
+            </p>
 
-    {% if item.creator.instagram %}
+          </div>
 
-    <p class="media-ig">
-
-      <a
-        href="{{ item.creator.instagram }}"
-        target="_blank"
-      >
-        Instagram
-      </a>
-
-    </p>
-
-    {% endif %}
-
-  </div>
-
-</div>
+        </div>
 
       </div>
 
