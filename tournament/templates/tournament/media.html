@@ -91,34 +91,28 @@
 
             <p class="media-credit">
 
-              {% if item.creator.instagram %}
-
-              <a href="{{ item.creator.instagram }}" target="_blank" class="media-credit-link"
-                onclick="event.stopPropagation();">
-
-                {% endif %}
-
-                <p class="media-credit">
-
-                  {% if item.media_type == "video" %}
-                  🎥
-                  {% else %}
-                  📸
-                  {% endif %}
-
-                  {{ item.creator.name }}
-
-                </p>
-
-                {% if item.creator.instagram %}
-              </a>
+              {% if item.media_type == "video" %}
+              🎥
+              {% else %}
+              📸
               {% endif %}
+
+              {{ item.creator.name }}
 
             </p>
 
             <p class="media-role">
               {{ item.creator.role }}
             </p>
+
+            {% if item.creator.instagram %}
+
+            <a href="{{ item.creator.instagram }}" target="_blank" class="media-instagram"
+              onclick="event.stopPropagation();">
+              Instagram
+            </a>
+
+            {% endif %}
 
           </div>
 
