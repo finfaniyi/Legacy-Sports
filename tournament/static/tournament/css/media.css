@@ -173,7 +173,7 @@
 .creator-hover-card{
   position:absolute;
 
-  bottom:115%;
+  top:110%;
   left:50%;
 
   transform:
@@ -201,7 +201,7 @@
     0 18px 40px rgba(0,0,0,.22);
 }
 
-.creator-filter:hover
+.creator-avatar-wrapper:hover
 .creator-hover-card{
 
   opacity:1;
@@ -211,6 +211,12 @@
     translateX(-50%)
     translateY(0);
 
+}
+
+.creator-scroll{
+  overflow-x:auto;
+  overflow-y:visible;
+  padding-bottom:120px;
 }
 
 .creator-hover-name{
@@ -314,31 +320,6 @@
 
 .media-card:hover img{
   transform:scale(1.05);
-}
-
-/* ICON */
-
-.media-type-icon{
-  position:absolute;
-  top:12px;
-  right:12px;
-
-  width:36px;
-  height:36px;
-
-  border-radius:50%;
-
-  background:rgba(0,0,0,.55);
-
-  color:white;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  backdrop-filter:blur(8px);
-
-  font-size:12px;
 }
 
 /* OVERLAY */
