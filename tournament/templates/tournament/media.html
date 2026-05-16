@@ -63,10 +63,7 @@
     <div class="creator-scroll">
 
       <!-- ALL -->
-      <button
-        class="creator-filter active"
-        data-creator="all"
-      >
+      <button class="creator-filter active" data-creator="all">
 
         <div class="creator-avatar creator-all">
           👥
@@ -79,17 +76,11 @@
       <!-- DYNAMIC CREATORS -->
       {% for creator in creators %}
 
-      <button
-        class="creator-filter"
-        data-creator="{{ creator.id }}"
-      >
+      <button class="creator-filter" data-creator="{{ creator.id }}">
 
         <div class="creator-avatar">
 
-          <img
-            src="{{ creator.profile_image.url }}"
-            alt="{{ creator.name }}"
-          >
+          <img src="{{ creator.profile_image.url }}" alt="{{ creator.name }}">
 
         </div>
 
@@ -112,9 +103,17 @@
       PHOTOS & HIGHLIGHTS
     </h2>
 
-    <div class="media-sort">
-      Newest First
-    </div>
+    <select id="sortFilter" class="media-sort-select">
+
+      <option value="newest">
+        Newest First
+      </option>
+
+      <option value="oldest">
+        Oldest First
+      </option>
+
+    </select>
 
   </div>
 
@@ -123,13 +122,8 @@
 
     {% for item in media_items %}
 
-    <a
-      class="media-card"
-      href="{{ item.media_file.url }}"
-      target="_blank"
-      data-year="{{ item.category }}"
-      data-creator="{{ item.creator.id }}"
-    >
+    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}"
+      data-creator="{{ item.creator.id }}">
 
       <div class="media-thumb">
 
@@ -137,27 +131,15 @@
         {% if item.media_type == "video" %}
 
         {% if item.thumbnail %}
-        <img
-          src="{{ item.thumbnail.url }}"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
         {% else %}
-        <img
-          src="{{ item.media_file.url }}.jpg"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.media_file.url }}.jpg" alt="{{ item.title }}" loading="lazy">
         {% endif %}
 
         <!-- IMAGE -->
         {% else %}
 
-        <img
-          src="{{ item.media_file.url }}"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
 
         {% endif %}
 
@@ -177,10 +159,7 @@
 
           <div class="media-creator-mini">
 
-            <img
-              src="{{ item.creator.profile_image.url }}"
-              alt="{{ item.creator.name }}"
-            >
+            <img src="{{ item.creator.profile_image.url }}" alt="{{ item.creator.name }}">
 
           </div>
 
@@ -204,75 +183,115 @@
 
 <script>
 
-const categoryFilter =
-  document.getElementById("mediaFilter");
+  const categoryFilter =
+    document.getElementById("mediaFilter");
 
-const creatorButtons =
-  document.querySelectorAll(".creator-filter");
+  const creatorButtons =
+    document.querySelectorAll(".creator-filter");
 
-const mediaCards =
-  document.querySelectorAll(".media-card");
+  const mediaCards =
+    Array.from(document.querySelectorAll(".media-card"));
 
-let activeCategory = "all";
-let activeCreator = "all";
+  const sortFilter =
+    document.getElementById("sortFilter");
 
-function filterMedia() {
+  const grid =
+    document.querySelector(".media-grid");
 
-  mediaCards.forEach(card => {
+  let activeCategory = "all";
+  let activeCreator = "all";
+  let activeSort = "newest";
 
-    const categoryMatch =
-      activeCategory === "all" ||
-      card.dataset.year === activeCategory;
+  function updateMedia() {
 
-    const creatorMatch =
-      activeCreator === "all" ||
-      card.dataset.creator === activeCreator;
+    // FILTER
+    mediaCards.forEach(card => {
 
-    const visible =
-      categoryMatch && creatorMatch;
+      const categoryMatch =
+        activeCategory === "all" ||
+        card.dataset.year === activeCategory;
 
-    card.classList.toggle(
-      "is-hidden",
-      !visible
-    );
+      const creatorMatch =
+        activeCreator === "all" ||
+        card.dataset.creator === activeCreator;
 
-  });
+      const visible =
+        categoryMatch && creatorMatch;
 
-}
-
-categoryFilter.addEventListener(
-  "change",
-  () => {
-
-    activeCategory =
-      categoryFilter.value;
-
-    filterMedia();
-
-  }
-);
-
-creatorButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      creatorButtons.forEach(btn =>
-        btn.classList.remove("active")
+      card.classList.toggle(
+        "is-hidden",
+        !visible
       );
 
-      button.classList.add("active");
+    });
 
-      activeCreator =
-        button.dataset.creator;
+    // SORT
+    const visibleCards =
+      mediaCards.filter(card =>
+        !card.classList.contains("is-hidden")
+      );
 
-      filterMedia();
+    if(activeSort === "oldest"){
+
+      visibleCards.reverse();
+
+    }
+
+    // REORDER
+    visibleCards.forEach(card => {
+      grid.appendChild(card);
+    });
+
+  }
+
+  // CATEGORY FILTER
+  categoryFilter.addEventListener(
+    "change",
+    () => {
+
+      activeCategory =
+        categoryFilter.value;
+
+      updateMedia();
 
     }
   );
 
-});
+  // CREATOR FILTER
+  creatorButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        creatorButtons.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        activeCreator =
+          button.dataset.creator;
+
+        updateMedia();
+
+      }
+    );
+
+  });
+
+  // SORT FILTER
+  sortFilter.addEventListener(
+    "change",
+    () => {
+
+      activeSort =
+        sortFilter.value;
+
+      updateMedia();
+
+    }
+  );
 
 </script>
 

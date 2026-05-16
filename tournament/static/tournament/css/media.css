@@ -47,16 +47,38 @@
 }
 
 .media-select{
-  width:280px;
-  background:#c40000;
-  color:white;
-  border:none;
-  border-radius:18px;
-  padding:14px 18px;
   font-family:'Bebas Neue',sans-serif;
-  font-size:22px;
+  font-weight:700;
+
+  max-width:220px;
+  width:100%;
+
+  padding:10px 14px;
+
+  border-radius:12px;
+  border:none;
+
+  background:#c40000;
+  color:#fff;
+
+  font-size:20px;
   letter-spacing:1px;
+
+  outline:none;
   cursor:pointer;
+}
+
+.media-sort-select{
+  font-family:'Sofia Sans',sans-serif;
+
+  border:none;
+  background:transparent;
+
+  font-size:15px;
+  opacity:.75;
+
+  cursor:pointer;
+  outline:none;
 }
 
 /* CREATOR SECTION */
