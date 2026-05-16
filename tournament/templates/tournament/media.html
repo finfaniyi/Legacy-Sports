@@ -24,7 +24,7 @@
       Photos and highlights from Legacy Sports events.
     </p>
 
-    <!-- CATEGORY FILTER -->
+    <!-- FILTER -->
     <div class="media-controls">
 
       <select id="mediaFilter" class="media-select">
@@ -53,7 +53,7 @@
 
   </header>
 
-  <!-- CREATOR FILTERS -->
+  <!-- CREATORS -->
   <section class="creator-section">
 
     <h2 class="creator-heading">
@@ -63,7 +63,10 @@
     <div class="creator-scroll">
 
       <!-- ALL -->
-      <button class="creator-filter active" data-creator="all">
+      <button
+        class="creator-filter active"
+        data-creator="all"
+      >
 
         <div class="creator-avatar creator-all">
           👥
@@ -73,14 +76,20 @@
 
       </button>
 
-      <!-- DYNAMIC CREATORS -->
+      <!-- DYNAMIC -->
       {% for creator in creators %}
 
-      <button class="creator-filter" data-creator="{{ creator.id }}">
+      <button
+        class="creator-filter"
+        data-creator="{{ creator.id }}"
+      >
 
         <div class="creator-avatar">
 
-          <img src="{{ creator.profile_image.url }}" alt="{{ creator.name }}">
+          <img
+            src="{{ creator.profile_image.url }}"
+            alt="{{ creator.name }}"
+          >
 
         </div>
 
@@ -96,54 +105,63 @@
 
   </section>
 
-  <!-- SECTION HEADER -->
+  <!-- HEADER -->
   <div class="media-grid-header">
 
     <h2>
       PHOTOS & HIGHLIGHTS
     </h2>
 
-    <select id="sortFilter" class="media-sort-select">
-
-      <option value="newest">
-        Newest First
-      </option>
-
-      <option value="oldest">
-        Oldest First
-      </option>
-
-    </select>
-
   </div>
 
-  <!-- MEDIA GRID -->
+  <!-- GRID -->
   <section class="media-grid">
 
     {% for item in media_items %}
 
-    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}"
-      data-creator="{{ item.creator.id }}">
+    <a
+      class="media-card"
+      href="{{ item.media_file.url }}"
+      target="_blank"
+      data-year="{{ item.category }}"
+      data-creator="{{ item.creator.id }}"
+    >
 
       <div class="media-thumb">
 
         <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
-        {% if item.thumbnail %}
-        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
-        {% else %}
-        <img src="{{ item.media_file.url }}.jpg" alt="{{ item.title }}" loading="lazy">
-        {% endif %}
+          {% if item.thumbnail %}
+
+          <img
+            src="{{ item.thumbnail.url }}"
+            alt="{{ item.title }}"
+            loading="lazy"
+          >
+
+          {% else %}
+
+          <img
+            src="{{ item.media_file.url }}.jpg"
+            alt="{{ item.title }}"
+            loading="lazy"
+          >
+
+          {% endif %}
 
         <!-- IMAGE -->
         {% else %}
 
-        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
+        <img
+          src="{{ item.media_file.url }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
 
         {% endif %}
 
-        <!-- MEDIA ICON -->
+        <!-- TYPE -->
         <div class="media-type-icon">
 
           {% if item.media_type == "video" %}
@@ -154,12 +172,15 @@
 
         </div>
 
-        <!-- BOTTOM OVERLAY -->
+        <!-- OVERLAY -->
         <div class="media-card-overlay">
 
           <div class="media-creator-mini">
 
-            <img src="{{ item.creator.profile_image.url }}" alt="{{ item.creator.name }}">
+            <img
+              src="{{ item.creator.profile_image.url }}"
+              alt="{{ item.creator.name }}"
+            >
 
           </div>
 
@@ -190,21 +211,13 @@
     document.querySelectorAll(".creator-filter");
 
   const mediaCards =
-    Array.from(document.querySelectorAll(".media-card"));
-
-  const sortFilter =
-    document.getElementById("sortFilter");
-
-  const grid =
-    document.querySelector(".media-grid");
+    document.querySelectorAll(".media-card");
 
   let activeCategory = "all";
   let activeCreator = "all";
-  let activeSort = "newest";
 
-  function updateMedia() {
+  function filterMedia() {
 
-    // FILTER
     mediaCards.forEach(card => {
 
       const categoryMatch =
@@ -225,26 +238,8 @@
 
     });
 
-    // SORT
-    const visibleCards =
-      mediaCards.filter(card =>
-        !card.classList.contains("is-hidden")
-      );
-
-    if(activeSort === "oldest"){
-
-      visibleCards.reverse();
-
-    }
-
-    // REORDER
-    visibleCards.forEach(card => {
-      grid.appendChild(card);
-    });
-
   }
 
-  // CATEGORY FILTER
   categoryFilter.addEventListener(
     "change",
     () => {
@@ -252,12 +247,11 @@
       activeCategory =
         categoryFilter.value;
 
-      updateMedia();
+      filterMedia();
 
     }
   );
 
-  // CREATOR FILTER
   creatorButtons.forEach(button => {
 
     button.addEventListener(
@@ -273,25 +267,12 @@
         activeCreator =
           button.dataset.creator;
 
-        updateMedia();
+        filterMedia();
 
       }
     );
 
   });
-
-  // SORT FILTER
-  sortFilter.addEventListener(
-    "change",
-    () => {
-
-      activeSort =
-        sortFilter.value;
-
-      updateMedia();
-
-    }
-  );
 
 </script>
 
