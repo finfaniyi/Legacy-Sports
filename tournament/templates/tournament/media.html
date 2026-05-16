@@ -80,9 +80,32 @@
 
       <button class="creator-filter" data-creator="{{ creator.id }}">
 
-        <div class="creator-avatar">
+        <div class="creator-avatar-wrapper">
 
-          <img src="{{ creator.profile_image.url }}" alt="{{ creator.name }}">
+          <div class="creator-avatar">
+
+            <img src="{{ creator.profile_image.url }}" alt="{{ creator.name }}">
+
+          </div>
+
+          <!-- HOVER CARD -->
+          <div class="creator-hover-card">
+
+            <p class="creator-hover-name">
+              {{ creator.name }}
+            </p>
+
+            <p class="creator-hover-role">
+              {{ creator.role }}
+            </p>
+
+            {% if creator.instagram %}
+            <a href="https://instagram.com/{{ creator.instagram }}" target="_blank" class="creator-hover-ig">
+              @{{ creator.instagram }}
+            </a>
+            {% endif %}
+
+          </div>
 
         </div>
 
