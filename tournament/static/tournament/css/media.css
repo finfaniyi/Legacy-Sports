@@ -221,9 +221,12 @@
   align-items:center;
   justify-content:center;
 
-  background:#fff;
+  background:white;
 
-  font-size:42px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;
+  letter-spacing:1px;
+
   color:#c40000;
 }
 
