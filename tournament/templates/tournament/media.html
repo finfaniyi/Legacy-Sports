@@ -71,6 +71,10 @@
 
         </div>
 
+        <span class="creator-name">
+          All Creators
+        </span>
+
       </button>
 
       <!-- DYNAMIC -->
@@ -82,7 +86,20 @@
 
           <div class="creator-avatar">
 
-            <img src="{{ creator.profile_image.url }}" alt="{{ creator.name }}">
+            {% if creator.profile_image %}
+
+            <img
+              src="{{ creator.profile_image.url }}"
+              alt="{{ creator.name }}"
+            >
+
+            {% else %}
+
+            <div class="creator-placeholder">
+              📸
+            </div>
+
+            {% endif %}
 
           </div>
 
@@ -93,12 +110,18 @@
               {{ creator.name }}
             </p>
 
+            {% if creator.role %}
             <p class="creator-hover-role">
               {{ creator.role }}
             </p>
+            {% endif %}
 
             {% if creator.instagram %}
-            <a href="https://instagram.com/{{ creator.instagram }}" target="_blank" class="creator-hover-ig">
+            <a
+              href="https://instagram.com/{{ creator.instagram }}"
+              target="_blank"
+              class="creator-hover-ig"
+            >
               @{{ creator.instagram }}
             </a>
             {% endif %}
@@ -107,7 +130,7 @@
 
         </div>
 
-        <span>
+        <span class="creator-name">
           {{ creator.name }}
         </span>
 
@@ -133,28 +156,45 @@
 
     {% for item in media_items %}
 
-    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}"
-      data-creator="{{ item.creator.id }}">
+    <a
+      class="media-card"
+      href="{{ item.media_file.url }}"
+      target="_blank"
+      data-year="{{ item.category }}"
+      data-creator="{{ item.creator.id }}"
+    >
 
       <div class="media-thumb">
 
         <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
-        {% if item.thumbnail %}
+          {% if item.thumbnail %}
 
-        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
+          <img
+            src="{{ item.thumbnail.url }}"
+            alt="{{ item.title }}"
+            loading="lazy"
+          >
 
-        {% else %}
+          {% else %}
 
-        <img src="{{ item.media_file.url }}.jpg" alt="{{ item.title }}" loading="lazy">
+          <img
+            src="{{ item.media_file.url }}.jpg"
+            alt="{{ item.title }}"
+            loading="lazy"
+          >
 
-        {% endif %}
+          {% endif %}
 
         <!-- IMAGE -->
         {% else %}
 
-        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
+        <img
+          src="{{ item.media_file.url }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
 
         {% endif %}
 
@@ -174,7 +214,14 @@
 
           <div class="media-creator-mini">
 
-            <img src="{{ item.creator.profile_image.url }}" alt="{{ item.creator.name }}">
+            {% if item.creator.profile_image %}
+
+            <img
+              src="{{ item.creator.profile_image.url }}"
+              alt="{{ item.creator.name }}"
+            >
+
+            {% endif %}
 
           </div>
 
