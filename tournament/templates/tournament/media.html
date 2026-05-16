@@ -13,22 +13,23 @@
 
   <!-- HERO -->
   <header class="media-hero">
-    <p class="media-kicker">LEGACY MEDIA</p>
 
-    <h1>Media</h1>
+    <p class="media-kicker">
+      LEGACY MEDIA
+    </p>
+
+    <h1>MEDIA</h1>
 
     <p class="media-subtitle">
       Photos and highlights from Legacy Sports events.
     </p>
 
+    <!-- CATEGORY FILTER -->
     <div class="media-controls">
 
       <select id="mediaFilter" class="media-select">
 
-        <option value="all">All</option>
-
-        <!-- GRID -->
-        <!-- <option value="2027">2027 Dodgeball</option> -->
+        <option value="all">ALL</option>
 
         <option value="2024">
           2024 LS Basketball
@@ -49,63 +50,143 @@
       </select>
 
     </div>
+
   </header>
 
-  <!-- GRID -->
+  <!-- CREATOR FILTERS -->
+  <section class="creator-section">
+
+    <h2 class="creator-heading">
+      CREATORS
+    </h2>
+
+    <div class="creator-scroll">
+
+      <!-- ALL -->
+      <button
+        class="creator-filter active"
+        data-creator="all"
+      >
+
+        <div class="creator-avatar creator-all">
+          👥
+        </div>
+
+        <span>All Creators</span>
+
+      </button>
+
+      <!-- DYNAMIC CREATORS -->
+      {% for creator in creators %}
+
+      <button
+        class="creator-filter"
+        data-creator="{{ creator.id }}"
+      >
+
+        <div class="creator-avatar">
+
+          <img
+            src="{{ creator.profile_image.url }}"
+            alt="{{ creator.name }}"
+          >
+
+        </div>
+
+        <span>
+          {{ creator.name }}
+        </span>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+  <!-- SECTION HEADER -->
+  <div class="media-grid-header">
+
+    <h2>
+      PHOTOS & HIGHLIGHTS
+    </h2>
+
+    <div class="media-sort">
+      Newest First
+    </div>
+
+  </div>
+
+  <!-- MEDIA GRID -->
   <section class="media-grid">
 
     {% for item in media_items %}
 
-    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}">
+    <a
+      class="media-card"
+      href="{{ item.media_file.url }}"
+      target="_blank"
+      data-year="{{ item.category }}"
+      data-creator="{{ item.creator.id }}"
+    >
 
-      <div class="media-thumb {% if item.media_type == 'video' %}media-video{% endif %}">
+      <div class="media-thumb">
 
         <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
-        <img src="{{ item.media_file.url }}.jpg" alt="{{ item.title }}" loading="lazy">
+        {% if item.thumbnail %}
+        <img
+          src="{{ item.thumbnail.url }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
+        {% else %}
+        <img
+          src="{{ item.media_file.url }}.jpg"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
+        {% endif %}
 
-        <!-- CUSTOM THUMB -->
-        {% elif item.thumbnail %}
-
-        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
-
-        <!-- NORMAL IMAGE -->
+        <!-- IMAGE -->
         {% else %}
 
-        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
+        <img
+          src="{{ item.media_file.url }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
 
         {% endif %}
 
-        <!-- PLAY BADGE -->
-        {% if item.media_type == "video" %}
+        <!-- MEDIA ICON -->
+        <div class="media-type-icon">
 
-        <span class="play-badge">▶</span>
+          {% if item.media_type == "video" %}
+          ▶
+          {% else %}
+          🖼
+          {% endif %}
 
-        {% endif %}
+        </div>
 
-        <!-- OVERLAY -->
-        <div class="media-overlay">
+        <!-- BOTTOM OVERLAY -->
+        <div class="media-card-overlay">
 
-          <div class="media-overlay-content">
+          <div class="media-creator-mini">
 
-            <p class="media-credit">
-
-              {% if item.media_type == "video" %}
-              🎥
-              {% else %}
-              📸
-              {% endif %}
-
-              {{ item.creator.name }}
-
-            </p>
-
-            <p class="media-role">
-              {{ item.creator.role }}
-            </p>
+            <img
+              src="{{ item.creator.profile_image.url }}"
+              alt="{{ item.creator.name }}"
+            >
 
           </div>
+
+          <span class="media-creator-name">
+            {{ item.creator.name }}
+          </span>
 
         </div>
 
@@ -123,28 +204,75 @@
 
 <script>
 
-  const filter = document.getElementById("mediaFilter");
+const categoryFilter =
+  document.getElementById("mediaFilter");
 
-  const cards = document.querySelectorAll(".media-card");
+const creatorButtons =
+  document.querySelectorAll(".creator-filter");
 
-  filter.addEventListener("change", () => {
+const mediaCards =
+  document.querySelectorAll(".media-card");
 
-    const value = filter.value;
+let activeCategory = "all";
+let activeCreator = "all";
 
-    cards.forEach(card => {
+function filterMedia() {
 
-      const match =
-        value === "all" ||
-        card.dataset.year === value;
+  mediaCards.forEach(card => {
 
-      card.classList.toggle(
-        "is-hidden",
-        !match
-      );
+    const categoryMatch =
+      activeCategory === "all" ||
+      card.dataset.year === activeCategory;
 
-    });
+    const creatorMatch =
+      activeCreator === "all" ||
+      card.dataset.creator === activeCreator;
+
+    const visible =
+      categoryMatch && creatorMatch;
+
+    card.classList.toggle(
+      "is-hidden",
+      !visible
+    );
 
   });
+
+}
+
+categoryFilter.addEventListener(
+  "change",
+  () => {
+
+    activeCategory =
+      categoryFilter.value;
+
+    filterMedia();
+
+  }
+);
+
+creatorButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      creatorButtons.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      activeCreator =
+        button.dataset.creator;
+
+      filterMedia();
+
+    }
+  );
+
+});
 
 </script>
 
