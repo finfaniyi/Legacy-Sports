@@ -63,13 +63,12 @@
     <div class="creator-scroll">
 
       <!-- ALL -->
-      <button
-        class="creator-filter active"
-        data-creator="all"
-      >
+      <button class="creator-filter active" data-creator="all">
 
         <div class="creator-avatar creator-all">
-          👥
+
+          <img src="{% static 'tournament/images/LS Logo/LS%20short%20logo%20red.png' %}" alt="All Creators">
+
         </div>
 
         <span>All Creators</span>
@@ -79,17 +78,11 @@
       <!-- DYNAMIC -->
       {% for creator in creators %}
 
-      <button
-        class="creator-filter"
-        data-creator="{{ creator.id }}"
-      >
+      <button class="creator-filter" data-creator="{{ creator.id }}">
 
         <div class="creator-avatar">
 
-          <img
-            src="{{ creator.profile_image.url }}"
-            alt="{{ creator.name }}"
-          >
+          <img src="{{ creator.profile_image.url }}" alt="{{ creator.name }}">
 
         </div>
 
@@ -119,45 +112,28 @@
 
     {% for item in media_items %}
 
-    <a
-      class="media-card"
-      href="{{ item.media_file.url }}"
-      target="_blank"
-      data-year="{{ item.category }}"
-      data-creator="{{ item.creator.id }}"
-    >
+    <a class="media-card" href="{{ item.media_file.url }}" target="_blank" data-year="{{ item.category }}"
+      data-creator="{{ item.creator.id }}">
 
       <div class="media-thumb">
 
         <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
-          {% if item.thumbnail %}
+        {% if item.thumbnail %}
 
-          <img
-            src="{{ item.thumbnail.url }}"
-            alt="{{ item.title }}"
-            loading="lazy"
-          >
+        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
 
-          {% else %}
+        {% else %}
 
-          <img
-            src="{{ item.media_file.url }}.jpg"
-            alt="{{ item.title }}"
-            loading="lazy"
-          >
+        <img src="{{ item.media_file.url }}.jpg" alt="{{ item.title }}" loading="lazy">
 
-          {% endif %}
+        {% endif %}
 
         <!-- IMAGE -->
         {% else %}
 
-        <img
-          src="{{ item.media_file.url }}"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
+        <img src="{{ item.media_file.url }}" alt="{{ item.title }}" loading="lazy">
 
         {% endif %}
 
@@ -177,10 +153,7 @@
 
           <div class="media-creator-mini">
 
-            <img
-              src="{{ item.creator.profile_image.url }}"
-              alt="{{ item.creator.name }}"
-            >
+            <img src="{{ item.creator.profile_image.url }}" alt="{{ item.creator.name }}">
 
           </div>
 
