@@ -71,7 +71,7 @@
 /* CREATORS */
 
 .creator-section{
-  margin-bottom:28px;
+  margin-bottom:33px;
   overflow:visible;
 }
 
@@ -84,19 +84,22 @@
 
 .creator-scroll{
   display:flex;
+
+  flex-wrap:wrap;
+
   gap:18px;
 
-  overflow-x:auto;
-  overflow-y:visible;
+  overflow:visible;
 
-  padding-bottom: 60px;
+  padding:
+    8px
+    0
+    70px
+    8px;
 
   position:relative;
 }
 
-.creator-scroll::-webkit-scrollbar{
-  display:none;
-}
 
 .creator-filter{
   background:none;
