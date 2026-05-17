@@ -277,6 +277,7 @@ def registration(request):
     )
 
     full = len(taken_slots) >= 8
+    spots_left = 8 - len(taken_slots)
 
     return render(request, "tournament/registration_display.html", {
         "taken_slots": taken_slots,
@@ -286,6 +287,7 @@ def registration(request):
         "registration_open": registration_open,
         "registration_close": registration_close,
         "full": full,
+        "spots_left": spots_left,
     })
 
 def registration_success(request):
@@ -314,16 +316,22 @@ def waiver(request):
 
 def registration_team(request):
 
-    slot_value = request.GET.get("slot")
     spectator_range = request.POST.get("spectator_range")
 
-    if not slot_value:
-        return redirect("/registration/")
+    taken_slots = set(
+        Team.objects.filter(payment_status="paid")
+        .values_list("slot_number", flat=True)
+    )
 
-    try:
-        slot = int(slot_value)
-    except ValueError:
-        return redirect("/registration/")
+    slot = None
+
+    for i in range(1, 9):
+        if i not in taken_slots:
+            slot = i
+            break
+
+    if slot is None:
+        return redirect("/registration/?error=full")
 
     taken_colors = set(
         Team.objects.filter(payment_status="paid")
