@@ -50,22 +50,43 @@
   font-family:'Bebas Neue',sans-serif;
   font-weight:700;
 
-  max-width:160px;
-  width:100%;
+  width:220px;
 
-  padding:8px 12px;
+  padding:
+    10px
+    42px
+    10px
+    16px;
 
-  border-radius:10px;
+  border-radius:14px;
   border:none;
 
   background:#c40000;
   color:#fff;
 
-  font-size:18px;
-  letter-spacing:1px;
+  font-size:20px;
+  letter-spacing:.5px;
 
   outline:none;
   cursor:pointer;
+
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, white 50%),
+    linear-gradient(135deg, white 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px);
+
+  background-size:
+    6px 6px,
+    6px 6px;
+
+  background-repeat:no-repeat;
 }
 
 /* CREATORS */
