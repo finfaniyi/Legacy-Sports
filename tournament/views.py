@@ -13,6 +13,7 @@ from .models import MediaItem
 from django.views.decorators.csrf import csrf_exempt
 import requests
 import feedparser
+import random
 import re
 from zoneinfo import ZoneInfo
 from django.urls import reverse
@@ -366,7 +367,7 @@ def registration_team(request):
             return render(request, "tournament/registration-form.html", {
                 "error": "Color already taken.",
                 "taken_colors": taken_colors,
-                "team_colors": TEAM_COLORS,
+                "team_colors": available_colors,
             })
 
         player_count = int(request.POST.get("roster_size", 6))
@@ -384,7 +385,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": "This email has already registered a team.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                     "slot": slot,
                     "form_data": request.POST,
                 })
@@ -413,7 +414,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": f"Player {i} age is required.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                 })
 
             try:
@@ -422,7 +423,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": f"Player {i} age must be a number.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                 })
 
             Player.objects.create(
@@ -446,7 +447,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": "Substitute 1 age is required.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                 })
 
             try:
@@ -455,7 +456,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": "Substitute 1 age must be a number.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                 })
 
             Player.objects.create(
@@ -479,7 +480,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": "Substitute 2 age is required.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                 })
 
             try:
@@ -488,7 +489,7 @@ def registration_team(request):
                 return render(request, "tournament/registration-form.html", {
                     "error": "Substitute 2 age must be a number.",
                     "taken_colors": taken_colors,
-                    "team_colors": TEAM_COLORS,
+                    "team_colors": available_colors,
                 })
 
             Player.objects.create(
@@ -530,9 +531,16 @@ def registration_team(request):
 
         return redirect(checkout_session.url)
 
+    available_colors = [
+        color for color in TEAM_COLORS
+        if color[0] not in taken_colors
+    ]
+
+    random.shuffle(available_colors)
+    
     return render(request, "tournament/registration-form.html", {
         "taken_colors": taken_colors,
-        "team_colors": TEAM_COLORS,
+        "team_colors": available_colors,
         "slot": slot,
     })
 
