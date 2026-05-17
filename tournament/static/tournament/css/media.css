@@ -71,7 +71,7 @@
 /* CREATORS */
 
 .creator-section{
-  margin-bottom:22px;
+  margin-bottom:28px;
   overflow:visible;
 }
 
@@ -89,7 +89,7 @@
   overflow-x:auto;
   overflow-y:visible;
 
-  padding-bottom:48px;
+  padding-bottom: 60px;
 
   position:relative;
 }
