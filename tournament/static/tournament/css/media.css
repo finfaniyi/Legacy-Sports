@@ -349,6 +349,37 @@
   background:#111;
 }
 
+/* VIDEO INDICATOR */
+
+.video-indicator{
+  position:absolute;
+
+  top:14px;
+  right:14px;
+
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.55);
+
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  backdrop-filter:blur(8px);
+
+  font-size:14px;
+
+  z-index:5;
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.18);
+}
+
 .media-thumb::after{
   content:"";
 
