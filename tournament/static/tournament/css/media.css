@@ -195,6 +195,8 @@
 
 /* HOVER CARD */
 
+/* HOVER CARD */
+
 .creator-hover-card{
   position:absolute;
 
@@ -224,6 +226,8 @@
   transition:.22s ease;
 
   z-index:50;
+
+  pointer-events:none;
 }
 
 /* SHOW */
@@ -240,27 +244,60 @@
 
 }
 
-/* EDGE FIXES */
+/* TEXT */
 
-.creator-filter:last-child
-.creator-hover-card{
+.creator-hover-name{
+  color:#fff;
 
-  left:auto;
-  right:0;
+  font-size:16px;
+  font-weight:700;
 
-  transform:
-    translateY(8px);
+  margin-bottom:4px;
 
+  line-height:1.1;
 }
 
-.creator-filter:nth-last-child(2)
+.creator-hover-role{
+  color:rgba(255,255,255,.72);
+
+  font-size:13px;
+
+  margin-bottom:8px;
+
+  line-height:1.2;
+}
+
+.creator-hover-ig{
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:13px;
+  font-weight:600;
+
+  opacity:.95;
+}
+
+.creator-hover-ig:hover{
+  opacity:1;
+}
+
+.creator-avatar-wrapper{
+  position:relative;
+  isolation:isolate;
+}
+
+/* SHOW */
+
+.creator-avatar-wrapper:hover
 .creator-hover-card{
 
-  left:auto;
-  right:-20px;
+  opacity:1;
+  visibility:visible;
 
   transform:
-    translateY(8px);
+    translateX(-50%)
+    translateY(0);
 
 }
 
