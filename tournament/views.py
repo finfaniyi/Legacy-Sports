@@ -97,7 +97,7 @@ def media(request):
         "creator"
     ).order_by("-uploaded_at")
 
-    creators = Creator.objects.all()
+    creators = Creator.objects.all().order_by("name")
 
     return render(request, "tournament/media.html", {
         "media_items": media_items,
