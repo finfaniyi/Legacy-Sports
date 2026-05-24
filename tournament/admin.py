@@ -96,28 +96,29 @@ class TeamAdmin(admin.ModelAdmin):
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
+
     list_display = (
         "first_name",
         "last_name",
+        "gender",
         "team",
-        "games",
-        "points",
-        "aces",
-        "blocks",
-        "fouls",
+        "contact_email",
         "is_substitute",
     )
 
-    list_editable = (
-        "games",
-        "points",
-        "aces",
-        "blocks",
-        "fouls",
+    list_filter = (
+        "team",
+        "gender",
+        "is_substitute",
     )
 
-    list_filter = ("team", "is_substitute")
-    search_fields = ("first_name", "last_name", "team__team_name")
+    search_fields = (
+        "first_name",
+        "last_name",
+        "contact_email",
+        "team__team_name",
+    )
+
     actions = [export_players_csv]
 
 
