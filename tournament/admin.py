@@ -102,6 +102,7 @@ class PlayerAdmin(admin.ModelAdmin):
         "last_name",
         "gender",
         "team",
+        "school",
         "contact_email",
         "is_substitute",
     )
