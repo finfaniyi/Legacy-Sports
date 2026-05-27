@@ -1,3 +1,16 @@
+/* =========================
+   VOLUNTEER CLOSED PAGE
+========================= */
+
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 20px;
+}
+
 .form-header {
   margin-bottom: 28px;
   text-align: center;
@@ -8,15 +21,14 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   letter-spacing: 2px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #111;
 }
 
 .form-header p {
-  opacity: 0.75;
   font-size: 18px;
   color: #3a3a3a;
-  margin-bottom: 0;
+  opacity: 0.8;
 }
 
 .form-card {
@@ -27,5 +39,82 @@
   max-width: 900px;
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+}
+
+.closed-message {
   color: #ffffff;
+}
+
+.closed-message h2 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.closed-message p {
+  color: rgba(255,255,255,0.82);
+  line-height: 1.75;
+  margin-bottom: 14px;
+  font-size: 1rem;
+  max-width: 760px;
+}
+
+.submit-btn {
+  margin-top: 22px;
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 12px;
+  border: none;
+  background: #bb080b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.submit-btn:hover {
+  background: #a40609;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+  .form-page {
+    justify-content: flex-start;
+    padding: 60px 16px;
+  }
+
+  .form-header h1 {
+    font-size: 34px;
+  }
+
+  .form-header p {
+    font-size: 16px;
+  }
+
+  .form-card {
+    padding: 32px 22px;
+    border-radius: 14px;
+  }
+
+  .closed-message h2 {
+    font-size: 1.6rem;
+  }
+
+  .closed-message p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .submit-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
