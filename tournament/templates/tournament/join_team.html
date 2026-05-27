@@ -11,58 +11,39 @@
 <section class="form-page">
 
   <div class="form-header">
-    <h1>Join Legacy Sports</h1>
-    <p>Volunteer. Create. Lead.</p>
+    <h1>Volunteer Applications Closed</h1>
+    <p>Thank you for the overwhelming support.</p>
   </div>
 
-  <div class="form-card">
-    <form method="POST" action="{% url 'join_team' %}">
-      {% csrf_token %}
+  <div class="form-card closed-card">
 
-      {% if messages %}
-      {% for message in messages %}
-      <div class="success-toast">
-        ✅ {{ message }}
-      </div>
-      {% endfor %}
-      {% endif %}
+    <div class="closed-message">
 
-      {% if error %}
-      <div class="error-toast">
-        ⚠️ {{ error }}
-      </div>
-      {% endif %}
+      <h2>Applications for this event are now closed.</h2>
 
+      <p>
+        We truly appreciate everyone who showed interest in helping bring
+        Legacy Sports to life.
+      </p>
 
-      <div class="form-grid">
-        <input name="first_name" placeholder="First Name" required>
-        <input name="last_name" placeholder="Last Name" required>
+      <p>
+        Our volunteer and creative teams for this event have now been finalized.
+      </p>
 
-        <input name="email" type="email" placeholder="Email Address" required>
-        <input name="phone" placeholder="Phone Number" pattern="[0-9+\-\s()]{7,15}" title="Enter a valid phone number"
-          required>
+      <p>
+        Please stay connected with us through our social media channels for
+        future opportunities, events, and upcoming openings.
+      </p>
 
-        <input name="age" type="number" placeholder="Age" min="16">
+      <a href="https://www.instagram.com/legacysportscanada/"
+         target="_blank"
+         class="submit-btn">
+         Follow Legacy Sports
+      </a>
 
-        <select name="role_interest" required>
-          <option value="">Select Role</option>
-          <option value="Photographer">Photographer</option>
-          <option value="Videographer">Videographer</option>
-          <option value="Video Editor">Video Editor</option>
-          <option value="Creative_Design">Creative Design</option>
-          <option value="Event_Staff">Event Staff</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+    </div>
 
-      <textarea name="experience" rows="4" placeholder="Tell us about your experience or why you want to join"
-        required></textarea>
-
-      <button type="submit" class="submit-btn">
-        Submit Application
-      </button>
-
-    </form>
   </div>
+
 </section>
 {% endblock %}
