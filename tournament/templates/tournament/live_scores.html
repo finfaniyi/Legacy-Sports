@@ -1,0 +1,55 @@
+{% extends "tournament/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h1>Live Scores</h1>
+
+<h2>Live Matches</h2>
+
+{% for match in live_matches %}
+
+<div class="card mb-3 p-3">
+
+    <h4>{{ match.team_1.team_name }}</h4>
+    <h2>{{ match.team_1_score }}</h2>
+
+    <hr>
+
+    <h4>{{ match.team_2.team_name }}</h4>
+    <h2>{{ match.team_2_score }}</h2>
+
+    <span>LIVE</span>
+
+</div>
+
+{% empty %}
+
+<p>No live matches right now.</p>
+
+{% endfor %}
+
+<hr>
+
+<h2>Completed Matches</h2>
+
+{% for match in completed_matches %}
+
+<div class="card mb-3 p-3">
+
+    <strong>
+        {{ match.team_1.team_name }}
+        {{ match.team_1_score }}
+        -
+        {{ match.team_2_score }}
+        {{ match.team_2.team_name }}
+    </strong>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

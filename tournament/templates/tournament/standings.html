@@ -1,0 +1,45 @@
+{% extends "tournament/base.html" %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1>Standings</h1>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Seed</th>
+                <th>Team</th>
+                <th>W</th>
+                <th>L</th>
+                <th>PF</th>
+                <th>PA</th>
+                <th>Diff</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for row in standings %}
+
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ row.team.team_name }}</td>
+                <td>{{ row.wins }}</td>
+                <td>{{ row.losses }}</td>
+                <td>{{ row.pf }}</td>
+                <td>{{ row.pa }}</td>
+                <td>{{ row.diff }}</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

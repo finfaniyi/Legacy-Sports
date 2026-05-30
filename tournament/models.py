@@ -140,18 +140,47 @@ class Bracket(models.Model):
         return self.name
 
 class Match(models.Model):
+
     class Meta:
         verbose_name_plural = "Matches"
+
+    ROUND_CHOICES = [
+        ("pool", "Pool Play"),
+        ("quarter", "Quarter Final"),
+        ("semi", "Semi Final"),
+        ("final", "Final"),
+    ]
+
     team_1 = models.ForeignKey(
         Team,
         on_delete=models.CASCADE,
         related_name="home_matches"
     )
+
     team_2 = models.ForeignKey(
         Team,
         on_delete=models.CASCADE,
         related_name="away_matches"
     )
+
+    bracket = models.ForeignKey(
+        Bracket,
+        on_delete=models.CASCADE,
+        related_name="matches"
+    )
+
+    round_name = models.CharField(
+        max_length=20,
+        choices=ROUND_CHOICES,
+        default="pool"
+    )
+
+    team_1_score = models.IntegerField(default=0)
+    team_2_score = models.IntegerField(default=0)
+
+    is_live = models.BooleanField(default=False)
+    is_finished = models.BooleanField(default=False)
+
     winner = models.ForeignKey(
         Team,
         on_delete=models.SET_NULL,
@@ -159,16 +188,13 @@ class Match(models.Model):
         blank=True,
         related_name="wins"
     )
-    bracket = models.ForeignKey(
-        Bracket,
-        on_delete=models.CASCADE,
-        related_name="matches"
-    )
+
     match_time = models.DateTimeField()
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.team_1} vs {self.team_2} ({self.bracket.name})"
+        return f"{self.team_1} vs {self.team_2}"
 
 class FreeAgent(models.Model):
     STATUS_CHOICES = [

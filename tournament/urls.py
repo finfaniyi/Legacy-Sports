@@ -29,6 +29,8 @@ urlpatterns = [
     path("free-agent-pool/", views.free_agent_pool, name="free_agent_pool"),
     path("edit-free-agent/<uuid:token>/", views.edit_free_agent, name="edit_free_agent"),
     path("tourney-info/", views.tourney_info, name="tourney_info"),
+    path("standings/", views.standings, name="standings"),
+    path("live-scores/", views.live_scores, name="live_scores"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('page/<slug>/', views.page_detail, name='page_detail'),
 ]

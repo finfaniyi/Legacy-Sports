@@ -2,7 +2,7 @@ from django.db import IntegrityError
 from datetime import datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent, Creator, MediaItem
+from .models import Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent, Creator, MediaItem, Match
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
@@ -15,6 +15,7 @@ import requests
 import feedparser
 import random
 import re
+from django.db.models import Q
 from zoneinfo import ZoneInfo
 from django.urls import reverse
 
@@ -90,7 +91,86 @@ def about(request):
 def history(request):
     return render(request, "tournament/history.html")
 
+def standings(request):
 
+    standings_data = []
+
+    teams = Team.objects.filter(payment_status="paid")
+
+    for team in teams:
+
+        wins = Match.objects.filter(
+            winner=team,
+            is_finished=True
+        ).count()
+
+        losses = Match.objects.filter(
+            is_finished=True
+        ).filter(
+            team_1=team
+        ).exclude(winner=team).count() + Match.objects.filter(
+            is_finished=True
+        ).filter(
+            team_2=team
+        ).exclude(winner=team).count()
+
+        pf = 0
+        pa = 0
+
+        matches = Match.objects.filter(
+            is_finished=True
+        ).filter(team_1=team) | Match.objects.filter(
+            is_finished=True
+        ).filter(team_2=team)
+
+        for match in matches:
+
+            if match.team_1 == team:
+                pf += match.team_1_score
+                pa += match.team_2_score
+            else:
+                pf += match.team_2_score
+                pa += match.team_1_score
+
+        standings_data.append({
+            "team": team,
+            "wins": wins,
+            "losses": losses,
+            "pf": pf,
+            "pa": pa,
+            "diff": pf - pa,
+        })
+
+    standings_data.sort(
+        key=lambda x: (x["wins"], x["diff"]),
+        reverse=True
+    )
+
+    return render(
+        request,
+        "tournament/standings.html",
+        {"standings": standings_data}
+    )
+    
+def live_scores(request):
+
+    live_matches = Match.objects.filter(
+        is_live=True
+    )
+
+    completed_matches = Match.objects.filter(
+        is_finished=True
+    ).order_by("-match_time")[:10]
+
+    return render(
+        request,
+        "tournament/live_scores.html",
+        {
+            "live_matches": live_matches,
+            "completed_matches": completed_matches,
+        }
+    )    
+    
 def media(request):
 
     media_items = MediaItem.objects.select_related(
