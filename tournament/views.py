@@ -118,10 +118,9 @@ def standings(request):
         pa = 0
 
         matches = Match.objects.filter(
+            Q(team_1=team) | Q(team_2=team),
             is_finished=True
-        ).filter(team_1=team) | Match.objects.filter(
-            is_finished=True
-        ).filter(team_2=team)
+        )
 
         for match in matches:
 

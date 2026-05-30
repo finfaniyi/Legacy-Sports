@@ -37,10 +37,10 @@
     text-align:center;
 }
 
-.standings-table tr:nth-child(even){
-    background:#161616;
-}
-
 .standings-table tr:hover{
     background:#202020;
+}
+
+.standings-table tbody tr{
+    background:#111;
 }
