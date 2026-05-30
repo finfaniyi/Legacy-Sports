@@ -7,58 +7,29 @@
 
 <section class="teams-page">
 
-    <div class="teams-header">
-        <h1>Registered Teams</h1>
-        <p>{{ teams.count }} Teams Registered</p>
-    </div>
+  <div class="teams-header">
+    <h1>Registered Teams</h1>
+    <p>{{ teams.count }} Teams Registered</p>
+  </div>
 
-    <div class="teams-grid">
+  <div class="teams-grid">
 
-        {% for team in teams %}
+    {% for team in teams %}
+    <div class="team-card">
 
-        <div class="team-card">
+      <div class="team-color" style="background-color: {{ team.team_color|lower }};">
+      </div>
 
-            <div class="team-color {{ team.team_color }}"></div>
+      <h2 style="color: {{ team.team_color|lower }};">
+        {{ team.team_name }}
+      </h2>
 
-            <h2>{{ team.team_name }}</h2>
-
-            <div class="team-info">
-                <p><strong>Captain:</strong> {{ team.captain_name }}</p>
-                <p><strong>Slot:</strong> {{ team.slot_number }}</p>
-                <p><strong>Players:</strong> {{ team.player_count }}</p>
-            </div>
-
-            <div class="roster">
-
-                <h3>Roster</h3>
-
-                {% for player in team.players.all %}
-
-                    <div class="player-row">
-
-                        <span>
-                            {{ player.first_name }} {{ player.last_name }}
-                        </span>
-
-                        <span>
-                            {{ player.school }}
-                        </span>
-
-                        {% if player.is_substitute %}
-                            <span class="sub-tag">SUB</span>
-                        {% endif %}
-
-                    </div>
-
-                {% endfor %}
-
-            </div>
-
-        </div>
-
-        {% endfor %}
+      <p>{{ team.player_count }} Players</p>
 
     </div>
+    {% endfor %}
+
+  </div>
 
 </section>
 

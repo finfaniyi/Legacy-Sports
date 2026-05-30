@@ -1,0 +1,37 @@
+.live-container{
+    max-width:1400px;
+    margin:auto;
+    padding:120px 40px;
+}
+
+.live-title{
+    text-align:center;
+    color:white;
+    font-size:4rem;
+    margin-bottom:60px;
+}
+
+.matches-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.match-card{
+    background:#111;
+    padding:25px;
+    border-radius:18px;
+}
+
+.team-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:1.4rem;
+    margin:15px 0;
+}
+
+.match-status{
+    color:#bb080b;
+    font-weight:700;
+    margin-top:20px;
+}

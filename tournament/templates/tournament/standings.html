@@ -1,45 +1,41 @@
-{% extends "tournament/base.html" %}
+<table class="standings-table">
 
-{% block content %}
+<thead>
+<tr>
+    <th>#</th>
+    <th>Team</th>
+    <th>GP</th>
+    <th>W</th>
+    <th>L</th>
+    <th>PF</th>
+    <th>PA</th>
+    <th>DIFF</th>
+</tr>
+</thead>
 
-<div class="container py-5">
+<tbody>
 
-    <h1>Standings</h1>
+{% for team in standings %}
+<tr>
 
-    <table class="table">
+<td>{{ forloop.counter }}</td>
 
-        <thead>
-            <tr>
-                <th>Seed</th>
-                <th>Team</th>
-                <th>W</th>
-                <th>L</th>
-                <th>PF</th>
-                <th>PA</th>
-                <th>Diff</th>
-            </tr>
-        </thead>
+<td>
+    <span style="color: {{ team.team_color|lower }}">
+        {{ team.team_name }}
+    </span>
+</td>
 
-        <tbody>
+<td>{{ team.games_played }}</td>
+<td>{{ team.wins }}</td>
+<td>{{ team.losses }}</td>
+<td>{{ team.points_for }}</td>
+<td>{{ team.points_against }}</td>
+<td>{{ team.point_diff }}</td>
 
-        {% for row in standings %}
+</tr>
+{% endfor %}
 
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ row.team.team_name }}</td>
-                <td>{{ row.wins }}</td>
-                <td>{{ row.losses }}</td>
-                <td>{{ row.pf }}</td>
-                <td>{{ row.pa }}</td>
-                <td>{{ row.diff }}</td>
-            </tr>
+</tbody>
 
-        {% endfor %}
-
-        </tbody>
-
-    </table>
-
-</div>
-
-{% endblock %}
+</table>

@@ -1,0 +1,44 @@
+.standings-container{
+    max-width:1400px;
+    margin:auto;
+    padding:120px 40px;
+}
+
+.standings-title{
+    color:white;
+    text-align:center;
+    font-size:4rem;
+    margin-bottom:50px;
+}
+
+.standings-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#111;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.standings-table thead{
+    background:#bb080b;
+}
+
+.standings-table th{
+    padding:20px;
+    color:white;
+    text-align:center;
+}
+
+.standings-table td{
+    padding:20px;
+    color:white;
+    text-align:center;
+}
+
+.standings-table tr:nth-child(even){
+    background:#161616;
+}
+
+.standings-table tr:hover{
+    background:#202020;
+}
