@@ -1,23 +1,54 @@
-<div class="matches-grid">
+{% extends "tournament/base.html" %}
+{% load static %}
 
-{% for match in live_matches %}
-<div class="match-card">
+{% block title %}Live Scores | Legacy Sports{% endblock %}
 
-    <div class="team-row">
-        <span>{{ match.team1.team_name }}</span>
-        <span>{{ match.team1_score }}</span>
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/live_scores.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="live-container">
+
+    <h1 class="live-title">
+        Live Scores
+    </h1>
+
+    {% if live_matches %}
+    <div class="matches-grid">
+
+        {% for match in live_matches %}
+        <div class="match-card">
+
+            <div class="team-row">
+                <span>{{ match.team_1.team_name }}</span>
+                <span>{{ match.team_1_score }}</span>
+            </div>
+
+            <div class="team-row">
+                <span>{{ match.team_2.team_name }}</span>
+                <span>{{ match.team_2_score }}</span>
+            </div>
+
+            <div class="match-status">
+                LIVE
+            </div>
+
+        </div>
+        {% endfor %}
+
     </div>
 
-    <div class="team-row">
-        <span>{{ match.team2.team_name }}</span>
-        <span>{{ match.team2_score }}</span>
+    {% else %}
+
+    <div class="empty-state">
+        <h2>No live matches currently</h2>
+        <p>Scores will appear here during tournament play.</p>
     </div>
 
-    <div class="match-status">
-        LIVE
-    </div>
+    {% endif %}
 
-</div>
-{% endfor %}
+</section>
 
-</div>
+{% endblock %}

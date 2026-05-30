@@ -35,3 +35,15 @@
     font-weight:700;
     margin-top:20px;
 }
+
+.empty-state{
+    text-align:center;
+    background:#111;
+    padding:60px;
+    border-radius:20px;
+    color:white;
+}
+
+.empty-state h2{
+    margin-bottom:15px;
+}

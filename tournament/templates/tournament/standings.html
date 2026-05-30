@@ -1,41 +1,60 @@
-<table class="standings-table">
+{% extends "tournament/base.html" %}
+{% load static %}
 
-<thead>
-<tr>
-    <th>#</th>
-    <th>Team</th>
-    <th>GP</th>
-    <th>W</th>
-    <th>L</th>
-    <th>PF</th>
-    <th>PA</th>
-    <th>DIFF</th>
-</tr>
-</thead>
+{% block title %}Standings | Legacy Sports{% endblock %}
 
-<tbody>
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/standing.css' %}">
+{% endblock %}
 
-{% for team in standings %}
-<tr>
+{% block content %}
 
-<td>{{ forloop.counter }}</td>
+<section class="standings-container">
 
-<td>
-    <span style="color: {{ team.team_color|lower }}">
-        {{ team.team_name }}
-    </span>
-</td>
+    <h1 class="standings-title">
+        Tournament Standings
+    </h1>
 
-<td>{{ team.games_played }}</td>
-<td>{{ team.wins }}</td>
-<td>{{ team.losses }}</td>
-<td>{{ team.points_for }}</td>
-<td>{{ team.points_against }}</td>
-<td>{{ team.point_diff }}</td>
+    <table class="standings-table">
 
-</tr>
-{% endfor %}
+        <thead>
+            <tr>
+                <th>Seed</th>
+                <th>Team</th>
+                <th>W</th>
+                <th>L</th>
+                <th>PF</th>
+                <th>PA</th>
+                <th>Diff</th>
+            </tr>
+        </thead>
 
-</tbody>
+        <tbody>
 
-</table>
+            {% for item in standings %}
+            <tr>
+
+                <td>{{ forloop.counter }}</td>
+
+                <td>
+                    <span style="color: {{ item.team.team_color|lower }}">
+                        {{ item.team.team_name }}
+                    </span>
+                </td>
+
+                <td>{{ item.wins }}</td>
+                <td>{{ item.losses }}</td>
+                <td>{{ item.pf }}</td>
+                <td>{{ item.pa }}</td>
+                <td>{{ item.diff }}</td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</section>
+
+{% endblock %}
