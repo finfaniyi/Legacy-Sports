@@ -19,8 +19,9 @@
 
         <thead>
             <tr>
-                <th>Seed</th>
+                <th>#</th>
                 <th>Team</th>
+                <th>GP</th>
                 <th>W</th>
                 <th>L</th>
                 <th>PF</th>
@@ -43,6 +44,7 @@
                 </td>
 
                 <td>{{ item.wins }}</td>
+                <td>{{ item.wins|add:item.losses }}</td>
                 <td>{{ item.losses }}</td>
                 <td>{{ item.pf }}</td>
                 <td>{{ item.pa }}</td>

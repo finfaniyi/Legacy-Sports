@@ -1,13 +1,15 @@
 .standings-container{
-    max-width:1400px;
+    max-width:1200px;
     margin:auto;
-    padding:120px 40px;
+    padding:60px 40px 120px;
 }
 
 .standings-title{
-    color:white;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:64px;
+    letter-spacing:2px;
+    color:#111;
     text-align:center;
-    font-size:4rem;
     margin-bottom:50px;
 }
 

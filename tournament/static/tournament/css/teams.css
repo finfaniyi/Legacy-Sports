@@ -37,3 +37,25 @@
     font-size:2rem;
     margin-bottom:10px;
 }
+
+.teams-page{
+    max-width:1400px;
+    margin:auto;
+    padding:60px 40px 120px;
+}
+
+.teams-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.teams-header h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:64px;
+    letter-spacing:2px;
+}
+
+.teams-header p{
+    font-size:18px;
+    opacity:.7;
+}

@@ -1,14 +1,76 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Team Bracket | Legacy Sports Canada{% endblock %}
+{% block title %}Team Brackets | Legacy Sports{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/team_bracket.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/about.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/team_brackets.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="bracket-page">
-    <h1>Coming Soon</h1>
+
+<section class="about-page">
+
+    <div class="about-hero">
+        <div class="about-kicker">TOURNAMENT BRACKET</div>
+        <h1>Championship Bracket</h1>
+        <p class="about-subtitle">
+            Updated throughout the tournament.
+        </p>
+    </div>
+
+    <div class="bracket-wrapper">
+
+        <div class="round">
+            <h3>Quarter Finals</h3>
+
+            <div class="match">
+                <span>PAR</span>
+                <span>Smurfs</span>
+            </div>
+
+            <div class="match">
+                <span>Barbz</span>
+                <span>Notorious Digg</span>
+            </div>
+
+            <div class="match">
+                <span>Oingo Boingo</span>
+                <span>We Dig For Play</span>
+            </div>
+
+            <div class="match">
+                <span>TBD</span>
+                <span>TBD</span>
+            </div>
+        </div>
+
+        <div class="round">
+            <h3>Semi Finals</h3>
+
+            <div class="match">
+                <span>Winner QF1</span>
+                <span>Winner QF2</span>
+            </div>
+
+            <div class="match">
+                <span>Winner QF3</span>
+                <span>Winner QF4</span>
+            </div>
+        </div>
+
+        <div class="round">
+            <h3>Final</h3>
+
+            <div class="match championship">
+                <span>Winner SF1</span>
+                <span>Winner SF2</span>
+            </div>
+        </div>
+
+    </div>
+
 </section>
+
 {% endblock %}
