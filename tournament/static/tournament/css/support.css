@@ -1,33 +1,87 @@
-.support-page {
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 60px;
+/* ==========================
+   SUPPORT PAGE
+========================== */
+
+.support-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px;
 }
 
-.support-page h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  letter-spacing: 3px;
+.support-header {
+    margin-bottom: 70px;
 }
 
-/* ======================================
-   SUPPORT PAGE – MOBILE
-====================================== */
+.support-header p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #555;
+    text-transform: uppercase;
+}
 
-@media (max-width: 900px) {
+.support-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 0.9;
+    margin: 10px 0 20px;
+    color: #111;
+}
 
-  .support-page {
-    align-items: flex-start;   /* stop hard vertical centering */
-    padding: 60px 16px;
-    min-height: auto;
-  }
+.support-header span {
+    font-size: 1.2rem;
+    color: #444;
+}
 
-  .support-page h1 {
-    font-size: 36px;
-    letter-spacing: 2px;
-  }
+/* ==========================
+   SPONSOR GRID
+========================== */
+
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.sponsor-card {
+    background: #0c0c0c;
+    border-radius: 22px;
+    padding: 40px 25px;
+    text-align: center;
+    transition: 0.25s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.sponsor-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.sponsor-card img {
+    width: 180px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+
+.sponsor-card h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+    .support-section {
+        padding: 60px 20px;
+    }
+
+    .support-header h1 {
+        font-size: 4rem;
+    }
 
 }
