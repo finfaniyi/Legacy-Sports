@@ -1,3 +1,14 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}Standings | Legacy Sports{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/registration_display.css' %}">
+{% endblock %}
+
+{% block content %}
+
 <div class="form-header">
     <h1>Registration Closed</h1>
     <p>All 8 team spots have been filled.</p>
