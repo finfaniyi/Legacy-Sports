@@ -1,215 +1,66 @@
 {% extends "tournament/base.html" %}
 {% load static %}
-{% load dict_extras %}
 
-{% block title %}Registration | Legacy Sports Canada{% endblock %}
+{% block title %}Registration Closed | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/registration_display.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/registration_closed.css' %}">
 {% endblock %}
 
 {% block content %}
+<section class="registration-closed-page">
 
-{% if now < registration_open %}
+    <div class="closed-container">
 
-<!-- BEFORE OPEN -->
+        <span class="closed-tag">
+            ALL 8 TEAM SPOTS FILLED
+        </span>
 
-<section class="hero">
+        <h1>REGISTRATION CLOSED</h1>
 
-  <h1>Registration</h1>
+        <p class="closed-subtitle">
+            Thank you for the overwhelming support from our community.
+        </p>
 
-  <div class="registration-countdown">
+        <div class="closed-card">
 
-    <h2>Opens In</h2>
+            <h2>🏐 Tournament Full</h2>
 
-    <div
-      id="countdown"
-      data-date="{{ registration_open|date:'c' }}"
-    ></div>
+            <p>
+                Registration for the Legacy Sports Volleyball Tournament is now officially closed.
+            </p>
 
-  </div>
+            <p>
+                We are incredibly grateful for the support shown by our community.
+                All team spots have been filled and we are excited to welcome everyone on tournament day.
+            </p>
 
+            <p>
+                Thank you to every player, captain, volunteer, sponsor, photographer,
+                videographer, and supporter who helped make this event possible.
+            </p>
+
+            <p>
+                Please continue following Legacy Sports for future tournaments,
+                community events, volunteer opportunities, and upcoming registrations.
+            </p>
+
+            <div class="closed-buttons">
+
+                <a href="{% url 'teams' %}" class="primary-btn">
+                    View Registered Teams
+                </a>
+
+                <a href="https://www.instagram.com/legacysports.ca/"
+                   target="_blank"
+                   class="secondary-btn">
+                    Follow Legacy Sports
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 </section>
-
-{% elif now >= registration_open and now < registration_close %}
-
-<!-- REGISTRATION LIVE -->
-
-{% if full %}
-<div class="error-toast">
-  🚫 Registration is full.
-</div>
-{% endif %}
-
-<section class="hero">
-
-  <h1>Registration</h1>
-
-  <p class="subtitle">
-    Register your team for the Volleyball Tournament.
-  </p>
-
-  <div class="registration-countdown live">
-
-    <h2>Closes In</h2>
-
-    <div
-      id="countdown"
-      data-date="{{ registration_close|date:'c' }}"
-    ></div>
-
-  </div>
-
-  <!-- MAIN CTA -->
-
-  <div class="registration-main-cta">
-
-    <a
-      href="{% url 'registration_team' %}"
-      class="main-registration-btn"
-    >
-      REGISTER YOUR TEAM
-    </a>
-
-    <p class="spots-text">
-      Limited team spots available
-    </p>
-
-  </div>
-
-  <!-- EXTRA ACTIONS -->
-
-  <div class="registration-actions">
-
-    <a
-      href="{% url 'free_agent_signup' %}"
-      class="reg-btn primary"
-    >
-      Join as Free Agent
-    </a>
-
-    <a
-      href="{% url 'free_agent_pool' %}"
-      class="reg-btn secondary"
-    >
-      Find Teammates
-    </a>
-
-  </div>
-
-</section>
-
-{% else %}
-
-<!-- AFTER CLOSE -->
-
-<section class="hero">
-
-  <h1>Registration Closed</h1>
-
-  <p class="subtitle">
-    Thank you for your interest.
-    Stay tuned for the next event.
-  </p>
-
-</section>
-
-{% endif %}
-
-<script>
-
-  setTimeout(() => {
-
-    const toast =
-      document.querySelector(".success-toast");
-
-    if (toast) toast.remove();
-
-  }, 3500);
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-      const countdown =
-        document.getElementById("countdown");
-
-      if (!countdown) return;
-
-      const targetDate =
-        new Date(
-          countdown.dataset.date
-        ).getTime();
-
-      function updateCountdown() {
-
-        const now =
-          new Date().getTime();
-
-        const distance =
-          targetDate - now;
-
-        if (distance <= 0) {
-
-          location.reload();
-
-          return;
-
-        }
-
-        const days =
-          Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-          );
-
-        const hours =
-          Math.floor(
-            (distance / (1000 * 60 * 60)) % 24
-          );
-
-        const minutes =
-          Math.floor(
-            (distance / (1000 * 60)) % 60
-          );
-
-        const seconds =
-          Math.floor(
-            (distance / 1000) % 60
-          );
-
-        countdown.innerHTML = `
-
-          <div class="timer-box">
-            ${days}d
-          </div>
-
-          <div class="timer-box">
-            ${hours}h
-          </div>
-
-          <div class="timer-box">
-            ${minutes}m
-          </div>
-
-          <div class="timer-box">
-            ${seconds}s
-          </div>
-
-        `;
-
-      }
-
-      updateCountdown();
-
-      setInterval(
-        updateCountdown,
-        1000
-      );
-
-    }
-  );
-
-</script>
-
 {% endblock %}
