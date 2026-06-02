@@ -1,66 +1,31 @@
-{% extends "tournament/base.html" %}
-{% load static %}
+<div class="form-header">
+    <h1>Registration Closed</h1>
+    <p>All 8 team spots have been filled.</p>
+</div>
 
-{% block title %}Registration Closed | Legacy Sports Canada{% endblock %}
+<div class="form-card closed-card">
 
-{% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/registration_closed.css' %}">
-{% endblock %}
+    <div class="closed-message">
 
-{% block content %}
-<section class="registration-closed-page">
+        <h2>Tournament Full</h2>
 
-    <div class="closed-container">
-
-        <span class="closed-tag">
-            ALL 8 TEAM SPOTS FILLED
-        </span>
-
-        <h1>REGISTRATION CLOSED</h1>
-
-        <p class="closed-subtitle">
-            Thank you for the overwhelming support from our community.
+        <p>
+            Registration for the Legacy Sports Volleyball Tournament is now closed.
         </p>
 
-        <div class="closed-card">
+        <p>
+            All 8 team spots have been filled and team registration is no longer available.
+        </p>
 
-            <h2>🏐 Tournament Full</h2>
+        <p>
+            We look forward to seeing all players, volunteers, and spectators on
+            <strong>June 6, 2026</strong>.
+        </p>
 
-            <p>
-                Registration for the Legacy Sports Volleyball Tournament is now officially closed.
-            </p>
-
-            <p>
-                We are incredibly grateful for the support shown by our community.
-                All team spots have been filled and we are excited to welcome everyone on tournament day.
-            </p>
-
-            <p>
-                Thank you to every player, captain, volunteer, sponsor, photographer,
-                videographer, and supporter who helped make this event possible.
-            </p>
-
-            <p>
-                Please continue following Legacy Sports for future tournaments,
-                community events, volunteer opportunities, and upcoming registrations.
-            </p>
-
-            <div class="closed-buttons">
-
-                <a href="{% url 'teams' %}" class="primary-btn">
-                    View Registered Teams
-                </a>
-
-                <a href="https://www.instagram.com/legacysports.ca/"
-                   target="_blank"
-                   class="secondary-btn">
-                    Follow Legacy Sports
-                </a>
-
-            </div>
-
-        </div>
+        <a href="{% url 'teams' %}" class="submit-btn">
+            View Registered Teams
+        </a>
 
     </div>
-</section>
-{% endblock %}
+
+</div>
