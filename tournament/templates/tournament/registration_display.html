@@ -9,14 +9,16 @@
 
 {% block content %}
 
-<div class="form-header">
-    <h1>Registration Closed</h1>
-    <p>All 8 team spots have been filled.</p>
-</div>
 
-<div class="form-card closed-card">
+<section class="hero">
 
-    <div class="closed-message">
+    <h1>REGISTRATION CLOSED</h1>
+
+    <p class="subtitle">
+        All 8 team spots have been filled.
+    </p>
+
+    <div class="registration-closed">
 
         <h2>Tournament Full</h2>
 
@@ -25,20 +27,15 @@
         </p>
 
         <p>
-            All 8 team spots have been filled and team registration is no longer available.
+            We look forward to seeing all players, volunteers, and spectators on June 6, 2026.
         </p>
 
-        <p>
-            We look forward to seeing all players, volunteers, and spectators on
-            <strong>June 6, 2026</strong>.
-        </p>
-
-        <a href="{% url 'teams' %}" class="submit-btn">
-            View Registered Teams
+        <a href="{% url 'teams' %}" class="main-registration-btn">
+            VIEW REGISTERED TEAMS
         </a>
 
     </div>
 
-</div>
+</section>
 
 {% endblock %}

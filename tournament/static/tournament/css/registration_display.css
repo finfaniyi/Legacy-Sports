@@ -1,28 +1,137 @@
-.registration-closed-page {
-    padding: 120px 20px;
+/* =========================
+   REGISTRATION CLOSED
+========================= */
+
+.hero{
+  min-height:70vh;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:flex-start;
+  align-items:center;
+
+  text-align:center;
+
+  padding-top:90px;
 }
 
-.closed-card {
-    max-width: 850px;
-    margin: 0 auto;
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+
+  letter-spacing:2px;
+  font-weight:700;
+
+  font-size:54px;
 }
 
-.closed-message {
-    text-align: center;
-    color: white;
+.subtitle{
+  font-family:'Sofia Sans',sans-serif;
+
+  max-width:720px;
+
+  opacity:.85;
+
+  line-height:1.6;
+  font-size:18px;
+
+  margin-top:10px;
 }
 
-.closed-message h2 {
-    color: white;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    margin-bottom: 25px;
+.registration-closed{
+  margin-top:60px;
+
+  max-width:700px;
+
+  text-align:center;
 }
 
-.closed-message p {
-    color: rgba(255,255,255,0.85);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 650px;
-    margin: 0 auto 15px;
+.registration-closed h2{
+  font-family:'Bebas Neue',sans-serif;
+
+  font-size:42px;
+
+  margin-bottom:20px;
+
+  color:#bb080b;
+}
+
+.registration-closed p{
+  font-family:'Sofia Sans',sans-serif;
+
+  line-height:1.8;
+
+  font-size:18px;
+
+  margin-bottom:16px;
+
+  opacity:.85;
+}
+
+.main-registration-btn{
+  display:inline-block;
+
+  margin-top:20px;
+
+  padding:20px 44px;
+
+  background:#bb080b;
+
+  color:white;
+
+  text-decoration:none;
+
+  border-radius:18px;
+
+  font-family:'Bebas Neue',sans-serif;
+
+  font-size:28px;
+  letter-spacing:1px;
+
+  transition:.22s ease;
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.18);
+}
+
+.main-registration-btn:hover{
+  transform:translateY(-4px);
+
+  background:#d20c0f;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:900px){
+
+  .hero{
+    padding-top:60px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .subtitle{
+    font-size:16px;
+    padding:0 18px;
+  }
+
+  .registration-closed h2{
+    font-size:32px;
+  }
+
+  .registration-closed p{
+    font-size:16px;
+    padding:0 18px;
+  }
+
+  .main-registration-btn{
+    font-size:24px;
+
+    padding:18px 28px;
+  }
+
 }
