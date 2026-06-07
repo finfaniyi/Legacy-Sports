@@ -172,8 +172,8 @@ def live_scores(request):
     
 def media(request):
 
-    media_items = MediaItem.objects.prefetch_related(
-        "creators"
+    media_items = MediaItem.objects.select_related(
+        "creator"
     ).order_by("-uploaded_at")
 
     creators = Creator.objects.all().order_by("name")

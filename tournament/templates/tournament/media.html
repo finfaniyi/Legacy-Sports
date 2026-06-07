@@ -24,15 +24,28 @@
       Photos and highlights from Legacy Sports events.
     </p>
 
+    <!-- FILTER -->
     <div class="media-controls">
 
       <select id="mediaFilter" class="media-select">
 
         <option value="all">ALL</option>
-        <option value="2024">2024 LS Basketball</option>
-        <option value="2026">2026 LS Volleyball</option>
-        <option value="bts">2026 LS BTS</option>
-        <option value="creative">LS Creative Showcase</option>
+
+        <option value="2024">
+          2024 LS Basketball
+        </option>
+
+        <option value="2026">
+          2026 LS Volleyball
+        </option>
+
+        <option value="bts">
+          2026 LS BTS
+        </option>
+
+        <option value="creative">
+          LS Creative Showcase
+        </option>
 
       </select>
 
@@ -49,10 +62,13 @@
 
     <div class="creator-scroll">
 
+      <!-- ALL -->
       <button class="creator-filter active" data-creator="all">
 
         <div class="creator-avatar creator-all">
+
           <span>ALL</span>
+
         </div>
 
         <span class="creator-name">
@@ -61,6 +77,7 @@
 
       </button>
 
+      <!-- DYNAMIC -->
       {% for creator in creators %}
 
       <button class="creator-filter" data-creator="{{ creator.id }}">
@@ -86,6 +103,7 @@
 
           </div>
 
+          <!-- HOVER CARD -->
           <div class="creator-hover-card">
 
             <p class="creator-hover-name">
@@ -143,11 +161,12 @@
       href="{{ item.media_file.url }}"
       target="_blank"
       data-year="{{ item.category }}"
-      data-creators="{% for creator in item.creators.all %}{{ creator.id }}{% if not forloop.last %},{% endif %}{% endfor %}"
+      data-creator="{{ item.creator.id }}"
     >
 
       <div class="media-thumb">
 
+        <!-- VIDEO -->
         {% if item.media_type == "video" %}
 
           {% if item.thumbnail %}
@@ -168,6 +187,7 @@
 
           {% endif %}
 
+        <!-- IMAGE -->
         {% else %}
 
         <img
@@ -178,10 +198,13 @@
 
         {% endif %}
 
+        <!-- VIDEO INDICATOR -->
         {% if item.media_type == "video" %}
 
         <div class="video-indicator">
+
           ▶
+
         </div>
 
         {% endif %}
@@ -189,12 +212,21 @@
         <!-- OVERLAY -->
         <div class="media-card-overlay">
 
+          <div class="media-creator-mini">
+
+            {% if item.creator.profile_image %}
+
+            <img
+              src="{{ item.creator.profile_image.url }}"
+              alt="{{ item.creator.name }}"
+            >
+
+            {% endif %}
+
+          </div>
+
           <span class="media-creator-name">
-
-            {% for creator in item.creators.all %}
-              {{ creator.name }}{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-
+            {{ item.creator.name }}
           </span>
 
         </div>
@@ -213,80 +245,75 @@
 
 <script>
 
-const categoryFilter =
-  document.getElementById("mediaFilter");
+  const categoryFilter =
+    document.getElementById("mediaFilter");
 
-const creatorButtons =
-  document.querySelectorAll(".creator-filter");
+  const creatorButtons =
+    document.querySelectorAll(".creator-filter");
 
-const mediaCards =
-  document.querySelectorAll(".media-card");
+  const mediaCards =
+    document.querySelectorAll(".media-card");
 
-let activeCategory = "all";
-let activeCreator = "all";
+  let activeCategory = "all";
+  let activeCreator = "all";
 
-function filterMedia() {
+  function filterMedia() {
 
-  mediaCards.forEach(card => {
+    mediaCards.forEach(card => {
 
-    const categoryMatch =
-      activeCategory === "all" ||
-      card.dataset.year === activeCategory;
+      const categoryMatch =
+        activeCategory === "all" ||
+        card.dataset.year === activeCategory;
 
-    const creators =
-      card.dataset.creators
-      ? card.dataset.creators.split(",")
-      : [];
+      const creatorMatch =
+        activeCreator === "all" ||
+        card.dataset.creator === activeCreator;
 
-    const creatorMatch =
-      activeCreator === "all" ||
-      creators.includes(activeCreator);
+      const visible =
+        categoryMatch && creatorMatch;
 
-    const visible =
-      categoryMatch && creatorMatch;
-
-    card.classList.toggle(
-      "is-hidden",
-      !visible
-    );
-
-  });
-
-}
-
-categoryFilter.addEventListener(
-  "change",
-  () => {
-
-    activeCategory =
-      categoryFilter.value;
-
-    filterMedia();
-
-  }
-);
-
-creatorButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      creatorButtons.forEach(btn =>
-        btn.classList.remove("active")
+      card.classList.toggle(
+        "is-hidden",
+        !visible
       );
 
-      button.classList.add("active");
+    });
 
-      activeCreator =
-        button.dataset.creator;
+  }
+
+  categoryFilter.addEventListener(
+    "change",
+    () => {
+
+      activeCategory =
+        categoryFilter.value;
 
       filterMedia();
 
     }
   );
 
-});
+  creatorButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        creatorButtons.forEach(btn =>
+          btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        activeCreator =
+          button.dataset.creator;
+
+        filterMedia();
+
+      }
+    );
+
+  });
 
 </script>
 
