@@ -160,7 +160,6 @@ class CreatorAdmin(admin.ModelAdmin):
 class MediaItemAdmin(admin.ModelAdmin):
     list_display = (
         "title",
-        "creator",
         "category",
         "media_type",
         "featured",

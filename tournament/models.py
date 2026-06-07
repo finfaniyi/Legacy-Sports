@@ -248,7 +248,10 @@ class MediaItem(models.Model):
         ('video', 'Video'),
     ]
 
-    creator = models.ForeignKey(Creator, on_delete=models.CASCADE)
+    creators = models.ManyToManyField(
+        Creator,
+        related_name="media_items"
+    )
 
     title = models.CharField(max_length=200, blank=True)
 
