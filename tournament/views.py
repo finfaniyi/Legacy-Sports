@@ -763,6 +763,7 @@ def stripe_webhook(request):
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[player.contact_email],
                     fail_silently=False,
+                    reply_to=["legacysportscanada@gmail.com"],
                 )
 
         # Admin notification

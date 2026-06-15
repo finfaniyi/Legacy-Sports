@@ -111,7 +111,7 @@ EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 
-DEFAULT_FROM_EMAIL = "Legacy Sports <noreply@legacysportscanada.ca>"
+DEFAULT_FROM_EMAIL = "Legacy Sports <info@legacysportscanada.ca>"
 
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
