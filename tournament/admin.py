@@ -2,7 +2,7 @@ import csv
 from django.contrib import admin, messages
 from django.http import HttpResponse
 
-from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication, FreeAgent, Creator, MediaItem
+from .models import Team, Player, Match, Bracket, Registration, Volunteerapplication, FreeAgent, Creator, MediaItem, Contact
 
 # =========================
 # VOLUNTEER DELETE ACTION
@@ -176,4 +176,24 @@ class MediaItemAdmin(admin.ModelAdmin):
     search_fields = (
         "title",
         "creator__name",
+    )
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = (
+        "email",
+        "source",
+        "created_at",
+    )
+
+    list_filter = (
+        "source",
+    )
+
+    search_fields = (
+        "email",
+    )
+
+    ordering = (
+        "-created_at",
     )
