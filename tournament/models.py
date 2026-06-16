@@ -234,6 +234,14 @@ class Creator(models.Model):
         return self.name
 
 
+class Contact(models.Model):
+    email = models.EmailField(unique=True)
+    source = models.CharField(max_length=100, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
 class MediaItem(models.Model):
 
     CATEGORY_CHOICES = [
