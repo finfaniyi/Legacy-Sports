@@ -181,17 +181,19 @@ class MediaItemAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
+        "first_name",
         "email",
         "source",
         "created_at",
     )
 
-    list_filter = (
-        "source",
+    search_fields = (
+        "first_name",
+        "email",
     )
 
-    search_fields = (
-        "email",
+    list_filter = (
+        "source",
     )
 
     ordering = (

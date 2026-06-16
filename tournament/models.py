@@ -235,6 +235,7 @@ class Creator(models.Model):
 
 
 class Contact(models.Model):
+    first_name = models.CharField(max_length=100, blank=True)
     email = models.EmailField(unique=True)
     source = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
