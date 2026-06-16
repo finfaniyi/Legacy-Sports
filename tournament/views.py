@@ -91,6 +91,20 @@ def about(request):
 def history(request):
     return render(request, "tournament/history.html")
 
+
+def history_2024_basketball(request):
+    return render(
+        request,
+        "tournament/history_2024_basketball.html"
+    )
+
+
+def history_2026_volleyball(request):
+    return render(
+        request,
+        "tournament/history_2026_volleyball.html"
+    )
+
 def standings(request):
 
     standings_data = []
