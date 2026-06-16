@@ -13,19 +13,11 @@ margin-bottom:100px;
 color:#bb080b;
 font-weight:700;
 letter-spacing:3px;
-text-transform:uppercase;
 }
 
 .history-hero h1{
 font-size:clamp(3rem,7vw,6rem);
 margin:15px 0;
-}
-
-.history-subtitle{
-max-width:700px;
-margin:auto;
-opacity:.8;
-line-height:1.8;
 }
 
 .timeline{
@@ -41,31 +33,11 @@ gap:60px;
 align-items:center;
 }
 
-.timeline-row.reverse{
-grid-template-columns:1fr 1fr;
-}
-
 .timeline-card{
 background:white;
 padding:40px;
 border-radius:24px;
 box-shadow:0 15px 40px rgba(0,0,0,.08);
-}
-
-.event-year{
-color:#bb080b;
-font-weight:700;
-letter-spacing:2px;
-}
-
-.timeline-card h2{
-margin:15px 0;
-font-size:2rem;
-}
-
-.timeline-card p{
-line-height:1.8;
-opacity:.85;
 }
 
 .timeline-photo img{
@@ -86,50 +58,105 @@ margin:25px 0;
 background:#f5f5f5;
 padding:12px;
 border-radius:10px;
-font-weight:600;
 }
 
 .event-btn{
 display:inline-block;
+padding:12px 20px;
 background:#bb080b;
 color:white;
 text-decoration:none;
-padding:12px 20px;
 border-radius:10px;
 }
 
-.future-card{
-border:2px dashed #bb080b;
-}
-
 .future-photo{
-background:#f5f5f5;
 height:500px;
 border-radius:24px;
+background:#f5f5f5;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
-.future-photo h3{
-font-size:2rem;
-color:#bb080b;
+.event-page{
+max-width:1200px;
+margin:auto;
+padding:80px 30px;
+}
+
+.event-hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+margin-bottom:80px;
+}
+
+.event-hero-image{
+height:500px;
+background-size:cover;
+background-position:center;
+border-radius:24px;
+background-color:#ddd;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:80px;
+}
+
+.stat-card{
+background:white;
+padding:30px;
+text-align:center;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.gallery-item{
+height:280px;
+background:#ececec;
+border-radius:20px;
+border:2px dashed #ccc;
+}
+
+.sponsor-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.sponsor-card,
+.champion-card{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
 @media(max-width:900px){
 
-  .timeline-row,
-  .timeline-row.reverse{
-      grid-template-columns:1fr;
-  }
+.timeline-row{
+grid-template-columns:1fr;
+}
 
-  .timeline-photo img,
-  .future-photo{
-      height:300px;
-  }
+.event-hero{
+grid-template-columns:1fr;
+}
 
-  .mini-stats{
-      grid-template-columns:1fr;
-  }
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
 
+.gallery-grid{
+grid-template-columns:1fr;
+}
 }
