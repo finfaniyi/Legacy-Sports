@@ -1,0 +1,134 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2026 Volleyball Tournament | Legacy Sports{% endblock %}
+
+{% block page_css %}
+
+<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="event-page">
+
+```
+<section class="event-hero">
+
+    <!-- VOLLEYBALL CHAMPION PHOTO -->
+    <div class="event-hero-image"
+         style="background-image:url('{% static "tournament/images/history/volleyball-hero.jpg" %}')">
+    </div>
+
+    <div class="event-hero-content">
+
+        <span class="event-year-label">2026</span>
+
+        <h1>Coed Volleyball Tournament</h1>
+
+        <p>
+            The rebrand of Legacy Sports. A full day of volleyball,
+            crowd engagement activities, giveaways, sponsors and community.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="stats-grid">
+
+    <div class="stat-card">
+        <h3>8</h3>
+        <p>Teams</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>54</h3>
+        <p>Players</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>130+</h3>
+        <p>Attendees</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>15+</h3>
+        <p>Volunteers</p>
+    </div>
+
+</section>
+
+<section class="champion-section">
+
+    <h2>Champions</h2>
+
+    <div class="champion-card">
+
+        <h3>🥇 Bratz</h3>
+
+        <p>
+            Defeated Smurfs in the championship match to become
+            Legacy Sports Volleyball Champions.
+        </p>
+
+        <ul>
+            <li>$400 Cash Prize</li>
+            <li>Gold Medals</li>
+            <li>Championship Trophy</li>
+        </ul>
+
+    </div>
+
+</section>
+
+<section class="sponsor-section">
+
+    <h2>Sponsors</h2>
+
+    <div class="sponsor-grid">
+
+        <div class="sponsor-card">
+            Krispy Kreme
+        </div>
+
+        <div class="sponsor-card">
+            Cordi's Italian Bakery
+        </div>
+
+    </div>
+
+</section>
+
+<section class="gallery-section">
+
+    <h2>Gallery</h2>
+
+    <div class="gallery-grid">
+
+        <!-- CHAMPIONS -->
+        <div class="gallery-item"></div>
+
+        <!-- GAMEPLAY -->
+        <div class="gallery-item"></div>
+
+        <!-- CROWD -->
+        <div class="gallery-item"></div>
+
+        <!-- PHOTO BOOTH -->
+        <div class="gallery-item"></div>
+
+        <!-- TRIVIA BOOTH -->
+        <div class="gallery-item"></div>
+
+        <!-- VOLUNTEERS -->
+        <div class="gallery-item"></div>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+{% endblock %}

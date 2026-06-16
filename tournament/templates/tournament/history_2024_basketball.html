@@ -1,0 +1,105 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2024 Basketball Tournament | Legacy Sports{% endblock %}
+
+{% block page_css %}
+
+<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="event-page">
+
+```
+<section class="event-hero">
+
+    <!-- CHAMPION PHOTO -->
+    <div class="event-hero-image"
+         style="background-image:url('{% static "tournament/images/history/basketball-hero.jpg" %}')">
+    </div>
+
+    <div class="event-hero-content">
+
+        <span class="event-year-label">2024</span>
+
+        <h1>3v3 Basketball Tournament</h1>
+
+        <p>
+            The first official Legacy Sports event. What started as a local
+            basketball tournament became the foundation of what Legacy Sports
+            would eventually become.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="stats-grid">
+
+    <div class="stat-card">
+        <h3>8</h3>
+        <p>Teams</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>30</h3>
+        <p>Players</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>50+</h3>
+        <p>Attendees</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>$240</h3>
+        <p>Cash Prize</p>
+    </div>
+
+</section>
+
+<section class="champion-section">
+
+    <h2>Champions</h2>
+
+    <div class="champion-card">
+
+        <h3>🥇 Lil Sweats</h3>
+
+        <p>
+            Crowned the first Legacy Sports champions and took home
+            the $240 cash prize.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="gallery-section">
+
+    <h2>Gallery</h2>
+
+    <div class="gallery-grid">
+
+        <!-- GAMEPLAY PHOTO -->
+        <div class="gallery-item"></div>
+
+        <!-- TEAM PHOTO -->
+        <div class="gallery-item"></div>
+
+        <!-- CHAMPION PHOTO -->
+        <div class="gallery-item"></div>
+
+        <!-- CROWD PHOTO -->
+        <div class="gallery-item"></div>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+{% endblock %}

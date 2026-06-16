@@ -4,127 +4,113 @@
 {% block title %}History | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
+
 <link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
 {% endblock %}
 
 {% block content %}
-<main class="historyv2-page">
 
-  <!-- HERO -->
-  <header class="historyv2-hero">
-    <p class="historyv2-kicker">LEGACY ARCHIVE</p>
-    <h1>History</h1>
-    <p class="historyv2-subtitle">
-      Legacy Sports past events, and winners. Building a tradition - One event at a time.
+<main class="history-page">
+
+```
+<section class="history-hero">
+    <p class="history-kicker">LEGACY SPORTS ARCHIVE</p>
+
+    <h1>Building A Legacy Through Sport</h1>
+
+    <p class="history-subtitle">
+        Every event adds another chapter to the Legacy Sports story.
+        From our first basketball tournament to our largest volleyball event,
+        we continue creating opportunities for competition, connection and community.
     </p>
-  </header>
+</section>
 
-  <!-- YEAR ROW (optional quick jump) -->
-  <nav class="historyv2-yearbar">
-    <a href="#y2024" class="year-pill">2024</a>
-    <!-- <a href="#y2026" class="year-pill">2026</a> -->
-  </nav>
+<section class="timeline">
 
-  <!-- EVENT 2024 -->
-  <section id="y2024" class="event-block">
-    <div class="event-card">
+    <div class="timeline-item">
 
-      <!-- left: text + stats -->
-      <div class="event-content">
-        <p class="event-year">2024</p>
-        <h2 class="event-title">3v3 Basketball Tournament</h2>
-        <p class="event-desc">
-          The <i><b>3v3 Basketball Tournament</b></i> marked the beginning of Legacy Sports. The tournament set the tone
-          with intense competition, electric energy, and a strong sense of community that filled the court from start to
-          finish.
-        </p>
+        <div class="timeline-dot"></div>
 
-        <div class="event-stats">
-          <div class="stat-pill"><span>The 2024 Winners:</span>Lil Sweats</div>
+        <div class="timeline-card">
+
+            <span class="timeline-year">2024</span>
+
+            <h2>3v3 Basketball Tournament</h2>
+
+            <p>
+                The event that started Legacy Sports. Eight teams competed
+                for the championship in a fast-paced tournament that brought
+                together athletes from across the community.
+            </p>
+
+            <div class="timeline-stats">
+                <div>8 Teams</div>
+                <div>30 Players</div>
+                <div>50+ Attendees</div>
+                <div>$240 Prize</div>
+            </div>
+
+            <a href="{% url 'history_2024_basketball' %}" class="history-btn">
+                View Event
+            </a>
+
         </div>
-      </div>
-
-      <!-- right: visual -->
-      <div class="event-visual">
-        <!-- Big winner photo -->
-        <div class="visual-hero"
-          style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/winners.jpg' %});">
-        </div>
-      </div>
-
-
-      <!-- left: text + stats -->
-      <div class="event-content">
-        <p class="event-year">2026</p>
-        <h2 class="event-title">Coed Volleyball Tournament</h2>
-        <p class="event-desc">
-          The <i><b>Volleyball Tournament</b></i> marked the rebrand of Legacy Sports and welcomed over 171 attendees for a day packed
-          with excitement, competition, and community engagement. While teams battled it out on the court, guests
-          enjoyed a variety of interactive activities including trivia booths, photo booths, giveaways, and crowd
-          engagement games. The event combined high-level competition with a fun and energetic atmosphere, creating an
-          unforgettable experience that reflected the new direction and vision of Legacy Sports.
-        </p>
-
-        <div class="event-stats">
-          <div class="stat-pill"><span>The 2026 Winners:</span>Bratz</div>
-        </div>
-      </div>
-
-      <p class="event-desc">
-          Bratz defeated Smurfs to be Crowned your 2026 Volleyball Champions which got them the $400 Cash Prize and Gold Place Medal and the Trophy.
-        </p>
-
-      <!-- right: visual -->
-      <div class="event-visual">
-        <!-- Big winner photo
-        <div class="visual-hero"
-          style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/winners.jpg' %});">
-        </div>
-      </div>
-       -->
 
     </div>
-  </section>
 
+    <div class="timeline-item reverse">
 
+        <div class="timeline-dot"></div>
 
+        <div class="timeline-card">
 
-  <!-- Not needed right now (After Tourney)
-    <section id="y2026" class="event-block">
-      <div class="event-card coming-soon">
+            <span class="timeline-year">2026</span>
 
-        <div class="event-content">
-          <p class="event-year">2026</p>
-          <h2 class="event-title">Dodgeball Tournament</h2>
-          <p class="event-desc">
-            Coming soon. After the event, we’ll post winners, bracket highlights, and media right here.
-          </p>
+            <h2>Coed Volleyball Tournament</h2>
 
-          <div class="event-stats">
-            <div class="stat-pill"><span>Prize Pool:</span> TBD</div>
-            <div class="stat-pill"><span>Players:</span> TBD</div>
-            <div class="stat-pill"><span>Venue:</span> TBD</div>
-          </div>
+            <p>
+                Legacy Sports returned bigger than ever. Featuring volleyball,
+                crowd engagement activities, sponsors, volunteers and over
+                130 attendees.
+            </p>
 
-          <div class="event-actions">
-            <a class="event-btn" href="registration.html">Register</a>
-            <a class="event-btn ghost" href="tourney-info.html">View Info</a>
-          </div>
+            <div class="timeline-stats">
+                <div>8 Teams</div>
+                <div>54 Players</div>
+                <div>130+ Attendees</div>
+                <div>15+ Volunteers</div>
+            </div>
+
+            <a href="{% url 'history_2026_volleyball' %}" class="history-btn">
+                View Event
+            </a>
+
         </div>
 
-        <div class="event-visual">
-          <div class="soon-panel">
-            <p class="soon-title">Post-event archive</p>
-            <p class="soon-sub">Winners • Bracket • Highlights • Team photos</p>
-          </div>
+    </div>
+
+    <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card future-card">
+
+            <span class="timeline-year">2027+</span>
+
+            <h2>Coming Soon</h2>
+
+            <p>
+                More sports. More athletes. More memories.
+                The Legacy Sports journey is only beginning.
+            </p>
+
         </div>
 
-      </div>
-    </section>
+    </div>
 
-    EVENT 2026 (COMING SOON) -->
+</section>
+```
 
-  <div class="page-bottom-space"></div>
 </main>
 
 {% endblock %}
