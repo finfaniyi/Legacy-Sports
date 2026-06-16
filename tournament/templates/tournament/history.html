@@ -14,74 +14,87 @@
 
 ```
 <section class="history-hero">
+
     <p class="history-kicker">LEGACY SPORTS ARCHIVE</p>
 
     <h1>Building A Legacy Through Sport</h1>
 
     <p class="history-subtitle">
-        Every event adds another chapter to the Legacy Sports story.
-        From our first basketball tournament to our largest volleyball event,
-        we continue creating opportunities for competition, connection and community.
+        Every tournament adds another chapter to the Legacy Sports story.
+        Explore our events, champions and community impact.
     </p>
+
 </section>
 
 <section class="timeline">
 
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
+    <div class="timeline-row">
 
         <div class="timeline-card">
 
-            <span class="timeline-year">2024</span>
+            <span class="event-year">2024</span>
 
             <h2>3v3 Basketball Tournament</h2>
 
             <p>
-                The event that started Legacy Sports. Eight teams competed
-                for the championship in a fast-paced tournament that brought
-                together athletes from across the community.
+                The event that started it all. Eight teams competed in the
+                first Legacy Sports tournament and helped establish the
+                foundation for future events.
             </p>
 
-            <div class="timeline-stats">
-                <div>8 Teams</div>
-                <div>30 Players</div>
-                <div>50+ Attendees</div>
-                <div>$240 Prize</div>
+            <div class="mini-stats">
+                <span>8 Teams</span>
+                <span>30 Players</span>
+                <span>50+ Attendees</span>
+                <span>$240 Prize</span>
             </div>
 
-            <a href="{% url 'history_2024_basketball' %}" class="history-btn">
+            <a href="{% url 'history_2024_basketball' %}" class="event-btn">
                 View Event
             </a>
 
         </div>
 
+        <div class="timeline-photo">
+
+            <!-- 2024 CHAMPION PHOTO -->
+            <img src="{% static 'tournament/images/history/2024_champions.jpg' %}"
+                 alt="2024 Champions">
+
+        </div>
+
     </div>
 
-    <div class="timeline-item reverse">
+    <div class="timeline-row reverse">
 
-        <div class="timeline-dot"></div>
+        <div class="timeline-photo">
+
+            <!-- 2026 CHAMPION PHOTO -->
+            <img src="{% static 'tournament/images/history/2026_champions.jpg' %}"
+                 alt="2026 Champions">
+
+        </div>
 
         <div class="timeline-card">
 
-            <span class="timeline-year">2026</span>
+            <span class="event-year">2026</span>
 
             <h2>Coed Volleyball Tournament</h2>
 
             <p>
-                Legacy Sports returned bigger than ever. Featuring volleyball,
+                Legacy Sports returned bigger than ever with volleyball,
                 crowd engagement activities, sponsors, volunteers and over
                 130 attendees.
             </p>
 
-            <div class="timeline-stats">
-                <div>8 Teams</div>
-                <div>54 Players</div>
-                <div>130+ Attendees</div>
-                <div>15+ Volunteers</div>
+            <div class="mini-stats">
+                <span>8 Teams</span>
+                <span>54 Players</span>
+                <span>130+ Attendees</span>
+                <span>15+ Volunteers</span>
             </div>
 
-            <a href="{% url 'history_2026_volleyball' %}" class="history-btn">
+            <a href="{% url 'history_2026_volleyball' %}" class="event-btn">
                 View Event
             </a>
 
@@ -89,20 +102,24 @@
 
     </div>
 
-    <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
+    <div class="timeline-row">
 
         <div class="timeline-card future-card">
 
-            <span class="timeline-year">2027+</span>
+            <span class="event-year">2027+</span>
 
             <h2>Coming Soon</h2>
 
             <p>
-                More sports. More athletes. More memories.
-                The Legacy Sports journey is only beginning.
+                More tournaments. More athletes. More opportunities to
+                connect through sport.
             </p>
+
+        </div>
+
+        <div class="timeline-photo future-photo">
+
+            <h3>The Next Chapter</h3>
 
         </div>
 
