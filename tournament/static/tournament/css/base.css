@@ -65,6 +65,11 @@ body {
     
 }
 
+.page-hero p{
+    color:white;
+    
+}
+
 .page-subtitle{
     font-family:'Sofia Sans', sans-serif;
     max-width:720px;
