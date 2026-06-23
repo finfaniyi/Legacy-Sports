@@ -62,6 +62,7 @@ body {
     margin-bottom:10px;
     text-transform:uppercase;
     color:#151a1f;
+    
 }
 
 .page-subtitle{
@@ -70,6 +71,7 @@ body {
     opacity:.85;
     line-height:1.6;
     font-size:16px;
+    color:#151a1f;
 }
 
 @media(max-width:900px){
