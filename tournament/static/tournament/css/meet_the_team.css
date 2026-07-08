@@ -119,13 +119,23 @@
 
 }
 
-.member-socials a{
+.member-socials .fa-instagram{
+    color:#E4405F;
+}
 
-    color:#777;
+.member-socials .fa-linkedin-in{
+    color:#0A66C2;
+}
+
+.member-socials .fa-globe{
+    color:#444;
+}
+
+.member-socials a{
 
     font-size:1.25rem;
 
-    opacity:.7;
+    opacity:.8;
 
     transition:.25s;
 
@@ -133,11 +143,9 @@
 
 .member-socials a:hover{
 
-    color:#c8102e;
-
     opacity:1;
 
-    transform:translateY(-3px);
+    transform:translateY(-3px) scale(1.1);
 
 }
 
