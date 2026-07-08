@@ -231,7 +231,7 @@ def involvement(request):
             missing_fields.append("Role")
 
         if missing_fields:
-            return render(request, "tournament/join_team.html", {
+            return render(request, "tournament/involvement.html", {
                 "error": "Please fill out: " + ", ".join(missing_fields)
             })
 
@@ -323,9 +323,9 @@ def involvement(request):
         )
 
         messages.success(request, "Application submitted successfully!")
-        return redirect("join_team")
+        return redirect("involvement")
 
-    return render(request, "tournament/join_team.html")
+    return render(request, "tournament/involvement.html")
 
 # =========================
 # REGISTRATION DISPLAY
