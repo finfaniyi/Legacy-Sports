@@ -1,110 +1,109 @@
-.page-container{
-    width:min(1150px,92%);
-    margin:auto;
-}
-
-/* ===============================
-   HERO
-================================ */
-
-.team-hero{
-    padding:70px 0 30px;
-    text-align:center;
-}
-
-.hero-label{
-    font-size:.8rem;
-    letter-spacing:2px;
-    color:#d62828;
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.team-hero h1{
-    font-size:3rem;
-    margin-bottom:18px;
-}
-
-.hero-description{
-    max-width:650px;
-    margin:auto;
-    color:#666;
-    line-height:1.7;
-}
-
-/* ===============================
-   TEAM GRID
-================================ */
+/* ==================================
+   TEAM SECTION
+================================== */
 
 .team-section{
-    padding:50px 0 90px;
+
+    padding:15px 0 110px;
+
 }
+
+.team-section .page-container{
+
+    background:rgba(255,255,255,.55);
+
+    backdrop-filter:blur(6px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    border-radius:28px;
+
+    padding:60px;
+
+}
+
+
+/* ==================================
+   GRID
+================================== */
 
 .team-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(4,1fr);
 
-    gap:50px 35px;
+    gap:65px 45px;
+
+    justify-items:center;
 
 }
 
-/* ===============================
+
+/* ==================================
    MEMBER
-================================ */
+================================== */
 
 .member-card{
 
     text-align:center;
 
+    transition:.35s ease;
+
+    width:100%;
+
 }
 
 .member-card img{
 
-    width:150px;
+    width:180px;
 
-    height:150px;
+    height:180px;
 
     border-radius:50%;
 
     object-fit:cover;
 
-    margin-bottom:18px;
+    border:5px solid transparent;
 
-    transition:.35s;
+    transition:.35s ease;
 
-    border:4px solid transparent;
-
-}
-
-.member-card:hover img{
-
-    transform:scale(1.05);
-
-    border-color:#d62828;
+    margin-bottom:20px;
 
 }
 
 .member-card h3{
 
-    font-size:1.08rem;
+    font-size:1.28rem;
+
+    font-weight:700;
+
+    color:#151a1f;
 
     margin-bottom:6px;
+
+    transition:.3s;
 
 }
 
 .member-card p{
 
-    font-size:.92rem;
+    font-size:.95rem;
 
-    color:#777;
+    color:#666;
 
-    margin-bottom:15px;
+    line-height:1.4;
 
-    min-height:38px;
+    min-height:42px;
+
+    margin-bottom:18px;
 
 }
+
+
+/* ==================================
+   SOCIALS
+================================== */
 
 .member-socials{
 
@@ -112,24 +111,100 @@
 
     justify-content:center;
 
-    gap:14px;
+    gap:18px;
 
 }
 
 .member-socials a{
 
-    color:#777;
+    color:#666;
 
-    font-size:1.15rem;
+    font-size:1.25rem;
 
     transition:.25s;
+
+    opacity:.7;
 
 }
 
 .member-socials a:hover{
 
-    color:#d62828;
+    color:#c8102e;
+
+    opacity:1;
 
     transform:translateY(-2px);
+
+}
+
+
+/* ==================================
+   HOVER
+================================== */
+
+.member-card:hover img{
+
+    transform:scale(1.06);
+
+    border-color:#c8102e;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+
+}
+
+.member-card:hover h3{
+
+    color:#c8102e;
+
+}
+
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media(max-width:1200px){
+
+    .team-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:850px){
+
+    .team-section .page-container{
+
+        padding:40px;
+
+    }
+
+    .team-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:55px 30px;
+
+    }
+
+}
+
+@media(max-width:560px){
+
+    .team-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .member-card img{
+
+        width:165px;
+
+        height:165px;
+
+    }
 
 }
