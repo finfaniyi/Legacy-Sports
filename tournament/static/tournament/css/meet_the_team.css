@@ -28,15 +28,10 @@
 ================================== */
 
 .team-grid{
-
     display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:65px 45px;
-
+    grid-template-columns:repeat(6, minmax(0,1fr));
+    gap:55px 20px;
     justify-items:center;
-
 }
 
 
@@ -56,9 +51,9 @@
 
 .member-card img{
 
-    width:180px;
+    width:150px;
 
-    height:180px;
+    height:150px;
 
     border-radius:50%;
 
@@ -74,7 +69,7 @@
 
 .member-card h3{
 
-    font-size:1.28rem;
+    font-size:1.08rem;
 
     font-weight:700;
 
@@ -88,7 +83,7 @@
 
 .member-card p{
 
-    font-size:.95rem;
+    font-size:.88rem;
 
     color:#666;
 
@@ -158,53 +153,42 @@
 
 }
 
-
-/* ==================================
+/* ==============================
    RESPONSIVE
-================================== */
+============================== */
 
 @media(max-width:1200px){
 
     .team-grid{
-
-        grid-template-columns:repeat(3,1fr);
-
+        grid-template-columns:repeat(4,1fr);
     }
 
 }
 
-@media(max-width:850px){
+@media(max-width:900px){
+
+    .team-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 
     .team-section .page-container{
-
         padding:40px;
-
-    }
-
-    .team-grid{
-
-        grid-template-columns:repeat(2,1fr);
-
-        gap:55px 30px;
-
     }
 
 }
 
-@media(max-width:560px){
+@media(max-width:650px){
 
     .team-grid{
-
-        grid-template-columns:1fr;
-
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .member-card img{
+}
 
-        width:165px;
+@media(max-width:450px){
 
-        height:165px;
-
+    .team-grid{
+        grid-template-columns:1fr;
     }
 
 }
