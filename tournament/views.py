@@ -205,7 +205,7 @@ def team_brackets(request):
 # VOLUNTEER
 # =========================
 
-def join_team(request):
+def involvement(request):
 
     if request.method == "POST":
 
