@@ -1,0 +1,135 @@
+.page-container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.team-hero{
+    padding:70px 0 30px;
+    text-align:center;
+}
+
+.hero-label{
+    font-size:.8rem;
+    letter-spacing:2px;
+    color:#d62828;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.team-hero h1{
+    font-size:3rem;
+    margin-bottom:18px;
+}
+
+.hero-description{
+    max-width:650px;
+    margin:auto;
+    color:#666;
+    line-height:1.7;
+}
+
+/* ===============================
+   TEAM GRID
+================================ */
+
+.team-section{
+    padding:50px 0 90px;
+}
+
+.team-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:50px 35px;
+
+}
+
+/* ===============================
+   MEMBER
+================================ */
+
+.member-card{
+
+    text-align:center;
+
+}
+
+.member-card img{
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-bottom:18px;
+
+    transition:.35s;
+
+    border:4px solid transparent;
+
+}
+
+.member-card:hover img{
+
+    transform:scale(1.05);
+
+    border-color:#d62828;
+
+}
+
+.member-card h3{
+
+    font-size:1.08rem;
+
+    margin-bottom:6px;
+
+}
+
+.member-card p{
+
+    font-size:.92rem;
+
+    color:#777;
+
+    margin-bottom:15px;
+
+    min-height:38px;
+
+}
+
+.member-socials{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
+.member-socials a{
+
+    color:#777;
+
+    font-size:1.15rem;
+
+    transition:.25s;
+
+}
+
+.member-socials a:hover{
+
+    color:#d62828;
+
+    transform:translateY(-2px);
+
+}
