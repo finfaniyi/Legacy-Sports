@@ -79,25 +79,20 @@ def home(request):
         "instagram_posts": instagram_posts
     })
 
-
 def support(request):
     return render(request, "tournament/support.html")
-
 
 def about(request):
     return render(request, "tournament/about.html")
 
-
 def history(request):
     return render(request, "tournament/history.html")
-
 
 def history_2024_basketball(request):
     return render(
         request,
         "tournament/history_2024_basketball.html"
     )
-
 
 def history_2026_volleyball(request):
     return render(
@@ -197,18 +192,14 @@ def media(request):
         "creators": creators,
     })
 
-
 def tourney_info(request):
     return render(request, "tournament/tourney-info.html")
-
 
 def contact_us(request):
     return render(request, "tournament/contact_us.html")
 
-
 def team_brackets(request):
     return render(request, "tournament/team_brackets.html")
-
 
 # =========================
 # VOLUNTEER
@@ -336,7 +327,6 @@ def join_team(request):
 
     return render(request, "tournament/join_team.html")
 
-
 # =========================
 # REGISTRATION DISPLAY
 # =========================
@@ -390,7 +380,6 @@ def registration_success(request):
         return redirect("registration")
     return render(request, "tournament/registration_success.html")
 
-
 def waiver(request):
     next_url = request.GET.get("next", "/")
 
@@ -402,7 +391,6 @@ def waiver(request):
     return render(request, "tournament/waiver.html", {
         "next": next_url
     })
-
 
 # =========================
 # TEAM REGISTRATION + STRIPE
@@ -636,8 +624,6 @@ def registration_team(request):
         "team_colors": available_colors,
         "slot": slot,
     })
-
-
 
 # =========================
 # STRIPE WEBHOOK
@@ -875,4 +861,5 @@ def edit_free_agent(request, token):
         "agent": agent
     })
     
-    
+def meet_the_team(request):
+    return render(request, "tournament/meet_the_team.html")
