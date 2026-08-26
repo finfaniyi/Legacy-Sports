@@ -1,523 +1,737 @@
 /* =========================
-  Home Page
+   HOME PAGE
 ========================= */
-.home-hero {
-    position: relative;
-    height: 70vh;
-    overflow: hidden;
-    background: #000;
-}
 
 .home {
-    display: block;
+  display: block;
+  background: #1e2023;
 }
 
-/* Slides */
-.home-hero-slides {
-    position: absolute;
-    inset: 0;
+.home-section-container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #bb080b;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.home-hero {
+  position: relative;
+
+  height: calc(100vh - 68px);
+  min-height: 650px;
+
+  overflow: hidden;
+
+  background: #0f1113;
+}
+
+
+/* =========================
+   HERO SLIDES
+========================= */
+
+.home-hero-slides,
+.home-hero-slide {
+  position: absolute;
+  inset: 0;
 }
 
 .home-hero-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center 25%;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
-    transform: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+
+  transition: opacity 1s ease-in-out;
 }
 
 .home-hero-slide.active {
-    opacity: 1;
+  opacity: 1;
 }
 
-/* Dark overlay */
+
+/* =========================
+   HERO OVERLAY
+========================= */
+
 .home-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 9, 10, 0.84) 0%,
+      rgba(8, 9, 10, 0.62) 34%,
+      rgba(8, 9, 10, 0.22) 68%,
+      rgba(8, 9, 10, 0.10) 100%
+    );
 }
 
-/* Text */
+
+/* =========================
+   HERO CONTENT
+========================= */
+
 .home-hero-content {
-    position: relative;
-    z-index: 2;
-    color: #fff;
-    padding-left: 6rem;
-    top: 70%;
-    transform: translateY(-50%);
-    max-width: 600px;
+  position: absolute;
+
+  z-index: 2;
+
+  top: 50%;
+  left: max(6%, calc((100vw - 1400px) / 2));
+
+  transform: translateY(-50%);
+
+  width: min(650px, 80%);
+
+  color: #F7F5F2;
+}
+
+.hero-eyebrow {
+  display: block;
+
+  margin-bottom: 14px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .home-hero-content h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 4rem;
-    letter-spacing: 2px;
-    font-weight: 800;
+  margin: 0;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 7vw, 125px);
+  font-weight: 400;
+  line-height: 0.84;
+  letter-spacing: 1px;
+
+  color: #ffffff;
 }
 
-/* Dots */
+.home-hero-content h1 span {
+  color: #c90b0f;
+}
+
+.home-hero-content p {
+  max-width: 570px;
+
+  margin: 28px 0 0;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 32px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 50px;
+
+  padding: 0 25px;
+
+  border-radius: 6px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero-btn-primary {
+  background: #bb080b;
+  border: 1px solid #bb080b;
+
+  color: #ffffff;
+}
+
+.hero-btn-primary:hover {
+  background: #d10b10;
+  border-color: #d10b10;
+}
+
+.hero-btn-secondary {
+  background: rgba(255, 255, 255, 0.07);
+
+  border: 1px solid rgba(255, 255, 255, 0.50);
+
+  color: #ffffff;
+
+  backdrop-filter: blur(5px);
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+
+/* =========================
+   HERO ARROWS
+========================= */
+
+.hero-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 3;
+
+  width: 46px;
+  height: 46px;
+
+  transform: translateY(-50%);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.30);
+
+  color: #ffffff;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(5px);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hero-prev {
+  left: 25px;
+}
+
+.hero-next {
+  right: 25px;
+}
+
+.hero-arrow:hover {
+  background: rgba(187, 8, 11, 0.85);
+
+  transform: translateY(-50%) scale(1.05);
+}
+
+
+/* =========================
+   HERO DOTS
+========================= */
+
 .home-hero-dots {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 2;
+  position: absolute;
+
+  z-index: 3;
+
+  left: 50%;
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
 }
 
 .home-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 70%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: background 0.3s;
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    border-radius 0.25s ease,
+    background 0.25s ease;
 }
 
 .home-dot.active {
-    background: #fff;
+  width: 26px;
+
+  border-radius: 10px;
+
+  background: #ffffff;
 }
 
-/* slices */
-.home-slices {
-    display: flex;
-    height: 520px;   /* increase this */
-    width: min(1600px, 90%);
-    margin: 0 auto;
-    overflow: hidden;
-    gap: 7px;
-    border-radius: 18px;
-}
-
-.home-slices-wrap {
-    background: #1e2023;
-    padding-bottom: 20px;
-}
-
-.slice {
-    flex: 1;
-    position: relative;
-    background-size: 120%;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: opacity 0.8s ease-in-out;
-}
-
-hr {
-  margin: 0;   /* reduce the vertical space */
-}
-
-/* IMPORTANT: ../images because CSS is in /css folder */
-.slice-1 {
-    background-image: url("../images/home_page/fin_pointing.jpg");
-    clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
-    background-size: 105%;
-    background-position: center 30%;
-    flex: 1.15;
-}
-
-.slice-2 {
-    background-image: url("../images/home_page/celina_volleyball.jpg");
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-    background-position: center 30%;
-    flex: 1;
-}
-
-.slice-3 {
-    background-image: url("../images/home_page/pointing_soccer.jpg");
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-    background-position: center 30%;
-    flex: 1;
-}
-
-.slice-4 {
-    background-image: url("../images/home_page/ball_grip.jpg");
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-    background-position: center 30%;
-    flex: 1;
-}
-
-.home-cta {
-    background: #1e2023;
-    color: #F7F5F2;
-    padding: 36px 24px;
-    text-align: center;
-    border-radius: 18px;
-}
-
-.home-cta h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
-.home-cta p {
-    opacity: 0.9;
-    font-size: 18px;
-    margin-bottom: 28px;
-}
-
-.home-cta-actions {
-    justify-content: center;
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.home-cta .cta-btn {
-    display: inline-block;
-    font-size: 17px;
-    padding: 14px 22px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,.20);
-    background: #bb080b;
-    color: #F7F5F2;
-    text-decoration: none;
-    font-family: 'Sofia Sans', sans-serif;
-    font-weight: 700;
-}
-
-.home-cta .cta-btn:hover {
-    /* CTA hover state */
-    background: #bd2e30
-}
-
-.home-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 60px 0;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat strong {
-    font-size: 32px;
-    display: block;
-}
-
-.stat span {
-    opacity: 0.7;
-    font-size: 14px;
-}
 
 /* =========================
-   Home – Instagram Feed
+   EVENTS CTA
 ========================= */
 
-.home-video,
-.home-instagram {
-    background: #0f1113;
-    padding: 80px 0;
-}
+.home-events-cta {
+  padding: 75px 24px;
 
-.home-video-header,
-.home-instagram-header {
-  width: min(1200px, 92%);
-  margin-bottom: 20px;
-  padding-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  background: #1e2023;
 
-.video-center-header h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  letter-spacing: 1.3px;
   color: #F7F5F2;
-  margin: 0;
+
   text-align: center;
 }
 
-.home-instagram-header h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  letter-spacing: 1.3px;
-  color: #F7F5F2;
+.home-events-cta .section-eyebrow {
+  margin-bottom: 8px;
+}
+
+.home-events-cta h2 {
   margin: 0;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  text-align: center;   /* 👈 add this */
-  margin-left: auto;    /* 👈 add this */
-  margin-right: auto; 
-}
 
-.video-center-header {
-  margin-bottom: 40px;
-  padding-top: 30px;
-}
-
-.instagram-heading {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.instagram-heading h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  letter-spacing: 1.3px;
+  font-size: clamp(42px, 4vw, 62px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1.5px;
+
   color: #F7F5F2;
-  text-align: center;   /* 👈 add this */
-  margin-left: auto;    /* 👈 add this */
-  margin-right: auto; 
 }
 
-.instagram-icon {
-  font-size: 36px;
-  color: #F7F5F2;
+.home-events-cta p {
+  margin: 15px auto 26px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+
+  color: rgba(247, 245, 242, 0.72);
+}
+
+.section-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0 25px;
+
+  border: 1px solid #bb080b;
+  border-radius: 6px;
+
+  background: #bb080b;
+
+  color: #ffffff;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+
   text-decoration: none;
-  transition: transform 0.2s ease, color 0.2s ease;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-.instagram-icon:hover {
-  color: #E1306C; /* Instagram pink */
+.section-btn:hover {
+  background: #d10b10;
+
   transform: translateY(-2px);
 }
 
 
-.video-main {
-  display: flex;
-  justify-content: center;   /* centers horizontally */
-  align-items: center;
-}
+/* =========================
+   SECTION HEADINGS
+========================= */
 
-.home-social-embeds {
-    width: min(1200px, 92%);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
+.home-section-heading {
+  width: min(1200px, 90%);
 
-.instagram-media {
-    width: 100% !important;
-    min-width: unset !important;
-}
+  margin: 0 auto 35px;
 
-.instagram-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin-top:25px;
-}
-
-.instagram-grid a{
-display:block;
-border-radius:14px;
-overflow:hidden;
-}
-
-.instagram-grid img{
-width:100%;
-height:260px;
-object-fit:cover;
-transition:transform .25s ease;
-}
-
-.instagram-grid a:hover img{
-transform:scale(1.05);
-}
-
-.home-slices-band {
-  display: flex;
-  flex-direction: column; /* space between slices, video, instagram */
-}
-
-/* Hero Arrows */
-.hero-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  background: rgba(0,0,0,0.4);
-  color: #fff;
-  border: none;
-  font-size: 28px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.hero-prev {
-  left: 30px;
-}
-
-.hero-next {
-  right: 30px;
-}
-
-.hero-arrow:hover {
-  background: rgba(0,0,0,0.7);
-  transform: translateY(-50%) scale(1.05);
-}
-
-.home-social-embeds {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 20px;
-}
-
-.media-card {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.media-card:hover {
-  transform: translateY(-8px);
-}
-
-.media-thumb {
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.media-thumb img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 14px;
-  transition: transform 0.4s ease;
-}
-
-.media-card:hover img {
-  transform: scale(1.05);
-}
-
-.instagram-caption {
-  margin-top: 12px;
-  font-size: 15px;
-  line-height: 1.4;
-  color: #cfcfcf;
   text-align: center;
-  font-family: 'Sofia Sans', sans-serif;
 }
 
-.instagram-caption:hover {
-  color: white;
+.home-section-heading h2 {
+  margin: 0;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1.3px;
+
+  color: #F7F5F2;
 }
+
+
+/* =========================
+   VIDEO CENTRE
+========================= */
+
+.home-video {
+  padding: 80px 0 90px;
+
+  background: #111315;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.video-main {
+  width: min(1050px, 90%);
+
+  margin: 0 auto;
+}
+
+.video-main iframe {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 16 / 9;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: #000;
+
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================
+   LEGACY COMMUNITY
+========================= */
+
+.home-community {
+  padding: 80px 0 95px;
+
+  background: #1e2023;
+}
+
+.home-slices {
+  display: flex;
+
+  width: min(1400px, 90%);
+  height: 500px;
+
+  margin: 0 auto;
+
+  gap: 7px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+}
+
+.slice {
+  position: relative;
+
+  flex: 1;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition:
+    flex 0.35s ease,
+    filter 0.35s ease;
+}
+
+.slice:hover {
+  flex: 1.08;
+}
+
+.slice-1 {
+  background-image: url("../images/home_page/fin_pointing.jpg");
+
+  clip-path: polygon(
+    0 0,
+    96% 0,
+    86% 100%,
+    0 100%
+  );
+
+  flex: 1.15;
+
+  background-position: center 30%;
+}
+
+.slice-2 {
+  background-image: url("../images/home_page/celina_volleyball.jpg");
+
+  clip-path: polygon(
+    10% 0,
+    100% 0,
+    90% 100%,
+    0 100%
+  );
+
+  background-position: center 30%;
+}
+
+.slice-3 {
+  background-image: url("../images/home_page/pointing_soccer.jpg");
+
+  clip-path: polygon(
+    10% 0,
+    100% 0,
+    90% 100%,
+    0 100%
+  );
+
+  background-position: center 30%;
+}
+
+.slice-4 {
+  background-image: url("../images/home_page/ball_grip.jpg");
+
+  clip-path: polygon(
+    10% 0,
+    100% 0,
+    90% 100%,
+    0 100%
+  );
+
+  background-position: center 30%;
+}
+
 
 /* ======================================
-   HOME – MOBILE
+   TABLET / MOBILE
 ====================================== */
 
 @media (max-width: 900px) {
 
-  /* ===== HERO ===== */
+  /* HERO */
 
   .home-hero {
-    height: 65vh;
+    height: calc(100svh - 68px);
+    min-height: 600px;
+  }
+
+  .home-hero::after {
+    background:
+      linear-gradient(
+        0deg,
+        rgba(8, 9, 10, 0.92) 0%,
+        rgba(8, 9, 10, 0.58) 55%,
+        rgba(8, 9, 10, 0.20) 100%
+      );
   }
 
   .home-hero-content {
-    padding-left: 20px;
-    padding-right: 20px;
-    top: 55%;
-    max-width: 100%;
+    top: auto;
+    bottom: 80px;
+    left: 24px;
+
+    transform: none;
+
+    width: calc(100% - 48px);
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    letter-spacing: 3px;
   }
 
   .home-hero-content h1 {
-    font-size: 2.2rem;
+    font-size: clamp(58px, 17vw, 82px);
   }
 
-  /* Smaller arrows */
+  .home-hero-content p {
+    margin-top: 20px;
+
+    max-width: 500px;
+
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .hero-actions {
+    margin-top: 24px;
+  }
+
+  .hero-btn {
+    min-height: 46px;
+
+    padding: 0 18px;
+
+    font-size: 14px;
+  }
+
   .hero-arrow {
-    width: 38px;
-    height: 38px;
-    font-size: 20px;
+    display: none;
   }
 
-  .hero-prev {
-    left: 10px;
+  .home-hero-dots {
+    bottom: 24px;
   }
 
-  .hero-next {
-    right: 10px;
+
+  /* EVENTS */
+
+  .home-events-cta {
+    padding: 60px 20px;
   }
 
-  /* ===== SLICES ===== */
+
+  /* VIDEO */
+
+  .home-video {
+    padding: 65px 0 70px;
+  }
+
+
+  /* COMMUNITY */
+
+  .home-community {
+    padding: 65px 0 70px;
+  }
 
   .home-slices {
-    flex-direction: column;
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    width: min(650px, 90%);
     height: auto;
+
+    gap: 8px;
+
+    overflow: visible;
+
+    border-radius: 0;
   }
 
   .slice {
-    height: 220px;
-    clip-path: none;   /* remove angled shapes on mobile */
+    height: 330px;
+
+    clip-path: none;
+
+    border-radius: 10px;
   }
 
-  /* ===== STATS ===== */
-
-  .home-stats {
-    flex-direction: column;
-    gap: 24px;
-    margin: 40px 0;
-  }
-
-  .stat strong {
-    font-size: 26px;
-  }
-
-  /* ===== VIDEO + INSTAGRAM ===== */
-
-  .home-video,
-  .home-instagram {
-    padding: 50px 0;
-  }
-
-    .instagram-grid{
-  grid-template-columns:repeat(2,1fr);
-  }
-
-  .instagram-grid img{
-  height:200px;
-  }
-
-  .video-center-header h2,
-  .home-instagram-header h2,
-  .instagram-heading h2 {
-    font-size: 28px;
-  }
-
-  .home-social-embeds {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  /* CTA buttons full width */
-  .home-cta-actions {
-    flex-direction: column;
-  }
-
-  .home-cta .cta-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .home-social-embeds {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .media-thumb img {
-    height: auto;
+  .slice:hover {
+    flex: 1;
   }
 
 }
 
+
+/* ======================================
+   SMALL MOBILE
+====================================== */
+
+@media (max-width: 550px) {
+
+  .home-hero {
+    min-height: 620px;
+  }
+
+  .home-hero-content {
+    bottom: 75px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+
+  .home-events-cta {
+    padding: 55px 20px;
+  }
+
+  .home-section-heading {
+    margin-bottom: 28px;
+  }
+
+  .home-video {
+    padding: 55px 0 60px;
+  }
+
+  .video-main {
+    width: 92%;
+  }
+
+  .video-main iframe {
+    border-radius: 8px;
+  }
+
+  .home-community {
+    padding: 55px 0 60px;
+  }
+
+  .home-slices {
+    grid-template-columns: 1fr;
+
+    width: 88%;
+  }
+
+  .slice {
+    height: 360px;
+  }
+
+}

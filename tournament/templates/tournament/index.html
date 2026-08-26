@@ -1,143 +1,257 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Home | Legacy Sports Canada{% endblock %}
+{% block title %}
+  Home | Legacy Sports Canada
+{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'tournament/css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'tournament/css/index.css' %}">
 {% endblock %}
 
 {% block content %}
+
 <main class="home">
 
-  <!-- HERO -->
+  <!-- =========================
+       HERO
+  ========================== -->
   <section class="home-hero">
+
     <div class="home-hero-slides">
-      <div class="home-hero-slide active"
-        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/image_18.jpg' %});">
+
+      <!-- 2024 Basketball Action -->
+      <div
+        class="home-hero-slide active"
+        style="background-image: url('{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_18.jpg' %}');">
       </div>
 
-      <div class="home-hero-slide"
-        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/image_23.jpg' %});">
+      <!-- 2024 Basketball Champions -->
+      <div
+        class="home-hero-slide"
+        style="background-image: url('{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_23.jpg' %}');">
       </div>
 
-      <div class="home-hero-slide"
-        style="background-image: url({% static 'tournament/images/Legacy_Sports_Basketball_2024/image_5.jpg' %});">
+      <!-- 2026 Volleyball Action -->
+      <!-- Replace filename with your chosen volleyball action photo -->
+      <div
+        class="home-hero-slide"
+        style="background-image: url('{% static 'tournament/images/Legacy_Sports_Volleyball_2026/IMAGE_HERE.jpg' %}');">
       </div>
 
-      <div class="home-hero-slide" style="background-image: url({% static 'tournament/images/home_page/Trio.jpg' %});">
+      <!-- 2026 Volleyball Champions -->
+      <!-- Replace filename with your chosen volleyball champions photo -->
+      <div
+        class="home-hero-slide"
+        style="background-image: url('{% static 'tournament/images/Legacy_Sports_Volleyball_2026/CHAMPION_IMAGE_HERE.jpg' %}');">
       </div>
+
+      <!-- Legacy Community -->
+      <div
+        class="home-hero-slide"
+        style="background-image: url('{% static 'tournament/images/home_page/Trio.jpg' %}');">
+      </div>
+
     </div>
-    <button class="hero-arrow hero-prev">&#10094;</button>
-    <button class="hero-arrow hero-next">&#10095;</button>
 
 
+    <!-- Hero Content -->
     <div class="home-hero-content">
-      <h1>LEGACY SPORTS</h1>
-      <p>Bringing communities together through sport.</p>
+
+      <span class="hero-eyebrow">
+        LEGACY SPORTS CANADA
+      </span>
+
+      <h1>
+        MORE THAN<br>
+        <span>THE GAME.</span>
+      </h1>
+
+      <p>
+        Bringing communities together through sport, competition,
+        connection and unforgettable experiences.
+      </p>
+
+      <div class="hero-actions">
+
+        <a href="{% url 'events' %}" class="hero-btn hero-btn-primary">
+          Explore Events
+        </a>
+
+        <a href="{% url 'about' %}" class="hero-btn hero-btn-secondary">
+          About Legacy
+        </a>
+
+      </div>
+
     </div>
 
+
+    <!-- Hero Arrows -->
+    <button
+      class="hero-arrow hero-prev"
+      type="button"
+      aria-label="Previous slide">
+      &#10094;
+    </button>
+
+    <button
+      class="hero-arrow hero-next"
+      type="button"
+      aria-label="Next slide">
+      &#10095;
+    </button>
+
+
+    <!-- Hero Dots -->
     <div class="home-hero-dots">
-      <span class="home-dot active" data-slide="0"></span>
-      <span class="home-dot" data-slide="1"></span>
-      <span class="home-dot" data-slide="2"></span>
-      <span class="home-dot" data-slide="3"></span>
+
+      <button
+        class="home-dot active"
+        type="button"
+        data-slide="0"
+        aria-label="Go to slide 1">
+      </button>
+
+      <button
+        class="home-dot"
+        type="button"
+        data-slide="1"
+        aria-label="Go to slide 2">
+      </button>
+
+      <button
+        class="home-dot"
+        type="button"
+        data-slide="2"
+        aria-label="Go to slide 3">
+      </button>
+
+      <button
+        class="home-dot"
+        type="button"
+        data-slide="3"
+        aria-label="Go to slide 4">
+      </button>
+
+      <button
+        class="home-dot"
+        type="button"
+        data-slide="4"
+        aria-label="Go to slide 5">
+      </button>
+
     </div>
-    <a href="#next-section" class="home-scroll">
-      <span class="scroll-mouse"></span>
-    </a>
 
   </section>
 
-  <section id="next-section" class="home-slices-wrap">
-    <section class="home-cta">
-      <h2>Want to be part of the next tournament?</h2>
-      <p>Team registration opening soon.</p>
 
-      <div class="home-cta-actions">
-        <a href="{% url 'registration' %}" class="cta-btn">Go to Registration</a>
-        <a href="{% url 'tourney_info' %}" class="cta-btn ghost">View Tournament Info</a>
-      </div>
-    </section>
+  <!-- =========================
+       EVENTS CTA
+  ========================== -->
+  <section class="home-events-cta">
 
-    <hr>
+    <div class="home-section-container">
 
-    <section class="home-social">
-      <div class="video-center-header">
-        <h2>VIDEO CENTRE</h2>
-      </div>
+      <span class="section-eyebrow">
+        LEGACY SPORTS
+      </span>
 
-      <div class="video-main">
-        <iframe width="960" height="615" src="https://www.youtube.com/embed/9FqWGiJsPMM?si=auIF3mWkmxhyBbGV"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </section>
+      <h2>READY FOR WHAT'S NEXT?</h2>
 
-    <hr>
+      <p>
+        Discover upcoming Legacy Sports events and experiences.
+      </p>
 
-    <!-- IMAGE SLICES -->
-    <section class="home-slices-wrap">
-      <div class="video-center-header">
-        <h2>The Legacy Community</h2>
-      </div>
-      <div class="home-slices">
-        <div class="slice slice-1"></div>
-        <div class="slice slice-2"></div>
-        <div class="slice slice-3"></div>
-        <div class="slice slice-4"></div>
-      </div>
-    </section>
+      <a href="{% url 'events' %}" class="section-btn">
+        Explore Events
+      </a>
+
+    </div>
+
   </section>
 
 
-  <hr>
+  <!-- =========================
+       VIDEO CENTRE
+  ========================== -->
+  <section class="home-video">
 
-  <!-- SOCIAL MEDIA SECTION 
-  <section class="home-slices-wrap">
-    <section class="home-social">
+    <div class="home-section-heading">
 
-      <div class="instagram-heading">
-        <h2>LATEST FROM LEGACY SPORTS<a href="https://instagram.com/legacysports.ca" target="_blank" class="instagram-icon"
-            aria-label="Follow Legacy Sports on Instagram">
-            <i class="fab fa-instagram"></i>
-          </a></h2>
-      </div>
+      <span class="section-eyebrow">
+        WATCH LEGACY
+      </span>
 
-      <div class="instagram-grid">
+      <h2>VIDEO CENTRE</h2>
 
-        <a href="https://www.instagram.com/p/POST1/" target="_blank">
-          <img src="{% static 'images/insta1.jpg' %}" alt="Legacy Sports">
-        </a>
+    </div>
 
-        <a href="https://www.instagram.com/p/POST2/" target="_blank">
-          <img src="{% static 'images/insta2.jpg' %}" alt="Legacy Sports">
-        </a>
+    <div class="video-main">
 
-        <a href="https://www.instagram.com/p/POST3/" target="_blank">
-          <img src="{% static 'images/insta3.jpg' %}" alt="Legacy Sports">
-        </a>
+      <iframe
+        src="https://www.youtube.com/embed/9FqWGiJsPMM?si=auIF3mWkmxhyBbGV"
+        title="Legacy Sports Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
 
-        <a href="https://www.instagram.com/p/POST4/" target="_blank">
-          <img src="{% static 'images/insta4.jpg' %}" alt="Legacy Sports">
-        </a>
+    </div>
 
-        <a href="https://www.instagram.com/p/POST5/" target="_blank">
-          <img src="{% static 'images/insta5.jpg' %}" alt="Legacy Sports">
-        </a>
-
-        <a href="https://www.instagram.com/p/POST6/" target="_blank">
-          <img src="{% static 'images/insta6.jpg' %}" alt="Legacy Sports">
-        </a>
-
-      </div>
-
-    </section>
   </section>
-  -->
+
+
+  <!-- =========================
+       LEGACY COMMUNITY
+  ========================== -->
+  <section class="home-community">
+
+    <div class="home-section-heading">
+
+      <span class="section-eyebrow">
+        OUR PEOPLE
+      </span>
+
+      <h2>THE LEGACY COMMUNITY</h2>
+
+    </div>
+
+    <div class="home-slices">
+
+      <div
+        class="slice slice-1"
+        role="img"
+        aria-label="Legacy Sports community member">
+      </div>
+
+      <div
+        class="slice slice-2"
+        role="img"
+        aria-label="Legacy Sports community member">
+      </div>
+
+      <div
+        class="slice slice-3"
+        role="img"
+        aria-label="Legacy Sports community member">
+      </div>
+
+      <div
+        class="slice slice-4"
+        role="img"
+        aria-label="Legacy Sports community member">
+      </div>
+
+    </div>
+
+  </section>
+
 </main>
+
 {% endblock %}
+
+
 {% block scripts %}
-<script src="{% static 'tournament/js/main.js' %}" defer></script>
+  <script src="{% static 'tournament/js/main.js' %}" defer></script>
 {% endblock %}
