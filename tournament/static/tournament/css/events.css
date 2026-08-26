@@ -254,21 +254,21 @@
 
 .basketball-event {
   background-image:
-    url("../images/Legacy_Sports_Basketball_2024/image_18.jpg");
+    url("../images/home_page/basket1.jpg");
 
   background-position: center 45%;
 }
 
 .soccer-event {
   background-image:
-    url("../images/home_page/pointing_soccer.jpg");
+    url("../images/home_page/soc1.jpg");
 
   background-position: center 30%;
 }
 
 .volleyball-event {
   background-image:
-    url("../images/home_page/celina_volleyball.jpg");
+    url("../images/home_page/volley3.jpg");
 
   background-position: center 30%;
 }
