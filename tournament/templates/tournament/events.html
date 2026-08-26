@@ -1,9 +1,355 @@
 {% extends "tournament/base.html" %}
+{% load static %}
 
-{% block title %}Events | Legacy Sports Canada{% endblock %}
+{% block title %}
+  Events | Legacy Sports Canada
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'tournament/css/events.css' %}">
+{% endblock %}
 
 {% block content %}
-<main>
-  <h1>Events</h1>
+
+<main class="events-page">
+
+  <!-- =========================
+       HERO
+  ========================== -->
+  <section class="events-hero">
+
+    <div class="events-container">
+
+      <span class="events-eyebrow">LEGACY SPORTS CANADA</span>
+
+      <h1>EVENTS</h1>
+
+      <p>
+        Competition. Community. Connection.
+        Explore what's coming next and look back at the events
+        that helped build Legacy Sports.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       UPCOMING EVENTS
+  ========================== -->
+  <section class="events-section upcoming-events">
+
+    <div class="events-container">
+
+      <div class="events-section-header">
+
+        <div>
+          <span class="section-label">WHAT'S NEXT</span>
+          <h2>2027 EVENTS</h2>
+        </div>
+
+        <p>
+          A new year of tournaments, experiences and community.
+        </p>
+
+      </div>
+
+
+      <div class="upcoming-grid">
+
+        <!-- BASKETBALL -->
+        <article class="event-card event-card-featured">
+
+          <div class="event-card-image basketball-event">
+
+            <div class="event-card-overlay"></div>
+
+            <div class="event-status">
+              COMING SOON
+            </div>
+
+            <div class="event-number">
+              01
+            </div>
+
+          </div>
+
+          <div class="event-card-content">
+
+            <div class="event-meta">
+              <span>FEBRUARY 2027</span>
+              <span>TOURNAMENT</span>
+            </div>
+
+            <h3>Basketball Tournament</h3>
+
+            <p>
+              Legacy Basketball returns in 2027 for another
+              competitive community tournament.
+            </p>
+
+            <span class="event-link disabled">
+              Details Coming Soon
+              <span aria-hidden="true">→</span>
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- SOCCER -->
+        <article class="event-card">
+
+          <div class="event-card-image soccer-event">
+
+            <div class="event-card-overlay"></div>
+
+            <div class="event-status">
+              COMING SOON
+            </div>
+
+            <div class="event-number">
+              02
+            </div>
+
+          </div>
+
+          <div class="event-card-content">
+
+            <div class="event-meta">
+              <span>MAY 2027</span>
+              <span>7V7</span>
+            </div>
+
+            <h3>Soccer Tournament</h3>
+
+            <p>
+              Legacy takes to the pitch with a 7v7 soccer
+              tournament built around competition and community.
+            </p>
+
+            <span class="event-link disabled">
+              Details Coming Soon
+              <span aria-hidden="true">→</span>
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- VOLLEYBALL -->
+        <article class="event-card">
+
+          <div class="event-card-image volleyball-event">
+
+            <div class="event-card-overlay"></div>
+
+            <div class="event-status">
+              COMING SOON
+            </div>
+
+            <div class="event-number">
+              03
+            </div>
+
+          </div>
+
+          <div class="event-card-content">
+
+            <div class="event-meta">
+              <span>JULY 2027</span>
+              <span>TOURNAMENT</span>
+            </div>
+
+            <h3>Volleyball Tournament</h3>
+
+            <p>
+              Following our 2026 tournament, Legacy Volleyball
+              returns for another summer of competition.
+            </p>
+
+            <span class="event-link disabled">
+              Details Coming Soon
+              <span aria-hidden="true">→</span>
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- COMMUNITY EVENT -->
+        <article class="event-card">
+
+          <div class="event-card-image community-event">
+
+            <div class="event-card-overlay"></div>
+
+            <div class="event-status event-status-experiment">
+              NEW
+            </div>
+
+            <div class="event-number">
+              04
+            </div>
+
+          </div>
+
+          <div class="event-card-content">
+
+            <div class="event-meta">
+              <span>OCTOBER 2027</span>
+              <span>COMMUNITY</span>
+            </div>
+
+            <h3>Community Event</h3>
+
+            <p>
+              A new Legacy experience focused on giving back,
+              bringing people together and creating impact beyond sport.
+            </p>
+
+            <span class="event-link disabled">
+              To Be Announced
+              <span aria-hidden="true">→</span>
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <div class="event-date-note">
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <p>
+          Event months are tentative. Final dates will be confirmed
+          based on venue availability and event planning requirements.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PAST EVENTS
+  ========================== -->
+  <section class="events-section past-events">
+
+    <div class="events-container">
+
+      <div class="events-section-header">
+
+        <div>
+          <span class="section-label">THE JOURNEY SO FAR</span>
+          <h2>PAST EVENTS</h2>
+        </div>
+
+        <p>
+          The tournaments and moments that helped shape Legacy.
+        </p>
+
+      </div>
+
+
+      <div class="past-events-grid">
+
+        <!-- 2026 VOLLEYBALL -->
+        <a
+          href="{% url 'history_2026_volleyball' %}"
+          class="past-event-card"
+        >
+
+          <div class="past-event-image past-volleyball">
+
+            <div class="past-event-overlay"></div>
+
+            <span class="past-event-year">
+              2026
+            </span>
+
+          </div>
+
+          <div class="past-event-content">
+
+            <span class="past-event-type">
+              VOLLEYBALL
+            </span>
+
+            <h3>
+              2026 Volleyball Tournament
+            </h3>
+
+            <p>
+              Relive the tournament, teams, champions and
+              moments from Legacy Volleyball 2026.
+            </p>
+
+            <span class="past-event-link">
+              View Event
+              <span aria-hidden="true">→</span>
+            </span>
+
+          </div>
+
+        </a>
+
+
+        <!-- 2024 BASKETBALL -->
+        <a
+          href="{% url 'history_2024_basketball' %}"
+          class="past-event-card"
+        >
+
+          <div class="past-event-image past-basketball">
+
+            <div class="past-event-overlay"></div>
+
+            <span class="past-event-year">
+              2024
+            </span>
+
+          </div>
+
+          <div class="past-event-content">
+
+            <span class="past-event-type">
+              BASKETBALL
+            </span>
+
+            <h3>
+              2024 Basketball Tournament
+            </h3>
+
+            <p>
+              Look back at the event that started the Legacy
+              Sports tournament journey.
+            </p>
+
+            <span class="past-event-link">
+              View Event
+              <span aria-hidden="true">→</span>
+            </span>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </main>
+
 {% endblock %}

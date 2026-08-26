@@ -1,0 +1,702 @@
+/* =========================
+   EVENTS PAGE
+========================= */
+
+.events-page {
+  background: #f7f5f2;
+  color: #151a1f;
+}
+
+.events-container {
+  width: min(1250px, 90%);
+  margin: 0 auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.events-hero {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  min-height: 430px;
+
+  padding: 90px 0 70px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 14, 16, 0.97) 0%,
+      rgba(20, 22, 24, 0.92) 55%,
+      rgba(30, 32, 35, 0.92) 100%
+    );
+
+  color: #ffffff;
+}
+
+.events-hero::before {
+  content: "LEGACY";
+
+  position: absolute;
+
+  right: -15px;
+  bottom: -65px;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(180px, 22vw, 390px);
+  line-height: 0.8;
+
+  color: rgba(255, 255, 255, 0.025);
+
+  pointer-events: none;
+}
+
+.events-hero .events-container {
+  position: relative;
+  z-index: 1;
+}
+
+.events-eyebrow {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+
+  color: #d10b10;
+}
+
+.events-hero h1 {
+  margin: 0;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(85px, 10vw, 150px);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: 2px;
+
+  color: #ffffff;
+}
+
+.events-hero p {
+  max-width: 620px;
+
+  margin: 28px 0 0;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+.events-section {
+  padding: 90px 0;
+}
+
+.events-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+
+  margin-bottom: 45px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #bb080b;
+}
+
+.events-section-header h2 {
+  margin: 0;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 5vw, 70px);
+  font-weight: 400;
+  line-height: 1;
+
+  color: #151a1f;
+}
+
+.events-section-header > p {
+  max-width: 420px;
+
+  margin: 0 0 6px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: #686868;
+}
+
+
+/* =========================
+   UPCOMING EVENTS
+========================= */
+
+.upcoming-events {
+  background: #f7f5f2;
+}
+
+.upcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 26px;
+}
+
+
+/* =========================
+   EVENT CARD
+========================= */
+
+.event-card {
+  overflow: hidden;
+
+  border: 1px solid #dedbd6;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
+}
+
+.event-card-image {
+  position: relative;
+
+  height: 300px;
+
+  overflow: hidden;
+
+  background-color: #1e2023;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.event-card-image::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  transition: transform 0.5s ease;
+
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+}
+
+.event-card:hover .event-card-image::before {
+  transform: scale(1.035);
+}
+
+.event-card-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.08) 20%,
+      rgba(0, 0, 0, 0.68) 100%
+    );
+}
+
+
+/* =========================
+   EVENT IMAGES
+========================= */
+
+/*
+   These use images already present in your project.
+
+   When you have dedicated 2027 promotional photos,
+   we can swap these without changing the cards.
+*/
+
+.basketball-event {
+  background-image:
+    url("../images/Legacy_Sports_Basketball_2024/image_18.jpg");
+}
+
+.soccer-event {
+  background-image:
+    url("../images/home_page/pointing_soccer.jpg");
+}
+
+.volleyball-event {
+  background-image:
+    url("../images/home_page/celina_volleyball.jpg");
+}
+
+.community-event {
+  background-image:
+    url("../images/home_page/Trio.jpg");
+}
+
+
+/* =========================
+   IMAGE LABELS
+========================= */
+
+.event-status {
+  position: absolute;
+
+  z-index: 2;
+
+  top: 20px;
+  left: 20px;
+
+  padding: 8px 12px;
+
+  border-radius: 5px;
+
+  background: #bb080b;
+
+  color: #ffffff;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.event-status-experiment {
+  background: #ffffff;
+
+  color: #151a1f;
+}
+
+.event-number {
+  position: absolute;
+
+  z-index: 2;
+
+  right: 18px;
+  bottom: -12px;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px;
+  line-height: 1;
+
+  color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================
+   EVENT CARD CONTENT
+========================= */
+
+.event-card-content {
+  padding: 28px 28px 30px;
+}
+
+.event-meta {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+
+  color: #bb080b;
+}
+
+.event-meta span + span::before {
+  content: "•";
+
+  margin-right: 10px;
+
+  color: #aaa;
+}
+
+.event-card-content h3 {
+  margin: 0;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+
+  color: #151a1f;
+}
+
+.event-card-content p {
+  min-height: 52px;
+
+  margin: 14px 0 24px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+
+  color: #6c6c6c;
+}
+
+.event-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #151a1f;
+}
+
+.event-link.disabled {
+  color: #8b8b8b;
+}
+
+
+/* =========================
+   TENTATIVE DATE NOTE
+========================= */
+
+.event-date-note {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 35px;
+
+  padding: 18px 20px;
+
+  border-left: 3px solid #bb080b;
+
+  background: #ebe8e3;
+}
+
+.event-date-note i {
+  flex-shrink: 0;
+
+  font-size: 20px;
+
+  color: #bb080b;
+}
+
+.event-date-note p {
+  margin: 0;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: #646464;
+}
+
+
+/* =========================
+   PAST EVENTS
+========================= */
+
+.past-events {
+  background: #1e2023;
+}
+
+.past-events .section-label {
+  color: #d10b10;
+}
+
+.past-events .events-section-header h2 {
+  color: #ffffff;
+}
+
+.past-events .events-section-header > p {
+  color: rgba(255, 255, 255, 0.60);
+}
+
+.past-events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 26px;
+}
+
+.past-event-card {
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  min-height: 310px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  background: #16181a;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.past-event-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(209, 11, 16, 0.45);
+
+  background: #191b1e;
+}
+
+.past-event-image {
+  position: relative;
+
+  min-height: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.past-volleyball {
+  background-image:
+    url("../images/home_page/celina_volleyball.jpg");
+}
+
+.past-basketball {
+  background-image:
+    url("../images/Legacy_Sports_Basketball_2024/image_23.jpg");
+}
+
+.past-event-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.05)
+    );
+}
+
+.past-event-year {
+  position: absolute;
+
+  left: 18px;
+  bottom: 14px;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 55px;
+  line-height: 1;
+
+  color: #ffffff;
+}
+
+.past-event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 30px;
+}
+
+.past-event-type {
+  margin-bottom: 9px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #d10b10;
+}
+
+.past-event-content h3 {
+  margin: 0;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 33px;
+  font-weight: 400;
+  line-height: 1.05;
+
+  color: #ffffff;
+}
+
+.past-event-content p {
+  margin: 13px 0 20px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+
+  color: rgba(255, 255, 255, 0.60);
+}
+
+.past-event-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: 'Sofia Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #ffffff;
+
+  transition: color 0.2s ease;
+}
+
+.past-event-card:hover .past-event-link {
+  color: #d10b10;
+}
+
+
+/* ======================================
+   TABLET
+====================================== */
+
+@media (max-width: 950px) {
+
+  .events-hero {
+    min-height: 380px;
+  }
+
+  .events-section {
+    padding: 70px 0;
+  }
+
+  .events-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-bottom: 35px;
+  }
+
+  .upcoming-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card-image {
+    height: 340px;
+  }
+
+  .past-events-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media (max-width: 650px) {
+
+  .events-container {
+    width: 90%;
+  }
+
+  .events-hero {
+    min-height: 330px;
+
+    padding: 70px 0 50px;
+  }
+
+  .events-hero h1 {
+    font-size: 85px;
+  }
+
+  .events-hero p {
+    margin-top: 20px;
+
+    font-size: 15px;
+  }
+
+  .events-section {
+    padding: 55px 0;
+  }
+
+  .events-section-header h2 {
+    font-size: 50px;
+  }
+
+  .event-card-image {
+    height: 240px;
+  }
+
+  .event-card-content {
+    padding: 24px 22px 26px;
+  }
+
+  .event-card-content h3 {
+    font-size: 32px;
+  }
+
+  .event-card-content p {
+    min-height: 0;
+  }
+
+  .event-date-note {
+    align-items: flex-start;
+  }
+
+  .past-event-card {
+    display: block;
+  }
+
+  .past-event-image {
+    height: 240px;
+  }
+
+  .past-event-content {
+    padding: 25px 22px 28px;
+  }
+
+}
