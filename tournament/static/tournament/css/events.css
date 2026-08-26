@@ -196,10 +196,16 @@
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
 }
 
+
+/* =========================
+   EVENT IMAGE FRAME
+========================= */
+
 .event-card-image {
   position: relative;
 
-  height: 300px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 
   overflow: hidden;
 
@@ -215,11 +221,12 @@
   position: absolute;
   inset: 0;
 
-  transition: transform 0.5s ease;
-
   background: inherit;
   background-size: cover;
-  background-position: center;
+  background-position: inherit;
+  background-repeat: no-repeat;
+
+  transition: transform 0.5s ease;
 }
 
 .event-card:hover .event-card-image::before {
@@ -245,31 +252,32 @@
    EVENT IMAGES
 ========================= */
 
-/*
-   These use images already present in your project.
-
-   When you have dedicated 2027 promotional photos,
-   we can swap these without changing the cards.
-*/
-
 .basketball-event {
   background-image:
-    url("../images/home_page/basket1.jpg");
+    url("../images/Legacy_Sports_Basketball_2024/image_18.jpg");
+
+  background-position: center 45%;
 }
 
 .soccer-event {
   background-image:
-    url("../images/home_page/soc1.jpg");
+    url("../images/home_page/pointing_soccer.jpg");
+
+  background-position: center 30%;
 }
 
 .volleyball-event {
   background-image:
-    url("../images/home_page/volley3.jpg");
+    url("../images/home_page/celina_volleyball.jpg");
+
+  background-position: center 30%;
 }
 
 .community-event {
   background-image:
     url("../images/home_page/Trio.jpg");
+
+  background-position: center 35%;
 }
 
 
@@ -460,6 +468,11 @@
   gap: 26px;
 }
 
+
+/* =========================
+   PAST EVENT CARDS
+========================= */
+
 .past-event-card {
   display: grid;
   grid-template-columns: 45% 55%;
@@ -503,11 +516,15 @@
 .past-volleyball {
   background-image:
     url("../images/home_page/celina_volleyball.jpg");
+
+  background-position: center 30%;
 }
 
 .past-basketball {
   background-image:
-    url("../images/home_page/basket2.jpg");
+    url("../images/Legacy_Sports_Basketball_2024/image_23.jpg");
+
+  background-position: center;
 }
 
 .past-event-overlay {
@@ -622,10 +639,6 @@
     grid-template-columns: 1fr;
   }
 
-  .event-card-image {
-    height: 340px;
-  }
-
   .past-events-grid {
     grid-template-columns: 1fr;
   }
@@ -665,10 +678,6 @@
 
   .events-section-header h2 {
     font-size: 50px;
-  }
-
-  .event-card-image {
-    height: 240px;
   }
 
   .event-card-content {
