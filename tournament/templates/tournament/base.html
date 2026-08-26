@@ -142,7 +142,7 @@
       <li>
         <a
           href="{% url 'events' %}"
-          class="{% if request.resolver_match.url_name == 'events' or request.resolver_match.url_name == 'registration' or request.resolver_match.url_name == 'free_agent_signup' or request.resolver_match.url_name == 'free_agent_pool' or request.resolver_match.url_name == 'tourney_info' or request.resolver_match.url_name == 'teams' or request.resolver_match.url_name == 'team_brackets' or request.resolver_match.url_name == 'standings' or request.resolver_match.url_name == 'live_scores' %}active{% endif %}"
+          class="{% if request.resolver_match.url_name == 'events' %}active{% endif %}"
         >
           Events
         </a>

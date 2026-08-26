@@ -35,6 +35,7 @@ urlpatterns = [
     path("standings/", views.standings, name="standings"),
     path("live-scores/", views.live_scores, name="live_scores"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path("events/", views.events, name="events"),
     path('page/<slug>/', views.page_detail, name='page_detail'),
 ]
 

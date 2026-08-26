@@ -79,6 +79,9 @@ def home(request):
         "instagram_posts": instagram_posts
     })
 
+def events(request):
+    return render(request, "tournament/events.html")
+
 def support(request):
     return render(request, "tournament/support.html")
 
@@ -863,3 +866,4 @@ def edit_free_agent(request, token):
     
 def meet_the_team(request):
     return render(request, "tournament/meet_the_team.html")
+
