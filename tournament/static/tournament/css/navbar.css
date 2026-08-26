@@ -4,11 +4,14 @@
 ========================= */
 .navbar {
   background-color: #1e2023;
+
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 180px 1fr 180px;
   align-items: center;
-  height: 60px;
-  padding: 0 32px;
+
+  height: 68px;
+  padding: 0 max(32px, calc((100vw - 1400px) / 2));
+
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
   position: sticky;
@@ -25,7 +28,7 @@
 }
 
 .logo img {
-  height: 48px; /* or 50px max */
+  height: 52px;
 }
 
 .nav-links { /* Handles the navigation list layout and centers it horizontally */
