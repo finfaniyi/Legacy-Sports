@@ -1,0 +1,109 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}History | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+
+<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="history-page">
+
+
+<section class="page-hero">
+    <p class="page-kicker">LEGACY SPORTS ARCHIVE</p>
+    <h1>Building A Legacy Through Sport</h1>
+    <p class="page-subtitle">
+        Every event adds another chapter to the Legacy Sports story.
+    </p>
+</section>
+
+<section class="timeline">
+
+    <div class="timeline-row">
+
+        <div class="timeline-card">
+            <span class="event-year">2024</span>
+            <h2>3v3 Basketball Tournament</h2>
+
+            <p>
+                The tournament that started Legacy Sports.
+            </p>
+
+            <div class="mini-stats">
+                <span>8 Teams</span>
+                <span>30 Players</span>
+                <span>50+ Attendees</span>
+                <span>$240 Prize</span>
+            </div>
+
+            <a href="{% url 'history_2024_basketball' %}" class="event-btn">
+                View Event
+            </a>
+        </div>
+
+        <div class="timeline-photo">
+            <!-- 2024 CHAMPION PHOTO -->
+            <img src="{% static 'tournament/images/history/basketball-w.jpg' %}" alt="">
+        </div>
+
+    </div>
+
+    <div class="timeline-row reverse">
+
+        <div class="timeline-photo">
+            <!-- 2026 CHAMPION PHOTO -->
+            <img src="{% static 'tournament/images/history/volleyball-w.jpg' %}" alt="">
+        </div>
+
+        <div class="timeline-card">
+            <span class="event-year">2026</span>
+
+            <h2>Coed Volleyball Tournament</h2>
+
+            <p>
+                Legacy Sports returned bigger than ever with volleyball,
+                sponsors, volunteers and over 110 attendees.
+            </p>
+
+            <div class="mini-stats">
+                <span>8 Teams</span>
+                <span>54 Players</span>
+                <span>110+ Attendees</span>
+                <span>$400 Prize</span>
+            </div>
+
+            <a href="{% url 'history_2026_volleyball' %}" class="event-btn">
+                View Event
+            </a>
+        </div>
+
+    </div>
+
+    <div class="timeline-row">
+
+        <div class="timeline-card future-card">
+            <span class="event-year">2027+</span>
+
+            <h2>Coming Soon</h2>
+
+            <p>
+                More sports. More athletes. More community.
+            </p>
+        </div>
+
+        <div class="timeline-photo future-photo">
+            <h3>The Next Chapter</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+{% endblock %}

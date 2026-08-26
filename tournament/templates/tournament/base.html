@@ -1,64 +1,84 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Legacy Sports Canada{% endblock %}</title>
+
+  <title>
+    {% block title %}Legacy Sports Canada{% endblock %}
+  </title>
 
   <!-- SEO -->
-  <meta name="description"
-    content="Legacy Sports Canada builds inclusive sports communities through recreational and competitive events that help people stay active, form meaningful social connections, and support mental well-being.">
-
+  <meta
+    name="description"
+    content="Legacy Sports Canada builds inclusive sports communities through recreational and competitive events that help people stay active, form meaningful social connections, and support mental well-being."
+  >
   <meta name="author" content="Legacy Sports Canada">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{ request.build_absolute_uri }}">
 
-  <!-- Open Graph (social sharing) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Legacy Sports Canada">
-  <meta property="og:description"
-    content="Inclusive community sports events that bring people together through activity, connection, and fun.">
+  <meta
+    property="og:description"
+    content="Inclusive community sports events that bring people together through activity, connection, and fun."
+  >
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://legacysportscanada.ca">
-  <meta property="og:image"
-    content="https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png">
+  <meta
+    property="og:image"
+    content="https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png"
+  >
   <meta property="og:site_name" content="Legacy Sports Canada">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Legacy Sports Canada">
-  <meta name="twitter:description"
-    content="Building inclusive sports communities through recreational and competitive events.">
-  <meta name="twitter:image"
-    content="https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png">
+  
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="Legacy Sports Canada" name="twitter:title">
+  <meta
+    content="Building inclusive sports communities through recreational and competitive events."
+    name="twitter:description">
+  <meta
+    content="https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png"
+    name="twitter:image">
 
-  <!-- Organization Schema (helps Google understand your brand) -->
+  <!-- Organization Schema -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsOrganization",
-    "name": "Legacy Sports Canada",
-    "url": "https://legacysportscanada.ca",
-    "logo": "https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png",
-    "areaServed": {
-      "@type": "Country",
-      "name": "Canada"
-    },
-    "sameAs": [
-      "https://www.instagram.com/legacysports.ca",
-      "https://www.youtube.com/@LegacySportsCanada"
-    ],
-    "description": "Legacy Sports Canada builds inclusive sports communities through recreational and competitive events that promote activity, connection, and mental well-being."
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsOrganization",
+      "name": "Legacy Sports Canada",
+      "url": "https://legacysportscanada.ca",
+      "logo": "https://legacysportscanada.ca/static/tournament/images/LS%20Logo/LS%20short%20logo%20red.png",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Canada"
+      },
+      "sameAs": [
+        "https://www.instagram.com/legacysports.ca",
+        "https://www.youtube.com/@LegacySportsCanada"
+      ],
+      "description": "Legacy Sports Canada builds inclusive sports communities through recreational and competitive events that promote activity, connection, and mental well-being."
+    }
   </script>
-  <!-- Google Font -->
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- GLOBAL CSS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Global CSS -->
   <link rel="stylesheet" href="{% static 'tournament/css/base.css' %}">
   <link rel="stylesheet" href="{% static 'tournament/css/navbar.css' %}">
   <link rel="stylesheet" href="{% static 'tournament/css/dropdown.css' %}">
@@ -68,126 +88,181 @@
   {% block page_css %}{% endblock %}
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'tournament/images/ls-favicon-32.png' %}">
-  <link rel="shortcut icon" href="{% static 'tournament/images/ls-favicon-32.png' %}">
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="{% static 'tournament/images/ls-favicon-32.png' %}"
+  >
+  <link
+    rel="shortcut icon"
+    href="{% static 'tournament/images/ls-favicon-32.png' %}"
+  >
 </head>
 
-
 <body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
   <nav class="navbar">
+
+    <!-- Logo -->
     <div class="logo">
-      <a href="{% url 'home' %}">
-        <img src="{% static 'tournament/images/LS Logo/Sticker.png' %}" alt="Legacy Sports Logo">
+      <a href="{% url 'home' %}" aria-label="Legacy Sports Home">
+        <img
+          src="{% static 'tournament/images/LS Logo/Sticker.png' %}"
+          alt="Legacy Sports Logo"
+        >
       </a>
     </div>
 
-    <!-- HAMBURGER BUTTON -->
-    <button class="hamburger" id="hamburger">
+    <!-- Mobile Hamburger -->
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+    >
       <span></span>
       <span></span>
       <span></span>
     </button>
 
+    <!-- Navigation Links -->
     <ul class="nav-links">
-      <li><a href="{% url 'home' %}"
-          class="{% if request.resolver_match.url_name == 'home' %} active{% endif %}">Home</a></li>
 
-      <li class="dropdown">
-        <a href="{% url 'registration' %}" class="{% if request.resolver_match.url_name == 'registration' or request.resolver_match.url_name == 'free_agent_signup' or request.resolver_match.url_name == 'free_agent_pool' %}active{% endif %}">
-          Registration
-        </a>
-
-        <ul class="dropdown-menu">
-          <li><a href="{% url 'registration' %}">Team Registration</a></li>
-          <!--  
-          <li><a href="{% url 'free_agent_signup' %}">Free Agent Sign Up</a></li>
-          <li><a href="{% url 'free_agent_pool' %}">Find Teammates</a></li>
-          -->
-        </ul>
-      </li>
-
-      <li class="dropdown">
-        <a href="{% url 'tourney_info' %}"
-          class="{% if request.resolver_match.url_name == 'tourney_info' or request.resolver_match.url_name == 'teams' or request.resolver_match.url_name == 'team_brackets' %}active{% endif %}">
-          Tourney-Info
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="{% url 'tourney_info' %}">Tourney Info</a></li>
-          <!--
-          <li><a href="{% url 'teams' %}">Teams</a></li>
-          <li><a href="{% url 'live_scores' %}">Games</a></li>
-          <li><a href="{% url 'team_brackets' %}">Bracket</a></li>
-          <li><a href="{% url 'standings' %}">Team Standings</a></li>
-          -->
-        </ul>
-      </li>
-
+      <!-- Events -->
       <li>
-        <a href="{% url 'media' %}" class="{% if request.resolver_match.url_name == 'media' %}active{% endif %}">
+        <a
+          href="{% url 'events' %}"
+          class="{% if request.resolver_match.url_name == 'events' or request.resolver_match.url_name == 'registration' or request.resolver_match.url_name == 'free_agent_signup' or request.resolver_match.url_name == 'free_agent_pool' or request.resolver_match.url_name == 'tourney_info' or request.resolver_match.url_name == 'teams' or request.resolver_match.url_name == 'team_brackets' or request.resolver_match.url_name == 'standings' or request.resolver_match.url_name == 'live_scores' %}active{% endif %}"
+        >
+          Events
+        </a>
+      </li>
+
+      <!-- Media -->
+      <li>
+        <a
+          href="{% url 'media' %}"
+          class="{% if request.resolver_match.url_name == 'media' %}active{% endif %}"
+        >
           Media
         </a>
       </li>
 
+      <!-- History -->
       <li>
-        <a href="{% url 'history' %}" class="{% if request.resolver_match.url_name == 'history' %}active{% endif %}">
+        <a
+          href="{% url 'history' %}"
+          class="{% if request.resolver_match.url_name == 'history' or request.resolver_match.url_name == 'history_2024_basketball' or request.resolver_match.url_name == 'history_2026_volleyball' %}active{% endif %}"
+        >
           History
         </a>
       </li>
 
+      <!-- About -->
       <li class="dropdown">
-        <a href="{% url 'about' %}"
-          class="{% if request.resolver_match.url_name == 'about' or request.resolver_match.url_name == 'contact_us' or request.resolver_match.url_name == 'support' or request.resolver_match.url_name == 'involvement' or request.resolver_match.url_name == 'meet_the_team'%}active{% endif %}">
-          About Legacy Sports
+        <a
+          href="{% url 'about' %}"
+          class="{% if request.resolver_match.url_name == 'about' or request.resolver_match.url_name == 'meet_the_team' or request.resolver_match.url_name == 'support' or request.resolver_match.url_name == 'contact_us' %}active{% endif %}"
+        >
+          About
         </a>
+
         <ul class="dropdown-menu">
-          <li><a href="{% url 'about' %}">About Us</a></li>
-          <li><a href="{% url 'meet_the_team' %}">Meet the Team</a></li>
-          <li><a href="{% url 'involvement' %}">Get Involved</a></li>
-          <li><a href="{% url 'support' %}">Support Us</a></li>
-          <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+          <li>
+            <a href="{% url 'about' %}">About Us</a>
+          </li>
+
+          <li>
+            <a href="{% url 'meet_the_team' %}">Meet the Team</a>
+          </li>
+
+          <li>
+            <a href="{% url 'support' %}">Support Us</a>
+          </li>
+
+          <li>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+          </li>
         </ul>
       </li>
+
+      <!-- Get Involved -->
+      <li>
+        <a
+          href="{% url 'involvement' %}"
+          class="{% if request.resolver_match.url_name == 'involvement' %}active{% endif %}"
+        >
+          Get Involved
+        </a>
+      </li>
+
     </ul>
 
     <div class="nav-spacer"></div>
+
   </nav>
 
+
+  <!-- =========================
+       PAGE CONTENT
+  ========================== -->
+  {% block content %}{% endblock %}
+
+
+  <!-- =========================
+       GLOBAL SCRIPTS
+  ========================== -->
+
   <script async src="https://www.instagram.com/embed.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+
+      // Instagram embeds
       if (window.instgrm) {
         window.instgrm.Embeds.process();
       }
-    });
-  </script>
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
 
-    // Hamburger toggle
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
+      // Mobile navigation
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
 
-    // Mobile dropdown toggle
-    document.querySelectorAll('.dropdown > a').forEach(link => {
-      link.addEventListener('click', function (e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          this.parentElement.classList.toggle('active');
-        }
+      if (hamburger && navLinks) {
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          navLinks.classList.toggle("active");
+
+          hamburger.setAttribute(
+            "aria-expanded",
+            hamburger.classList.contains("active")
+          );
+        });
+      }
+
+      // Mobile dropdowns
+      document.querySelectorAll(".dropdown > a").forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          if (window.innerWidth <= 768) {
+            event.preventDefault();
+            this.parentElement.classList.toggle("active");
+          }
+        });
       });
+
     });
   </script>
-
-
-  {% block content %}{% endblock %}
 
   {% block scripts %}{% endblock %}
-</body>
 
+</body>
 </html>
