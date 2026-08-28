@@ -11,237 +11,343 @@
 
 <main class="media-page">
 
-  <!-- HERO -->
-  <header class="page-hero">
+  <!-- =========================
+       HERO
+  ========================== -->
+  <header class="media-hero">
 
-    <p class="page-kicker">
-      LEGACY MEDIA
-    </p>
+    <div class="media-container">
 
-    <h1>MEDIA</h1>
+      <p class="media-eyebrow">
+        LEGACY SPORTS CANADA
+      </p>
 
-    <p class="page-subtitle">
-      Photos and highlights from Legacy Sports events.
-    </p>
+      <h1>MEDIA</h1>
 
-    <!-- FILTER -->
-    <div class="media-controls">
-
-      <select id="mediaFilter" class="media-select">
-
-        <option value="all">ALL</option>
-
-        <option value="2024">
-          2024 LS Basketball
-        </option>
-
-        <option value="2026">
-          2026 LS Volleyball
-        </option>
-
-        <option value="bts">
-          2026 LS BTS
-        </option>
-
-        <option value="creative">
-          LS Creative Showcase
-        </option>
-
-      </select>
+      <p class="media-hero-description">
+        Relive the moments, people and energy behind Legacy Sports.
+      </p>
 
     </div>
 
   </header>
 
-  <!-- CREATORS -->
-  <section class="creator-section">
 
-    <h2 class="creator-heading">
-      CREATORS
-    </h2>
+  <!-- =========================
+       MEDIA BROWSER
+  ========================== -->
+  <section class="media-browser">
 
-    <div class="creator-scroll">
+    <div class="media-container">
 
-      <!-- ALL -->
-      <button class="creator-filter active" data-creator="all">
+      <div class="media-browser-header">
 
-        <div class="creator-avatar creator-all">
-
-          <span>ALL</span>
-
+        <div>
+          <span class="section-label">EXPLORE</span>
+          <h2>THE LEGACY ARCHIVE</h2>
         </div>
 
-        <span class="creator-name">
-          All Creators
-        </span>
+        <!-- CATEGORY FILTER -->
+        <div class="media-controls">
 
-      </button>
+          <label for="mediaFilter">
+            EVENT / COLLECTION
+          </label>
 
-      <!-- DYNAMIC -->
-      {% for creator in creators %}
+          <select id="mediaFilter" class="media-select">
 
-      <button class="creator-filter" data-creator="{{ creator.id }}">
+            <option value="all">
+              All Media
+            </option>
 
-        <div class="creator-avatar-wrapper">
+            <option value="2024">
+              2024 Basketball
+            </option>
 
-          <div class="creator-avatar">
+            <option value="2026">
+              2026 Volleyball
+            </option>
 
-            {% if creator.profile_image %}
+            <option value="bts">
+              Behind The Scenes
+            </option>
 
-            <img
-              src="{{ creator.profile_image.url }}"
-              alt="{{ creator.name }}"
-            >
+            <option value="creative">
+              Creative Showcase
+            </option>
 
-            {% else %}
-
-            <div class="creator-placeholder">
-              📸
-            </div>
-
-            {% endif %}
-
-          </div>
-
-          <!-- HOVER CARD -->
-          <div class="creator-hover-card">
-
-            <p class="creator-hover-name">
-              {{ creator.name }}
-            </p>
-
-            {% if creator.role %}
-            <p class="creator-hover-role">
-              {{ creator.role }}
-            </p>
-            {% endif %}
-
-            {% if creator.instagram %}
-            <a
-              href="https://instagram.com/{{ creator.instagram }}"
-              target="_blank"
-              class="creator-hover-ig"
-            >
-              @{{ creator.instagram }}
-            </a>
-            {% endif %}
-
-          </div>
-
-        </div>
-
-        <span class="creator-name">
-          {{ creator.name }}
-        </span>
-
-      </button>
-
-      {% endfor %}
-
-    </div>
-
-  </section>
-
-  <!-- HEADER -->
-  <div class="media-grid-header">
-
-    <h2>
-      PHOTOS & HIGHLIGHTS
-    </h2>
-
-  </div>
-
-  <!-- GRID -->
-  <section class="media-grid">
-
-    {% for item in media_items %}
-
-    <a
-      class="media-card"
-      href="{{ item.media_file.url }}"
-      target="_blank"
-      data-year="{{ item.category }}"
-      data-creator="{{ item.creator.id }}"
-    >
-
-      <div class="media-thumb">
-
-        <!-- VIDEO -->
-        {% if item.media_type == "video" %}
-
-          {% if item.thumbnail %}
-
-          <img
-            src="{{ item.thumbnail.url }}"
-            alt="{{ item.title }}"
-            loading="lazy"
-          >
-
-          {% else %}
-
-          <img
-            src="{{ item.media_file.url }}.jpg"
-            alt="{{ item.title }}"
-            loading="lazy"
-          >
-
-          {% endif %}
-
-        <!-- IMAGE -->
-        {% else %}
-
-        <img
-          src="{{ item.media_file.url }}"
-          alt="{{ item.title }}"
-          loading="lazy"
-        >
-
-        {% endif %}
-
-        <!-- VIDEO INDICATOR -->
-        {% if item.media_type == "video" %}
-
-        <div class="video-indicator">
-
-          ▶
-
-        </div>
-
-        {% endif %}
-
-        <!-- OVERLAY -->
-        <div class="media-card-overlay">
-
-          <div class="media-creator-mini">
-
-            {% if item.creator.profile_image %}
-
-            <img
-              src="{{ item.creator.profile_image.url }}"
-              alt="{{ item.creator.name }}"
-            >
-
-            {% endif %}
-
-          </div>
-
-          <span class="media-creator-name">
-            {{ item.creator.name }}
-          </span>
+          </select>
 
         </div>
 
       </div>
 
-    </a>
 
-    {% endfor %}
+      <!-- =========================
+           CREATORS
+      ========================== -->
+      <div class="creator-section">
+
+        <div class="creator-header">
+
+          <div>
+            <span class="creator-label">
+              FILTER BY
+            </span>
+
+            <h3>CREATORS</h3>
+          </div>
+
+          <p>
+            Explore the people behind the lens.
+          </p>
+
+        </div>
+
+
+        <div class="creator-scroll">
+
+          <!-- ALL CREATORS -->
+          <button
+            type="button"
+            class="creator-filter active"
+            data-creator="all"
+          >
+
+            <div class="creator-avatar creator-all">
+              <span>ALL</span>
+            </div>
+
+            <span class="creator-name">
+              All Creators
+            </span>
+
+          </button>
+
+
+          <!-- DYNAMIC CREATORS -->
+          {% for creator in creators %}
+
+          <button
+            type="button"
+            class="creator-filter"
+            data-creator="{{ creator.id }}"
+          >
+
+            <div class="creator-avatar-wrapper">
+
+              <div class="creator-avatar">
+
+                {% if creator.profile_image %}
+
+                <img
+                  src="{{ creator.profile_image.url }}"
+                  alt="{{ creator.name }}"
+                  loading="lazy"
+                >
+
+                {% else %}
+
+                <div class="creator-placeholder">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+
+                {% endif %}
+
+              </div>
+
+
+              <!-- CREATOR HOVER CARD -->
+              <div class="creator-hover-card">
+
+                <p class="creator-hover-name">
+                  {{ creator.name }}
+                </p>
+
+                {% if creator.role %}
+
+                <p class="creator-hover-role">
+                  {{ creator.role }}
+                </p>
+
+                {% endif %}
+
+
+                {% if creator.instagram %}
+
+                <a
+                  href="https://instagram.com/{{ creator.instagram }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="creator-hover-ig"
+                  onclick="event.stopPropagation();"
+                >
+                  <i class="fa-brands fa-instagram"></i>
+                  @{{ creator.instagram }}
+                </a>
+
+                {% endif %}
+
+              </div>
+
+            </div>
+
+
+            <span class="creator-name">
+              {{ creator.name }}
+            </span>
+
+          </button>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           GALLERY HEADER
+      ========================== -->
+      <div class="media-grid-header">
+
+        <div>
+          <span class="section-label">
+            GALLERY
+          </span>
+
+          <h2>
+            PHOTOS & HIGHLIGHTS
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           MEDIA GRID
+      ========================== -->
+      <section class="media-grid">
+
+        {% for item in media_items %}
+
+        <a
+          class="media-card"
+          href="{{ item.media_file.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-year="{{ item.category }}"
+          data-creator="{{ item.creator.id }}"
+        >
+
+          <div class="media-thumb">
+
+
+            <!-- VIDEO -->
+            {% if item.media_type == "video" %}
+
+              {% if item.thumbnail %}
+
+              <img
+                src="{{ item.thumbnail.url }}"
+                alt="{{ item.title }}"
+                loading="lazy"
+              >
+
+              {% else %}
+
+              <img
+                src="{{ item.media_file.url }}.jpg"
+                alt="{{ item.title }}"
+                loading="lazy"
+              >
+
+              {% endif %}
+
+
+            <!-- IMAGE -->
+            {% else %}
+
+            <img
+              src="{{ item.media_file.url }}"
+              alt="{{ item.title }}"
+              loading="lazy"
+            >
+
+            {% endif %}
+
+
+            <!-- VIDEO INDICATOR -->
+            {% if item.media_type == "video" %}
+
+            <div class="video-indicator">
+              <i class="fa-solid fa-play"></i>
+            </div>
+
+            {% endif %}
+
+
+            <!-- CREATOR ATTRIBUTION -->
+            <div class="media-card-overlay">
+
+              <div class="media-creator-mini">
+
+                {% if item.creator.profile_image %}
+
+                <img
+                  src="{{ item.creator.profile_image.url }}"
+                  alt="{{ item.creator.name }}"
+                >
+
+                {% else %}
+
+                <div class="media-creator-placeholder">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+
+                {% endif %}
+
+              </div>
+
+              <span class="media-creator-name">
+                {{ item.creator.name }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </a>
+
+        {% empty %}
+
+        <div class="media-empty">
+          <h3>NO MEDIA YET</h3>
+          <p>New Legacy moments will appear here soon.</p>
+        </div>
+
+        {% endfor %}
+
+      </section>
+
+
+      <!-- FILTER EMPTY STATE -->
+      <div class="filter-empty" id="filterEmpty">
+
+        <h3>NO MEDIA FOUND</h3>
+
+        <p>
+          There isn't any media in this collection yet.
+        </p>
+
+      </div>
+
+    </div>
 
   </section>
 
-  <div class="page-bottom-space"></div>
-
 </main>
+
 
 <script>
 
@@ -254,10 +360,17 @@
   const mediaCards =
     document.querySelectorAll(".media-card");
 
+  const filterEmpty =
+    document.getElementById("filterEmpty");
+
+
   let activeCategory = "all";
   let activeCreator = "all";
 
+
   function filterMedia() {
+
+    let visibleCount = 0;
 
     mediaCards.forEach(card => {
 
@@ -277,9 +390,24 @@
         !visible
       );
 
+      if (visible) {
+        visibleCount++;
+      }
+
     });
 
+
+    if (filterEmpty) {
+
+      filterEmpty.classList.toggle(
+        "show",
+        visibleCount === 0
+      );
+
+    }
+
   }
+
 
   categoryFilter.addEventListener(
     "change",
@@ -292,6 +420,7 @@
 
     }
   );
+
 
   creatorButtons.forEach(button => {
 
