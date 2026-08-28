@@ -4,7 +4,6 @@
 {% block title %}History | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
-
 <link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
 {% endblock %}
 
@@ -12,97 +11,281 @@
 
 <main class="history-page">
 
+  <!-- =========================
+       HERO
+  ========================== -->
+  <header class="history-hero">
 
-<section class="page-hero">
-    <p class="page-kicker">LEGACY SPORTS ARCHIVE</p>
-    <h1>Building A Legacy Through Sport</h1>
-    <p class="page-subtitle">
+    <div class="history-container">
+
+      <p class="history-eyebrow">
+        LEGACY SPORTS CANADA
+      </p>
+
+      <h1>HISTORY</h1>
+
+      <p class="history-hero-description">
         Every event adds another chapter to the Legacy Sports story.
-    </p>
-</section>
+      </p>
 
-<section class="timeline">
+    </div>
 
-    <div class="timeline-row">
+  </header>
 
-        <div class="timeline-card">
-            <span class="event-year">2024</span>
-            <h2>3v3 Basketball Tournament</h2>
 
-            <p>
-                The tournament that started Legacy Sports.
-            </p>
+  <!-- =========================
+       HISTORY INTRO
+  ========================== -->
+  <section class="history-intro">
 
-            <div class="mini-stats">
-                <span>8 Teams</span>
-                <span>30 Players</span>
-                <span>50+ Attendees</span>
-                <span>$240 Prize</span>
+    <div class="history-container history-intro-inner">
+
+      <div>
+        <span class="section-label">OUR STORY</span>
+
+        <h2>
+          BUILDING A LEGACY<br>
+          THROUGH SPORT
+        </h2>
+      </div>
+
+      <p>
+        What started with one basketball tournament has grown into a
+        community built around competition, connection and unforgettable
+        experiences.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TIMELINE
+  ========================== -->
+  <section class="history-timeline">
+
+    <div class="history-container">
+
+
+      <!-- =========================
+           2024
+      ========================== -->
+      <article class="history-chapter">
+
+        <div class="chapter-image">
+
+          <img
+            src="{% static 'tournament/images/history/basketball-w.jpg' %}"
+            alt="Legacy Sports 2024 Basketball Tournament"
+          >
+
+          <div class="chapter-image-overlay"></div>
+
+          <span class="chapter-number">
+            01
+          </span>
+
+        </div>
+
+
+        <div class="chapter-content">
+
+          <div class="chapter-heading">
+
+            <span class="chapter-year">
+              2024
+            </span>
+
+            <span class="chapter-type">
+              WHERE IT STARTED
+            </span>
+
+          </div>
+
+          <h2>
+            3V3 BASKETBALL<br>
+            TOURNAMENT
+          </h2>
+
+          <p class="chapter-description">
+            The tournament that started Legacy Sports. Our first event
+            brought players and spectators together for a day of basketball,
+            competition and community.
+          </p>
+
+
+          <div class="chapter-stats">
+
+            <div class="history-stat">
+              <strong>8</strong>
+              <span>TEAMS</span>
             </div>
 
-            <a href="{% url 'history_2024_basketball' %}" class="event-btn">
-                View Event
-            </a>
-        </div>
-
-        <div class="timeline-photo">
-            <!-- 2024 CHAMPION PHOTO -->
-            <img src="{% static 'tournament/images/history/basketball-w.jpg' %}" alt="">
-        </div>
-
-    </div>
-
-    <div class="timeline-row reverse">
-
-        <div class="timeline-photo">
-            <!-- 2026 CHAMPION PHOTO -->
-            <img src="{% static 'tournament/images/history/volleyball-w.jpg' %}" alt="">
-        </div>
-
-        <div class="timeline-card">
-            <span class="event-year">2026</span>
-
-            <h2>Coed Volleyball Tournament</h2>
-
-            <p>
-                Legacy Sports returned bigger than ever with volleyball,
-                sponsors, volunteers and over 110 attendees.
-            </p>
-
-            <div class="mini-stats">
-                <span>8 Teams</span>
-                <span>54 Players</span>
-                <span>110+ Attendees</span>
-                <span>$400 Prize</span>
+            <div class="history-stat">
+              <strong>30</strong>
+              <span>PLAYERS</span>
             </div>
 
-            <a href="{% url 'history_2026_volleyball' %}" class="event-btn">
-                View Event
-            </a>
+            <div class="history-stat">
+              <strong>50+</strong>
+              <span>ATTENDEES</span>
+            </div>
+
+            <div class="history-stat">
+              <strong>$240</strong>
+              <span>PRIZE</span>
+            </div>
+
+          </div>
+
+
+          <a
+            href="{% url 'history_2024_basketball' %}"
+            class="history-event-btn"
+          >
+            Explore 2024
+            <span aria-hidden="true">→</span>
+          </a>
+
         </div>
+
+      </article>
+
+
+      <!-- TIMELINE DIVIDER -->
+      <div class="timeline-divider">
+
+        <span></span>
+
+        <p>
+          THE STORY CONTINUES
+        </p>
+
+        <span></span>
+
+      </div>
+
+
+      <!-- =========================
+           2026
+      ========================== -->
+      <article class="history-chapter history-chapter-reverse">
+
+        <div class="chapter-image">
+
+          <img
+            src="{% static 'tournament/images/history/volleyball-w.jpg' %}"
+            alt="Legacy Sports 2026 Volleyball Tournament"
+          >
+
+          <div class="chapter-image-overlay"></div>
+
+          <span class="chapter-number">
+            02
+          </span>
+
+        </div>
+
+
+        <div class="chapter-content">
+
+          <div class="chapter-heading">
+
+            <span class="chapter-year">
+              2026
+            </span>
+
+            <span class="chapter-type">
+              THE RETURN
+            </span>
+
+          </div>
+
+          <h2>
+            COED VOLLEYBALL<br>
+            TOURNAMENT
+          </h2>
+
+          <p class="chapter-description">
+            Legacy Sports returned with a new sport, a larger team and a
+            bigger vision — bringing players, volunteers, partners and the
+            community together through volleyball.
+          </p>
+
+
+          <div class="chapter-stats">
+
+            <div class="history-stat">
+              <strong>8</strong>
+              <span>TEAMS</span>
+            </div>
+
+            <div class="history-stat">
+              <strong>54</strong>
+              <span>PLAYERS</span>
+            </div>
+
+            <div class="history-stat">
+              <strong>15+</strong>
+              <span>VOLUNTEERS</span>
+            </div>
+
+            <div class="history-stat">
+              <strong>$400</strong>
+              <span>PRIZE</span>
+            </div>
+
+          </div>
+
+
+          <a
+            href="{% url 'history_2026_volleyball' %}"
+            class="history-event-btn"
+          >
+            Explore 2026
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================
+           NEXT CHAPTER
+      ========================== -->
+      <section class="next-chapter">
+
+        <span class="next-chapter-year">
+          2027
+        </span>
+
+        <span class="section-label">
+          THE NEXT CHAPTER
+        </span>
+
+        <h2>
+          THE STORY IS<br>
+          JUST GETTING STARTED.
+        </h2>
+
+        <p>
+          More sports. More experiences. More opportunities to bring
+          people together.
+        </p>
+
+        <a href="{% url 'events' %}" class="next-chapter-btn">
+          See What's Next
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </section>
+
 
     </div>
 
-    <div class="timeline-row">
-
-        <div class="timeline-card future-card">
-            <span class="event-year">2027+</span>
-
-            <h2>Coming Soon</h2>
-
-            <p>
-                More sports. More athletes. More community.
-            </p>
-        </div>
-
-        <div class="timeline-photo future-photo">
-            <h3>The Next Chapter</h3>
-        </div>
-
-    </div>
-
-</section>
-
+  </section>
 
 </main>
 
