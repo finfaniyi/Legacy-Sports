@@ -1,113 +1,59 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}2024 Basketball Tournament | Legacy Sports{% endblock %}
+{% block title %}2024 Basketball Tournament | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
-
-<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/history_event.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<main class="event-page">
-
- 
-<section class="event-hero">
-
-    <!-- CHAMPION PHOTO -->
-    <div class="event-hero-image"
-         style="background-image:url('{% static "tournament/images/history/basketball-w.jpg" %}')">
+<main class="history-event-page">
+  <section class="history-event-hero">
+    <div class="history-event-hero-image" style="background-image: url('{% static "tournament/images/history/basketball-w.jpg" %}');"></div>
+    <div class="history-event-hero-overlay"></div>
+    <div class="history-event-container history-event-hero-content">
+      <p class="history-event-kicker">LEGACY SPORTS ARCHIVE · 2024</p>
+      <h1>3V3 BASKETBALL<br>TOURNAMENT</h1>
+      <p class="history-event-summary">The first official Legacy Sports event. What started as a local basketball tournament became the foundation of what Legacy Sports would eventually become.</p>
     </div>
+  </section>
 
-    <div class="event-hero-content">
-
-        <span class="event-year-label">2024</span>
-
-        <h1>3v3 Basketball Tournament</h1>
-
-        <p>
-            The first official Legacy Sports event. What started as a local
-            basketball tournament became the foundation of what Legacy Sports
-            would eventually become.
-        </p>
-
+  <section class="history-event-stats">
+    <div class="history-event-container stats-row">
+      <div class="event-stat"><strong>8</strong><span>TEAMS</span></div>
+      <div class="event-stat"><strong>30</strong><span>PLAYERS</span></div>
+      <div class="event-stat"><strong>50+</strong><span>ATTENDEES</span></div>
+      <div class="event-stat"><strong>$240</strong><span>CASH PRIZE</span></div>
     </div>
+  </section>
 
-</section>
-
-<section class="stats-grid">
-
-    <div class="stat-card">
-        <h3>8</h3>
-        <p>Teams</p>
+  <section class="history-event-story">
+    <div class="history-event-container story-grid">
+      <div class="story-heading">
+        <span class="history-section-label">THE FIRST CHAMPIONS</span>
+        <h2>LIL SWEATS</h2>
+      </div>
+      <div class="story-copy">
+        <p>Crowned the first Legacy Sports champions and took home the $240 cash prize.</p>
+        <div class="achievement-line"><span>01</span><p>Legacy Sports' first championship team.</p></div>
+      </div>
     </div>
+  </section>
 
-    <div class="stat-card">
-        <h3>30</h3>
-        <p>Players</p>
+  <section class="history-event-gallery">
+    <div class="history-event-container">
+      <div class="gallery-heading">
+        <div><span class="history-section-label">EVENT MOMENTS</span><h2>GALLERY</h2></div>
+        <p>A look back at where the Legacy Sports story began.</p>
+      </div>
+      <div class="archive-gallery archive-gallery-four">
+        <figure class="archive-photo archive-photo-wide"><img src="{% static 'tournament/images/history/b1.jpg' %}" alt="Basketball gameplay at the 2024 Legacy Sports tournament" loading="lazy"></figure>
+        <figure class="archive-photo"><img src="{% static 'tournament/images/history/b2.jpg' %}" alt="Team at the 2024 Legacy Sports basketball tournament" loading="lazy"></figure>
+        <figure class="archive-photo"><img src="{% static 'tournament/images/history/b3.jpg' %}" alt="2024 Legacy Sports basketball champions" loading="lazy"></figure>
+        <figure class="archive-photo archive-photo-wide"><img src="{% static 'tournament/images/history/b4.jpg' %}" alt="Community at the 2024 Legacy Sports basketball tournament" loading="lazy"></figure>
+      </div>
     </div>
-
-    <div class="stat-card">
-        <h3>50+</h3>
-        <p>Attendees</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>$240</h3>
-        <p>Cash Prize</p>
-    </div>
-
-</section>
-
-<section class="champion-section">
-
-    <h2>Champions</h2>
-
-    <div class="champion-card">
-
-        <h3>🥇 Lil Sweats</h3>
-
-        <p>
-            Crowned the first Legacy Sports champions and took home
-            the $240 cash prize.
-        </p>
-
-    </div>
-
-</section>
-
-<section class="gallery-section">
-
-    <h2>Gallery</h2>
-
-    <div class="gallery-grid">
-
-        <!-- GAMEPLAY PHOTO -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/b1.jpg' %}" alt="Gameplay Photo">
-        </div>
-
-        <!-- TEAM PHOTO -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/b2.jpg' %}" alt="Team Photo">
-        </div>
-
-        <!-- CHAMPION PHOTO -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/b3.jpg' %}" alt="Champion Photo">
-        </div>
-
-        <!-- CROWD PHOTO -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/b4.jpg' %}" alt="Crowd Photo">
-        </div>
-
-    </div>
-
-</section>
- 
-
+  </section>
 </main>
-
 {% endblock %}

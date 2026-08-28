@@ -135,9 +135,7 @@
             data-name="{{ creator.name|escapejs }}"
             data-role="{{ creator.role|escapejs }}"
             data-instagram="{{ creator.instagram|escapejs }}"
-            data-tiktok="{{ creator.tiktok|escapejs }}"
-            data-youtube="{{ creator.youtube|escapejs }}"
-            data-website="{{ creator.website|escapejs }}"
+            data-link="{{ creator.link|escapejs }}"
           >
 
             <div class="creator-avatar-wrapper">
@@ -185,14 +183,8 @@
             <a id="creatorInstagram" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <i class="fa-brands fa-instagram"></i>
             </a>
-            <a id="creatorTikTok" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a id="creatorYouTube" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a id="creatorWebsite" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Website or portfolio">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <a id="creatorLink" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Creator link">
+              <i class="fa-solid fa-link"></i>
             </a>
           </div>
         </div>
@@ -361,9 +353,7 @@
   const creatorProfileName = document.getElementById("creatorProfileName");
   const creatorProfileRole = document.getElementById("creatorProfileRole");
   const creatorInstagram = document.getElementById("creatorInstagram");
-  const creatorTikTok = document.getElementById("creatorTikTok");
-  const creatorYouTube = document.getElementById("creatorYouTube");
-  const creatorWebsite = document.getElementById("creatorWebsite");
+  const creatorLink = document.getElementById("creatorLink");
 
 
   let activeCategory = "all";
@@ -441,10 +431,6 @@
       url = `https://instagram.com/${cleanValue.replace(/^@/, "")}`;
     }
 
-    if (type === "tiktok" && !/^https?:\/\//i.test(cleanValue)) {
-      url = `https://www.tiktok.com/@${cleanValue.replace(/^@/, "")}`;
-    }
-
     element.href = url;
     element.classList.remove("is-hidden");
   }
@@ -462,9 +448,7 @@
     creatorProfileRole.textContent = button.dataset.role || "";
 
     setSocialLink(creatorInstagram, button.dataset.instagram, "instagram");
-    setSocialLink(creatorTikTok, button.dataset.tiktok, "tiktok");
-    setSocialLink(creatorYouTube, button.dataset.youtube, "url");
-    setSocialLink(creatorWebsite, button.dataset.website, "url");
+    setSocialLink(creatorLink, button.dataset.link, "url");
 
     creatorProfile.classList.add("show");
   }

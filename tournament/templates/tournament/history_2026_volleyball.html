@@ -1,146 +1,72 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}2026 Volleyball Tournament | Legacy Sports{% endblock %}
+{% block title %}2026 Volleyball Tournament | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
-
-<link rel="stylesheet" href="{% static 'tournament/css/history.css' %}">
+<link rel="stylesheet" href="{% static 'tournament/css/history_event.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<main class="event-page">
-
- 
-<section class="event-hero">
-
-    <!-- VOLLEYBALL CHAMPION PHOTO -->
-    <div class="event-hero-image"
-         style="background-image:url('{% static "tournament/images/history/volleyball-w.jpg" %}')">
+<main class="history-event-page">
+  <section class="history-event-hero">
+    <div class="history-event-hero-image" style="background-image: url('{% static "tournament/images/history/volleyball-w.jpg" %}');"></div>
+    <div class="history-event-hero-overlay"></div>
+    <div class="history-event-container history-event-hero-content">
+      <p class="history-event-kicker">LEGACY SPORTS ARCHIVE · 2026</p>
+      <h1>COED VOLLEYBALL<br>TOURNAMENT</h1>
+      <p class="history-event-summary">A new chapter for Legacy Sports. A full day of volleyball, crowd engagement, giveaways, partners and community.</p>
     </div>
+  </section>
 
-    <div class="event-hero-content">
-
-        <span class="event-year-label">2026</span>
-
-        <h1>Coed Volleyball Tournament</h1>
-
-        <p>
-            The rebrand of Legacy Sports. A full day of volleyball,
-            crowd engagement activities, giveaways, sponsors and community.
-        </p>
-
+  <section class="history-event-stats">
+    <div class="history-event-container stats-row">
+      <div class="event-stat"><strong>8</strong><span>TEAMS</span></div>
+      <div class="event-stat"><strong>54</strong><span>PLAYERS</span></div>
+      <div class="event-stat"><strong>15+</strong><span>VOLUNTEERS</span></div>
+      <div class="event-stat"><strong>$400</strong><span>CASH PRIZE</span></div>
     </div>
+  </section>
 
-</section>
-
-<section class="stats-grid">
-
-    <div class="stat-card">
-        <h3>8</h3>
-        <p>Teams</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>54</h3>
-        <p>Players</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>110+</h3>
-        <p>Attendees</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>15+</h3>
-        <p>Volunteers</p>
-    </div>
-
-</section>
-
-<section class="champion-section">
-
-    <h2>Champions</h2>
-
-    <div class="champion-card">
-
-        <h3>🥇 Bratz</h3>
-
-        <p>
-            Defeated Smurfs in the championship match to become
-            Legacy Sports Volleyball Champions.
-        </p>
-
-        <ul>
-            <li>$400 Cash Prize</li>
-            <li>Gold Medals</li>
-            <li>Championship Trophy</li>
-        </ul>
-
-    </div>
-
-</section>
-
-<section class="sponsor-section">
-
-    <h2>Sponsors</h2>
-
-    <div class="sponsor-grid">
-
-        <div class="sponsor-card">
-            Krispy Kreme
+  <section class="history-event-story">
+    <div class="history-event-container story-grid">
+      <div class="story-heading">
+        <span class="history-section-label">2026 CHAMPIONS</span>
+        <h2>BRATZ</h2>
+      </div>
+      <div class="story-copy">
+        <p>Bratz defeated Smurfs in the championship match to become Legacy Sports Volleyball Champions.</p>
+        <div class="achievement-list">
+          <div class="achievement-line"><span>01</span><p>$400 cash prize</p></div>
+          <div class="achievement-line"><span>02</span><p>Gold medals</p></div>
+          <div class="achievement-line"><span>03</span><p>Championship trophy</p></div>
         </div>
-
-        <div class="sponsor-card">
-            Cordi's Italian Bakery
-        </div>
-
+      </div>
     </div>
+  </section>
 
-</section>
-
-<section class="gallery-section">
-
-    <h2>Gallery</h2>
-
-    <div class="gallery-grid">
-
-        <!-- CHAMPIONS -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/v1.jpg' %}" alt="Crowd Photo">
-        </div>
-
-        <!-- GAMEPLAY -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/v2.jpg' %}" alt="Crowd Photo">
-        </div>
-
-        <!-- CROWD -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/v3.jpg' %}" alt="Crowd Photo">
-        </div>
-
-        <!-- PHOTO BOOTH -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/v4.jpg' %}" alt="Crowd Photo">
-        </div>
-
-        <!-- TRIVIA BOOTH -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/v5.jpg' %}" alt="Crowd Photo">
-        </div>
-
-        <!-- VOLUNTEERS -->
-        <div class="gallery-item">
-            <img src="{% static 'tournament/images/history/v6.jpg' %}" alt="Crowd Photo">
-        </div>
-
+  <section class="history-event-partners">
+    <div class="history-event-container partners-grid">
+      <div><span class="history-section-label">COMMUNITY SUPPORT</span><h2>EVENT PARTNERS</h2></div>
+      <div class="partner-list"><span>KRISPY KREME</span><span>CORDI'S ITALIAN BAKERY</span></div>
     </div>
+  </section>
 
-</section>
- 
-
+  <section class="history-event-gallery">
+    <div class="history-event-container">
+      <div class="gallery-heading">
+        <div><span class="history-section-label">EVENT MOMENTS</span><h2>GALLERY</h2></div>
+        <p>Competition, community and the moments that defined our 2026 return.</p>
+      </div>
+      <div class="archive-gallery">
+        <figure class="archive-photo archive-photo-wide"><img src="{% static 'tournament/images/history/v1.jpg' %}" alt="2026 Legacy Sports volleyball champions" loading="lazy"></figure>
+        <figure class="archive-photo"><img src="{% static 'tournament/images/history/v2.jpg' %}" alt="Volleyball gameplay at the 2026 Legacy Sports tournament" loading="lazy"></figure>
+        <figure class="archive-photo"><img src="{% static 'tournament/images/history/v3.jpg' %}" alt="Crowd at the 2026 Legacy Sports volleyball tournament" loading="lazy"></figure>
+        <figure class="archive-photo"><img src="{% static 'tournament/images/history/v4.jpg' %}" alt="Photo booth at the 2026 Legacy Sports volleyball tournament" loading="lazy"></figure>
+        <figure class="archive-photo"><img src="{% static 'tournament/images/history/v5.jpg' %}" alt="Trivia activity at the 2026 Legacy Sports volleyball tournament" loading="lazy"></figure>
+        <figure class="archive-photo archive-photo-wide"><img src="{% static 'tournament/images/history/v6.jpg' %}" alt="Volunteers at the 2026 Legacy Sports volleyball tournament" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
 </main>
-
 {% endblock %}

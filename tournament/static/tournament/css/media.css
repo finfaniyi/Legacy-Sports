@@ -221,7 +221,7 @@
 ========================= */
 
 .creator-section {
-  padding: 30px 0 100px;
+  padding: 30px 0 34px;
 
   border-top: 1px solid #dedbd6;
   border-bottom: 1px solid #dedbd6;
@@ -422,114 +422,81 @@
 
 
 /* =========================
-   CREATOR HOVER CARD
+   SELECTED CREATOR
 ========================= */
 
-.creator-hover-card {
-  position: absolute;
-
-  z-index: 50;
-
-  top: calc(100% + 12px);
-  left: 50%;
-
-  min-width: 175px;
-
-  padding: 14px 16px;
-
-  border-radius: 10px;
-
-  background: #151719;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.20);
-
-  opacity: 0;
-  visibility: hidden;
-
-  text-align: center;
-
-  pointer-events: none;
-
-  transform:
-    translateX(-50%)
-    translateY(6px);
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease,
-    visibility 0.2s ease;
+.creator-profile {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-left: 3px solid #c9080c;
+  background: #f0ede8;
 }
 
-.creator-avatar-wrapper:hover .creator-hover-card {
-  opacity: 1;
-  visibility: visible;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
-
-  pointer-events: auto;
+.creator-profile.show {
+  display: flex;
 }
 
-.creator-hover-card::before {
-  content: "";
-
-  position: absolute;
-
-  top: -5px;
-  left: 50%;
-
-  width: 10px;
-  height: 10px;
-
-  background: #151719;
-
-  transform:
-    translateX(-50%)
-    rotate(45deg);
+.creator-profile-copy {
+  min-width: 0;
 }
 
-.creator-hover-name {
-  margin: 0 0 3px;
+.creator-profile-copy h4 {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 1.2px;
+  color: #151a1f;
+}
 
+.creator-profile-copy p {
+  margin: 7px 0 0;
   font-family: 'Sofia Sans', sans-serif;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 700;
-
-  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #c9080c;
 }
 
-.creator-hover-role {
-  margin: 0 0 8px;
-
-  font-family: 'Sofia Sans', sans-serif;
-  font-size: 11px;
-  line-height: 1.4;
-
-  color: rgba(255, 255, 255, 0.60);
+.creator-profile-socials {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
 }
 
-.creator-hover-ig {
+.creator-social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  gap: 6px;
-
-  font-family: 'Sofia Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-
-  color: #ffffff;
-
+  width: 38px;
+  height: 38px;
+  border: 1px solid #d1cdc7;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #151a1f;
+  font-size: 15px;
   text-decoration: none;
+  transition: color .2s ease, border-color .2s ease, transform .2s ease, background .2s ease;
 }
 
-.creator-hover-ig:hover {
-  color: #e21a1f;
+.creator-social-link:hover {
+  color: #ffffff;
+  border-color: #c9080c;
+  background: #c9080c;
+  transform: translateY(-2px);
 }
 
+.creator-social-link.is-hidden {
+  display: none;
+}
 
 /* =========================
    GALLERY HEADER
@@ -899,8 +866,23 @@
     font-size: 11px;
   }
 
-  .creator-hover-card {
-    display: none;
+  .creator-profile {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  .creator-profile-socials {
+    gap: 8px;
+  }
+
+  .creator-social-link {
+    width: 34px;
+    height: 34px;
   }
 
   .media-grid-header {
