@@ -8,46 +8,54 @@
 {% endblock %}
 
 {% block content %}
-
-<section class="contact-page">
-
-  <div class="contact-header">
-    <h1>Contact Us</h1>
-    <p>Have questions about the tournament? We're here to help.</p>
-  </div>
-
-  <div class="contact-card">
-
-    <div class="contact-section"> <!-- Email -->
-      <h2>Email</h2>
-      <p>Reach out to us directly for tournament inquiries.</p>
-      <a href="mailto:info@legacysportscanada.ca" class="contact-link">
-        legacysportscanada@gmail.com
-      </a>
+<main class="contact-page">
+  <header class="contact-hero">
+    <div class="contact-container">
+      <p class="contact-eyebrow">LEGACY SPORTS CANADA</p>
+      <h1>CONTACT</h1>
+      <p>Questions, ideas, partnerships, or just want to connect? You are in the right place.</p>
     </div>
+  </header>
 
-    <div class="contact-divider"></div>
+  <section class="contact-content">
+    <div class="contact-container">
+      <div class="contact-heading">
+        <div>
+          <span class="section-label">GET IN TOUCH</span>
+          <h2>LET'S<br>CONNECT.</h2>
+        </div>
+        <p>Choose the best way to reach us. For partnerships and general inquiries, email is usually the best place to start.</p>
+      </div>
 
-    <div class="contact-section"> <!-- Instagram-->
-      <h2>Instagram</h2>
-      <p>Stay updated and message us on Instagram.</p>
-      <a href="https://instagram.com/legacysports.ca" target="_blank" class="contact-link">
-        @legacysports.ca
-      </a>
+      <div class="contact-grid">
+        <article class="contact-method">
+          <span class="contact-number">01</span>
+          <i class="fa-regular fa-envelope"></i>
+          <p class="method-label">EMAIL</p>
+          <h3>General Inquiries</h3>
+          <p>Events, partnerships, volunteering, or anything Legacy Sports.</p>
+          <a href="mailto:info@legacysportscanada.ca">info@legacysportscanada.ca <span>↗</span></a>
+        </article>
+
+        <article class="contact-method">
+          <span class="contact-number">02</span>
+          <i class="fa-brands fa-instagram"></i>
+          <p class="method-label">INSTAGRAM</p>
+          <h3>Follow The Journey</h3>
+          <p>Keep up with announcements, event content, and everything happening around Legacy.</p>
+          <a href="https://instagram.com/legacysports.ca" target="_blank" rel="noopener">@legacysports.ca <span>↗</span></a>
+        </article>
+
+        <article class="contact-method contact-method-dark">
+          <span class="contact-number">03</span>
+          <i class="fa-solid fa-link"></i>
+          <p class="method-label">LINKS</p>
+          <h3>Everything Legacy</h3>
+          <p>Find our current pages, platforms, and important Legacy Sports links in one place.</p>
+          <a href="https://linktr.ee/legacysportscanada" target="_blank" rel="noopener">View Linktree <span>↗</span></a>
+        </article>
+      </div>
     </div>
-
-    <div class="contact-divider"></div>
-
-    <div class="contact-section"> <!-- Our Linktree, Honestly make a whole seperate place for our media-->  
-      <h2>Linktree</h2>
-      <p>Check out our other pages</p>
-      <a href="https://linktr.ee/legacysportscanada" target="_blank" class="contact-link">
-        LegacySports⚡
-      </a>
-    </div>
-
-  </div>
-
-</section>
-
+  </section>
+</main>
 {% endblock %}

@@ -1,42 +1,59 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Support Legacy Sports{% endblock %}
+{% block title %}Support Us | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'tournament/css/support.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<section class="support-section">
-
-    <div class="support-header">
-        <p>OUR PARTNERS</p>
-        <h1>PROUDLY SUPPORTED BY</h1>
-        <span>
-            These organizations help make Legacy Sports possible.
-        </span>
+<main class="support-page">
+  <header class="support-hero">
+    <div class="support-container">
+      <p class="support-eyebrow">LEGACY SPORTS CANADA</p>
+      <h1>SUPPORT US</h1>
+      <p>Meet the organizations that have helped us create memorable community sports experiences.</p>
     </div>
+  </header>
 
-    <div class="sponsor-grid">
-
-        <!-- Sponsor Card -->
-
-        <div class="sponsor-card">
-            <img src="{% static 'tournament/images/Sponsors/Cordi.png' %}"
-                 alt="Cordi">
-            <h3>Cordi Italian Bakery</h3>
+  <section class="partners-section">
+    <div class="support-container">
+      <div class="partners-heading">
+        <div>
+          <span class="section-label">OUR PARTNERS</span>
+          <h2>PROUDLY<br>SUPPORTED BY.</h2>
         </div>
+        <p>Community support helps us bring events to life and create better experiences for everyone who shows up.</p>
+      </div>
 
-        <div class="sponsor-card">
-            <img src="{% static 'tournament/images/Sponsors/Krispe.png' %}"
-                 alt="Krispy">
-            <h3>Krispy Kreme</h3>
-        </div>
+      <div class="sponsor-grid">
+        <article class="sponsor-card">
+          <span class="sponsor-number">01</span>
+          <div class="sponsor-logo">
+            <img src="{% static 'tournament/images/Sponsors/Cordi.png' %}" alt="Cordi Italian Bakery">
+          </div>
+          <h3>Cordi Italian Bakery</h3>
+          <p>Community Partner</p>
+        </article>
 
+        <article class="sponsor-card">
+          <span class="sponsor-number">02</span>
+          <div class="sponsor-logo">
+            <img src="{% static 'tournament/images/Sponsors/Krispe.png' %}" alt="Krispy Kreme">
+          </div>
+          <h3>Krispy Kreme</h3>
+          <p>Community Partner</p>
+        </article>
+
+        <article class="partner-invite">
+          <span class="section-label">BUILD WITH US</span>
+          <h3>INTERESTED IN SUPPORTING LEGACY?</h3>
+          <p>We are always open to working with organizations that believe in community, sport, and creating meaningful experiences.</p>
+          <a href="{% url 'contact_us' %}">Partner With Us <span>→</span></a>
+        </article>
+      </div>
     </div>
-
-</section>
-
+  </section>
+</main>
 {% endblock %}

@@ -1,49 +1,60 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Join the Team | Legacy Sports Canada{% endblock %}
+{% block title %}Get Involved | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'tournament/css/involvement.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="form-page">
-
-  <div class="form-header">
-    <h1>Volunteer Applications Closed</h1>
-    <p>Thank you for the overwhelming support.</p>
-  </div>
-
-  <div class="form-card closed-card">
-
-    <div class="closed-message">
-
-      <h2>Applications for this event are now closed.</h2>
-
-      <p>
-        We truly appreciate everyone who showed interest in helping bring
-        Legacy Sports to life.
-      </p>
-
-      <p>
-        Our volunteer and creative teams for this event have now been finalized.
-      </p>
-
-      <p>
-        Please stay connected with us through our social media channels for
-        future opportunities, events, and upcoming openings.
-      </p>
-
-      <a href="https://www.instagram.com/legacysports.ca/"
-         target="_blank"
-         class="submit-btn">
-         Follow Legacy Sports
-      </a>
-
+<main class="involvement-page">
+  <header class="involvement-hero">
+    <div class="involvement-container">
+      <p class="involvement-eyebrow">LEGACY SPORTS CANADA</p>
+      <h1>GET INVOLVED</h1>
+      <p>There is more than one way to be part of Legacy.</p>
     </div>
+  </header>
 
-  </div>
+  <section class="involvement-content">
+    <div class="involvement-container">
+      <div class="involvement-heading">
+        <div>
+          <span class="section-label">JOIN THE COMMUNITY</span>
+          <h2>FIND YOUR<br>PLACE HERE.</h2>
+        </div>
+        <p>Whether you want to help run an event, create content, or support the community, future opportunities will be shared here.</p>
+      </div>
 
-</section>
+      <div class="status-card">
+        <div class="status-top">
+          <span class="status-dot"></span>
+          <span>CURRENT STATUS</span>
+        </div>
+        <div class="status-grid">
+          <div>
+            <p class="status-kicker">APPLICATIONS</p>
+            <h3>CURRENTLY CLOSED.</h3>
+          </div>
+          <div class="status-copy">
+            <p>Our volunteer and creative teams for the most recent event have been finalized. Thank you to everyone who showed interest in helping bring Legacy Sports to life.</p>
+            <p>Stay connected with us for future volunteer opportunities, creative roles, event openings, and leadership recruitment.</p>
+            <a href="https://www.instagram.com/legacysports.ca/" target="_blank" rel="noopener">Follow Legacy Sports <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="roles-preview">
+        <span class="section-label">WAYS TO CONTRIBUTE</span>
+        <div class="roles-grid">
+          <div><span>01</span><h3>Event Operations</h3></div>
+          <div><span>02</span><h3>Media & Creative</h3></div>
+          <div><span>03</span><h3>Volunteering</h3></div>
+          <div><span>04</span><h3>Leadership</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock %}
