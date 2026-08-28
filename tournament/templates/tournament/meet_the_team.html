@@ -1,26 +1,35 @@
 {% extends 'tournament/base.html' %}
 {% load static %}
 
-{% block title %}
-  Meet the Team | Legacy Sports Canada
-{% endblock %}
+{% block title %}Meet the Team | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
-  <link rel="stylesheet" href="{% static 'tournament/css/meet_the_team.css' %}" />
+<link rel="stylesheet" href="{% static 'tournament/css/meet_the_team.css' %}">
 {% endblock %}
 
 {% block content %}
-  <div class="page-container">
-    <section class="page-hero">
-      
+<main class="team-page">
 
-      <h1>Meet the Team</h1>
+  <header class="team-hero">
+    <div class="team-container">
+      <p class="team-eyebrow">LEGACY SPORTS CANADA</p>
+      <h1>THE TEAM</h1>
+      <p>Meet the people helping turn ideas into experiences and build the Legacy Sports community.</p>
+    </div>
+  </header>
 
-      <p class="page-subtitle">Meet the passionate volunteers and leaders helping build Legacy Sports Canada and create meaningful experiences through sport.</p>
-    </section>
+  <section class="team-intro">
+    <div class="team-container team-intro-inner">
+      <div>
+        <span class="team-label">BEHIND LEGACY</span>
+        <h2>BUILT BY<br>THE COMMUNITY.</h2>
+      </div>
+      <p>From operations and marketing to finance and creative production, our team brings different skills together around one shared goal: creating experiences people want to be part of.</p>
+    </div>
+  </section>
 
-    <section class="team-section">
-      <div class="page-container">
+  <section class="team-section">
+    <div class="team-container">
         <div class="team-grid">
           <article class="member-card">
             <img src="{% static 'tournament/images/meet-the-team/fin1.jpg' %}" alt="Fin Faniyi" />
@@ -172,7 +181,8 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+</main>
 {% endblock %}

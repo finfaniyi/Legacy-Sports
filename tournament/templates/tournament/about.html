@@ -8,154 +8,109 @@
 {% endblock %}
 
 {% block content %}
-
 <main class="about-page">
 
-  <!-- HERO -->
-  <header class="page-hero">
-    <p class="page-kicker">ABOUT LEGACY SPORTS</p>
-    <h1>Community first.<br />Play for fun.<br />Everyone belongs.</h1>
-
+  <header class="about-hero">
+    <div class="about-container">
+      <p class="about-eyebrow">LEGACY SPORTS CANADA</p>
+      <h1>ABOUT</h1>
+      <p class="about-hero-copy">Community first. Play for fun. Everyone belongs.</p>
+    </div>
   </header>
 
-  <!-- STORY / CONCEPT -->
-  <section class="about-section">
-    <div class="about-card about-vision">
-      <h2>Who are we</h2>
-      <p>
-        Legacy Sports is a Canadian community sports organization focused on creating inclusive opportunities for
-        individuals to stay active, connect, and feel part of something.
-        We design and run tournaments and social sporting events that bring people together in a welcoming, low-pressure
-        environment, where all skill levels are encouraged to show up and play.
-        Not everyone is here to compete at a high level, and that’s the point. Some come to stay active, some to meet
-        new people, and others just to have fun. Legacy Sports exists to create a space where all of that belongs.
-      </p>
+  <section class="about-intro">
+    <div class="about-container about-intro-grid">
+      <div>
+        <span class="section-label">WHO WE ARE</span>
+        <h2>MORE THAN<br>THE GAME.</h2>
+      </div>
+      <div class="about-intro-copy">
+        <p>Legacy Sports is a Canadian community sports organization focused on creating inclusive opportunities for individuals to stay active, connect, and feel part of something.</p>
+        <p>We design tournaments and social sporting events that bring people together in a welcoming, low-pressure environment where every skill level is encouraged to show up and play.</p>
+        <p>Some come to compete. Some come to stay active. Some come to meet new people. Others just want to have fun. <strong>There is space for all of it here.</strong></p>
+      </div>
     </div>
   </section>
 
-  <section class="about-section">
-    <div class="profile-card">
-      <div class="profile-photo">
-        <img src="{% static 'tournament/images/meet-the-team/fin2.0.JPEG' %}" alt="Fin Faniyi">
-      </div>
-      <div class="profile-content">
-        <div class="profile-role">Founder</div>
-        <h2 class="profile-name">Why I Started Legacy Sports</h2>
-        <div class="profile-bio">
+  <section class="founder-story">
+    <div class="about-container">
+      <div class="founder-grid">
+        <div class="founder-photo">
+          <img src="{% static 'tournament/images/meet-the-team/fin2.0.JPEG' %}" alt="Legacy Sports founder">
+          <span class="founder-number">01</span>
+        </div>
 
-          <p>
-            I was 14 when I moved to Canada and started high school. Everything felt new. At that age, it was
-            overwhelming. I was trying to find my place, build friendships, and figure out where I belonged… and then
-            COVID hit, making everything even more isolating.
-          </p>
-
-          <p>
-            In the last year and a half of high school, things began to shift. I met people who showed me that you’re
-            never truly alone, and that the right community can make all the difference. For the first time, I felt what
-            it meant to be part of something.
-          </p>
-
-          <p>
-            I have always loved sports and over time I explored others, such as volleyball and frisbee. Through sport, I
-            found something I had been searching for. <strong>A way to connect. A way to belong.</strong>
-          </p>
-
-          <p>
-            When I started university, I found myself back in that same uncertain place. But everything began to change
-            when I joined intramurals and clubs. I met people who became real friends and once again found a sense of
-            community that changed everything.
-          </p>
-
-          <p class="highlight-line">
-            <b>That is why I created Legacy Sports.</b>
-          </p>
-
-          <p>
-            Legacy Sports is built on a simple belief that sport has the power to bring people together. Not just
-            through
-            competition, but connection. It builds confidence, creates real friendships, and gives people a sense of
-            belonging.
-          </p>
-
-          <p>
-            You do not need to be an athlete to be part of it. It is not about skill or experience. It is about showing
-            up,
-            being included, and having a space where you belong.
-          </p>
-
-          <p>
-            Legacy Sports is about more than just sport. It is about community, connection, and redefining what it means
-            to be part of sport.
-          </p>
-
+        <div class="founder-content">
+          <span class="section-label">THE STORY BEHIND LEGACY</span>
+          <h2>WHY I STARTED<br>LEGACY SPORTS</h2>
+          <div class="founder-copy">
+            <p>I was 14 when I moved to Canada and started high school. Everything felt new. I was trying to find my place, build friendships, and figure out where I belonged. Then COVID hit, making everything even more isolating.</p>
+            <p>In the last year and a half of high school, things began to shift. I met people who showed me that you are never truly alone, and that the right community can make all the difference.</p>
+            <p>I have always loved sports and, over time, explored others such as volleyball and frisbee. Through sport, I found something I had been searching for: <strong>a way to connect and a way to belong.</strong></p>
+            <p>When I started university, intramurals and clubs helped me find that sense of community again.</p>
+            <p class="founder-highlight">THAT IS WHY I CREATED LEGACY SPORTS.</p>
+            <p>Legacy Sports is built on a simple belief that sport has the power to bring people together — not just through competition, but through connection, confidence, friendships, and belonging.</p>
+            <p>You do not need to be an athlete to be part of it. It is not about skill or experience. It is about showing up, being included, and having a space where you belong.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="about-section">
-    <div class="about-card about-vision">
-      <h2>Our Values</h2>
-      <div class="about-bullets">
-        <div class="about-pill">Community</div>
-        <div class="about-pill">Inclusivity</div>
-        <div class="about-pill">Fun</div>
-        <div class="about-pill">Growth</div>
-        <div class="about-pill">Energy</div>
-        <div class="about-pill">Belonging</div>
-        <div class="about-pill">Connection</div>
-        <div class="about-pill">Opportunity</div>
+  <section class="values-section">
+    <div class="about-container">
+      <div class="values-heading">
+        <div>
+          <span class="section-label">WHAT GUIDES US</span>
+          <h2>OUR VALUES</h2>
+        </div>
+        <p>The principles behind the experiences and community we are building.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-item"><span>01</span><h3>Community</h3></div>
+        <div class="value-item"><span>02</span><h3>Inclusivity</h3></div>
+        <div class="value-item"><span>03</span><h3>Fun</h3></div>
+        <div class="value-item"><span>04</span><h3>Growth</h3></div>
+        <div class="value-item"><span>05</span><h3>Energy</h3></div>
+        <div class="value-item"><span>06</span><h3>Belonging</h3></div>
+        <div class="value-item"><span>07</span><h3>Connection</h3></div>
+        <div class="value-item"><span>08</span><h3>Opportunity</h3></div>
       </div>
     </div>
   </section>
 
+  <section class="purpose-section">
+    <div class="about-container purpose-grid">
+      <article class="purpose-card">
+        <span class="purpose-number">01</span>
+        <span class="section-label">OUR VISION</span>
+        <h2>BUILD A COMMUNITY THAT PEOPLE WANT TO BE PART OF.</h2>
+        <p>Our vision is to build a thriving, inclusive sports community that brings together individuals of all backgrounds and skill levels — whether they are chasing excellence, staying active, or simply enjoying the game.</p>
+      </article>
 
-
-  <section class="about-section">
-    <div class="about-card about-vision">
-      <h2>Our Vision for the Community</h2>
-      <p>
-        Our vision is to build a thriving, inclusive sports community that brings together individuals of all
-        backgrounds and skill levels. We aim to create a space where people can compete, connect, and feel a true sense
-        of belonging whether they are chasing excellence, staying active, or simply enjoying the game.
-      </p>
+      <article class="purpose-card purpose-card-dark">
+        <span class="purpose-number">02</span>
+        <span class="section-label">OUR MISSION</span>
+        <h2>CREATE EXPERIENCES THAT LEAVE A LASTING IMPACT.</h2>
+        <p>We create inclusive recreational and competitive sporting experiences where people can stay active, build meaningful social connections, and feel a genuine sense of belonging.</p>
+      </article>
     </div>
   </section>
 
-  <section class="about-section">
-    <div class="about-card about-vision">
-      <h2>Our Mission</h2>
-      <p>
-        Legacy Sports is committed to creating inclusive sporting experiences where individuals feel a genuine sense of
-        belonging, stay active, and build meaningful social connections. Through both recreational and competitive
-        events, we promote mental well-being, community, and memorable experiences that leave a lasting impact.
-      </p>
+  <section class="opportunity-section">
+    <div class="about-container opportunity-grid">
+      <div>
+        <span class="section-label">BEYOND SPORT</span>
+        <h2>OPPORTUNITIES<br>TO GROW.</h2>
+      </div>
+      <div class="opportunity-copy">
+        <p>Legacy Sports is committed to giving back by creating opportunities for young people to grow, contribute, and gain real-world experience.</p>
+        <p>We welcome high school students completing volunteer hours and people interested in photography, videography, content creation, event coordination, team support, and on-site operations.</p>
+        <p>Legacy Sports is not just about playing. It is about creating opportunities for people to <strong>grow, connect, contribute, and be part of something meaningful.</strong></p>
+      </div>
     </div>
   </section>
 
-  <section class="about-section">
-    <div class="about-card about-vision">
-      <h2>Giving Back & Creative Opportunities</h2>
-      <p>
-        Legacy Sports is committed to giving back to the community by creating opportunities for young individuals to
-        grow, contribute, and gain real-world experience.
-
-        We actively welcome high school students who are looking to complete volunteer hours, as well as individuals who
-        have an interest in creative fields such as photography, videography, and content creation. Whether someone is
-        just starting out or looking to develop their skills, we aim to provide a space where they can learn,
-        experiment, and build confidence through real event experience.
-
-        Beyond creative roles, we also offer opportunities for individuals to take on responsibilities in helping run
-        events. This includes areas such as coordination, team support, and on-site operations, allowing participants to
-        develop valuable skills in communication, teamwork, and leadership.
-
-        Legacy Sports is not just about playing. It’s about creating opportunities for people to grow, connect, and be
-        part of something meaningful.
-      </p>
-    </div>
-  </section>
-
-  <div class="page-bottom-space"></div>
 </main>
-
 {% endblock %}
