@@ -227,6 +227,9 @@ class Creator(models.Model):
     name = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
     instagram = models.CharField(max_length=100, blank=True)
+    tiktok = models.CharField(max_length=100, blank=True)
+    youtube = models.URLField(blank=True)
+    website = models.URLField(blank=True)
     bio = models.TextField(blank=True)
     profile_image = CloudinaryField('image')
     

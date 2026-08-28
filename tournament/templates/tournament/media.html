@@ -132,6 +132,12 @@
             type="button"
             class="creator-filter"
             data-creator="{{ creator.id }}"
+            data-name="{{ creator.name|escapejs }}"
+            data-role="{{ creator.role|escapejs }}"
+            data-instagram="{{ creator.instagram|escapejs }}"
+            data-tiktok="{{ creator.tiktok|escapejs }}"
+            data-youtube="{{ creator.youtube|escapejs }}"
+            data-website="{{ creator.website|escapejs }}"
           >
 
             <div class="creator-avatar-wrapper">
@@ -155,41 +161,6 @@
                 {% endif %}
 
               </div>
-
-
-              <!-- CREATOR HOVER CARD -->
-              <div class="creator-hover-card">
-
-                <p class="creator-hover-name">
-                  {{ creator.name }}
-                </p>
-
-                {% if creator.role %}
-
-                <p class="creator-hover-role">
-                  {{ creator.role }}
-                </p>
-
-                {% endif %}
-
-
-                {% if creator.instagram %}
-
-                <a
-                  href="https://instagram.com/{{ creator.instagram }}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="creator-hover-ig"
-                  onclick="event.stopPropagation();"
-                >
-                  <i class="fa-brands fa-instagram"></i>
-                  @{{ creator.instagram }}
-                </a>
-
-                {% endif %}
-
-              </div>
-
             </div>
 
 
@@ -201,6 +172,29 @@
 
           {% endfor %}
 
+        </div>
+
+        <!-- SELECTED CREATOR -->
+        <div class="creator-profile" id="creatorProfile" aria-live="polite">
+          <div class="creator-profile-copy">
+            <h4 id="creatorProfileName"></h4>
+            <p id="creatorProfileRole"></p>
+          </div>
+
+          <div class="creator-profile-socials" id="creatorProfileSocials">
+            <a id="creatorInstagram" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a id="creatorTikTok" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a id="creatorYouTube" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a id="creatorWebsite" class="creator-social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Website or portfolio">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
         </div>
 
       </div>
@@ -363,6 +357,14 @@
   const filterEmpty =
     document.getElementById("filterEmpty");
 
+  const creatorProfile = document.getElementById("creatorProfile");
+  const creatorProfileName = document.getElementById("creatorProfileName");
+  const creatorProfileRole = document.getElementById("creatorProfileRole");
+  const creatorInstagram = document.getElementById("creatorInstagram");
+  const creatorTikTok = document.getElementById("creatorTikTok");
+  const creatorYouTube = document.getElementById("creatorYouTube");
+  const creatorWebsite = document.getElementById("creatorWebsite");
+
 
   let activeCategory = "all";
   let activeCreator = "all";
@@ -422,6 +424,52 @@
   );
 
 
+  function setSocialLink(element, value, type) {
+    if (!element) return;
+
+    const cleanValue = (value || "").trim();
+
+    if (!cleanValue) {
+      element.classList.add("is-hidden");
+      element.removeAttribute("href");
+      return;
+    }
+
+    let url = cleanValue;
+
+    if (type === "instagram" && !/^https?:\/\//i.test(cleanValue)) {
+      url = `https://instagram.com/${cleanValue.replace(/^@/, "")}`;
+    }
+
+    if (type === "tiktok" && !/^https?:\/\//i.test(cleanValue)) {
+      url = `https://www.tiktok.com/@${cleanValue.replace(/^@/, "")}`;
+    }
+
+    element.href = url;
+    element.classList.remove("is-hidden");
+  }
+
+
+  function updateCreatorProfile(button) {
+    if (!creatorProfile) return;
+
+    if (button.dataset.creator === "all") {
+      creatorProfile.classList.remove("show");
+      return;
+    }
+
+    creatorProfileName.textContent = button.dataset.name || "";
+    creatorProfileRole.textContent = button.dataset.role || "";
+
+    setSocialLink(creatorInstagram, button.dataset.instagram, "instagram");
+    setSocialLink(creatorTikTok, button.dataset.tiktok, "tiktok");
+    setSocialLink(creatorYouTube, button.dataset.youtube, "url");
+    setSocialLink(creatorWebsite, button.dataset.website, "url");
+
+    creatorProfile.classList.add("show");
+  }
+
+
   creatorButtons.forEach(button => {
 
     button.addEventListener(
@@ -437,6 +485,7 @@
         activeCreator =
           button.dataset.creator;
 
+        updateCreatorProfile(button);
         filterMedia();
 
       }
