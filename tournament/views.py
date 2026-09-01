@@ -190,7 +190,7 @@ def media(request):
 
     creators = Creator.objects.all().order_by("name")
 
-    return render(request, "tournament/media.html", {
+    return render(request, "tournament/media/media.html", {
         "media_items": media_items,
         "creators": creators,
     })
