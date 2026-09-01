@@ -34,6 +34,9 @@ urlpatterns = [
     path("events/2027/basketball/bracket/", views.basketball_2027_bracket, name="basketball_2027_bracket"),
     path("events/2027/basketball/standings/", views.basketball_2027_standings, name="basketball_2027_standings"),
     path("events/2027/basketball/live-scores/", views.basketball_2027_live_scores, name="basketball_2027_live_scores"),
+    path("events/2027/basketball/registration/", views.basketball_2027_registration, name="basketball_2027_registration"),
+    path("events/2027/basketball/registration/team/", views.basketball_2027_registration_team, name="basketball_2027_registration_team"),
+    path("events/2027/basketball/registration/success/", views.basketball_2027_registration_success, name="basketball_2027_registration_success"),
 
     # 2027 SOCCER
     path("events/2027/soccer/", views.soccer_2027_info, name="soccer_2027_info"),
@@ -41,6 +44,9 @@ urlpatterns = [
     path("events/2027/soccer/bracket/", views.soccer_2027_bracket, name="soccer_2027_bracket"),
     path("events/2027/soccer/standings/", views.soccer_2027_standings, name="soccer_2027_standings"),
     path("events/2027/soccer/live-scores/", views.soccer_2027_live_scores, name="soccer_2027_live_scores"),
+    path("events/2027/soccer/registration/", views.soccer_2027_registration, name="soccer_2027_registration"),
+    path("events/2027/soccer/registration/team/", views.soccer_2027_registration_team, name="soccer_2027_registration_team"),
+    path("events/2027/soccer/registration/success/", views.soccer_2027_registration_success, name="soccer_2027_registration_success"),
 
     # 2027 VOLLEYBALL
     path("events/2027/volleyball/", views.volleyball_2027_info, name="volleyball_2027_info"),
@@ -48,6 +54,9 @@ urlpatterns = [
     path("events/2027/volleyball/bracket/", views.volleyball_2027_bracket, name="volleyball_2027_bracket"),
     path("events/2027/volleyball/standings/", views.volleyball_2027_standings, name="volleyball_2027_standings"),
     path("events/2027/volleyball/live-scores/", views.volleyball_2027_live_scores, name="volleyball_2027_live_scores"),
+    path("events/2027/volleyball/registration/", views.volleyball_2027_registration, name="volleyball_2027_registration"),
+    path("events/2027/volleyball/registration/team/", views.volleyball_2027_registration_team, name="volleyball_2027_registration_team"),
+    path("events/2027/volleyball/registration/success/", views.volleyball_2027_registration_success, name="volleyball_2027_registration_success"),
 
     # EXISTING REGISTRATION
     path("registration/", views.registration, name="registration"),

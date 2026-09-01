@@ -2,7 +2,12 @@ from django.db import IntegrityError
 from datetime import datetime, timedelta
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent, Creator, MediaItem, Match
+from .models import (
+    Team, Player, Volunteerapplication, TEAM_COLORS, FreeAgent, Creator, MediaItem, Match,
+    BasketballTeam, BasketballPlayer, BasketballMatch,
+    SoccerTeam, SoccerPlayer, SoccerMatch,
+    VolleyballTeam, VolleyballPlayer, VolleyballMatch,
+)
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
@@ -205,57 +210,128 @@ def team_brackets(request):
     return render(request, "tournament/team_brackets.html")
 
 # =========================
-# 2027 EVENT PAGES
+# 2027 EVENT SYSTEMS
 # =========================
 
-# Basketball
-def basketball_2027_info(request):
-    return render(request, "tournament/events/2027/basketball/basketball_tourney-info.html")
+TOURNAMENT_2027 = {
+    "basketball": {"team": BasketballTeam, "player": BasketballPlayer, "match": BasketballMatch, "name": "Basketball", "max_teams": 8, "min_players": 6, "max_players": 8, "price": 2000},
+    "soccer": {"team": SoccerTeam, "player": SoccerPlayer, "match": SoccerMatch, "name": "Soccer", "max_teams": 8, "min_players": 7, "max_players": 8, "price": 2000},
+    "volleyball": {"team": VolleyballTeam, "player": VolleyballPlayer, "match": VolleyballMatch, "name": "Volleyball", "max_teams": 8, "min_players": 6, "max_players": 8, "price": 2000},
+}
 
-def basketball_2027_teams(request):
-    return render(request, "tournament/events/2027/basketball/basketball_teams.html")
+def _event_template(sport, page):
+    return f"tournament/events/2027/{sport}/{sport}_{page}.html"
 
-def basketball_2027_bracket(request):
-    return render(request, "tournament/events/2027/basketball/basketball_team_brackets.html")
+def _event_teams(request, sport):
+    teams = TOURNAMENT_2027[sport]["team"].objects.filter(payment_status="paid").order_by("slot_number")
+    return render(request, _event_template(sport, "teams"), {"teams": teams})
 
-def basketball_2027_standings(request):
-    return render(request, "tournament/events/2027/basketball/basketball_standings.html")
+def _event_standings(request, sport):
+    cfg = TOURNAMENT_2027[sport]
+    data = []
+    for team in cfg["team"].objects.filter(payment_status="paid"):
+        matches = cfg["match"].objects.filter(Q(team_1=team) | Q(team_2=team), is_finished=True)
+        wins = matches.filter(winner=team).count()
+        pf = pa = 0
+        for match in matches:
+            if match.team_1_id == team.id:
+                pf += match.team_1_score; pa += match.team_2_score
+            else:
+                pf += match.team_2_score; pa += match.team_1_score
+        data.append({"team": team, "games_played": matches.count(), "wins": wins, "losses": matches.exclude(winner=team).count(), "pf": pf, "pa": pa, "diff": pf-pa, "points": wins*3})
+    data.sort(key=lambda x: (x["wins"], x["diff"]), reverse=True)
+    return render(request, _event_template(sport, "standings"), {"standings": data})
 
-def basketball_2027_live_scores(request):
-    return render(request, "tournament/events/2027/basketball/basketball_live_scores.html")
+def _event_live_scores(request, sport):
+    matches = TOURNAMENT_2027[sport]["match"].objects.select_related("team_1", "team_2", "winner").order_by("-is_live", "-match_time")
+    return render(request, _event_template(sport, "live_scores"), {"matches": matches})
 
-# Soccer
-def soccer_2027_info(request):
-    return render(request, "tournament/events/2027/soccer/soccer_tourney-info.html")
+def _event_bracket(request, sport):
+    M = TOURNAMENT_2027[sport]["match"]
+    q = M.objects.filter(round_name="quarter").select_related("team_1", "team_2", "winner").order_by("match_time")
+    s = M.objects.filter(round_name="semi").select_related("team_1", "team_2", "winner").order_by("match_time")
+    f = M.objects.filter(round_name="final").select_related("team_1", "team_2", "winner").order_by("match_time")
+    final = f.filter(is_finished=True).first()
+    return render(request, _event_template(sport, "team_brackets"), {"bracket_ready": q.exists() or s.exists() or f.exists(), "quarterfinals": q, "semifinals": s, "finals": f, "champion": final.winner if final else None})
 
-def soccer_2027_teams(request):
-    return render(request, "tournament/events/2027/soccer/soccer_teams.html")
+def _event_registration(request, sport):
+    cfg = TOURNAMENT_2027[sport]; T = cfg["team"]
+    T.objects.filter(payment_status="pending", waiver_timestamp__lt=timezone.now()-timedelta(minutes=10)).delete()
+    teams = T.objects.filter(payment_status="paid")
+    slots = set(teams.values_list("slot_number", flat=True))
+    toronto = ZoneInfo("America/Toronto"); now = timezone.now().astimezone(toronto)
+    # Keep registration closed until the real dates are set.
+    registration_open = datetime(2099,1,1,0,0,0,tzinfo=toronto)
+    registration_close = datetime(2099,12,31,23,59,59,tzinfo=toronto)
+    return render(request, _event_template(sport, "registration_display"), {"taken_slots": slots, "slot_colors": {t.slot_number:t.team_color for t in teams}, "slot_names": {t.slot_number:t.team_name for t in teams}, "now":now, "registration_open":registration_open, "registration_close":registration_close, "full":len(slots)>=cfg["max_teams"], "spots_left":max(0,cfg["max_teams"]-len(slots))})
 
-def soccer_2027_bracket(request):
-    return render(request, "tournament/events/2027/soccer/soccer_team_brackets.html")
+def _event_registration_team(request, sport):
+    cfg=TOURNAMENT_2027[sport]; T=cfg["team"]; P=cfg["player"]
+    T.objects.filter(payment_status="pending", waiver_timestamp__lt=timezone.now()-timedelta(minutes=10)).delete()
+    paid=T.objects.filter(payment_status="paid")
+    used=set(paid.values_list("slot_number",flat=True)); slot=next((i for i in range(1,cfg["max_teams"]+1) if i not in used),None)
+    if slot is None: return redirect(f"{sport}_2027_registration")
+    taken=set(paid.values_list("team_color",flat=True)); colors=[c for c in TEAM_COLORS if c[0] not in taken]; random.shuffle(colors)
+    ctx={"taken_colors":taken,"team_colors":colors,"slot":slot}
+    if request.method != "POST": return render(request,_event_template(sport,"registration-form"),ctx)
+    color=request.POST.get("team_color"); email=request.POST.get("captain_email")
+    if T.objects.filter(team_color=color).exists():
+        return render(request,_event_template(sport,"registration-form"),{**ctx,"error":"Color already taken.","form_data":request.POST})
+    existing=T.objects.filter(captain_email=email).first()
+    if existing:
+        if existing.payment_status=="pending": existing.delete()
+        else: return render(request,_event_template(sport,"registration-form"),{**ctx,"error":"This email has already registered a team for this tournament.","form_data":request.POST})
+    try: count=int(request.POST.get("roster_size",cfg["min_players"]))
+    except (TypeError,ValueError): count=cfg["min_players"]
+    count=max(cfg["min_players"],min(cfg["max_players"],count))
+    team=T.objects.create(slot_number=slot,team_name=request.POST["team_name"],captain_name=request.POST["captain_name"],captain_email=email,captain_phone=request.POST["captain_phone"],team_color=color,player_count=count,payment_status="pending",waiver_agreed=True,spectator_range=request.POST.get("spectator_range") or "",waiver_timestamp=timezone.now())
+    try:
+        for i in range(1,min(6,count)+1):
+            age=request.POST.get(f"player_{i}_age")
+            if not age: raise ValueError(f"Player {i} age is required.")
+            P.objects.create(team=team,first_name=request.POST.get(f"player_{i}_first"),last_name=request.POST.get(f"player_{i}_last"),age=int(age),gender=request.POST.get(f"player_{i}_gender"),contact_email=request.POST.get(f"player_{i}_email"),contact_phone=request.POST.get(f"player_{i}_phone"),school=request.POST.get(f"player_{i}_school") or "",is_substitute=False)
+        for n in range(7,count+1):
+            k=n-6; age=request.POST.get(f"sub_{k}_age")
+            if not age: raise ValueError(f"Player {n} age is required.")
+            P.objects.create(team=team,first_name=request.POST.get(f"sub_{k}_first"),last_name=request.POST.get(f"sub_{k}_last"),age=int(age),gender=request.POST.get(f"sub_{k}_gender"),contact_email=request.POST.get(f"sub_{k}_email"),contact_phone=request.POST.get(f"sub_{k}_phone"),school=request.POST.get(f"sub_{k}_school") or "",is_substitute=True)
+    except (TypeError,ValueError) as exc:
+        team.delete(); return render(request,_event_template(sport,"registration-form"),{**ctx,"error":str(exc),"form_data":request.POST})
+    checkout=stripe.checkout.Session.create(payment_method_types=["card"],line_items=[{"price_data":{"currency":"cad","product_data":{"name":f"Legacy Sports 2027 {cfg['name']} Team Entry ({count} players)"},"unit_amount":count*cfg["price"]},"quantity":1}],mode="payment",success_url=request.build_absolute_uri(reverse(f"{sport}_2027_registration_success")+"?session_id={CHECKOUT_SESSION_ID}"),cancel_url=request.build_absolute_uri(reverse(f"{sport}_2027_registration_team")),metadata={"sport":sport,"year":"2027","team_id":str(team.id),"slot":str(slot)})
+    return redirect(checkout.url)
 
-def soccer_2027_standings(request):
-    return render(request, "tournament/events/2027/soccer/soccer_standings.html")
+def _event_registration_success(request,sport):
+    if not request.GET.get("session_id"): return redirect(f"{sport}_2027_registration")
+    return render(request,_event_template(sport,"registration_success"))
 
-def soccer_2027_live_scores(request):
-    return render(request, "tournament/events/2027/soccer/soccer_live_scores.html")
+# Basketball 2027
+def basketball_2027_info(request): return render(request,_event_template("basketball","tourney-info"))
+def basketball_2027_teams(request): return _event_teams(request,"basketball")
+def basketball_2027_bracket(request): return _event_bracket(request,"basketball")
+def basketball_2027_standings(request): return _event_standings(request,"basketball")
+def basketball_2027_live_scores(request): return _event_live_scores(request,"basketball")
+def basketball_2027_registration(request): return _event_registration(request,"basketball")
+def basketball_2027_registration_team(request): return _event_registration_team(request,"basketball")
+def basketball_2027_registration_success(request): return _event_registration_success(request,"basketball")
 
-# Volleyball
-def volleyball_2027_info(request):
-    return render(request, "tournament/events/2027/volleyball/volleyball_tourney-info.html")
+# Soccer 2027
+def soccer_2027_info(request): return render(request,_event_template("soccer","tourney-info"))
+def soccer_2027_teams(request): return _event_teams(request,"soccer")
+def soccer_2027_bracket(request): return _event_bracket(request,"soccer")
+def soccer_2027_standings(request): return _event_standings(request,"soccer")
+def soccer_2027_live_scores(request): return _event_live_scores(request,"soccer")
+def soccer_2027_registration(request): return _event_registration(request,"soccer")
+def soccer_2027_registration_team(request): return _event_registration_team(request,"soccer")
+def soccer_2027_registration_success(request): return _event_registration_success(request,"soccer")
 
-def volleyball_2027_teams(request):
-    return render(request, "tournament/events/2027/volleyball/volleyball_teams.html")
-
-def volleyball_2027_bracket(request):
-    return render(request, "tournament/events/2027/volleyball/volleyball_team_brackets.html")
-
-def volleyball_2027_standings(request):
-    return render(request, "tournament/events/2027/volleyball/volleyball_standings.html")
-
-def volleyball_2027_live_scores(request):
-    return render(request, "tournament/events/2027/volleyball/volleyball_live_scores.html")
-
+# Volleyball 2027
+def volleyball_2027_info(request): return render(request,_event_template("volleyball","tourney-info"))
+def volleyball_2027_teams(request): return _event_teams(request,"volleyball")
+def volleyball_2027_bracket(request): return _event_bracket(request,"volleyball")
+def volleyball_2027_standings(request): return _event_standings(request,"volleyball")
+def volleyball_2027_live_scores(request): return _event_live_scores(request,"volleyball")
+def volleyball_2027_registration(request): return _event_registration(request,"volleyball")
+def volleyball_2027_registration_team(request): return _event_registration_team(request,"volleyball")
+def volleyball_2027_registration_success(request): return _event_registration_success(request,"volleyball")
 
 # =========================
 # VOLUNTEER
@@ -712,6 +788,20 @@ def stripe_webhook(request):
         if not team_id:
             print("❌ No team_id in metadata")
             return JsonResponse({"error": "Missing team_id"}, status=400)
+
+        # 2027 sport-specific registrations use the same Stripe webhook.
+        sport = metadata.get("sport")
+        if sport in TOURNAMENT_2027:
+            cfg = TOURNAMENT_2027[sport]
+            TeamModel = cfg["team"]
+            try:
+                team = TeamModel.objects.get(id=team_id)
+            except TeamModel.DoesNotExist:
+                return JsonResponse({"error": "Team not found"}, status=400)
+            team.payment_status = "paid"
+            team.save(update_fields=["payment_status"])
+            send_mail(subject=f"{cfg['name']} 2027 registration: {team.team_name}", message=f"{team.team_name} completed payment for the 2027 {cfg['name']} tournament.", from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=["legacysportscanada@gmail.com"], fail_silently=False)
+            return JsonResponse({"status": "success"})
 
         try:
             team = Team.objects.get(id=team_id)

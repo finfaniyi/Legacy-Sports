@@ -278,3 +278,294 @@ class MediaItem(models.Model):
     featured = models.BooleanField(default=False)
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+# ============================================================
+# 2027 BASKETBALL — COMPLETELY SEPARATE DATABASE SYSTEM
+# ============================================================
+
+class BasketballTeam(models.Model):
+    PAYMENT_STATUS = [
+        ("pending", "Pending"),
+        ("paid", "Paid"),
+        ("cancelled", "Cancelled"),
+    ]
+
+    team_name = models.CharField(max_length=100)
+    slot_number = models.IntegerField(null=True, blank=True)
+    captain_name = models.CharField(max_length=100)
+    captain_email = models.EmailField(unique=True)
+    captain_phone = models.CharField(max_length=25)
+    waiver_agreed = models.BooleanField(default=False)
+    waiver_timestamp = models.DateTimeField(null=True, blank=True)
+    player_count = models.IntegerField(default=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    team_color = models.CharField(max_length=20, choices=TEAM_COLORS, unique=True)
+    payment_status = models.CharField(max_length=10, choices=PAYMENT_STATUS, default="pending")
+    spectator_range = models.CharField(max_length=10, blank=True)
+
+    def __str__(self):
+        return self.team_name
+
+
+class BasketballPlayer(models.Model):
+    GENDER_CHOICES = [
+        ("M", "Male"),
+        ("F", "Female"),
+        ("O", "Other"),
+        ("N", "Prefer not to say"),
+    ]
+
+    team = models.ForeignKey(
+        BasketballTeam,
+        on_delete=models.CASCADE,
+        related_name="players"
+    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    age = models.PositiveIntegerField()
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    contact_email = models.EmailField()
+    contact_phone = models.CharField(max_length=20)
+    school = models.CharField(max_length=100, blank=True)
+    is_substitute = models.BooleanField(default=False)
+    games = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
+    aces = models.IntegerField(default=0)
+    blocks = models.IntegerField(default=0)
+    fouls = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} ({self.team.team_name})"
+
+
+class BasketballBracket(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class BasketballMatch(models.Model):
+    ROUND_CHOICES = [
+        ("pool", "Pool Play"),
+        ("quarter", "Quarter Final"),
+        ("semi", "Semi Final"),
+        ("final", "Final"),
+    ]
+
+    team_1 = models.ForeignKey(BasketballTeam, on_delete=models.CASCADE, related_name="home_matches")
+    team_2 = models.ForeignKey(BasketballTeam, on_delete=models.CASCADE, related_name="away_matches")
+    bracket = models.ForeignKey(BasketballBracket, on_delete=models.CASCADE, related_name="matches")
+    round_name = models.CharField(max_length=20, choices=ROUND_CHOICES, default="pool")
+    team_1_score = models.IntegerField(default=0)
+    team_2_score = models.IntegerField(default=0)
+    is_live = models.BooleanField(default=False)
+    is_finished = models.BooleanField(default=False)
+    winner = models.ForeignKey(
+        BasketballTeam,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="wins"
+    )
+    match_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.team_1} vs {self.team_2}"
+
+
+# ============================================================
+# 2027 SOCCER — COMPLETELY SEPARATE DATABASE SYSTEM
+# ============================================================
+
+class SoccerTeam(models.Model):
+    PAYMENT_STATUS = [
+        ("pending", "Pending"),
+        ("paid", "Paid"),
+        ("cancelled", "Cancelled"),
+    ]
+
+    team_name = models.CharField(max_length=100)
+    slot_number = models.IntegerField(null=True, blank=True)
+    captain_name = models.CharField(max_length=100)
+    captain_email = models.EmailField(unique=True)
+    captain_phone = models.CharField(max_length=25)
+    waiver_agreed = models.BooleanField(default=False)
+    waiver_timestamp = models.DateTimeField(null=True, blank=True)
+    player_count = models.IntegerField(default=7)
+    created_at = models.DateTimeField(auto_now_add=True)
+    team_color = models.CharField(max_length=20, choices=TEAM_COLORS, unique=True)
+    payment_status = models.CharField(max_length=10, choices=PAYMENT_STATUS, default="pending")
+    spectator_range = models.CharField(max_length=10, blank=True)
+
+    def __str__(self):
+        return self.team_name
+
+
+class SoccerPlayer(models.Model):
+    GENDER_CHOICES = [
+        ("M", "Male"),
+        ("F", "Female"),
+        ("O", "Other"),
+        ("N", "Prefer not to say"),
+    ]
+
+    team = models.ForeignKey(
+        SoccerTeam,
+        on_delete=models.CASCADE,
+        related_name="players"
+    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    age = models.PositiveIntegerField()
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    contact_email = models.EmailField()
+    contact_phone = models.CharField(max_length=20)
+    school = models.CharField(max_length=100, blank=True)
+    is_substitute = models.BooleanField(default=False)
+    games = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
+    aces = models.IntegerField(default=0)
+    blocks = models.IntegerField(default=0)
+    fouls = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} ({self.team.team_name})"
+
+
+class SoccerBracket(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class SoccerMatch(models.Model):
+    ROUND_CHOICES = [
+        ("pool", "Pool Play"),
+        ("quarter", "Quarter Final"),
+        ("semi", "Semi Final"),
+        ("final", "Final"),
+    ]
+
+    team_1 = models.ForeignKey(SoccerTeam, on_delete=models.CASCADE, related_name="home_matches")
+    team_2 = models.ForeignKey(SoccerTeam, on_delete=models.CASCADE, related_name="away_matches")
+    bracket = models.ForeignKey(SoccerBracket, on_delete=models.CASCADE, related_name="matches")
+    round_name = models.CharField(max_length=20, choices=ROUND_CHOICES, default="pool")
+    team_1_score = models.IntegerField(default=0)
+    team_2_score = models.IntegerField(default=0)
+    is_live = models.BooleanField(default=False)
+    is_finished = models.BooleanField(default=False)
+    winner = models.ForeignKey(
+        SoccerTeam,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="wins"
+    )
+    match_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.team_1} vs {self.team_2}"
+
+
+# ============================================================
+# 2027 VOLLEYBALL — COMPLETELY SEPARATE DATABASE SYSTEM
+# ============================================================
+
+class VolleyballTeam(models.Model):
+    PAYMENT_STATUS = [
+        ("pending", "Pending"),
+        ("paid", "Paid"),
+        ("cancelled", "Cancelled"),
+    ]
+
+    team_name = models.CharField(max_length=100)
+    slot_number = models.IntegerField(null=True, blank=True)
+    captain_name = models.CharField(max_length=100)
+    captain_email = models.EmailField(unique=True)
+    captain_phone = models.CharField(max_length=25)
+    waiver_agreed = models.BooleanField(default=False)
+    waiver_timestamp = models.DateTimeField(null=True, blank=True)
+    player_count = models.IntegerField(default=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    team_color = models.CharField(max_length=20, choices=TEAM_COLORS, unique=True)
+    payment_status = models.CharField(max_length=10, choices=PAYMENT_STATUS, default="pending")
+    spectator_range = models.CharField(max_length=10, blank=True)
+
+    def __str__(self):
+        return self.team_name
+
+
+class VolleyballPlayer(models.Model):
+    GENDER_CHOICES = [
+        ("M", "Male"),
+        ("F", "Female"),
+        ("O", "Other"),
+        ("N", "Prefer not to say"),
+    ]
+
+    team = models.ForeignKey(
+        VolleyballTeam,
+        on_delete=models.CASCADE,
+        related_name="players"
+    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    age = models.PositiveIntegerField()
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    contact_email = models.EmailField()
+    contact_phone = models.CharField(max_length=20)
+    school = models.CharField(max_length=100, blank=True)
+    is_substitute = models.BooleanField(default=False)
+    games = models.IntegerField(default=0)
+    points = models.IntegerField(default=0)
+    aces = models.IntegerField(default=0)
+    blocks = models.IntegerField(default=0)
+    fouls = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} ({self.team.team_name})"
+
+
+class VolleyballBracket(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class VolleyballMatch(models.Model):
+    ROUND_CHOICES = [
+        ("pool", "Pool Play"),
+        ("quarter", "Quarter Final"),
+        ("semi", "Semi Final"),
+        ("final", "Final"),
+    ]
+
+    team_1 = models.ForeignKey(VolleyballTeam, on_delete=models.CASCADE, related_name="home_matches")
+    team_2 = models.ForeignKey(VolleyballTeam, on_delete=models.CASCADE, related_name="away_matches")
+    bracket = models.ForeignKey(VolleyballBracket, on_delete=models.CASCADE, related_name="matches")
+    round_name = models.CharField(max_length=20, choices=ROUND_CHOICES, default="pool")
+    team_1_score = models.IntegerField(default=0)
+    team_2_score = models.IntegerField(default=0)
+    is_live = models.BooleanField(default=False)
+    is_finished = models.BooleanField(default=False)
+    winner = models.ForeignKey(
+        VolleyballTeam,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="wins"
+    )
+    match_time = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.team_1} vs {self.team_2}"
+
