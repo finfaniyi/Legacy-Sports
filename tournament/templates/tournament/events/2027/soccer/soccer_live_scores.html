@@ -1,0 +1,95 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2027 Soccer Live Scores | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/live_scores.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="scores-page">
+
+  <section class="scores-hero">
+    <div class="scores-shell">
+      <p class="scores-eyebrow">2027 LEGACY SPORTS • MAY</p>
+      <h1>LIVE SCORES</h1>
+      <p>Follow the 2027 Legacy Sports Soccer Tournament as the action happens.</p>
+    </div>
+  </section>
+
+  <section class="scores-content">
+    <div class="scores-shell">
+
+      <div class="scores-heading">
+        <div>
+          <span>GAME DAY</span>
+          <h2>LIVE FROM<br>THE TOURNAMENT.</h2>
+        </div>
+        <p>Scores and game status will update here throughout tournament day.</p>
+      </div>
+
+      {% if matches %}
+      <div class="scores-grid">
+        {% for match in matches %}
+        <article class="score-card">
+
+          <div class="score-card-header">
+            <div>
+              <span class="game-label">GAME {{ forloop.counter|stringformat:"02d" }}</span>
+              <strong>{{ match.round_name|default:"Tournament Match" }}</strong>
+            </div>
+
+            <span class="game-status {% if match.is_live %}is-live{% endif %}">
+              {% if match.is_live %}
+                <i></i> LIVE
+              {% else %}
+                {{ match.status|default:"UPCOMING" }}
+              {% endif %}
+            </span>
+          </div>
+
+          <div class="score-matchup">
+            <div class="score-team">
+              <span class="score-team-color"
+                    style="background-color: {{ match.team1.team_color|default:'#c9080c'|lower }};"></span>
+              <h3>{{ match.team1.team_name|default:"TBD" }}</h3>
+              <strong>{{ match.team1_score|default:"—" }}</strong>
+            </div>
+
+            <div class="score-divider">
+              <span>VS</span>
+            </div>
+
+            <div class="score-team score-team-right">
+              <strong>{{ match.team2_score|default:"—" }}</strong>
+              <h3>{{ match.team2.team_name|default:"TBD" }}</h3>
+              <span class="score-team-color"
+                    style="background-color: {{ match.team2.team_color|default:'#c9080c'|lower }};"></span>
+            </div>
+          </div>
+
+          <div class="score-card-footer">
+            <span>{{ match.time|default:"Time TBA" }}</span>
+            <span>{{ match.location|default:"Court / Field TBA" }}</span>
+          </div>
+
+        </article>
+        {% endfor %}
+      </div>
+
+      {% else %}
+      <div class="scores-empty">
+        <span class="scores-empty-number">00</span>
+        <p>NO LIVE GAMES</p>
+        <h2>WE'LL BE LIVE<br>ON GAME DAY.</h2>
+        <div class="empty-line"></div>
+        <span>Scores will appear here when the 2027 Legacy Sports Soccer Tournament begins.</span>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}
