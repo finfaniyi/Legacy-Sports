@@ -1,0 +1,22 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+{% block title %}Registration Confirmed | Legacy Sports Canada{% endblock %}
+{% block page_css %}<link rel="stylesheet" href="{% static 'tournament/css/success.css' %}">{% endblock %}
+{% block content %}
+<section class="success-hero">
+  <div class="success-card">
+    <span class="success-eyebrow">2027 LEGACY SPORTS • JULY</span>
+    <div class="success-check">✓</div>
+    <h1>YOU'RE OFFICIALLY IN.</h1>
+    <p class="success-sub">Your team registration for the 2027 Legacy Sports Volleyball Tournament has been confirmed. Payment received. Your spot is secured.</p>
+    <div class="success-details">
+      <div class="success-pill"><span>01</span>Payment Confirmed</div>
+      <div class="success-pill"><span>02</span>Spot Secured</div>
+      <div class="success-pill"><span>03</span>Team Registered</div>
+    </div>
+    <div class="success-note"><strong>WHAT HAPPENS NEXT?</strong><p>Keep an eye on your email for tournament information, schedules, waivers, game-day details and updates from Legacy Sports.</p></div>
+    <a href="{% url 'volleyball_2027_teams' %}" class="success-btn">VIEW REGISTERED TEAMS</a>
+  </div>
+</section>
+<script>Object.keys(localStorage).filter(key=>key.startsWith("registrationData")).forEach(key=>localStorage.removeItem(key));</script>
+{% endblock %}

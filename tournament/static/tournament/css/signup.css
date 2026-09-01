@@ -1,347 +1,276 @@
-/* =========================
-   TEAM REGISTRATION – UPDATED
-========================= */
-
-/* PAGE WRAPPER */
+/* LEGACY SPORTS — 2027 TEAM REGISTRATION */
 .form-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 80px 20px;
+  justify-content: flex-start;
+  padding: 85px 20px 110px;
   text-align: center;
+  background: #f7f5f2;
+  color: #151a1f
 }
 
-/* HEADER */
+.form-event-label {
+  margin-bottom: 12px;
+  color: #c9080c;
+  font: 800 10px "Sofia Sans", sans-serif;
+  letter-spacing: 3px
+}
+
 .form-header {
-  margin-bottom: 40px;
-  max-width: 800px;
+  margin-bottom: 42px;
+  max-width: 800px
 }
 
 .form-header h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.team-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;   /* 2 equal columns */
-  gap: 20px;
-  margin-bottom: 20px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(54px, 7vw, 88px);
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: 1px;
+  margin: 0 0 12px
 }
 
 .form-header p {
-  opacity: 0.75;
-  font-size: 18px;
+  max-width: 680px;
+  margin: auto;
+  color: #777;
+  font: 15px/1.7 "Sofia Sans", sans-serif
 }
 
-/* FORM CARD */
 .form-card {
-  background: #1e2023;
-  border-radius: 18px;
-  padding: 40px;
+  background: #191b1d;
+  border-radius: 10px;
+  padding: 45px;
   width: 100%;
-  color: #F7F5F2;
-  max-width: 950px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-  text-align: left;
+  color: #f7f5f2;
+  max-width: 1050px;
+  border: 1px solid #2d3033;
+  text-align: left
 }
 
-/* SECTION TITLES */
 .form-card h3 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 600;
-  opacity: 0.9;
+  margin: 38px 0 18px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: .5px
 }
 
-/* INPUTS */
+.form-card h3:first-of-type {
+  margin-top: 0
+}
+
+.form-card hr {
+  height: 1px;
+  margin: 34px 0;
+  border: 0;
+  background: rgba(255, 255, 255, .09)
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px
+}
+
 .form-card input,
 .form-card select {
-  background: #1c1c1c;
-  border: 1px solid #2a2a2a;
-  color: #aaa;
+  background: #202326;
+  border: 1px solid #34373a;
+  color: #f7f5f2;
   padding: 14px 16px;
-  border-radius: 10px;
-  font-size: 0.95rem;
+  border-radius: 5px;
+  font-size: .95rem;
   width: 100%;
-  transition: 0.2s ease;
+  transition: .2s
 }
 
 .form-card input::placeholder {
-  color: #aaa;
+  color: #898989
 }
 
 .form-card input:focus,
 .form-card select:focus {
   outline: none;
-  border-color: #bb080b;
-  box-shadow: 0 0 0 2px rgba(187, 8, 11, 0.2);
+  border-color: #c9080c;
+  box-shadow: 0 0 0 2px rgba(201, 8, 12, .18)
 }
 
-/* PLAYER GRID */
 .player-card {
-  background: #1e2023;
-  border-radius: 16px;
+  background: #202326;
+  border-radius: 7px;
   padding: 24px;
   margin-bottom: 28px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid #34373a
 }
 
 .player-title {
-  grid-column: 1 / -1;
-  font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 6px;
+  grid-column: 1/-1;
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase
 }
 
-/* COLOR GRID */
 .color-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin-top: 10px;
+  margin-top: 10px
 }
 
 .color-swatch {
   position: relative;
   height: 60px;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   letter-spacing: 1px;
   font-size: 14px;
   border: 2px solid transparent;
-  transition: 0.2s ease;
+  transition: .2s
 }
 
 .color-swatch span {
-  color: white;
+  color: #fff
 }
 
 .color-swatch input {
   position: absolute;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none
 }
 
 .color-swatch:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px)
 }
 
-.color-swatch input:checked + span {
-  font-weight: 700;
+.color-swatch input:checked+span {
+  font-weight: 700
 }
 
-.color-swatch input:checked + span::after {
+.color-swatch input:checked+span::after {
   content: "✓";
   position: absolute;
   right: 10px;
-  top: 8px;
-  font-size: 14px;
+  top: 8px
 }
 
-
-.color-swatch.disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.red {
+  background: #bb080b
 }
 
-/* ACTUAL COLORS */
-.red { background: #bb080b; }
-.blue { background: #1d4ed8; }
-.green { background: #15803d; }
-.yellow { background: #ca8a04; color: #111; }
-.black { background: #111; }
-.white { background: #e5e5e5; color: #111; }
-.purple { background: #7c3aed; }
-.orange { background: #ea580c; }
+.blue {
+  background: #1d4ed8
+}
 
-/* SUBMIT */
+.green {
+  background: #15803d
+}
+
+.yellow {
+  background: #ca8a04
+}
+
+.black {
+  background: #111
+}
+
+.white {
+  background: #e5e5e5
+}
+
+.purple {
+  background: #7c3aed
+}
+
+.orange {
+  background: #ea580c
+}
+
 .submit-btn {
   margin-top: 40px;
   width: 100%;
-  padding: 16px;
-  border-radius: 12px;
-  border: none;
-  background: #bb080b;
+  padding: 18px;
+  border-radius: 4px;
+  border: 0;
+  background: #c9080c;
   color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: .2s
 }
 
 .submit-btn:hover {
-  background: #a40609;
-  transform: translateY(-2px);
+  background: #ad070b;
+  transform: translateY(-2px)
 }
 
-.legal-page {
-  min-height: 100vh;
-  padding: 100px 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.legal-card {
-  max-width: 800px;
-  background: #1e2023;
-  padding: 40px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #F7F5F2;
-}
-
-.legal-card h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-.legal-card h3 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-
-.legal-date {
-  opacity: 0.6;
-  margin-bottom: 20px;
-}
-
-.waiver-box {
-  background: rgba(255,255,255,0.05);
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  font-size: 15px;
-}
-
-.waiver-link {
-  color: #9f5cff;
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-.waiver-link:hover {
-  opacity: 0.8;
-}
-
-.waiver-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-  font-size: 15px;
-  cursor: pointer;
-  max-width: 600px;
-}
-
-.waiver-checkbox input {
-  width: 18px;
-  height: 18px;
-  accent-color: #9f5cff; /* brand purple */
-  cursor: pointer;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .player-card {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .color-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .player-card {
-    grid-template-columns: 1fr;
-  }
-
-  .color-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
+.error-toast {
+  margin-bottom: 25px;
+  padding: 14px 16px;
+  border-left: 3px solid #c9080c;
+  background: rgba(201, 8, 12, .12);
+  color: #fff
 }
 
 .input-error {
-  border: 1px solid #ff4d4d;
+  border-color: #ff4d4d !important
 }
 
 .field-error {
   color: #ff4d4d;
   font-size: 13px;
-  margin-top: 6px;
+  margin-top: 6px
 }
 
-/* ======================================
-   TEAM REGISTRATION – MOBILE POLISH
-====================================== */
+@media(max-width:900px) {
+  .player-card {
+    grid-template-columns: repeat(2, 1fr)
+  }
 
-@media (max-width: 900px) {
+  .color-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
 
-  /* Stop vertical centering on phone */
+  .team-grid {
+    grid-template-columns: 1fr
+  }
+
   .form-page {
-    justify-content: flex-start;
-    padding: 60px 16px;
-  }
-
-  .form-header h1 {
-    font-size: 34px;
-  }
-
-  .form-header p {
-    font-size: 16px;
+    padding: 60px 16px
   }
 
   .form-card {
-    padding: 24px 18px;
-    border-radius: 14px;
+    padding: 24px 18px
   }
 
-  /* Stack 2-column team grid */
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Prevent iOS input zoom */
   .form-card input,
   .form-card select {
-    font-size: 16px;
+    font-size: 16px
+  }
+}
+
+@media(max-width:600px) {
+
+  .player-card,
+  .color-grid {
+    grid-template-columns: 1fr
   }
 
-  .submit-btn {
-    padding: 14px;
+  .form-page {
+    padding: 55px 15px 80px
   }
-
-  /* Legal page adjustments */
-  .legal-page {
-    padding: 60px 16px;
-  }
-
-  .legal-card {
-    padding: 24px 18px;
-  }
-
-  .legal-card h1 {
-    font-size: 30px;
-  }
-
 }

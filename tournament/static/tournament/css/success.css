@@ -1,126 +1,167 @@
 .success-hero {
-  min-height: calc(100vh - 80px);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #bb080b, #151a1f);
-  text-align: center;
+  min-height: calc(100vh - 80px);
+  padding: 90px 20px;
+  overflow: hidden;
+  background: #151a1f;
+  text-align: center
+}
+
+.success-hero::before {
+  content: "CONFIRMED";
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, .025);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(130px, 18vw, 280px);
+  line-height: .8;
+  white-space: nowrap
 }
 
 .success-card {
-  background: #ffffff;
-  padding: 60px 40px;
-  border-radius: 20px;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-  animation: fadeInUp 0.8s ease;
+  position: relative;
+  z-index: 1;
+  width: min(680px, 100%);
+  padding: 58px 52px;
+  border: 1px solid #dedad4;
+  border-radius: 10px;
+  background: #f7f5f2;
+  animation: successIn .55s ease
 }
 
-.success-icon {
-  font-size: 60px;
-  margin-bottom: 20px;
+.success-eyebrow {
+  display: block;
+  margin-bottom: 26px;
+  color: #c9080c;
+  font: 800 9px "Sofia Sans", sans-serif;
+  letter-spacing: 3px
+}
+
+.success-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  border: 1px solid #c9080c;
+  border-radius: 50%;
+  color: #c9080c;
+  font-size: 27px;
+  font-weight: 700
 }
 
 .success-card h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  margin-bottom: 15px;
+  margin: 0 0 18px;
   color: #151a1f;
-  letter-spacing: 2px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(48px, 6vw, 70px);
+  font-weight: 400;
+  line-height: .9
 }
 
 .success-sub {
-  font-family: 'Sofia Sans', sans-serif;
-  font-size: 16px;
-  margin-bottom: 30px;
-  color: #333;
-  line-height: 1.6;
+  max-width: 540px;
+  margin: 0 auto 32px;
+  color: #6f6d69;
+  font: 14px/1.7 "Sofia Sans", sans-serif
 }
 
 .success-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
   margin-bottom: 30px;
+  border: 1px solid #dedad4;
+  background: #dedad4
 }
 
 .success-pill {
-  background: #f4f4f4;
-  padding: 10px 18px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 17px 10px;
+  background: #fff;
+  color: #555;
+  font: 700 10px "Sofia Sans", sans-serif;
+  text-transform: uppercase
+}
+
+.success-pill span {
+  display: block;
+  margin-bottom: 4px;
+  color: #c9080c;
+  font: 400 18px "Bebas Neue", sans-serif
+}
+
+.success-note {
+  margin-bottom: 30px;
+  padding: 22px;
+  border-left: 3px solid #c9080c;
+  background: #efede9;
+  text-align: left
+}
+
+.success-note strong {
+  color: #151a1f;
+  font: 700 9px "Sofia Sans", sans-serif;
+  letter-spacing: 2px
+}
+
+.success-note p {
+  margin: 7px 0 0;
+  color: #777;
+  font: 12px/1.6 "Sofia Sans", sans-serif
 }
 
 .success-btn {
-  display: inline-block;
-  padding: 14px 30px;
-  border-radius: 50px;
-  background: #bb080b;
-  color: #ffffff;
+  display: inline-flex;
+  justify-content: center;
+  padding: 16px 30px;
+  border-radius: 4px;
+  background: #c9080c;
+  color: #fff;
+  font: 400 20px "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  transition: .2s
 }
 
 .success-btn:hover {
-  background: #151a1f;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  background: #ad070b
 }
 
-@keyframes fadeInUp {
+@keyframes successIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(18px)
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0)
   }
 }
 
-/* ======================================
-   SUCCESS PAGE – MOBILE
-====================================== */
-
-@media (max-width: 900px) {
-
+@media(max-width:650px) {
   .success-hero {
-    align-items: flex-start;     /* stop hard vertical centering */
-    padding: 60px 16px;
+    align-items: flex-start;
     min-height: auto;
+    padding: 55px 15px
   }
 
   .success-card {
-    padding: 32px 22px;
-    border-radius: 16px;
+    padding: 38px 22px
   }
 
-  .success-icon {
-    font-size: 44px;
-    margin-bottom: 16px;
-  }
-
-  .success-card h1 {
-    font-size: 32px;
-  }
-
-  .success-sub {
-    font-size: 15px;
-    margin-bottom: 24px;
-  }
-
-  .success-pill {
-    font-size: 13px;
-    padding: 8px 14px;
+  .success-details {
+    grid-template-columns: 1fr
   }
 
   .success-btn {
-    width: 100%;
-    padding: 14px;
+    width: 100%
   }
-
 }
