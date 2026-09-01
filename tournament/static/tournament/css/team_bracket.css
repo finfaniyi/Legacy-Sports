@@ -1,67 +1,294 @@
+/* LEGACY SPORTS — SHARED 2027 BRACKET */
 .bracket-page {
-  min-height: 70vh;
+  min-height: 100vh;
+  background: #f7f5f2;
+  color: #151a1f;
+  font-family: "Sofia Sans", sans-serif
+}
+
+.bracket-shell {
+  width: min(1250px, 90%);
+  margin: 0 auto
+}
+
+.bracket-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 105px 0 80px;
+  background: linear-gradient(90deg, #141618, #1d1f21 58%, #292b2d);
+  color: #fff
+}
+
+.bracket-hero:after {
+  content: "BRACKET";
+  position: absolute;
+  right: -25px;
+  bottom: -65px;
+  color: rgba(255, 255, 255, .025);
+  font: 400 clamp(150px, 20vw, 320px)/.8 "Bebas Neue", sans-serif
+}
+
+.bracket-hero .bracket-shell {
+  position: relative;
+  z-index: 1
+}
+
+.bracket-eyebrow {
+  margin: 0 0 14px;
+  color: #d10b10;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3.5px
+}
+
+.bracket-hero h1 {
+  margin: 0;
+  font: 400 clamp(76px, 9vw, 132px)/.85 "Bebas Neue", sans-serif
+}
+
+.bracket-hero p:last-child {
+  max-width: 620px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, .68);
+  font-size: 16px;
+  line-height: 1.65
+}
+
+.bracket-content {
+  padding: 75px 0 110px
+}
+
+.bracket-heading {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 70px;
+  align-items: end;
+  margin-bottom: 42px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d9d6d1
+}
+
+.bracket-heading span {
+  display: block;
+  margin-bottom: 9px;
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px
+}
+
+.bracket-heading h2 {
+  margin: 0;
+  font: 400 clamp(46px, 5vw, 68px)/.9 "Bebas Neue", sans-serif
+}
+
+.bracket-heading>p {
+  max-width: 500px;
+  margin: 0 0 4px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7
+}
+
+.bracket-scroll {
+  overflow-x: auto;
+  padding: 4px 2px 20px
+}
+
+.bracket-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(290px, 1fr));
+  gap: 34px;
+  min-width: 980px;
+  align-items: start
+}
+
+.bracket-round {
   display: flex;
+  flex-direction: column;
+  gap: 18px
+}
+
+.bracket-round-middle {
+  padding-top: 85px
+}
+
+.bracket-round-final {
+  padding-top: 170px
+}
+
+.round-title {
+  margin-bottom: 5px
+}
+
+.round-title span {
+  color: #c9080c;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px
+}
+
+.round-title h3 {
+  margin: 4px 0 0;
+  font: 400 27px "Bebas Neue", sans-serif
+}
+
+.match-card {
+  overflow: hidden;
+  border: 1px solid #dcd8d2;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(21, 26, 31, .035)
+}
+
+.match-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #191b1d;
+  color: rgba(255, 255, 255, .55);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px
+}
+
+.match-team {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 15px;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 60px;
+  min-height: 52px;
+  padding: 0 15px;
+  border-bottom: 1px solid #ece9e4;
+  font-size: 13px;
+  font-weight: 600
 }
 
-.bracket-page h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-  letter-spacing: 3px;
+.match-team:last-child {
+  border-bottom: 0
 }
 
-.bracket-wrapper{
-    display:flex;
-    justify-content:space-between;
-    gap:80px;
-    margin-top:60px;
+.match-team strong {
+  font: 400 24px "Bebas Neue", sans-serif
 }
 
-.round{
-    flex:1;
+.match-team.winner {
+  background: #f3f1ed
 }
 
-.round h3{
-    text-align:center;
-    margin-bottom:20px;
-    font-family:'Bebas Neue',sans-serif;
-    letter-spacing:1px;
+.match-team.winner span {
+  font-weight: 700
 }
 
-.match{
-    background:#1e2023;
-    color:#F7F5F2;
-    border-radius:14px;
-    padding:18px;
-    margin-bottom:30px;
-    border:1px solid rgba(255,255,255,.15);
-    min-height:90px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+.match-team.winner strong {
+  color: #c9080c
 }
 
-.championship{
-    border:2px solid #bb080b;
+.final-card {
+  border-color: #bdb8b1
 }
-/* ======================================
-   BRACKET PAGE – MOBILE
-====================================== */
 
-@media (max-width: 900px) {
+.champion-card {
+  position: relative;
+  margin-top: 18px;
+  padding: 25px;
+  border-radius: 9px;
+  background: #191b1d;
+  color: #fff
+}
 
-  .bracket-page {
-    align-items: flex-start;   /* stop forced vertical center */
-    padding: 60px 16px;
-    min-height: auto;
+.champion-card i {
+  margin-bottom: 22px;
+  color: #c9080c;
+  font-size: 20px
+}
+
+.champion-card span {
+  display: block;
+  color: #c9080c;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px
+}
+
+.champion-card h3 {
+  margin: 6px 0 0;
+  font: 400 34px "Bebas Neue", sans-serif
+}
+
+.bracket-empty {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 55px;
+  border: 1px solid #ddd9d3;
+  border-radius: 10px;
+  background: #fff
+}
+
+.bracket-empty-number {
+  position: absolute;
+  right: 35px;
+  bottom: -55px;
+  color: rgba(21, 26, 31, .035);
+  font: 400 250px "Bebas Neue", sans-serif
+}
+
+.bracket-empty p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px
+}
+
+.bracket-empty h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font: 400 clamp(55px, 7vw, 85px)/.9 "Bebas Neue", sans-serif
+}
+
+.empty-line {
+  position: relative;
+  z-index: 1;
+  width: 55px;
+  height: 2px;
+  margin: 22px 0;
+  background: #c9080c
+}
+
+.bracket-empty>span:last-child {
+  position: relative;
+  z-index: 1;
+  color: #777;
+  font-size: 14px
+}
+
+@media(max-width:850px) {
+  .bracket-heading {
+    grid-template-columns: 1fr;
+    gap: 20px
   }
 
-  .bracket-page h1 {
-    font-size: 36px;
-    letter-spacing: 2px;
+  .bracket-hero {
+    padding: 80px 0 58px
+  }
+}
+
+@media(max-width:600px) {
+  .bracket-hero h1 {
+    font-size: 70px
   }
 
+  .bracket-content {
+    padding: 55px 0 80px
+  }
+
+  .bracket-empty {
+    padding: 38px 28px;
+    min-height: 270px
+  }
 }

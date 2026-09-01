@@ -1,0 +1,108 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2027 Soccer Bracket | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/team_brackets.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="bracket-page">
+  <section class="bracket-hero">
+    <div class="bracket-shell">
+      <p class="bracket-eyebrow">2027 LEGACY SPORTS • MAY</p>
+      <h1>THE BRACKET</h1>
+      <p>Follow the road to the 2027 Legacy Sports Soccer championship.</p>
+    </div>
+  </section>
+
+  <section class="bracket-content">
+    <div class="bracket-shell">
+      <div class="bracket-heading">
+        <div>
+          <span>TOURNAMENT</span>
+          <h2>CHAMPIONSHIP<br>PATH.</h2>
+        </div>
+        <p>Matchups and results will update here as the tournament progresses.</p>
+      </div>
+
+      {% if bracket_ready %}
+      <div class="bracket-scroll">
+        <div class="bracket-board">
+
+          <section class="bracket-round">
+            <div class="round-title"><span>ROUND 01</span><h3>Quarterfinals</h3></div>
+            {% for match in quarterfinals %}
+            <article class="match-card">
+              <div class="match-meta"><span>GAME {{ forloop.counter }}</span><span>{{ match.status|default:"UPCOMING" }}</span></div>
+              <div class="match-team {% if match.winner_id == match.team1.id %}winner{% endif %}">
+                <span>{{ match.team1.team_name|default:"TBD" }}</span>
+                <strong>{{ match.team1_score|default:"—" }}</strong>
+              </div>
+              <div class="match-team {% if match.winner_id == match.team2.id %}winner{% endif %}">
+                <span>{{ match.team2.team_name|default:"TBD" }}</span>
+                <strong>{{ match.team2_score|default:"—" }}</strong>
+              </div>
+            </article>
+            {% endfor %}
+          </section>
+
+          <section class="bracket-round bracket-round-middle">
+            <div class="round-title"><span>ROUND 02</span><h3>Semifinals</h3></div>
+            {% for match in semifinals %}
+            <article class="match-card">
+              <div class="match-meta"><span>SEMIFINAL {{ forloop.counter }}</span><span>{{ match.status|default:"UPCOMING" }}</span></div>
+              <div class="match-team {% if match.winner_id == match.team1.id %}winner{% endif %}">
+                <span>{{ match.team1.team_name|default:"TBD" }}</span>
+                <strong>{{ match.team1_score|default:"—" }}</strong>
+              </div>
+              <div class="match-team {% if match.winner_id == match.team2.id %}winner{% endif %}">
+                <span>{{ match.team2.team_name|default:"TBD" }}</span>
+                <strong>{{ match.team2_score|default:"—" }}</strong>
+              </div>
+            </article>
+            {% endfor %}
+          </section>
+
+          <section class="bracket-round bracket-round-final">
+            <div class="round-title"><span>FINAL ROUND</span><h3>Championship</h3></div>
+            {% for match in finals %}
+            <article class="match-card final-card">
+              <div class="match-meta"><span>FINAL</span><span>{{ match.status|default:"UPCOMING" }}</span></div>
+              <div class="match-team {% if match.winner_id == match.team1.id %}winner{% endif %}">
+                <span>{{ match.team1.team_name|default:"TBD" }}</span>
+                <strong>{{ match.team1_score|default:"—" }}</strong>
+              </div>
+              <div class="match-team {% if match.winner_id == match.team2.id %}winner{% endif %}">
+                <span>{{ match.team2.team_name|default:"TBD" }}</span>
+                <strong>{{ match.team2_score|default:"—" }}</strong>
+              </div>
+            </article>
+            {% endfor %}
+
+            {% if champion %}
+            <div class="champion-card">
+              <i class="fa-solid fa-trophy"></i>
+              <span>2027 CHAMPION</span>
+              <h3>{{ champion.team_name }}</h3>
+            </div>
+            {% endif %}
+          </section>
+
+        </div>
+      </div>
+
+      {% else %}
+      <div class="bracket-empty">
+        <span class="bracket-empty-number">00</span>
+        <p>BRACKET PENDING</p>
+        <h2>COMING SOON.</h2>
+        <div class="empty-line"></div>
+        <span>The official bracket will appear once tournament seeding is complete.</span>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</main>
+{% endblock %}
