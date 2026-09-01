@@ -1,0 +1,88 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2027 Basketball Standings | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/standings.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="standings-page">
+
+  <section class="standings-hero">
+    <div class="standings-shell">
+      <p class="standings-eyebrow">2027 LEGACY SPORTS • FEBRUARY</p>
+      <h1>STANDINGS</h1>
+      <p>Track the 2027 Legacy Sports Basketball Tournament as teams compete for position.</p>
+    </div>
+  </section>
+
+  <section class="standings-content">
+    <div class="standings-shell">
+
+      <div class="standings-heading">
+        <div>
+          <span>TOURNAMENT TABLE</span>
+          <h2>WHO'S ON TOP.</h2>
+        </div>
+        <p>Standings will update throughout tournament day as official results are recorded.</p>
+      </div>
+
+      {% if standings %}
+      <div class="standings-table-wrap">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th>POS</th>
+              <th>TEAM</th>
+              <th>GP</th>
+              <th>W</th>
+              <th>L</th>
+              <th>PTS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for standing in standings %}
+            <tr>
+              <td class="position">
+                <span>{{ forloop.counter|stringformat:"02d" }}</span>
+              </td>
+              <td class="team-name">
+                <span class="team-dot"
+                      style="background-color: {{ standing.team.team_color|default:'#c9080c'|lower }};">
+                </span>
+                <strong>{{ standing.team.team_name }}</strong>
+              </td>
+              <td>{{ standing.games_played|default:"0" }}</td>
+              <td>{{ standing.wins|default:"0" }}</td>
+              <td>{{ standing.losses|default:"0" }}</td>
+              <td class="points">{{ standing.points|default:"0" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="standings-key">
+        <span><strong>GP</strong> Games Played</span>
+        <span><strong>W</strong> Wins</span>
+        <span><strong>L</strong> Losses</span>
+        <span><strong>PTS</strong> Points</span>
+      </div>
+
+      {% else %}
+      <div class="standings-empty">
+        <span class="standings-empty-number">00</span>
+        <p>STANDINGS PENDING</p>
+        <h2>THE TABLE STARTS<br>ON GAME DAY.</h2>
+        <div class="empty-line"></div>
+        <span>Official standings will appear here once tournament play begins.</span>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}

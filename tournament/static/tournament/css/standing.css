@@ -1,46 +1,295 @@
-.standings-container{
-    max-width:1200px;
-    margin:auto;
-    padding:60px 40px 120px;
+/* ==========================================
+   LEGACY SPORTS — SHARED 2027 STANDINGS
+========================================== */
+
+.standings-page {
+  min-height: 100vh;
+  background: #f7f5f2;
+  color: #151a1f;
+  font-family: "Sofia Sans", sans-serif;
 }
 
-.standings-title{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:64px;
-    letter-spacing:2px;
-    color:#111;
-    text-align:center;
-    margin-bottom:50px;
+.standings-shell {
+  width: min(1250px, 90%);
+  margin: 0 auto;
 }
 
-.standings-table{
-    width:100%;
-    border-collapse:collapse;
-    background:#111;
-    border-radius:20px;
-    overflow:hidden;
+/* HERO */
+.standings-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 105px 0 80px;
+  background: linear-gradient(90deg, #141618 0%, #1d1f21 58%, #292b2d 100%);
+  color: #fff;
 }
 
-.standings-table thead{
-    background:#bb080b;
+.standings-hero::after {
+  content: "STANDINGS";
+  position: absolute;
+  right: -25px;
+  bottom: -65px;
+  color: rgba(255,255,255,.025);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(140px, 18vw, 290px);
+  line-height: .8;
+  white-space: nowrap;
 }
 
-.standings-table th{
-    padding:20px;
-    color:white;
-    text-align:center;
+.standings-hero .standings-shell {
+  position: relative;
+  z-index: 1;
 }
 
-.standings-table td{
-    padding:20px;
-    color:white;
-    text-align:center;
+.standings-eyebrow {
+  margin: 0 0 14px;
+  color: #d10b10;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
 }
 
-.standings-table tr:hover{
-    background:#202020;
+.standings-hero h1 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(76px, 9vw, 132px);
+  font-weight: 400;
+  line-height: .85;
 }
 
-.standings-table tbody tr{
-    background:#111;
+.standings-hero p:last-child {
+  max-width: 620px;
+  margin: 26px 0 0;
+  color: rgba(255,255,255,.68);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* CONTENT */
+.standings-content {
+  padding: 75px 0 110px;
+}
+
+.standings-heading {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 70px;
+  align-items: end;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d9d6d1;
+}
+
+.standings-heading span {
+  display: block;
+  margin-bottom: 9px;
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.standings-heading h2 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(46px, 5vw, 68px);
+  font-weight: 400;
+  line-height: .9;
+}
+
+.standings-heading > p {
+  max-width: 500px;
+  margin: 0 0 4px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* TABLE */
+.standings-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #ddd9d3;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.standings-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.standings-table thead {
+  background: #191b1d;
+  color: #fff;
+}
+
+.standings-table th {
+  padding: 17px 20px;
+  color: rgba(255,255,255,.58);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-align: center;
+}
+
+.standings-table th:nth-child(2) {
+  text-align: left;
+}
+
+.standings-table td {
+  padding: 20px;
+  border-bottom: 1px solid #ece9e4;
+  color: #696969;
+  font-size: 13px;
+  text-align: center;
+}
+
+.standings-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.standings-table tbody tr {
+  transition: background .18s ease;
+}
+
+.standings-table tbody tr:hover {
+  background: #faf9f7;
+}
+
+.position span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #f1efeb;
+  color: #151a1f;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 17px;
+}
+
+.team-name {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-align: left !important;
+}
+
+.team-name strong {
+  color: #151a1f;
+  font-size: 14px;
+}
+
+.team-dot {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #d8d4ce;
+}
+
+.points {
+  color: #c9080c !important;
+  font-size: 17px !important;
+  font-weight: 800;
+}
+
+/* KEY */
+.standings-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 18px;
+  color: #8a8782;
+  font-size: 10px;
+}
+
+.standings-key strong {
+  margin-right: 4px;
+  color: #151a1f;
+}
+
+/* EMPTY STATE */
+.standings-empty {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  padding: 55px;
+  border: 1px solid #ddd9d3;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.standings-empty-number {
+  position: absolute;
+  right: 35px;
+  bottom: -55px;
+  color: rgba(21,26,31,.035);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 250px;
+  line-height: 1;
+}
+
+.standings-empty p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 8px;
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.standings-empty h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(50px, 6vw, 78px);
+  font-weight: 400;
+  line-height: .9;
+}
+
+.empty-line {
+  position: relative;
+  z-index: 1;
+  width: 55px;
+  height: 2px;
+  margin: 22px 0;
+  background: #c9080c;
+}
+
+.standings-empty > span:last-child {
+  position: relative;
+  z-index: 1;
+  color: #777;
+  font-size: 14px;
+}
+
+@media (max-width: 850px) {
+  .standings-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .standings-hero {
+    padding: 80px 0 58px;
+  }
+}
+
+@media (max-width: 600px) {
+  .standings-hero h1 {
+    font-size: 68px;
+  }
+
+  .standings-content {
+    padding: 55px 0 80px;
+  }
+
+  .standings-empty {
+    min-height: 290px;
+    padding: 38px 28px;
+  }
 }
