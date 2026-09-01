@@ -1,0 +1,97 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2027 Volleyball Registration | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/registration_display.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="registration-page">
+
+  <section class="registration-hero">
+    <div class="registration-shell">
+      <p class="registration-eyebrow">2027 LEGACY SPORTS • JULY</p>
+      <h1>REGISTRATION</h1>
+      <p>Register your team for the 2027 Legacy Sports Volleyball Tournament.</p>
+    </div>
+  </section>
+
+  <section class="registration-content">
+    <div class="registration-shell">
+
+      {% if now < registration_open %}
+      <div class="registration-state">
+        <span class="state-label">REGISTRATION STATUS</span>
+        <h2>COMING SOON.</h2>
+        <p>
+          Team registration for the 2027 Volleyball Tournament has not opened yet.
+          Full registration dates and event details will be announced before launch.
+        </p>
+        <div class="state-meta">
+          <div><span>EVENT</span><strong>July 2027</strong></div>
+          <div><span>TEAM FORMAT</span><strong>6–8 Players</strong></div>
+          <div><span>LOCATION</span><strong>Mississauga, ON</strong></div>
+        </div>
+      </div>
+
+      {% elif now > registration_close or full %}
+      <div class="registration-state">
+        <span class="state-label">REGISTRATION STATUS</span>
+        <h2>REGISTRATION CLOSED.</h2>
+
+        {% if full %}
+        <p>All available team spots for the 2027 Legacy Sports Volleyball Tournament have been filled.</p>
+        {% else %}
+        <p>Registration for the 2027 Legacy Sports Volleyball Tournament is now closed.</p>
+        {% endif %}
+
+        <a href="{% url 'volleyball_2027_teams' %}" class="registration-btn secondary-btn">
+          VIEW REGISTERED TEAMS
+        </a>
+      </div>
+
+      {% else %}
+      <div class="registration-open-grid">
+        <div class="registration-intro">
+          <span class="state-label">REGISTRATION IS OPEN</span>
+          <h2>BUILD YOUR TEAM.<br>ENTER THE TOURNAMENT.</h2>
+          <p>
+            Secure your team's place in the 2027 Legacy Sports Volleyball Tournament.
+            Spots are limited and registration closes once all available team slots are filled.
+          </p>
+        </div>
+
+        <aside class="registration-panel">
+          <span class="panel-kicker">AVAILABLE SPOTS</span>
+          <strong class="spots-number">{{ spots_left }}</strong>
+          <span class="spots-label">TEAM SPOTS REMAINING</span>
+
+          <div class="panel-line"></div>
+
+          <div class="panel-detail">
+            <span>EVENT</span>
+            <strong>July 2027</strong>
+          </div>
+          <div class="panel-detail">
+            <span>FORMAT</span>
+            <strong>6–8 Players</strong>
+          </div>
+          <div class="panel-detail">
+            <span>VENUE</span>
+            <strong>To Be Announced</strong>
+          </div>
+
+          <a href="{% url 'registration_team' %}" class="registration-btn">
+            REGISTER YOUR TEAM
+          </a>
+        </aside>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}
