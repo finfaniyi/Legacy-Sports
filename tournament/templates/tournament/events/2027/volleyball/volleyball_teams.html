@@ -1,0 +1,41 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}Teams | Legacy Sports{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/teams.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="teams-page">
+
+  <div class="teams-header">
+    <h1>The Teams</h1>
+    <p>2026 LS Volleyball Championship Contenders</p>
+  </div>
+
+  <div class="teams-grid">
+
+    {% for team in teams %}
+    <div class="team-card">
+
+      <div class="team-color"
+           style="background-color: {{ team.team_color|lower }};">
+      </div>
+
+      <h2 style="color: {{ team.team_color|lower }};">
+        {{ team.team_name }}
+      </h2>
+
+      <p>{{ team.player_count }} Players</p>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,110 +1,140 @@
 {% extends "tournament/base.html" %}
 {% load static %}
 
-{% block title %}Tournament Info | Legacy Sports Canada{% endblock %}
+{% block title %}2027 Volleyball Tournament Info | Legacy Sports Canada{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'tournament/css/tourney-info.css' %}">
 {% endblock %}
 
 {% block content %}
+<main class="tourney-page">
 
-<main class="tourney-container">
+  <section class="tourney-hero" data-sport="VOLLEYBALL">
+    <div class="tourney-shell">
+      <p class="tourney-eyebrow">2027 LEGACY SPORTS • JULY</p>
+      <h1>VOLLEYBALL<br>TOURNAMENT</h1>
+      <p class="tourney-hero-copy">Volleyball returns in 2027. We are using the successful 2026 tournament as a starting point while preparing the next Legacy volleyball experience.</p>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="page-hero">
-        <h1>Legacy Sports Volleyball Tournament Info</h1>
-        <p class="page-kicker">Everything teams need to know before game day.</p>
-        
-    </section>
+  <section class="tourney-overview">
+    <div class="tourney-shell">
 
-    <!-- QUICK INFO STRIP -->
+      <div class="event-status">
+        <span class="status-dot"></span>
+        2027 EVENT • DETAILS IN DEVELOPMENT
+      </div>
 
-    <section class="tourney-info-strip">
+      <section class="tourney-info-strip">
         <div class="info-box">
-            <h3>Prize</h3>
-            <p>$400, Trophy, Medals for winning team</p>
+          <span class="info-label">01 • DATE</span>
+          <h3>JULY 2027</h3>
+          <p>Final date TBA</p>
         </div>
-        <div class="info-box">
-            <h3>Teams</h3>
-            <p>6–8 Players</p>
-        </div>
-        <div class="info-box">
-            <h3>Entry Fee</h3>
-            <p>$20 Per Person</p>
-        </div>
-        <div class="info-box">
-            <h3>Location</h3>
-            <p>
-                <a href="https://maps.app.goo.gl/TEtBypToYG2DcTmf7" target="_blank">
-                    ACE Active Zone<br>
-                    Mississauga, ON
-                </a>
-            </p>
-        </div>
-        <div class="info-box">
-            <h3>Date</h3>
-            <p>June 6</p>
-            <h3>Time</h3>
-            <p>10:30AM - 3:00PM</p>
-        </div>
-    </section>
-    <!-- FORMAT -->
 
-    <section class="tourney-section">
-        <h2>Tournament Format</h2>
+        <div class="info-box">
+          <span class="info-label">02 • FORMAT</span>
+          <h3>6–8 PLAYERS</h3>
+          <p>Working format</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">03 • ENTRY</span>
+          <h3>COMING SOON</h3>
+          <p>Registration details TBA</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">04 • LOCATION</span>
+          <h3>MISSISSAUGA, ON</h3>
+          <p>Venue TBA</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">05 • PRIZE</span>
+          <h3>COMING SOON</h3>
+          <p>Prize package TBA</p>
+        </div>
+      </section>
+
+      <section class="tourney-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">HOW IT WORKS</span>
+            <h2>TOURNAMENT FORMAT.</h2>
+          </div>
+          <p>We are preparing the 2027 tournament system now. Final structure, schedules and team requirements will be updated here as planning is confirmed.</p>
+        </div>
+
         <div class="format-grid">
-            <div>
-                <h3>Exhibition Round</h3>
-                <p>
-                    All teams play 2 exhibition games to determine their seeding for elimination rounds.
-                </p>
-            </div>
-            <div>
-                <h3>Bracket</h3>
-                <p>
-                    Teams are seeded 1–8 and placed into a single-elimination bracket.
-                </p>
-            </div>
-            <div>
-                <h3>Match Format</h3>
-                <ul class="match-format">
-                    <li>Best of 3 sets (No wins by two)</li>
-                    <li>Sets 1–2: First to 15</li>
-                    <li>Set 3: First to 11</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Team Rules</h3>
-                <p>
-                    Each team must have a mininimum 6 Players and 2 optional subs. There must be at least 2 female
-                    players on each team.
-                </p>
-            </div>
+          <article class="format-card">
+            <span class="format-number">01</span>
+            <h3>Exhibition Round</h3>
+            <p>Working format: exhibition games establish seeding before teams move into elimination play.</p>
+          </article>
+          <article class="format-card">
+            <span class="format-number">02</span>
+            <h3>Bracket</h3>
+            <p>Working format: teams advance into a seeded single-elimination bracket.</p>
+          </article>
+          <article class="format-card">
+            <span class="format-number">03</span>
+            <h3>Match Format</h3>
+            <ul><li>Best of 3 sets</li><li>Sets 1–2: first to 15</li><li>Set 3: first to 11</li></ul>
+          </article>
+          <article class="format-card">
+            <span class="format-number">04</span>
+            <h3>Team Rules</h3>
+            <p>Working roster size is 6–8 players. Final co-ed roster and on-court requirements will be confirmed for 2027.</p>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- RULES -->
-    <section class="tourney-section">
-        <h2>Volleyball Rules</h2>
-        <ul class="rules-list">
-            <li>Teams must have a minimum of 6 players 2 of which are females. 1 of the females must always be on the court.</li>
-            <li>A player may not block, spike or double fist to return a serve.</li>
-            <li>The serve is allowed to contact the net. (e.g. a serve contacting the top of the net and goes over the net; it is still in play).</li>
-            <li>A player is allowed to volley a serve and is allowed to volley any ball over the net. When volleying, you do not have to be square to the path of the ball.</li>
-            <li>Open hand tips and directs are allowed.</li>
-            <li>If a player blocking touches the ball on the block, it is not counted as the first touch. The blocker may play the ball off his/her own block. These two contacts are counted as one touch.</li>
-            <li>Players may play the ball off any part of their body. Please be careful should you decide to kick the ball.</li>
-            <li>Players may not touch the net at any time during play.</li>
-            <li>A ball hitting a boundary line is in.</li>
-            <li>It is illegal to catch, hold or throw the ball</li>
+      <section class="tourney-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">GAME PLAY</span>
+            <h2>VOLLEYBALL RULES.</h2>
+          </div>
+          <p>The final Legacy Sports rulebook will be published before registration opens.</p>
+        </div>
+
+        <div class="rules-panel">
+          <div class="rules-header">
+            <span>WORKING RULEBOOK</span>
+            <p>Subject to final 2027 confirmation.</p>
+          </div>
+
+          <ol class="rules-list">
+            <li>The previous format required a minimum of 6 players, including 2 female players with at least 1 female player on court.</li>
+            <li>A player may not block, spike or double-fist a serve return.</li>
+            <li>A serve may contact the net and remain in play if it crosses over.</li>
+            <li>Players may volley a serve and volley the ball over the net without being square to its path.</li>
+            <li>Open-hand tips and directs are allowed.</li>
+            <li>A block touch does not count as the team's first contact, and the blocker may play the ball again.</li>
+            <li>The ball may be played using any part of the body.</li>
+            <li>Players may not touch the net during play.</li>
+            <li>A ball touching a boundary line is in.</li>
+            <li>Catching, holding or throwing the ball is illegal.</li>
             <li>After the serve, front-line players may switch positions at the net.</li>
-            <li>Rotate positions clockwise after team wins serve back.</li>
-            <li>Everybody but the server can be substituted when in possession of the ball. No subs without possession except for injuries.</li>
-            <li>Referee decisions are final</li>
-        </ul>
-    </section>
-</main>
+            <li>Teams rotate clockwise after winning the serve back.</li>
+            <li>Substitution rules will be confirmed in the final 2027 rulebook.</li>
+            <li>Referee decisions are final.</li>
+          </ol>
+        </div>
+      </section>
 
+      <div class="tourney-notice">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <strong>DETAILS ARE TENTATIVE.</strong>
+          <p>July is the planned event month. The 2026 tournament format is being used as a working foundation, but the final 2027 date, venue, price, prize and rules are not confirmed yet.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
 {% endblock %}

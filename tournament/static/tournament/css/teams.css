@@ -1,67 +1,274 @@
-.teams-container{
-    max-width:1400px;
-    margin:auto;
-    padding:120px 40px;
+.teams-page {
+    min-height: 100vh;
+    background: #f7f5f2;
+    color: #151a1f;
+    font-family: "Sofia Sans", sans-serif
 }
 
-.teams-title{
-    font-size:4rem;
-    color:white;
-    text-align:center;
-    margin-bottom:60px;
+.teams-shell {
+    width: min(1250px, 90%);
+    margin: 0 auto
 }
 
-.teams-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
+.teams-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 105px 0 80px;
+    background: linear-gradient(90deg, #141618 0%, #1d1f21 58%, #292b2d 100%);
+    color: #fff
 }
 
-.team-card{
-    background:#111;
-    border-radius:18px;
-    padding:30px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.08);
+.teams-hero:after {
+    content: "TEAMS";
+    position: absolute;
+    right: -25px;
+    bottom: -65px;
+    color: rgba(255, 255, 255, .025);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(170px, 22vw, 340px);
+    line-height: .8;
+    white-space: nowrap
 }
 
-.team-color{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    margin:auto;
-    margin-bottom:20px;
+.teams-hero .teams-shell {
+    position: relative;
+    z-index: 1
 }
 
-.team-card h2{
-    font-size:2rem;
-    margin-bottom:10px;
+.teams-eyebrow {
+    margin: 0 0 14px;
+    color: #d10b10;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3.5px
 }
 
-.teams-page{
-    max-width:1400px;
-    margin:auto;
-    padding:60px 40px 120px;
+.teams-hero h1 {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(76px, 9vw, 132px);
+    font-weight: 400;
+    line-height: .85
 }
 
-.teams-header{
-    text-align:center;
-    margin-bottom:60px;
+.teams-intro {
+    max-width: 630px;
+    margin: 26px 0 0;
+    color: rgba(255, 255, 255, .68);
+    font-size: 16px;
+    line-height: 1.65
 }
 
-.teams-header h1{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:64px;
-    letter-spacing:2px;
+.teams-content {
+    padding: 75px 0 110px
 }
 
-.teams-header p{
-    font-size:18px;
-    opacity:.7;
+.teams-section-heading {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 70px;
+    align-items: end;
+    margin-bottom: 36px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #d9d6d1
 }
 
-.team-card p{
-    color:white;
-    opacity:.8;
-    font-size:1rem;
+.teams-section-heading span {
+    display: block;
+    margin-bottom: 9px;
+    color: #c9080c;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px
+}
+
+.teams-section-heading h2 {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(46px, 5vw, 68px);
+    font-weight: 400;
+    line-height: .9
+}
+
+.teams-section-heading>p {
+    max-width: 500px;
+    margin: 0 0 4px;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7
+}
+
+.teams-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px
+}
+
+.team-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #ddd9d3;
+    border-radius: 10px;
+    background: #fff;
+    transition: .2s ease
+}
+
+.team-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(21, 26, 31, .07)
+}
+
+.team-card-top {
+    position: relative;
+    height: 145px;
+    overflow: hidden;
+    background: #1a1c1e
+}
+
+.team-card-top:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0 62%, rgba(255, 255, 255, .035) 62% 100%)
+}
+
+.team-number {
+    position: absolute;
+    right: 18px;
+    bottom: -16px;
+    z-index: 1;
+    color: rgba(255, 255, 255, .08);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 92px
+}
+
+.team-color {
+    position: absolute;
+    left: 28px;
+    bottom: 27px;
+    z-index: 2;
+    width: 52px;
+    height: 52px;
+    border: 4px solid rgba(255, 255, 255, .9);
+    border-radius: 50%;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .2)
+}
+
+.team-card-body {
+    padding: 25px 28px 28px
+}
+
+.team-label {
+    margin: 0 0 7px;
+    color: #c9080c;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px
+}
+
+.team-card h3 {
+    margin: 0;
+    color: #151a1f;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 31px;
+    font-weight: 400
+}
+
+.team-meta {
+    margin-top: 23px;
+    padding-top: 16px;
+    border-top: 1px solid #ece9e4
+}
+
+.team-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #777;
+    font-size: 12px
+}
+
+.team-meta i {
+    color: #c9080c
+}
+
+.teams-empty {
+    position: relative;
+    overflow: hidden;
+    min-height: 290px;
+    padding: 55px;
+    border: 1px solid #ddd9d3;
+    border-radius: 10px;
+    background: #fff
+}
+
+.teams-empty-number {
+    position: absolute;
+    right: 35px;
+    bottom: -50px;
+    color: rgba(21, 26, 31, .035);
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 240px
+}
+
+.teams-empty-kicker {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 8px;
+    color: #c9080c;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px
+}
+
+.teams-empty h2 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 400
+}
+
+.teams-empty>p:last-child {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: 18px 0 0;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.65
+}
+
+@media(max-width:1000px) {
+    .teams-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .teams-section-heading {
+        grid-template-columns: 1fr;
+        gap: 20px
+    }
+}
+
+@media(max-width:650px) {
+    .teams-hero {
+        padding: 80px 0 58px
+    }
+
+    .teams-hero h1 {
+        font-size: 72px
+    }
+
+    .teams-content {
+        padding: 55px 0 80px
+    }
+
+    .teams-grid {
+        grid-template-columns: 1fr
+    }
+
+    .teams-empty {
+        padding: 38px 28px
+    }
 }
