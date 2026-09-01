@@ -80,27 +80,27 @@ def home(request):
     })
 
 def events(request):
-    return render(request, "tournament/events.html")
+    return render(request, "tournament/events/events.html")
 
 def support(request):
-    return render(request, "tournament/support.html")
+    return render(request, "tournament/about/support.html")
 
 def about(request):
-    return render(request, "tournament/about.html")
+    return render(request, "tournament/about/about.html")
 
 def history(request):
-    return render(request, "tournament/history.html")
+    return render(request, "tournament/history/history.html")
 
 def history_2024_basketball(request):
     return render(
         request,
-        "tournament/history_2024_basketball.html"
+        "tournament/history/history_2024_basketball.html"
     )
 
 def history_2026_volleyball(request):
     return render(
         request,
-        "tournament/history_2026_volleyball.html"
+        "tournament/history/history_2026_volleyball.html"
     )
 
 def standings(request):
@@ -196,13 +196,66 @@ def media(request):
     })
 
 def tourney_info(request):
-    return render(request, "tournament/tourney-info.html")
+    return render(request, "tournament/events/2026/tourney-info.html")
 
 def contact_us(request):
-    return render(request, "tournament/contact_us.html")
+    return render(request, "tournament/about/contact_us.html")
 
 def team_brackets(request):
     return render(request, "tournament/team_brackets.html")
+
+# =========================
+# 2027 EVENT PAGES
+# =========================
+
+# Basketball
+def basketball_2027_info(request):
+    return render(request, "tournament/events/2027/basketball/basketball_tourney-info.html")
+
+def basketball_2027_teams(request):
+    return render(request, "tournament/events/2027/basketball/basketball_teams.html")
+
+def basketball_2027_bracket(request):
+    return render(request, "tournament/events/2027/basketball/basketball_team_brackets.html")
+
+def basketball_2027_standings(request):
+    return render(request, "tournament/events/2027/basketball/basketball_standings.html")
+
+def basketball_2027_live_scores(request):
+    return render(request, "tournament/events/2027/basketball/basketball_live_scores.html")
+
+# Soccer
+def soccer_2027_info(request):
+    return render(request, "tournament/events/2027/soccer/soccer_tourney-info.html")
+
+def soccer_2027_teams(request):
+    return render(request, "tournament/events/2027/soccer/soccer_teams.html")
+
+def soccer_2027_bracket(request):
+    return render(request, "tournament/events/2027/soccer/soccer_team_brackets.html")
+
+def soccer_2027_standings(request):
+    return render(request, "tournament/events/2027/soccer/soccer_standings.html")
+
+def soccer_2027_live_scores(request):
+    return render(request, "tournament/events/2027/soccer/soccer_live_scores.html")
+
+# Volleyball
+def volleyball_2027_info(request):
+    return render(request, "tournament/events/2027/volleyball/volleyball_tourney-info.html")
+
+def volleyball_2027_teams(request):
+    return render(request, "tournament/events/2027/volleyball/volleyball_teams.html")
+
+def volleyball_2027_bracket(request):
+    return render(request, "tournament/events/2027/volleyball/volleyball_team_brackets.html")
+
+def volleyball_2027_standings(request):
+    return render(request, "tournament/events/2027/volleyball/volleyball_standings.html")
+
+def volleyball_2027_live_scores(request):
+    return render(request, "tournament/events/2027/volleyball/volleyball_live_scores.html")
+
 
 # =========================
 # VOLUNTEER
@@ -234,7 +287,7 @@ def involvement(request):
             missing_fields.append("Role")
 
         if missing_fields:
-            return render(request, "tournament/involvement.html", {
+            return render(request, "tournament/involved/involvement.html", {
                 "error": "Please fill out: " + ", ".join(missing_fields)
             })
 
@@ -328,7 +381,7 @@ def involvement(request):
         messages.success(request, "Application submitted successfully!")
         return redirect("involvement")
 
-    return render(request, "tournament/involvement.html")
+    return render(request, "tournament/involved/involvement.html")
 
 # =========================
 # REGISTRATION DISPLAY
@@ -865,5 +918,5 @@ def edit_free_agent(request, token):
     })
     
 def meet_the_team(request):
-    return render(request, "tournament/meet_the_team.html")
+    return render(request, "tournament/about/meet_the_team.html")
 
