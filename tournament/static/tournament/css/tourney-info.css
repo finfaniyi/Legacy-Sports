@@ -1,254 +1,371 @@
-.tourney-container{
-max-width:1100px;
-margin:auto;
-padding-top:90px;
-font-family:'Sofia Sans',sans-serif;
-color:#F7F5F2;
+/* ==========================================
+   LEGACY SPORTS — 2027 TOURNAMENT INFO
+   Shared: Basketball / Soccer / Volleyball
+========================================== */
+
+.tourney-page {
+  background: #f7f5f2;
+  color: #151a1f;
+  min-height: 100vh;
+  font-family: "Sofia Sans", sans-serif;
 }
 
+.tourney-shell {
+  width: min(1250px, 90%);
+  margin: 0 auto;
+}
 
 /* HERO */
-
-.tourney-hero{
-text-align:center;
-margin-bottom:50px;
+.tourney-hero {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 90px 0 70px;
+  color: #fff;
+  background: linear-gradient(90deg, #141618 0%, #1c1e20 58%, #292b2d 100%);
 }
 
-.tourney-hero h1{
-font-family: 'Bebas Neue', sans-serif;
-letter-spacing: 2px;
-font-weight: 700;
-font-size: 54px;
-line-height: 1.05;
-margin-bottom: 10px;
-color:#151a1f;
+.tourney-hero::after {
+  content: attr(data-sport);
+  position: absolute;
+  right: -30px;
+  bottom: -62px;
+  color: rgba(255, 255, 255, 0.025);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(150px, 19vw, 320px);
+  line-height: 0.8;
+  white-space: nowrap;
 }
 
-.tourney-hero p{
-margin-top:10px;
-color:#151a1f;
-font-family: 'Sofia Sans', sans-serif;
-opacity: 0.85;
-font-size: 17px;
+.tourney-hero .tourney-shell {
+  position: relative;
+  z-index: 1;
 }
 
-/* INFO STRIP */
-
-.tourney-info-strip{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:22px;
-margin-bottom:70px;
+.tourney-eyebrow {
+  margin: 0 0 14px;
+  color: #d10b10;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
 }
 
-.info-box{
-background:#bb080b;
-padding:18px 22px;
-text-align:center;
-font-family:'Bebas Neue',sans-serif;
-font-weight:700;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.18);
-color:#F7F5F2;
-display:flex;
-flex-direction:column;
-justify-content:flex-start;
-align-items:center;
-min-height:95px;
-transition:transform .2s ease, box-shadow .2s ease;
+.tourney-hero h1 {
+  max-width: 950px;
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(70px, 9vw, 135px);
+  font-weight: 400;
+  line-height: 0.84;
+  letter-spacing: 1px;
 }
 
-.info-box:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(0,0,0,.25);
+.tourney-hero-copy {
+  max-width: 660px;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  line-height: 1.65;
 }
 
-.info-box h3{
-font-family:'Bebas Neue',sans-serif;
-letter-spacing:1px;
-margin-bottom:10px;
-font-size:20px;
+/* BODY */
+.tourney-overview {
+  padding: 70px 0 100px;
 }
 
-.info-box a {
-  display:inline-block;
-  line-height:1.35;
-  color: white;
-  text-decoration: none;
+.event-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  color: #777;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
-.info-box a:hover {
-  color: #ddd;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #c9080c;
+  box-shadow: 0 0 0 5px rgba(201, 8, 12, 0.1);
 }
 
-.info-box p{
-opacity:0.9;
-font-family:'Sofia Sans',sans-serif;
-font-size:18px;
-line-height:1.4;
+/* QUICK INFO */
+.tourney-info-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 90px;
+  border-top: 1px solid #d9d6d1;
+  border-left: 1px solid #d9d6d1;
 }
 
-.match-format{
-margin-top:10px;
-padding-left:20px;
+.info-box {
+  min-height: 150px;
+  padding: 25px;
+  border-right: 1px solid #d9d6d1;
+  border-bottom: 1px solid #d9d6d1;
 }
 
-.match-format li{
-margin-bottom:6px;
-font-size:18px;
-line-height:1.5;
+.info-box .info-label {
+  display: block;
+  margin-bottom: 34px;
+  color: #c9080c;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
-
-/* SECTION */
-
-.tourney-section{
-margin-bottom:60px;
+.info-box h3 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.05;
 }
 
-.tourney-section h2{
-font-family:'Bebas Neue',sans-serif;
-color:#151a1f;
-letter-spacing: 0.3px;
-max-width: 780px;
-line-height: 1.6;
-margin-bottom: 4px;
-font-size: 30px;
-}
-/* FORMAT */
-.format-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:25px;
+.info-box p {
+  margin: 6px 0 0;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
-.format-grid div{
-background:#151a1f;
-padding:22px 26px;
-border-radius:18px;
-box-shadow:0 6px 18px rgba(0,0,0,.18);
-transition:transform .2s ease, box-shadow .2s ease;
+/* SECTIONS */
+.tourney-section {
+  margin-bottom: 85px;
 }
 
-.format-grid h3{
-font-size:22px;
-margin-bottom:6px;
+.section-heading {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 75px;
+  align-items: end;
+  margin-bottom: 35px;
 }
 
-.format-grid p{
-font-size:18px;
-line-height:1.5;
-}
-/* SCHEDULE */
-
-.schedule{
-display:grid;
-gap:12px;
+.section-kicker {
+  display: block;
+  margin-bottom: 10px;
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
 }
 
-.schedule-row{
-display:flex;
-gap:24px;
-align-items:center;
-background:#151a1f;
-padding:18px 24px;
-border-radius:18px;
-box-shadow:0 6px 18px rgba(0,0,0,.18);
-transition:transform .2s ease, box-shadow .2s ease;
+.section-heading h2 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(48px, 5vw, 70px);
+  font-weight: 400;
+  line-height: 0.9;
 }
 
-.schedule-row span{
-  font-family:'Bebas Neue',sans-serif;
-  width:150px;
-  color:#F7F5F2;
-  font-weight:700;
-  border-right:1px solid rgba(255,255,255,0.15);
-  padding-right:16px;
-  white-space:nowrap;
+.section-heading > p {
+  max-width: 570px;
+  margin: 0 0 4px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
+/* FORMAT CARDS */
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.format-card {
+  position: relative;
+  min-height: 215px;
+  overflow: hidden;
+  padding: 30px;
+  border: 1px solid #ddd9d3;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.format-number {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  color: rgba(21, 26, 31, 0.045);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 78px;
+}
+
+.format-card h3 {
+  margin: 58px 0 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 29px;
+  font-weight: 400;
+}
+
+.format-card p,
+.format-card li {
+  color: #707070;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.format-card p {
+  margin: 0;
+}
+
+.format-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
 
 /* RULES */
-
-.rules-list{
-background:#151a1f;
-padding:22px 32px;
-border-radius:18px;
-box-shadow:0 6px 18px rgba(0,0,0,.18);
-font-size:18px;
-line-height:1.7;
-list-style-position:inside;
+.rules-panel {
+  overflow: hidden;
+  border-radius: 12px;
+  background: #191b1d;
+  color: #fff;
 }
 
-/* FAQ */
-
-.faq-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.faq-grid div{
-background:#151a1f;
-padding:22px 26px;
-border-radius:18px;
-box-shadow:0 6px 18px rgba(0,0,0,.18);
-transition:transform .2s ease, box-shadow .2s ease;
+.rules-header span {
+  color: #c9080c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
-.format-grid p,
-.schedule-row p,
-.faq-grid p{
-font-size:18px;
-line-height:1.6;
+.rules-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
 }
 
-.format-grid h3{
-font-size:22px;
-margin-bottom:6px;
+.rules-list {
+  margin: 0;
+  padding: 10px 30px 25px;
+  list-style: none;
+  counter-reset: rule;
 }
 
-.faq-grid h4{
-font-size:20px;
-margin-bottom:6px;
+.rules-list li {
+  counter-increment: rule;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-.faq-grid a{
-color:#F7F5F2;
-text-decoration:none;
-font-weight:600;
+.rules-list li:last-child {
+  border-bottom: 0;
 }
 
-.faq-grid a:hover{
-color:#bb080b;
+.rules-list li::before {
+  content: counter(rule, decimal-leading-zero);
+  color: #c9080c;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
 }
 
-.format-grid div:hover,
-.schedule-row:hover,
-.faq-grid div:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 30px rgba(0,0,0,.25);
+/* NOTICE */
+.tourney-notice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 25px 28px;
+  border-top: 1px solid #d9d6d1;
+  border-bottom: 1px solid #d9d6d1;
 }
 
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.tourney-info-strip{
-grid-template-columns:1fr 1fr;
+.tourney-notice i {
+  margin-top: 3px;
+  color: #c9080c;
 }
 
-.format-grid{
-grid-template-columns:1fr;
+.tourney-notice strong {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 23px;
+  font-weight: 400;
 }
 
-.faq-grid{
-grid-template-columns:1fr;
+.tourney-notice p {
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-.tourney-hero h1{
-font-size:42px;
+@media (max-width: 950px) {
+  .tourney-info-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
+@media (max-width: 700px) {
+  .tourney-hero {
+    min-height: 350px;
+    padding: 75px 0 50px;
+  }
+
+  .tourney-hero h1 {
+    font-size: 70px;
+  }
+
+  .tourney-hero-copy {
+    font-size: 15px;
+  }
+
+  .tourney-overview {
+    padding: 50px 0 75px;
+  }
+
+  .format-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .tourney-info-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    min-height: 120px;
+  }
+
+  .info-box .info-label {
+    margin-bottom: 22px;
+  }
+
+  .rules-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rules-list {
+    padding: 8px 22px 22px;
+  }
 }

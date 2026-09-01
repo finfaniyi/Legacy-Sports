@@ -1,0 +1,110 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}Tournament Info | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/tourney-info.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="tourney-container">
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <h1>Legacy Sports Volleyball Tournament Info</h1>
+        <p class="page-kicker">Everything teams need to know before game day.</p>
+        
+    </section>
+
+    <!-- QUICK INFO STRIP -->
+
+    <section class="tourney-info-strip">
+        <div class="info-box">
+            <h3>Prize</h3>
+            <p>$400, Trophy, Medals for winning team</p>
+        </div>
+        <div class="info-box">
+            <h3>Teams</h3>
+            <p>6–8 Players</p>
+        </div>
+        <div class="info-box">
+            <h3>Entry Fee</h3>
+            <p>$20 Per Person</p>
+        </div>
+        <div class="info-box">
+            <h3>Location</h3>
+            <p>
+                <a href="https://maps.app.goo.gl/TEtBypToYG2DcTmf7" target="_blank">
+                    ACE Active Zone<br>
+                    Mississauga, ON
+                </a>
+            </p>
+        </div>
+        <div class="info-box">
+            <h3>Date</h3>
+            <p>June 6</p>
+            <h3>Time</h3>
+            <p>10:30AM - 3:00PM</p>
+        </div>
+    </section>
+    <!-- FORMAT -->
+
+    <section class="tourney-section">
+        <h2>Tournament Format</h2>
+        <div class="format-grid">
+            <div>
+                <h3>Exhibition Round</h3>
+                <p>
+                    All teams play 2 exhibition games to determine their seeding for elimination rounds.
+                </p>
+            </div>
+            <div>
+                <h3>Bracket</h3>
+                <p>
+                    Teams are seeded 1–8 and placed into a single-elimination bracket.
+                </p>
+            </div>
+            <div>
+                <h3>Match Format</h3>
+                <ul class="match-format">
+                    <li>Best of 3 sets (No wins by two)</li>
+                    <li>Sets 1–2: First to 15</li>
+                    <li>Set 3: First to 11</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Team Rules</h3>
+                <p>
+                    Each team must have a mininimum 6 Players and 2 optional subs. There must be at least 2 female
+                    players on each team.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="tourney-section">
+        <h2>Volleyball Rules</h2>
+        <ul class="rules-list">
+            <li>Teams must have a minimum of 6 players 2 of which are females. 1 of the females must always be on the court.</li>
+            <li>A player may not block, spike or double fist to return a serve.</li>
+            <li>The serve is allowed to contact the net. (e.g. a serve contacting the top of the net and goes over the net; it is still in play).</li>
+            <li>A player is allowed to volley a serve and is allowed to volley any ball over the net. When volleying, you do not have to be square to the path of the ball.</li>
+            <li>Open hand tips and directs are allowed.</li>
+            <li>If a player blocking touches the ball on the block, it is not counted as the first touch. The blocker may play the ball off his/her own block. These two contacts are counted as one touch.</li>
+            <li>Players may play the ball off any part of their body. Please be careful should you decide to kick the ball.</li>
+            <li>Players may not touch the net at any time during play.</li>
+            <li>A ball hitting a boundary line is in.</li>
+            <li>It is illegal to catch, hold or throw the ball</li>
+            <li>After the serve, front-line players may switch positions at the net.</li>
+            <li>Rotate positions clockwise after team wins serve back.</li>
+            <li>Everybody but the server can be substituted when in possession of the ball. No subs without possession except for injuries.</li>
+            <li>Referee decisions are final</li>
+        </ul>
+    </section>
+</main>
+
+{% endblock %}

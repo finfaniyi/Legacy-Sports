@@ -1,0 +1,132 @@
+{% extends "tournament/base.html" %}
+{% load static %}
+
+{% block title %}2027 Basketball Tournament Info | Legacy Sports Canada{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'tournament/css/tourney-info.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="tourney-page">
+
+  <section class="tourney-hero" data-sport="BASKETBALL">
+    <div class="tourney-shell">
+      <p class="tourney-eyebrow">2027 LEGACY SPORTS • FEBRUARY</p>
+      <h1>BASKETBALL<br>TOURNAMENT</h1>
+      <p class="tourney-hero-copy">Basketball returns in 2027. Everything players and teams need before game day will live here as the tournament takes shape.</p>
+    </div>
+  </section>
+
+  <section class="tourney-overview">
+    <div class="tourney-shell">
+
+      <div class="event-status">
+        <span class="status-dot"></span>
+        2027 EVENT • DETAILS IN DEVELOPMENT
+      </div>
+
+      <section class="tourney-info-strip">
+        <div class="info-box">
+          <span class="info-label">01 • DATE</span>
+          <h3>FEBRUARY 2027</h3>
+          <p>Final date TBA</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">02 • FORMAT</span>
+          <h3>TEAM TOURNAMENT</h3>
+          <p>Working format</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">03 • ENTRY</span>
+          <h3>COMING SOON</h3>
+          <p>Registration details TBA</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">04 • LOCATION</span>
+          <h3>MISSISSAUGA, ON</h3>
+          <p>Venue TBA</p>
+        </div>
+
+        <div class="info-box">
+          <span class="info-label">05 • PRIZE</span>
+          <h3>COMING SOON</h3>
+          <p>Prize package TBA</p>
+        </div>
+      </section>
+
+      <section class="tourney-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">HOW IT WORKS</span>
+            <h2>TOURNAMENT FORMAT.</h2>
+          </div>
+          <p>We are preparing the 2027 tournament system now. Final structure, schedules and team requirements will be updated here as planning is confirmed.</p>
+        </div>
+
+        <div class="format-grid">
+          <article class="format-card">
+            <span class="format-number">01</span>
+            <h3>Opening Round</h3>
+            <p>Game and seeding structure will be confirmed once the final number of registered teams is known.</p>
+          </article>
+          <article class="format-card">
+            <span class="format-number">02</span>
+            <h3>Playoffs</h3>
+            <p>Qualifying and elimination format will be published with the official tournament schedule.</p>
+          </article>
+          <article class="format-card">
+            <span class="format-number">03</span>
+            <h3>Game Format</h3>
+            <p>Game length, clock rules, timeouts and overtime procedures are currently being finalized.</p>
+          </article>
+          <article class="format-card">
+            <span class="format-number">04</span>
+            <h3>Team Rules</h3>
+            <p>Roster size, player eligibility and any co-ed requirements will be confirmed before registration opens.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tourney-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">GAME PLAY</span>
+            <h2>BASKETBALL RULES.</h2>
+          </div>
+          <p>The final Legacy Sports rulebook will be published before registration opens.</p>
+        </div>
+
+        <div class="rules-panel">
+          <div class="rules-header">
+            <span>WORKING RULEBOOK</span>
+            <p>Subject to final 2027 confirmation.</p>
+          </div>
+
+          <ol class="rules-list">
+            <li>Official roster and on-court player requirements will be confirmed before registration.</li>
+            <li>Game duration, clock operation and timeout rules will be published with the official schedule.</li>
+            <li>Foul limits and free-throw procedures will be included in the final rulebook.</li>
+            <li>Substitution and player eligibility rules will apply consistently throughout the tournament.</li>
+            <li>Sportsmanship is expected from all players, teams and spectators.</li>
+            <li>Referee decisions during play are final.</li>
+          </ol>
+        </div>
+      </section>
+
+      <div class="tourney-notice">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <strong>DETAILS ARE TENTATIVE.</strong>
+          <p>February is the planned event month. Final date, venue, pricing, tournament format and registration information will be confirmed as planning progresses.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}
