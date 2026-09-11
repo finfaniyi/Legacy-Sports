@@ -1,4 +1,4 @@
-{% extends "tournament/base.html" %}
+{% extends 'tournament/base.html' %}
 {% load static %}
 
 {% block title %}
@@ -6,250 +6,123 @@
 {% endblock %}
 
 {% block page_css %}
-  <link rel="stylesheet" href="{% static 'tournament/css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'tournament/css/index.css' %}" />
 {% endblock %}
 
 {% block content %}
-
-<main class="home">
-
-  <!-- =========================
+  <main class="home">
+    <!--  =========================
        HERO
-  ========================== -->
-  <section class="home-hero">
+  ==========================  -->
+    <section class="home-hero">
+      <div class="home-hero-slides">
+        <!-- 2024 Basketball Action -->
+        <div class="home-hero-slide active" style="background-image: url('{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_18.jpg' %}');"></div>
 
-    <div class="home-hero-slides">
+        <!-- 2024 Basketball Champions -->
+        <div class="home-hero-slide" style="background-image: url('{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_23.jpg' %}');"></div>
 
-      <!-- 2024 Basketball Action -->
-      <div
-        class="home-hero-slide active"
-        style="background-image: url('{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_18.jpg' %}');">
+        <!-- 2026 Volleyball Action -->
+        <!-- Replace filename with your chosen volleyball action photo -->
+        <div class="home-hero-slide" style="background-image: url('{% static 'tournament/images/home_page/volley1.jpg' %}');"></div>
+
+        <!-- 2026 Volleyball Champions -->
+        <!-- Replace filename with your chosen volleyball champions photo -->
+        <div class="home-hero-slide" style="background-image: url('{% static 'tournament/images/home_page/volley2.jpg' %}');"></div>
+
+        <!-- Legacy Community -->
+        <div class="home-hero-slide" style="background-image: url('{% static 'tournament/images/home_page/Trio.jpg' %}');"></div>
       </div>
 
-      <!-- 2024 Basketball Champions -->
-      <div
-        class="home-hero-slide"
-        style="background-image: url('{% static 'tournament/images/Legacy_Sports_Basketball_2024/image_23.jpg' %}');">
+      <!-- Hero Content -->
+      <div class="home-hero-content">
+        <span class="hero-eyebrow">LEGACY SPORTS CANADA</span>
+
+        <h1>
+          LEAVE YOUR<br />
+          <span>LEGACY.</span>
+        </h1>
+
+        <p>Bringing communities together through sport, connection and unforgettable experiences.</p>
+
+        <div class="hero-actions">
+          <a href="{% url 'events' %}" class="hero-btn hero-btn-primary">Explore Events</a>
+
+          <a href="{% url 'about' %}" class="hero-btn hero-btn-secondary">About Legacy</a>
+        </div>
       </div>
 
-      <!-- 2026 Volleyball Action -->
-      <!-- Replace filename with your chosen volleyball action photo -->
-      <div
-        class="home-hero-slide"
-        style="background-image: url('{% static 'tournament/images/home_page/volley1.jpg' %}');">
+      <!-- Hero Arrows -->
+      <button class="hero-arrow hero-prev" type="button" aria-label="Previous slide">&#10094;</button>
+
+      <button class="hero-arrow hero-next" type="button" aria-label="Next slide">&#10095;</button>
+
+      <!-- Hero Dots -->
+      <div class="home-hero-dots">
+        <button class="home-dot active" type="button" data-slide="0" aria-label="Go to slide 1"></button>
+
+        <button class="home-dot" type="button" data-slide="1" aria-label="Go to slide 2"></button>
+
+        <button class="home-dot" type="button" data-slide="2" aria-label="Go to slide 3"></button>
+
+        <button class="home-dot" type="button" data-slide="3" aria-label="Go to slide 4"></button>
+
+        <button class="home-dot" type="button" data-slide="4" aria-label="Go to slide 5"></button>
       </div>
+    </section>
 
-      <!-- 2026 Volleyball Champions -->
-      <!-- Replace filename with your chosen volleyball champions photo -->
-      <div
-        class="home-hero-slide"
-        style="background-image: url('{% static 'tournament/images/home_page/volley2.jpg' %}');">
-      </div>
-
-      <!-- Legacy Community -->
-      <div
-        class="home-hero-slide"
-        style="background-image: url('{% static 'tournament/images/home_page/Trio.jpg' %}');">
-      </div>
-
-    </div>
-
-
-    <!-- Hero Content -->
-    <div class="home-hero-content">
-
-      <span class="hero-eyebrow">
-        LEGACY SPORTS CANADA
-      </span>
-
-      <h1>
-        LEAVE YOUR<br>
-        <span>LEGACY.</span>
-      </h1>
-
-      <p>
-        Bringing communities together through sport, connection and unforgettable experiences.
-      </p>
-
-      <div class="hero-actions">
-
-        <a href="{% url 'events' %}" class="hero-btn hero-btn-primary">
-          Explore Events
-        </a>
-
-        <a href="{% url 'about' %}" class="hero-btn hero-btn-secondary">
-          About Legacy
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- Hero Arrows -->
-    <button
-      class="hero-arrow hero-prev"
-      type="button"
-      aria-label="Previous slide">
-      &#10094;
-    </button>
-
-    <button
-      class="hero-arrow hero-next"
-      type="button"
-      aria-label="Next slide">
-      &#10095;
-    </button>
-
-
-    <!-- Hero Dots -->
-    <div class="home-hero-dots">
-
-      <button
-        class="home-dot active"
-        type="button"
-        data-slide="0"
-        aria-label="Go to slide 1">
-      </button>
-
-      <button
-        class="home-dot"
-        type="button"
-        data-slide="1"
-        aria-label="Go to slide 2">
-      </button>
-
-      <button
-        class="home-dot"
-        type="button"
-        data-slide="2"
-        aria-label="Go to slide 3">
-      </button>
-
-      <button
-        class="home-dot"
-        type="button"
-        data-slide="3"
-        aria-label="Go to slide 4">
-      </button>
-
-      <button
-        class="home-dot"
-        type="button"
-        data-slide="4"
-        aria-label="Go to slide 5">
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       EVENTS CTA
-  ========================== -->
-  <section class="home-events-cta">
-
-    <div class="home-section-container">
-
-      <span class="section-eyebrow">
-        LEGACY SPORTS
-      </span>
-
-      <h2>STAY CONNECTED</h2>
-
-      <p>
-        Follow Legacy Sports and stay up to date with upcoming events, highlights, and everything happening in our community.
-      </p>
-
-      <a href="https://www.instagram.com/legacysports.ca/" target="_blank" rel="noopener noreferrer" class="section-btn" >
-        FOLLOW US ON INSTAGRAM
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
+    <!--  =========================
        VIDEO CENTRE
-  ========================== -->
-  <section class="home-video">
+  ==========================  -->
+    <section class="home-video">
+      <div class="home-section-heading">
+        <span class="section-eyebrow">WATCH LEGACY</span>
 
-    <div class="home-section-heading">
+        <h2>VIDEO CENTRE</h2>
+      </div>
 
-      <span class="section-eyebrow">
-        WATCH LEGACY
-      </span>
+      <div class="video-main">
+        <iframe src="https://www.youtube.com/embed/9FqWGiJsPMM?autoplay=1&mute=1&loop=1&playlist=9FqWGiJsPMM" title="Legacy Sports Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
 
-      <h2>VIDEO CENTRE</h2>
-
-    </div>
-
-    <div class="video-main">
-
-      <iframe
-        src="https://www.youtube.com/embed/9FqWGiJsPMM?si=auIF3mWkmxhyBbGV"
-        title="Legacy Sports Video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
+    <!--  =========================
        LEGACY COMMUNITY
-  ========================== -->
-  <section class="home-community">
+  ==========================  -->
+    <section class="home-community">
+      <div class="home-section-heading">
+        <span class="section-eyebrow">OUR PEOPLE</span>
 
-    <div class="home-section-heading">
-
-      <span class="section-eyebrow">
-        OUR PEOPLE
-      </span>
-
-      <h2>THE LEGACY COMMUNITY</h2>
-
-    </div>
-
-    <div class="home-slices">
-
-      <div
-        class="slice slice-1"
-        role="img"
-        aria-label="Legacy Sports community member">
+        <h2>THE LEGACY COMMUNITY</h2>
       </div>
 
-      <div
-        class="slice slice-2"
-        role="img"
-        aria-label="Legacy Sports community member">
+      <div class="home-slices">
+        <div class="slice slice-1" role="img" aria-label="Legacy Sports community member"></div>
+
+        <div class="slice slice-2" role="img" aria-label="Legacy Sports community member"></div>
+
+        <div class="slice slice-3" role="img" aria-label="Legacy Sports community member"></div>
+
+        <div class="slice slice-4" role="img" aria-label="Legacy Sports community member"></div>
       </div>
+    </section>
 
-      <div
-        class="slice slice-3"
-        role="img"
-        aria-label="Legacy Sports community member">
+    <!--  =========================
+       EVENTS CTA
+  ==========================  -->
+    <section class="home-events-cta">
+      <div class="home-section-container">
+        <span class="section-eyebrow">LEGACY SPORTS</span>
+
+        <h2>STAY CONNECTED</h2>
+
+        <p>Follow Legacy Sports and stay up to date with upcoming events, highlights, and everything happening in our community.</p>
+
+        <a href="https://www.instagram.com/legacysports.ca/" target="_blank" rel="noopener noreferrer" class="section-btn">FOLLOW US ON INSTAGRAM</a>
       </div>
-
-      <div
-        class="slice slice-4"
-        role="img"
-        aria-label="Legacy Sports community member">
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-
+    </section>
+  </main>
 {% endblock %}
-
 
 {% block scripts %}
   <script src="{% static 'tournament/js/main.js' %}" defer></script>
